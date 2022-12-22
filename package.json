@@ -1,0 +1,28 @@
+{
+    "name": "generic-functions.mlai",
+    "version": "0.0.1",
+    "description": "Some generic functions that can be used by anyone",
+    "main": "dist/cjs/index.js",
+    "module": "dist/esm/index.js",
+    "files": [
+        "dist"
+    ],
+    "scripts": {
+        "build": "rm -rf dist/ && prettier --write src/ && npm run build:esm && npm run build:cjs",
+        "build:esm": "tsc",
+        "build:cjs": "tsc --module CommonJS --outDir dist/cjs",
+        "format": "prettier --write \"src/**/*.ts\""
+    },
+    "author": "mathieu-ai <mathieu.lievre@efrei.net>",
+    "license": "MIT",
+    "devDependencies": {
+        "@types/lodash": "^4.14.191",
+        "@types/node": "^17.0.21",
+        "typescript": "^4.5.2"
+    },
+    "dependencies": {
+        "dayjs": "^1.11.7",
+        "lodash": "^4.17.21",
+        "prettier": "^2.8.1"
+    }
+}
