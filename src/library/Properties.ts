@@ -1,5 +1,7 @@
+import axios from 'axios';
 import dayjs from 'dayjs';
 import { camelCase, replace, toString } from 'lodash';
+import XLSX from 'xlsx'
 
 /**
  * Capitalizes the given string
@@ -744,4 +746,111 @@ export function $removeBreakLines(str: string): string {
  */
 export function $replace(arr: (string | number)[], what: string, to: string): string {
     return replace(toString(arr), what, to);
+}
+
+/**
+ * * Takes the API prop in .env to make a request with axios
+ * * ⚠️ - Custom response is send, it return the data that is refactored with custom function or a custom code
+ * * 🚫 - needs [axios](https://axios-http.com/fr/docs/intro) to function
+ * * ✔️ - Function is generic, it can takes any string as long the api is valid
+ * * Example :
+ * ```js
+ * _API("http://localhost:8080/members")
+ * ```
+ * ___
+ * @param {String} env
+ * @returns Object | data
+ */
+export async function $api(env: string): Promise<object[]> {
+    const res = await axios.request({
+        url: env,
+        method: 'GET',
+    })
+    if (res.status != 200)
+        throw new Error('axios request is different from 200')
+    return res.data
+}
+
+// custom functions
+
+/**
+ * * Convert an excel file to an array of jsons & call function to transform props and values
+ *  * Example :
+ * ```js
+ * $ExcelToJson(pathtoExcelFile)
+ * // Prints: [{...},...]
+ * ```
+ * Convert an excel file to an array of jsons
+ * * 🚫 - needs a 'code' prop (aka:index)
+ * * ⚠️ - calls $removeBreakLines from [generic-functions.mlai](https://www.npmjs.com/package/generic-functions.mlai)
+ * * ✔️ - can take any excel file
+ * ___
+ * ```js
+ * const tbMembers = $ExcelToJson('path/to/file/EXCEL.xlsx')
+ * console.log(tbMembers);
+ * // Prints: [{...}, {...}]
+ * ```
+ * ___
+ * @param {String} pathOfFile
+ * @returns object[]
+ */
+export function $ExcelToJson(pathOfFile: any) {
+    const tbData: any[] = []
+    const file = XLSX.readFile(pathOfFile, {
+        cellDates: true,
+        sheetStubs: true,
+    })
+
+    const list_sheets = file.SheetNames
+
+    // y = sheet Name
+    list_sheets.forEach((y: string | number) => {
+        const worksheet = file.Sheets[y]
+        // headers = object of properties
+        const headers:any = {}
+        let val: any
+
+        for (const z in worksheet) {
+            if (z[0] === '!' || !z[0]) {
+                continue
+            }
+            //parse column, row, and val
+            let tt = 0
+            for (let i = 0; i < z.length; i++) {
+                // z = row name (aka:'A1')
+                const zi: any = z[i]
+                if (!isNaN(zi)) {
+                    // tt = index
+                    tt = i
+                    break
+                }
+            }
+            // get column letter (aka: 'A')
+            const col = z.substring(0, tt)
+            // get row number (aka: 1)
+            const row = parseInt(z.substring(tt))
+            // get prop name (aka: 'code')
+            val = worksheet[z].v
+
+            //header names
+            let colName = headers[col]
+            if (row == 1) {
+                // if val have '\n' in the string
+                if (val) colName = $removeBreakLines(val)
+                continue
+            }
+            if (!val || val == '') val = false
+            // because some row have x or X as values
+            if (val == 'x' || val == 'X') val = true
+            // tbData[row] = object identifier (aka: {code: 6})
+            if (!tbData[row]) tbData[row] = {}
+            // value of column
+            tbData[row][colName] = val
+        }
+
+        //remove first two rows because empty
+        tbData.shift()
+        tbData.shift()
+    })
+    return tbData.filter((row) => row.code)
 }
