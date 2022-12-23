@@ -832,10 +832,9 @@ export function $ExcelToJson(pathOfFile: any) {
             val = worksheet[z].v;
 
             //header names
-            let colName = headers[col];
             if (row == 1) {
                 // if val have '\n' in the string
-                if (val) colName = $removeBreakLines(val);
+                if (val) headers[col] = $removeBreakLines(val);
                 continue;
             }
             if (!val || val == '') val = false;
@@ -844,7 +843,7 @@ export function $ExcelToJson(pathOfFile: any) {
             // tbData[row] = object identifier (aka: {code: 6})
             if (!tbData[row]) tbData[row] = {};
             // value of column
-            tbData[row][colName] = val;
+            tbData[row][headers[col]] = val;
         }
 
         //remove first two rows because empty
