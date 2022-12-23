@@ -13,8 +13,8 @@
         "outDir": "dist/esm",
         "sourceMap": true,
         "strict": true,
-        "target": "es6",
-        "skipLibCheck": true
+        "target": "es6"
+        // "skipLibCheck": true
     },
     "include": ["src/**/*.ts"]
 }
