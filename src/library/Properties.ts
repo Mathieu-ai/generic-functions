@@ -1,7 +1,7 @@
 import axios from 'axios';
 import dayjs from 'dayjs';
 import { camelCase, replace, toString } from 'lodash';
-import XLSX from 'xlsx'
+import XLSX from 'xlsx';
 
 /**
  * Capitalizes the given string
@@ -764,11 +764,10 @@ export function $replace(arr: (string | number)[], what: string, to: string): st
 export async function $api(env: string): Promise<object[]> {
     const res = await axios.request({
         url: env,
-        method: 'GET',
-    })
-    if (res.status != 200)
-        throw new Error('axios request is different from 200')
-    return res.data
+        method: 'GET'
+    });
+    if (res.status != 200) throw new Error('axios request is different from 200');
+    return res.data;
 }
 
 // custom functions
@@ -795,62 +794,62 @@ export async function $api(env: string): Promise<object[]> {
  * @returns object[]
  */
 export function $ExcelToJson(pathOfFile: any) {
-    const tbData: any[] = []
+    const tbData: any[] = [];
     const file = XLSX.readFile(pathOfFile, {
         cellDates: true,
-        sheetStubs: true,
-    })
+        sheetStubs: true
+    });
 
-    const list_sheets = file.SheetNames
+    const list_sheets = file.SheetNames;
 
     // y = sheet Name
     list_sheets.forEach((y: string | number) => {
-        const worksheet = file.Sheets[y]
+        const worksheet = file.Sheets[y];
         // headers = object of properties
-        const headers:any = {}
-        let val: any
+        const headers: any = {};
+        let val: any;
 
         for (const z in worksheet) {
             if (z[0] === '!' || !z[0]) {
-                continue
+                continue;
             }
             //parse column, row, and val
-            let tt = 0
+            let tt = 0;
             for (let i = 0; i < z.length; i++) {
                 // z = row name (aka:'A1')
-                const zi: any = z[i]
+                const zi: any = z[i];
                 if (!isNaN(zi)) {
                     // tt = index
-                    tt = i
-                    break
+                    tt = i;
+                    break;
                 }
             }
             // get column letter (aka: 'A')
-            const col = z.substring(0, tt)
+            const col = z.substring(0, tt);
             // get row number (aka: 1)
-            const row = parseInt(z.substring(tt))
+            const row = parseInt(z.substring(tt));
             // get prop name (aka: 'code')
-            val = worksheet[z].v
+            val = worksheet[z].v;
 
             //header names
-            let colName = headers[col]
+            let colName = headers[col];
             if (row == 1) {
                 // if val have '\n' in the string
-                if (val) colName = $removeBreakLines(val)
-                continue
+                if (val) colName = $removeBreakLines(val);
+                continue;
             }
-            if (!val || val == '') val = false
+            if (!val || val == '') val = false;
             // because some row have x or X as values
-            if (val == 'x' || val == 'X') val = true
+            if (val == 'x' || val == 'X') val = true;
             // tbData[row] = object identifier (aka: {code: 6})
-            if (!tbData[row]) tbData[row] = {}
+            if (!tbData[row]) tbData[row] = {};
             // value of column
-            tbData[row][colName] = val
+            tbData[row][colName] = val;
         }
 
         //remove first two rows because empty
-        tbData.shift()
-        tbData.shift()
-    })
-    return tbData.filter((row) => row.code)
+        tbData.shift();
+        tbData.shift();
+    });
+    return tbData.filter((row) => row.code);
 }
