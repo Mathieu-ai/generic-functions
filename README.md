@@ -1,4 +1,4 @@
-# React Tilt
+# generic-functions
 
 [![npm version][npm-badge]][npm-url] [![Open issues][issues-badge]][issues-url] [![TypeScript][typescript-badge]][typescript-url]
 
@@ -37,9 +37,9 @@ console.log($removeBreakLines('IHave\nBreaklines'));
 All contributions are welcome!
 
 [npm-url]: https://www.npmjs.com/package/generic-functions.mlai
-[npm-badge]: https://img.shields.io/npm/v/react-parallax-tilt.svg
-[size-badge]: https://badgen.net/bundlephobia/minzip/react-parallax-tilt
-[issues-badge]: https://img.shields.io/github/issues/Mathieu-ai/generic-functions
+[npm-badge]: https://img.shields.io/node/v/generic-functions?style=for-the-badge
+[size-badge]: https://badgen.net/bundlephobia/Mathieu-ai/generic-functions
+[issues-badge]: https://img.shields.io/github/issues/Mathieu-ai/generic-functions?style=for-the-badge
 [issues-url]: https://github.com/Mathieu-ai/generic-functions/issues
 [typescript-badge]: https://badges.frapsoft.com/typescript/code/typescript.svg?v=101
 [typescript-url]: https://github.com/microsoft/TypeScript

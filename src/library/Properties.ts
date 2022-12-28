@@ -1,7 +1,6 @@
 import axios from 'axios';
 import dayjs from 'dayjs';
 import { camelCase, replace, toString } from 'lodash';
-import XLSX from 'xlsx';
 
 /**
  * Capitalizes the given string
@@ -370,326 +369,271 @@ export const reg = {
  * @returns Object[]
  */
 export const countryList = [
-    {
-        code: 'AF',
-        value: 'Afghanistan'
-    },
-    {
-        code: 'DZ',
-        value: 'Algeria'
-    },
-    {
-        code: 'AR',
-        value: 'Argentina'
-    },
-    {
-        code: 'AM',
-        value: 'Armenia'
-    },
-    {
-        code: 'AU',
-        value: 'Australia'
-    },
-    {
-        code: 'AT',
-        value: 'Austria'
-    },
-    {
-        code: 'AZ',
-        value: 'Azerbaijan'
-    },
-    {
-        code: 'BY',
-        value: 'Belarus'
-    },
-    {
-        code: 'BE',
-        value: 'Belgium'
-    },
-    {
-        code: 'BA',
-        value: 'Bosnia and Herzegovina'
-    },
-    {
-        code: 'BR',
-        value: 'Brazil'
-    },
-    {
-        code: 'BG',
-        value: 'Bulgaria'
-    },
-    {
-        code: 'BF',
-        value: 'Burkina Faso'
-    },
-    {
-        code: 'CM',
-        value: 'Cameroon'
-    },
-    {
-        code: 'CA',
-        value: 'Canada'
-    },
-    {
-        code: 'CN',
-        value: 'China'
-    },
-    {
-        code: 'CD',
-        value: 'Congo (the Democratic Republic of the)'
-    },
-    {
-        code: 'HR',
-        value: 'Croatia'
-    },
-    {
-        code: 'CZ',
-        value: 'Czech Republic (the)'
-    },
-    {
-        code: 'CI',
-        value: "Côte d'Ivoire"
-    },
-    {
-        code: 'DK',
-        value: 'Denmark'
-    },
-    {
-        code: 'EG',
-        value: 'Egypt'
-    },
-    {
-        code: 'ET',
-        value: 'Ethiopia'
-    },
-    {
-        code: 'FI',
-        value: 'Finland'
-    },
-    {
-        code: 'FR',
-        value: 'France'
-    },
-    {
-        code: 'GA',
-        value: 'Gabon'
-    },
-    {
-        code: 'GE',
-        value: 'Georgia'
-    },
-    {
-        code: 'DE',
-        value: 'Germany'
-    },
-    {
-        code: 'GR',
-        value: 'Greece'
-    },
-    {
-        code: 'HU',
-        value: 'Hungary'
-    },
-    {
-        code: 'IN',
-        value: 'India'
-    },
-    {
-        code: 'ID',
-        value: 'Indonesia'
-    },
-    {
-        code: 'IR',
-        value: 'Iran (Islamic Republic of)'
-    },
-    {
-        code: 'IQ',
-        value: 'Iraq'
-    },
-    {
-        code: 'IE',
-        value: 'Ireland'
-    },
-    {
-        code: 'IL',
-        value: 'Israel'
-    },
-    {
-        code: 'IT',
-        value: 'Italy'
-    },
-    {
-        code: 'JP',
-        value: 'Japan'
-    },
-    {
-        code: 'JO',
-        value: 'Jordan'
-    },
-    {
-        code: 'KZ',
-        value: 'Kazakhstan'
-    },
-    {
-        code: 'KR',
-        value: 'Korea (the Republic of)'
-    },
-    {
-        code: 'LV',
-        value: 'Latvia'
-    },
-    {
-        code: 'LY',
-        value: 'Libya'
-    },
-    {
-        code: 'LT',
-        value: 'Lithuania'
-    },
-    {
-        code: 'LU',
-        value: 'Luxembourg'
-    },
-    {
-        code: 'MK',
-        value: 'Macedonia (the former Yugoslav Republic of)'
-    },
-    {
-        code: 'MY',
-        value: 'Malaysia'
-    },
-    {
-        code: 'MY',
-        value: 'Mauritania'
-    },
-    {
-        code: 'MX',
-        value: 'Mexico'
-    },
-    {
-        code: 'MN',
-        value: 'Mongolia'
-    },
-    {
-        code: 'ME',
-        value: 'Montenegro'
-    },
-    {
-        code: 'MA',
-        value: 'Morocco'
-    },
-    {
-        code: 'NL',
-        value: 'Netherlands (the)'
-    },
-    {
-        code: 'NE',
-        value: 'Niger (the)'
-    },
-    {
-        code: 'NO',
-        value: 'Norway'
-    },
-    {
-        code: 'PH',
-        value: 'Philippines (the)'
-    },
-    {
-        code: 'PL',
-        value: 'Poland'
-    },
-    {
-        code: 'PT',
-        value: 'Portugal'
-    },
-    {
-        code: 'RO',
-        value: 'Romania'
-    },
-    {
-        code: 'RU',
-        value: 'Russian Federation (the)'
-    },
-    {
-        code: 'SA',
-        value: 'Saudi Arabia'
-    },
-    {
-        code: 'SN',
-        value: 'Senegal'
-    },
-    {
-        code: 'RS',
-        value: 'Serbia'
-    },
-    {
-        code: 'SK',
-        value: 'Slovakia'
-    },
-    {
-        code: 'SO',
-        value: 'Slovenia'
-    },
-    {
-        code: 'ES',
-        value: 'Spain'
-    },
-    {
-        code: 'SD',
-        value: 'Sudan (the)'
-    },
-    {
-        code: 'SE',
-        value: 'Sweden'
-    },
-    {
-        code: 'CH',
-        value: 'Switzerland'
-    },
-    {
-        code: 'SY',
-        value: 'Syrian Arab Republic'
-    },
-    {
-        code: 'TW',
-        value: 'Taiwan (Province of China)'
-    },
-    {
-        code: 'TH',
-        value: 'Thailand'
-    },
-    {
-        code: 'TN',
-        value: 'Tunisia'
-    },
-    {
-        code: 'TR',
-        value: 'Turkey'
-    },
-    {
-        code: 'UA',
-        value: 'Ukraine'
-    },
-    {
-        code: 'AE',
-        value: 'United Arab Emirates (the)'
-    },
+    { code: 'VC', value: 'Saint Vincent and the Grenadines' },
+    { code: 'GF', value: 'Guiana' },
+    { code: 'FO', value: 'Faroe Islands' },
+    { code: 'PK', value: 'Islamic Republic of Pakistan' },
+    { code: 'FJ', value: 'Republic of Fiji' },
+    { code: 'MN', value: 'Mongolia' },
+    { code: 'CC', value: 'Territory of the Cocos (Keeling) Islands' },
+    { code: 'FM', value: 'Federated States of Micronesia' },
+    { code: 'NO', value: 'Kingdom of Norway' },
+    { code: 'MR', value: 'Islamic Republic of Mauritania' },
+    { code: 'ES', value: 'Kingdom of Spain' },
+    { code: 'TR', value: 'Republic of Turkey' },
+    { code: 'AE', value: 'United Arab Emirates' },
+    { code: 'CD', value: 'Democratic Republic of the Congo' },
+    { code: 'NC', value: 'New Caledonia' },
+    { code: 'RW', value: 'Republic of Rwanda' },
+    { code: 'AU', value: 'Commonwealth of Australia' },
+    { code: 'IM', value: 'Isle of Man' },
+    { code: 'ID', value: 'Republic of Indonesia' },
+    { code: 'ZM', value: 'Republic of Zambia' },
+    { code: 'JE', value: 'Bailiwick of Jersey' },
+    { code: 'UY', value: 'Oriental Republic of Uruguay' },
+    { code: 'CA', value: 'Canada' },
+    { code: 'PE', value: 'Republic of Peru' },
+    { code: 'MS', value: 'Montserrat' },
+    { code: 'AG', value: 'Antigua and Barbuda' },
+    { code: 'DM', value: 'Commonwealth of Dominica' },
+    { code: 'KH', value: 'Kingdom of Cambodia' },
+    { code: 'FK', value: 'Falkland Islands' },
+    { code: 'GU', value: 'Guam' },
+    { code: 'PG', value: 'Independent State of Papua New Guinea' },
+    { code: 'SC', value: 'Republic of Seychelles' },
+    { code: 'LR', value: 'Republic of Liberia' },
+    { code: 'CV', value: 'Republic of Cabo Verde' },
+    { code: 'GD', value: 'Grenada' },
+    { code: 'CU', value: 'Republic of Cuba' },
+    { code: 'DJ', value: 'Republic of Djibouti' },
+    { code: 'LB', value: 'Lebanese Republic' },
+    { code: 'MM', value: 'Republic of the Union of Myanmar' },
+    { code: 'KY', value: 'Cayman Islands' },
+    { code: 'GA', value: 'Gabonese Republic' },
+    { code: 'PF', value: 'French Polynesia' },
+    { code: 'ZA', value: 'Republic of South Africa' },
+    { code: 'SR', value: 'Republic of Suriname' },
+    { code: 'CR', value: 'Republic of Costa Rica' },
+    { code: 'CF', value: 'Central African Republic' },
+    { code: 'TC', value: 'Turks and Caicos Islands' },
+    { code: 'LI', value: 'Principality of Liechtenstein' },
+    { code: 'NU', value: 'Niue' },
+    { code: 'UM', value: 'United States Minor Outlying Islands' },
+    { code: 'KP', value: "Democratic People's Republic of Korea" },
+    { code: 'UA', value: 'Ukraine' },
+    { code: 'GW', value: 'Republic of Guinea-Bissau' },
+    { code: 'AQ', value: 'Antarctica' },
+    { code: 'YT', value: 'Department of Mayotte' },
+    { code: 'TV', value: 'Tuvalu' },
+    { code: 'MA', value: 'Kingdom of Morocco' },
+    { code: 'MD', value: 'Republic of Moldova' },
+    { code: 'OM', value: 'Sultanate of Oman' },
+    { code: 'IT', value: 'Italian Republic' },
+    { code: 'YE', value: 'Republic of Yemen' },
+    { code: 'KW', value: 'State of Kuwait' },
+    { code: 'PR', value: 'Commonwealth of Puerto Rico' },
+    { code: 'PS', value: 'State of Palestine' },
+    { code: 'CO', value: 'Republic of Colombia' },
+    { code: 'MK', value: 'Republic of North Macedonia' },
+    { code: 'QA', value: 'State of Qatar' },
+    { code: 'TW', value: 'Republic of China (Taiwan)' },
+    { code: 'MG', value: 'Republic of Madagascar' },
+    { code: 'BS', value: 'Commonwealth of the Bahamas' },
+    { code: 'CW', value: 'Country of Curaçao' },
+    { code: 'SB', value: 'Solomon Islands' },
+    { code: 'SH', value: 'Saint Helena, Ascension and Tristan da Cunha' },
+    { code: 'HN', value: 'Republic of Honduras' },
+    { code: 'AM', value: 'Republic of Armenia' },
+    { code: 'GT', value: 'Republic of Guatemala' },
+    { code: 'TG', value: 'Togolese Republic' },
+    { code: 'SN', value: 'Republic of Senegal' },
+    { code: 'CZ', value: 'Czech Republic' },
+    { code: 'XK', value: 'Republic of Kosovo' },
+    { code: 'MH', value: 'Republic of the Marshall Islands' },
+    { code: 'MU', value: 'Republic of Mauritius' },
+    { code: 'GE', value: 'Georgia' },
+    { code: 'PH', value: 'Republic of the Philippines' },
+    { code: 'AL', value: 'Republic of Albania' },
+    { code: 'JM', value: 'Jamaica' },
+    { code: 'RS', value: 'Republic of Serbia' },
+    { code: 'CL', value: 'Republic of Chile' },
+    { code: 'GY', value: 'Co-operative Republic of Guyana' },
+    { code: 'TZ', value: 'United Republic of Tanzania' },
+    { code: 'BD', value: "People's Republic of Bangladesh" },
+    { code: 'EC', value: 'Republic of Ecuador' },
+    { code: 'CY', value: 'Republic of Cyprus' },
+    { code: 'DO', value: 'Dominican Republic' },
+    { code: 'GS', value: 'South Georgia and the South Sandwich Islands' },
+    { code: 'AX', value: 'Åland Islands' },
+    { code: 'FI', value: 'Republic of Finland' },
+    { code: 'KR', value: 'Republic of Korea' },
+    { code: 'BF', value: 'Burkina Faso' },
+    { code: 'NF', value: 'Territory of Norfolk Island' },
+    { code: 'PT', value: 'Portuguese Republic' },
+    { code: 'BB', value: 'Barbados' },
+    { code: 'JO', value: 'Hashemite Kingdom of Jordan' },
+    { code: 'NG', value: 'Federal Republic of Nigeria' },
+    { code: 'BH', value: 'Kingdom of Bahrain' },
+    {
+        code: 'KI',
+        value: 'Independent and Sovereign Republic of Kiribati'
+    },
+    { code: 'ST', value: 'Democratic Republic of São Tomé and Príncipe' },
+    { code: 'CN', value: "People's Republic of China" },
+    { code: 'CH', value: 'Swiss Confederation' },
+    { code: 'KE', value: 'Republic of Kenya' },
+    { code: 'MV', value: 'Republic of the Maldives' },
+    { code: 'SV', value: 'Republic of El Salvador' },
+    { code: 'KN', value: 'Federation of Saint Christopher and Nevis' },
+    { code: 'BN', value: 'Nation of Brunei, Abode of Peace' },
+    { code: 'BJ', value: 'Republic of Benin' },
+    { code: 'GN', value: 'Republic of Guinea' },
+    {
+        code: 'MO',
+        value: "Macao Special Administrative Region of the People's Republic of China"
+    },
+    { code: 'US', value: 'United States of America' },
+    { code: 'ER', value: 'State of Eritrea' },
+    { code: 'SE', value: 'Kingdom of Sweden' },
+    {
+        code: 'TF',
+        value: 'Territory of the French Southern and Antarctic Lands'
+    },
+    { code: 'GH', value: 'Republic of Ghana' },
+    { code: 'DK', value: 'Kingdom of Denmark' },
+    { code: 'BG', value: 'Republic of Bulgaria' },
+    { code: 'BW', value: 'Republic of Botswana' },
+    { code: 'IR', value: 'Islamic Republic of Iran' },
+    { code: 'BV', value: 'Bouvet Island' },
+    { code: 'BO', value: 'Plurinational State of Bolivia' },
+    { code: 'PN', value: 'Pitcairn Group of Islands' },
+    { code: 'BY', value: 'Republic of Belarus' },
+    { code: 'BM', value: 'Bermuda' },
+    { code: 'KZ', value: 'Republic of Kazakhstan' },
+    { code: 'LA', value: "Lao People's Democratic Republic" },
+    { code: 'UZ', value: 'Republic of Uzbekistan' },
+    { code: 'MY', value: 'Malaysia' },
+    { code: 'VG', value: 'Virgin Islands' },
+    { code: 'PM', value: 'Saint Pierre and Miquelon' },
+    { code: 'IS', value: 'Iceland' },
+    { code: 'GR', value: 'Hellenic Republic' },
+    { code: 'PY', value: 'Republic of Paraguay' },
+    { code: 'CM', value: 'Republic of Cameroon' },
+    { code: 'PW', value: 'Republic of Palau' },
+    { code: 'BR', value: 'Federative Republic of Brazil' },
+    { code: 'BL', value: 'Collectivity of Saint Barthélemy' },
+    { code: 'AI', value: 'Anguilla' },
+    { code: 'ET', value: 'Federal Democratic Republic of Ethiopia' },
+    { code: 'DE', value: 'Federal Republic of Germany' },
+    { code: 'HU', value: 'Hungary' },
+    { code: 'SD', value: 'Republic of the Sudan' },
+    { code: 'SO', value: 'Federal Republic of Somalia' },
+    { code: 'LT', value: 'Republic of Lithuania' },
+    { code: 'AO', value: 'Republic of Angola' },
+    { code: 'GQ', value: 'Republic of Equatorial Guinea' },
+    { code: 'SA', value: 'Kingdom of Saudi Arabia' },
+    { code: 'EE', value: 'Republic of Estonia' },
+    { code: 'LU', value: 'Grand Duchy of Luxembourg' },
+    { code: 'ZW', value: 'Republic of Zimbabwe' },
+    { code: 'NZ', value: 'New Zealand' },
+    { code: 'VE', value: 'Bolivarian Republic of Venezuela' },
+    { code: 'GM', value: 'Republic of the Gambia' },
+    { code: 'WF', value: 'Territory of the Wallis and Futuna Islands' },
+    { code: 'BE', value: 'Kingdom of Belgium' },
+    { code: 'BZ', value: 'Belize' },
+    { code: 'EH', value: 'Sahrawi Arab Democratic Republic' },
+    { code: 'SI', value: 'Republic of Slovenia' },
+    { code: 'SY', value: 'Syrian Arab Republic' },
+    { code: 'JP', value: 'Japan' },
+    { code: 'RU', value: 'Russian Federation' },
+    { code: 'LS', value: 'Kingdom of Lesotho' },
+    { code: 'IE', value: 'Republic of Ireland' },
+    { code: 'ME', value: 'Montenegro' },
+    { code: 'AD', value: 'Principality of Andorra' },
+    { code: 'NL', value: 'Kingdom of the Netherlands' },
+    { code: 'LV', value: 'Republic of Latvia' },
+    { code: 'TN', value: 'Tunisian Republic' },
+    { code: 'AW', value: 'Aruba' },
+    { code: 'HR', value: 'Republic of Croatia' },
+    { code: 'ML', value: 'Republic of Mali' },
+    { code: 'AF', value: 'Islamic Republic of Afghanistan' },
+    { code: 'SL', value: 'Republic of Sierra Leone' },
+    { code: 'IQ', value: 'Republic of Iraq' },
+    { code: 'KM', value: 'Union of the Comoros' },
+    { code: 'EG', value: 'Arab Republic of Egypt' },
+    { code: 'VN', value: 'Socialist Republic of Vietnam' },
+    { code: 'VA', value: 'Vatican City State' },
+    { code: 'SX', value: 'Sint Maarten' },
+    { code: 'SK', value: 'Slovak Republic' },
+    { code: 'SG', value: 'Republic of Singapore' },
+    { code: 'CK', value: 'Cook Islands' },
+    { code: 'SZ', value: 'Kingdom of Eswatini' },
+    { code: 'TO', value: 'Kingdom of Tonga' },
+    { code: 'CG', value: 'Republic of the Congo' },
+    { code: 'GG', value: 'Bailiwick of Guernsey' },
+    { code: 'GP', value: 'Guadeloupe' },
+    { code: 'NA', value: 'Republic of Namibia' },
+    { code: 'TT', value: 'Republic of Trinidad and Tobago' },
+    { code: 'BT', value: 'Kingdom of Bhutan' },
+    {
+        code: 'HK',
+        value: "Hong Kong Special Administrative Region of the People's Republic of China"
+    },
+    { code: 'SS', value: 'Republic of South Sudan' },
+    { code: 'SM', value: 'Republic of San Marino' },
+    { code: 'TJ', value: 'Republic of Tajikistan' },
+    { code: 'UG', value: 'Republic of Uganda' },
+    { code: 'WS', value: 'Independent State of Samoa' },
+    { code: 'DZ', value: "People's Democratic Republic of Algeria" },
+    { code: 'CI', value: "Republic of Côte d'Ivoire" },
+    { code: 'VI', value: 'Virgin Islands of the United States' },
+    { code: 'AZ', value: 'Republic of Azerbaijan' },
+    { code: 'LK', value: 'Democratic Socialist Republic of Sri Lanka' },
+    { code: 'CX', value: 'Territory of Christmas Island' },
+    { code: 'TD', value: 'Republic of Chad' },
+    { code: 'AR', value: 'Argentine Republic' },
+    { code: 'IN', value: 'Republic of India' },
+    { code: 'MF', value: 'Saint Martin' },
+    { code: 'HT', value: 'Republic of Haiti' },
+    { code: 'LC', value: 'Saint Lucia' },
+    { code: 'NP', value: 'Federal Democratic Republic of Nepal' },
+    { code: 'TK', value: 'Tokelau' },
+    { code: 'TM', value: 'Turkmenistan' },
+    { code: 'IL', value: 'State of Israel' },
+    { code: 'BQ', value: 'Bonaire, Sint Eustatius and Saba' },
+    { code: 'MT', value: 'Republic of Malta' },
+    { code: 'MP', value: 'Commonwealth of the Northern Mariana Islands' },
+    { code: 'MW', value: 'Republic of Malawi' },
+    { code: 'GI', value: 'Gibraltar' },
+    { code: 'VU', value: 'Republic of Vanuatu' },
     {
         code: 'GB',
-        value: 'United Kingdom of Great Britain and Northern Ireland (the)'
+        value: 'United Kingdom of Great Britain and Northern Ireland'
     },
-    {
-        code: 'US',
-        value: 'United States of America (the)'
-    },
-    {
-        code: 'VN',
-        value: 'Viet Nam'
-    },
-    {
-        code: 'ZM',
-        value: 'Zambia'
-    }
+    { code: 'MQ', value: 'Martinique' },
+    { code: 'MX', value: 'United Mexican States' },
+    { code: 'BA', value: 'Bosnia and Herzegovina' },
+    { code: 'RO', value: 'Romania' },
+    { code: 'SJ', value: 'Svalbard og Jan Mayen' },
+    { code: 'HM', value: 'Heard Island and McDonald Islands' },
+    { code: 'IO', value: 'British Indian Ocean Territory' },
+    { code: 'RE', value: 'Réunion Island' },
+    { code: 'KG', value: 'Kyrgyz Republic' },
+    { code: 'TH', value: 'Kingdom of Thailand' },
+    { code: 'BI', value: 'Republic of Burundi' },
+    { code: 'GL', value: 'Greenland' },
+    { code: 'AT', value: 'Republic of Austria' },
+    { code: 'FR', value: 'French Republic' },
+    { code: 'MC', value: 'Principality of Monaco' },
+    { code: 'NR', value: 'Republic of Nauru' },
+    { code: 'NE', value: 'Republic of Niger' },
+    { code: 'AS', value: 'American Samoa' },
+    { code: 'MZ', value: 'Republic of Mozambique' },
+    { code: 'TL', value: 'Democratic Republic of Timor-Leste' },
+    { code: 'NI', value: 'Republic of Nicaragua' },
+    { code: 'PA', value: 'Republic of Panama' },
+    { code: 'PL', value: 'Republic of Poland' },
+    { code: 'LY', value: 'State of Libya' }
 ];
 
 /**
@@ -768,87 +712,4 @@ export async function $api(env: string): Promise<object[]> {
     });
     if (res.status != 200) throw new Error('axios request is different from 200');
     return res.data;
-}
-
-// custom functions
-
-/**
- * * Convert an excel file to an array of jsons & call function to transform props and values
- *  * Example :
- * ```js
- * $ExcelToJson(pathtoExcelFile)
- * // Prints: [{...},...]
- * ```
- * Convert an excel file to an array of jsons
- * * 🚫 - needs a 'code' prop (aka:index)
- * * ⚠️ - calls $removeBreakLines from [generic-functions.mlai](https://www.npmjs.com/package/generic-functions.mlai)
- * * ✔️ - can take any excel file
- * ___
- * ```js
- * const tbMembers = $ExcelToJson('path/to/file/EXCEL.xlsx')
- * console.log(tbMembers);
- * // Prints: [{...}, {...}]
- * ```
- * ___
- * @param {String} pathOfFile
- * @returns object[]
- */
-export function $ExcelToJson(pathOfFile: any) {
-    const tbData: any[] = [];
-    const file = XLSX.readFile(pathOfFile, {
-        cellDates: true,
-        sheetStubs: true
-    });
-
-    const list_sheets = file.SheetNames;
-
-    // y = sheet Name
-    list_sheets.forEach((y: string | number) => {
-        const worksheet = file.Sheets[y];
-        // headers = object of properties
-        const headers: any = {};
-        let val: any;
-
-        for (const z in worksheet) {
-            if (z[0] === '!' || !z[0]) {
-                continue;
-            }
-            //parse column, row, and val
-            let tt = 0;
-            for (let i = 0; i < z.length; i++) {
-                // z = row name (aka:'A1')
-                const zi: any = z[i];
-                if (!isNaN(zi)) {
-                    // tt = index
-                    tt = i;
-                    break;
-                }
-            }
-            // get column letter (aka: 'A')
-            const col = z.substring(0, tt);
-            // get row number (aka: 1)
-            const row = parseInt(z.substring(tt));
-            // get prop name (aka: 'code')
-            val = worksheet[z].v;
-
-            //header names
-            if (row == 1) {
-                // if val have '\n' in the string
-                if (val) headers[col] = $removeBreakLines(val);
-                continue;
-            }
-            if (!val || val == '') val = false;
-            // because some row have x or X as values
-            if (val == 'x' || val == 'X') val = true;
-            // tbData[row] = object identifier (aka: {code: 6})
-            if (!tbData[row]) tbData[row] = {};
-            // value of column
-            tbData[row][headers[col]] = val;
-        }
-
-        //remove first two rows because empty
-        tbData.shift();
-        tbData.shift();
-    });
-    return tbData.filter((row) => row.code);
 }

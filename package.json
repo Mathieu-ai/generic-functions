@@ -1,12 +1,21 @@
 {
     "name": "generic-functions.mlai",
-    "version": "0.0.5",
+    "version": "0.0.6",
     "description": "Some generic functions that can be used by anyone",
     "main": "dist/cjs/index.js",
     "module": "dist/esm/index.js",
     "files": [
         "dist"
     ],
+    "keywords": [
+        "generic-functions",
+        "generic",
+        "ts"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/Mathieu-ai/generic-functions.git"
+    },
     "scripts": {
         "build": "rm -rf dist/ && prettier --write src/ && npm run build:esm && npm run build:cjs",
         "build:esm": "tsc",
@@ -23,8 +32,6 @@
     "peerDependencies": {
         "axios": ">=1.2.1",
         "dayjs": ">=1.11.7",
-        "lodash": ">=4.17.21",
-        "prettier": ">=2.8.1",
-        "xlsx": ">=0.18.5"
+        "lodash": ">=4.17.21"
     }
 }
