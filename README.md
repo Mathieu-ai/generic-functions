@@ -2,7 +2,7 @@
 
 [![npm version][npm-badge]][npm-url] [![Open issues][issues-badge]][issues-url] [![TypeScript][typescript-badge]][typescript-url]
 
-🚩 Have some useful functions
+🚩 Have some useful props & functions
 
 ## Install
 
