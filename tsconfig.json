@@ -1,9 +1,8 @@
 {
     "compilerOptions": {
         "allowSyntheticDefaultImports": true,
-        "declaration": false,
+        "declaration": true,
         "esModuleInterop": true,
-        "jsx": "react",
         "lib": ["es5", "es2015", "es2016", "dom", "esnext"],
         "types": ["node"],
         "module": "es2015",

@@ -41,7 +41,7 @@ All contributions are welcome!
 [size-badge]: https://badgen.net/bundlephobia/Mathieu-ai/generic-functions
 [issues-badge]: https://img.shields.io/github/issues/Mathieu-ai/generic-functions?style=for-the-badge
 [issues-url]: https://github.com/Mathieu-ai/generic-functions/issues
-[typescript-badge]: https://badges.frapsoft.com/typescript/code/typescript.svg?v=101
+[typescript-badge]: https://img.shields.io/badge/Language-Typescript-blue?style=for-the-badge
 [typescript-url]: https://github.com/microsoft/TypeScript
 
 ## License
