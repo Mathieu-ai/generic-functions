@@ -1,6 +1,6 @@
 {
     "name": "generic-functions.mlai",
-    "version": "0.0.7",
+    "version": "0.0.75",
     "description": "Generic props and functions for any usage",
     "main": "dist/cjs/index.js",
     "module": "dist/esm/index.js",
