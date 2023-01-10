@@ -272,1195 +272,1562 @@ export const $Countries = [
     {
         name: {
             common: 'Saint Vincent and the Grenadines',
-            official: 'Saint Vincent and the Grenadines',
-            nativeName: { eng: { official: 'Saint Vincent and the Grenadines', common: 'Saint Vincent and the Grenadines' } }
+            official: 'Saint Vincent and the Grenadines'
         },
         cca2: 'VC',
+        altNames: 'VC',
         flag: '🇻🇨'
     },
-    { name: { common: 'French Guiana', official: 'Guiana', nativeName: { fra: { official: 'Guyane', common: 'Guyane française' } } }, cca2: 'GF', flag: '🇬🇫' },
     {
-        name: { common: 'Faroe Islands', official: 'Faroe Islands', nativeName: { dan: { official: 'Færøerne', common: 'Færøerne' }, fao: { official: 'Føroyar', common: 'Føroyar' } } },
+        name: { common: 'French Guiana', official: 'Guiana' },
+        cca2: 'GF',
+        altNames: 'GF,Guiana,Guyane',
+        flag: '🇬🇫'
+    },
+    {
+        name: { common: 'Faroe Islands', official: 'Faroe Islands' },
         cca2: 'FO',
+        altNames: 'FO,Føroyar,Færøerne',
         flag: '🇫🇴'
     },
     {
-        name: {
-            common: 'Pakistan',
-            official: 'Islamic Republic of Pakistan',
-            nativeName: { eng: { official: 'Islamic Republic of Pakistan', common: 'Pakistan' }, urd: { official: 'اسلامی جمہوریۂ پاكستان', common: 'پاكستان' } }
-        },
+        name: { common: 'Pakistan', official: 'Islamic Republic of Pakistan' },
         cca2: 'PK',
+        altNames: "PK,Pākistān,Islamic Republic of Pakistan,Islāmī Jumhūriya'eh Pākistān",
         flag: '🇵🇰'
     },
     {
-        name: {
-            common: 'Fiji',
-            official: 'Republic of Fiji',
-            nativeName: { eng: { official: 'Republic of Fiji', common: 'Fiji' }, fij: { official: 'Matanitu Tugalala o Viti', common: 'Viti' }, hif: { official: 'रिपब्लिक ऑफ फीजी', common: 'फिजी' } }
-        },
+        name: { common: 'Fiji', official: 'Republic of Fiji' },
         cca2: 'FJ',
+        altNames: 'FJ,Viti,Republic of Fiji,Matanitu ko Viti,Fijī Gaṇarājya',
         flag: '🇫🇯'
     },
-    { name: { common: 'Mongolia', official: 'Mongolia', nativeName: { mon: { official: 'Монгол улс', common: 'Монгол улс' } } }, cca2: 'MN', flag: '🇲🇳' },
+    {
+        name: { common: 'Mongolia', official: 'Mongolia' },
+        cca2: 'MN',
+        altNames: 'MN',
+        flag: '🇲🇳'
+    },
     {
         name: {
             common: 'Cocos (Keeling) Islands',
-            official: 'Territory of the Cocos (Keeling) Islands',
-            nativeName: { eng: { official: 'Territory of the Cocos (Keeling) Islands', common: 'Cocos (Keeling) Islands' } }
+            official: 'Territory of the Cocos (Keeling) Islands'
         },
         cca2: 'CC',
+        altNames: 'CC,Keeling Islands,Cocos Islands',
         flag: '🇨🇨'
     },
-    { name: { common: 'Micronesia', official: 'Federated States of Micronesia', nativeName: { eng: { official: 'Federated States of Micronesia', common: 'Micronesia' } } }, cca2: 'FM', flag: '🇫🇲' },
     {
-        name: {
-            common: 'Norway',
-            official: 'Kingdom of Norway',
-            nativeName: { nno: { official: 'Kongeriket Noreg', common: 'Noreg' }, nob: { official: 'Kongeriket Norge', common: 'Norge' }, smi: { official: 'Norgga gonagasriika', common: 'Norgga' } }
-        },
+        name: { common: 'Micronesia', official: 'Federated States of Micronesia' },
+        cca2: 'FM',
+        altNames: 'FM,Federated States of Micronesia,Micronesia, Federated States of',
+        flag: '🇫🇲'
+    },
+    {
+        name: { common: 'Norway', official: 'Kingdom of Norway' },
         cca2: 'NO',
+        altNames: 'NO,Norge,Noreg,Kingdom of Norway,Kongeriket Norge,Kongeriket Noreg',
         flag: '🇳🇴'
     },
-    { name: { common: 'Mauritania', official: 'Islamic Republic of Mauritania', nativeName: { ara: { official: 'الجمهورية الإسلامية الموريتانية', common: 'موريتانيا' } } }, cca2: 'MR', flag: '🇲🇷' },
-    { name: { common: 'Spain', official: 'Kingdom of Spain', nativeName: { spa: { official: 'Reino de España', common: 'España' } } }, cca2: 'ES', flag: '🇪🇸' },
-    { name: { common: 'Turkey', official: 'Republic of Turkey', nativeName: { tur: { official: 'Türkiye Cumhuriyeti', common: 'Türkiye' } } }, cca2: 'TR', flag: '🇹🇷' },
     {
-        name: { common: 'United Arab Emirates', official: 'United Arab Emirates', nativeName: { ara: { official: 'الإمارات العربية المتحدة', common: 'دولة الإمارات العربية المتحدة' } } },
+        name: { common: 'Mauritania', official: 'Islamic Republic of Mauritania' },
+        cca2: 'MR',
+        altNames: 'MR,Islamic Republic of Mauritania,al-Jumhūriyyah al-ʾIslāmiyyah al-Mūrītāniyyah',
+        flag: '🇲🇷'
+    },
+    {
+        name: { common: 'Spain', official: 'Kingdom of Spain' },
+        cca2: 'ES',
+        altNames: 'ES,Kingdom of Spain,Reino de España',
+        flag: '🇪🇸'
+    },
+    {
+        name: { common: 'Turkey', official: 'Republic of Turkey' },
+        cca2: 'TR',
+        altNames: 'TR,Turkiye,Republic of Turkey,Türkiye Cumhuriyeti',
+        flag: '🇹🇷'
+    },
+    {
+        name: { common: 'United Arab Emirates', official: 'United Arab Emirates' },
         cca2: 'AE',
+        altNames: 'AE,UAE,Emirates',
         flag: '🇦🇪'
     },
     {
-        name: {
-            common: 'DR Congo',
-            official: 'Democratic Republic of the Congo',
-            nativeName: {
-                fra: { official: 'République démocratique du Congo', common: 'RD Congo' },
-                kon: { official: 'Repubilika ya Kongo Demokratiki', common: 'Repubilika ya Kongo Demokratiki' },
-                lin: { official: 'Republiki ya Kongó Demokratiki', common: 'Republiki ya Kongó Demokratiki' },
-                lua: { official: 'Ditunga dia Kongu wa Mungalaata', common: 'Ditunga dia Kongu wa Mungalaata' },
-                swa: { official: 'Jamhuri ya Kidemokrasia ya Kongo', common: 'Jamhuri ya Kidemokrasia ya Kongo' }
-            }
-        },
+        name: { common: 'DR Congo', official: 'Democratic Republic of the Congo' },
         cca2: 'CD',
+        altNames: 'CD,DR Congo,Congo-Kinshasa,Congo, the Democratic Republic of the,DRC',
         flag: '🇨🇩'
     },
-    { name: { common: 'New Caledonia', official: 'New Caledonia', nativeName: { fra: { official: 'Nouvelle-Calédonie', common: 'Nouvelle-Calédonie' } } }, cca2: 'NC', flag: '🇳🇨' },
     {
-        name: {
-            common: 'Rwanda',
-            official: 'Republic of Rwanda',
-            nativeName: {
-                eng: { official: 'Republic of Rwanda', common: 'Rwanda' },
-                fra: { official: 'République rwandaise', common: 'Rwanda' },
-                kin: { official: "Repubulika y'u Rwanda", common: 'Rwanda' }
-            }
-        },
+        name: { common: 'New Caledonia', official: 'New Caledonia' },
+        cca2: 'NC',
+        altNames: 'NC',
+        flag: '🇳🇨'
+    },
+    {
+        name: { common: 'Rwanda', official: 'Republic of Rwanda' },
         cca2: 'RW',
+        altNames: "RW,Republic of Rwanda,Repubulika y'u Rwanda,République du Rwanda",
         flag: '🇷🇼'
     },
-    { name: { common: 'Australia', official: 'Commonwealth of Australia', nativeName: { eng: { official: 'Commonwealth of Australia', common: 'Australia' } } }, cca2: 'AU', flag: '🇦🇺' },
     {
-        name: {
-            common: 'Isle of Man',
-            official: 'Isle of Man',
-            nativeName: { eng: { official: 'Isle of Man', common: 'Isle of Man' }, glv: { official: 'Ellan Vannin or Mannin', common: 'Mannin' } }
-        },
+        name: { common: 'Australia', official: 'Commonwealth of Australia' },
+        cca2: 'AU',
+        altNames: 'AU',
+        flag: '🇦🇺'
+    },
+    {
+        name: { common: 'Isle of Man', official: 'Isle of Man' },
         cca2: 'IM',
+        altNames: 'IM,Ellan Vannin,Mann,Mannin',
         flag: '🇮🇲'
     },
-    { name: { common: 'Indonesia', official: 'Republic of Indonesia', nativeName: { ind: { official: 'Republik Indonesia', common: 'Indonesia' } } }, cca2: 'ID', flag: '🇮🇩' },
-    { name: { common: 'Zambia', official: 'Republic of Zambia', nativeName: { eng: { official: 'Republic of Zambia', common: 'Zambia' } } }, cca2: 'ZM', flag: '🇿🇲' },
     {
-        name: {
-            common: 'Jersey',
-            official: 'Bailiwick of Jersey',
-            nativeName: {
-                eng: { official: 'Bailiwick of Jersey', common: 'Jersey' },
-                fra: { official: 'Bailliage de Jersey', common: 'Jersey' },
-                nrf: { official: 'Bailliage dé Jèrri', common: 'Jèrri' }
-            }
-        },
+        name: { common: 'Indonesia', official: 'Republic of Indonesia' },
+        cca2: 'cca2',
+        altNames: 'cca2,Republic of Indonesia,Republik Indonesia',
+        flag: '🇮🇩'
+    },
+    {
+        name: { common: 'Zambia', official: 'Republic of Zambia' },
+        cca2: 'ZM',
+        altNames: 'ZM,Republic of Zambia',
+        flag: '🇿🇲'
+    },
+    {
+        name: { common: 'Jersey', official: 'Bailiwick of Jersey' },
         cca2: 'JE',
+        altNames: 'JE,Bailiwick of Jersey,Bailliage de Jersey,Bailliage dé Jèrri',
         flag: '🇯🇪'
     },
-    { name: { common: 'Uruguay', official: 'Oriental Republic of Uruguay', nativeName: { spa: { official: 'República Oriental del Uruguay', common: 'Uruguay' } } }, cca2: 'UY', flag: '🇺🇾' },
-    { name: { common: 'Canada', official: 'Canada', nativeName: { eng: { official: 'Canada', common: 'Canada' }, fra: { official: 'Canada', common: 'Canada' } } }, cca2: 'CA', flag: '🇨🇦' },
     {
-        name: {
-            common: 'Peru',
-            official: 'Republic of Peru',
-            nativeName: { aym: { official: 'Piruw Suyu', common: 'Piruw' }, que: { official: 'Piruw Ripuwlika', common: 'Piruw' }, spa: { official: 'República del Perú', common: 'Perú' } }
-        },
+        name: { common: 'Uruguay', official: 'Oriental Republic of Uruguay' },
+        cca2: 'UY',
+        altNames: 'UY,Oriental Republic of Uruguay,República Oriental del Uruguay',
+        flag: '🇺🇾'
+    },
+    {
+        name: { common: 'Canada', official: 'Canada' },
+        cca2: 'CA',
+        altNames: 'CA',
+        flag: '🇨🇦'
+    },
+    {
+        name: { common: 'Peru', official: 'Republic of Peru' },
         cca2: 'PE',
+        altNames: 'PE,Republic of Peru,República del Perú',
         flag: '🇵🇪'
     },
-    { name: { common: 'Montserrat', official: 'Montserrat', nativeName: { eng: { official: 'Montserrat', common: 'Montserrat' } } }, cca2: 'MS', flag: '🇲🇸' },
-    { name: { common: 'Antigua and Barbuda', official: 'Antigua and Barbuda', nativeName: { eng: { official: 'Antigua and Barbuda', common: 'Antigua and Barbuda' } } }, cca2: 'AG', flag: '🇦🇬' },
-    { name: { common: 'Dominica', official: 'Commonwealth of Dominica', nativeName: { eng: { official: 'Commonwealth of Dominica', common: 'Dominica' } } }, cca2: 'DM', flag: '🇩🇲' },
-    { name: { common: 'Cambodia', official: 'Kingdom of Cambodia', nativeName: { khm: { official: 'ព្រះរាជាណាចក្រកម្ពុជា', common: 'Kâmpŭchéa' } } }, cca2: 'KH', flag: '🇰🇭' },
-    { name: { common: 'Falkland Islands', official: 'Falkland Islands', nativeName: { eng: { official: 'Falkland Islands', common: 'Falkland Islands' } } }, cca2: 'FK', flag: '🇫🇰' },
     {
-        name: { common: 'Guam', official: 'Guam', nativeName: { cha: { official: 'Guåhån', common: 'Guåhån' }, eng: { official: 'Guam', common: 'Guam' }, spa: { official: 'Guam', common: 'Guam' } } },
+        name: { common: 'Montserrat', official: 'Montserrat' },
+        cca2: 'MS',
+        altNames: 'MS',
+        flag: '🇲🇸'
+    },
+    {
+        name: { common: 'Antigua and Barbuda', official: 'Antigua and Barbuda' },
+        cca2: 'AG',
+        altNames: 'AG',
+        flag: '🇦🇬'
+    },
+    {
+        name: { common: 'Dominica', official: 'Commonwealth of Dominica' },
+        cca2: 'DM',
+        altNames: 'DM,Dominique,Wai‘tu kubuli,Commonwealth of Dominica',
+        flag: '🇩🇲'
+    },
+    {
+        name: { common: 'Cambodia', official: 'Kingdom of Cambodia' },
+        cca2: 'KH',
+        altNames: 'KH,Kingdom of Cambodia',
+        flag: '🇰🇭'
+    },
+    {
+        name: { common: 'Falkland Islands', official: 'Falkland Islands' },
+        cca2: 'FK',
+        altNames: 'FK,Islas Malvinas,Falkland Islands (Malvinas)',
+        flag: '🇫🇰'
+    },
+    {
+        name: { common: 'Guam', official: 'Guam' },
         cca2: 'GU',
+        altNames: 'GU,Guåhån',
         flag: '🇬🇺'
     },
     {
         name: {
             common: 'Papua New Guinea',
-            official: 'Independent State of Papua New Guinea',
-            nativeName: {
-                eng: { official: 'Independent State of Papua New Guinea', common: 'Papua New Guinea' },
-                hmo: { official: 'Independen Stet bilong Papua Niugini', common: 'Papua Niu Gini' },
-                tpi: { official: 'Independen Stet bilong Papua Niugini', common: 'Papua Niugini' }
-            }
+            official: 'Independent State of Papua New Guinea'
         },
         cca2: 'PG',
+        altNames: 'PG,Independent State of Papua New Guinea,Independen Stet bilong Papua Niugini',
         flag: '🇵🇬'
     },
     {
-        name: {
-            common: 'Seychelles',
-            official: 'Republic of Seychelles',
-            nativeName: {
-                crs: { official: 'Repiblik Sesel', common: 'Sesel' },
-                eng: { official: 'Republic of Seychelles', common: 'Seychelles' },
-                fra: { official: 'République des Seychelles', common: 'Seychelles' }
-            }
-        },
+        name: { common: 'Seychelles', official: 'Republic of Seychelles' },
         cca2: 'SC',
+        altNames: 'SC,Republic of Seychelles,Repiblik Sesel,République des Seychelles',
         flag: '🇸🇨'
     },
-    { name: { common: 'Liberia', official: 'Republic of Liberia', nativeName: { eng: { official: 'Republic of Liberia', common: 'Liberia' } } }, cca2: 'LR', flag: '🇱🇷' },
-    { name: { common: 'Cape Verde', official: 'Republic of Cabo Verde', nativeName: { por: { official: 'República de Cabo Verde', common: 'Cabo Verde' } } }, cca2: 'CV', flag: '🇨🇻' },
-    { name: { common: 'Grenada', official: 'Grenada', nativeName: { eng: { official: 'Grenada', common: 'Grenada' } } }, cca2: 'GD', flag: '🇬🇩' },
-    { name: { common: 'Cuba', official: 'Republic of Cuba', nativeName: { spa: { official: 'República de Cuba', common: 'Cuba' } } }, cca2: 'CU', flag: '🇨🇺' },
     {
-        name: {
-            common: 'Djibouti',
-            official: 'Republic of Djibouti',
-            nativeName: { ara: { official: 'جمهورية جيبوتي', common: 'جيبوتي‎' }, fra: { official: 'République de Djibouti', common: 'Djibouti' } }
-        },
+        name: { common: 'Liberia', official: 'Republic of Liberia' },
+        cca2: 'LR',
+        altNames: 'LR,Republic of Liberia',
+        flag: '🇱🇷'
+    },
+    {
+        name: { common: 'Cape Verde', official: 'Republic of Cabo Verde' },
+        cca2: 'CV',
+        altNames: 'CV,Republic of Cabo Verde,República de Cabo Verde',
+        flag: '🇨🇻'
+    },
+    {
+        name: { common: 'Grenada', official: 'Grenada' },
+        cca2: 'GD',
+        altNames: 'GD',
+        flag: '🇬🇩'
+    },
+    {
+        name: { common: 'Cuba', official: 'Republic of Cuba' },
+        cca2: 'CU',
+        altNames: 'CU,Republic of Cuba,República de Cuba',
+        flag: '🇨🇺'
+    },
+    {
+        name: { common: 'Djibouti', official: 'Republic of Djibouti' },
         cca2: 'DJ',
+        altNames: 'DJ,Jabuuti,Gabuuti,Republic of Djibouti,République de Djibouti,Gabuutih Ummuuno,Jamhuuriyadda Jabuuti',
         flag: '🇩🇯'
     },
     {
-        name: {
-            common: 'Lebanon',
-            official: 'Lebanese Republic',
-            nativeName: { ara: { official: 'الجمهورية اللبنانية', common: 'لبنان' }, fra: { official: 'République libanaise', common: 'Liban' } }
-        },
+        name: { common: 'Lebanon', official: 'Lebanese Republic' },
         cca2: 'LB',
+        altNames: 'LB,Lebanese Republic,Al-Jumhūrīyah Al-Libnānīyah',
         flag: '🇱🇧'
     },
-    { name: { common: 'Myanmar', official: 'Republic of the Union of Myanmar', nativeName: { mya: { official: 'ပြည်ထောင်စု သမ္မတ မြန်မာနိုင်ငံတော်', common: 'မြန်မာ' } } }, cca2: 'MM', flag: '🇲🇲' },
-    { name: { common: 'Cayman Islands', official: 'Cayman Islands', nativeName: { eng: { official: 'Cayman Islands', common: 'Cayman Islands' } } }, cca2: 'KY', flag: '🇰🇾' },
-    { name: { common: 'Gabon', official: 'Gabonese Republic', nativeName: { fra: { official: 'République gabonaise', common: 'Gabon' } } }, cca2: 'GA', flag: '🇬🇦' },
-    { name: { common: 'French Polynesia', official: 'French Polynesia', nativeName: { fra: { official: 'Polynésie française', common: 'Polynésie française' } } }, cca2: 'PF', flag: '🇵🇫' },
     {
-        name: {
-            common: 'South Africa',
-            official: 'Republic of South Africa',
-            nativeName: {
-                afr: { official: 'Republiek van Suid-Afrika', common: 'South Africa' },
-                eng: { official: 'Republic of South Africa', common: 'South Africa' },
-                nbl: { official: 'IRiphabliki yeSewula Afrika', common: 'Sewula Afrika' },
-                nso: { official: 'Rephaboliki ya Afrika-Borwa ', common: 'Afrika-Borwa' },
-                sot: { official: 'Rephaboliki ya Afrika Borwa', common: 'Afrika Borwa' },
-                ssw: { official: 'IRiphabhulikhi yeNingizimu Afrika', common: 'Ningizimu Afrika' },
-                tsn: { official: 'Rephaboliki ya Aforika Borwa', common: 'Aforika Borwa' },
-                tso: { official: 'Riphabliki ra Afrika Dzonga', common: 'Afrika Dzonga' },
-                ven: { official: 'Riphabuḽiki ya Afurika Tshipembe', common: 'Afurika Tshipembe' },
-                xho: { official: 'IRiphabliki yaseMzantsi Afrika', common: 'Mzantsi Afrika' },
-                zul: { official: 'IRiphabliki yaseNingizimu Afrika', common: 'Ningizimu Afrika' }
-            }
-        },
+        name: { common: 'Myanmar', official: 'Republic of the Union of Myanmar' },
+        cca2: 'MM',
+        altNames: 'MM,Burma,Republic of the Union of Myanmar,Pycca2aunzu Thanmăda Myăma Nainngandaw',
+        flag: '🇲🇲'
+    },
+    {
+        name: { common: 'Cayman Islands', official: 'Cayman Islands' },
+        cca2: 'KY',
+        altNames: 'KY',
+        flag: '🇰🇾'
+    },
+    {
+        name: { common: 'Gabon', official: 'Gabonese Republic' },
+        cca2: 'GA',
+        altNames: 'GA,Gabonese Republic,République Gabonaise',
+        flag: '🇬🇦'
+    },
+    {
+        name: { common: 'French Polynesia', official: 'French Polynesia' },
+        cca2: 'PF',
+        altNames: 'PF,Polynésie française,French Polynesia,Pōrīnetia Farāni',
+        flag: '🇵🇫'
+    },
+    {
+        name: { common: 'South Africa', official: 'Republic of South Africa' },
         cca2: 'ZA',
+        altNames: 'ZA,RSA,Succa2-Afrika,Republic of South Africa',
         flag: '🇿🇦'
     },
-    { name: { common: 'Suriname', official: 'Republic of Suriname', nativeName: { nld: { official: 'Republiek Suriname', common: 'Suriname' } } }, cca2: 'SR', flag: '🇸🇷' },
-    { name: { common: 'Costa Rica', official: 'Republic of Costa Rica', nativeName: { spa: { official: 'República de Costa Rica', common: 'Costa Rica' } } }, cca2: 'CR', flag: '🇨🇷' },
     {
-        name: {
-            common: 'Central African Republic',
-            official: 'Central African Republic',
-            nativeName: { fra: { official: 'République centrafricaine', common: 'République centrafricaine' }, sag: { official: 'Ködörösêse tî Bêafrîka', common: 'Bêafrîka' } }
-        },
+        name: { common: 'Suriname', official: 'Republic of Suriname' },
+        cca2: 'SR',
+        altNames: 'SR,Sarnam,Sranangron,Republic of Suriname,Republiek Suriname',
+        flag: '🇸🇷'
+    },
+    {
+        name: { common: 'Costa Rica', official: 'Republic of Costa Rica' },
+        cca2: 'CR',
+        altNames: 'CR,Republic of Costa Rica,República de Costa Rica',
+        flag: '🇨🇷'
+    },
+    {
+        name: { common: 'Central African Republic', official: 'Central African Republic' },
         cca2: 'CF',
+        altNames: 'CF,Central African Republic,République centrafricaine',
         flag: '🇨🇫'
     },
     {
-        name: { common: 'Turks and Caicos Islands', official: 'Turks and Caicos Islands', nativeName: { eng: { official: 'Turks and Caicos Islands', common: 'Turks and Caicos Islands' } } },
+        name: { common: 'Turks and Caicos Islands', official: 'Turks and Caicos Islands' },
         cca2: 'TC',
+        altNames: 'TC',
         flag: '🇹🇨'
     },
-    { name: { common: 'Liechtenstein', official: 'Principality of Liechtenstein', nativeName: { deu: { official: 'Fürstentum Liechtenstein', common: 'Liechtenstein' } } }, cca2: 'LI', flag: '🇱🇮' },
-    { name: { common: 'Niue', official: 'Niue', nativeName: { eng: { official: 'Niue', common: 'Niue' }, niu: { official: 'Niuē', common: 'Niuē' } } }, cca2: 'NU', flag: '🇳🇺' },
+    {
+        name: { common: 'Liechtenstein', official: 'Principality of Liechtenstein' },
+        cca2: 'LI',
+        altNames: 'LI,Principality of Liechtenstein,Fürstentum Liechtenstein',
+        flag: '🇱🇮'
+    },
+    {
+        name: { common: 'Niue', official: 'Niue' },
+        cca2: 'NU',
+        altNames: 'NU',
+        flag: '🇳🇺'
+    },
     {
         name: {
             common: 'United States Minor Outlying Islands',
-            official: 'United States Minor Outlying Islands',
-            nativeName: { eng: { official: 'United States Minor Outlying Islands', common: 'United States Minor Outlying Islands' } }
+            official: 'United States Minor Outlying Islands'
         },
         cca2: 'UM',
+        altNames: 'UM',
         flag: '🇺🇲'
     },
-    { name: { common: 'North Korea', official: "Democratic People's Republic of Korea", nativeName: { kor: { official: '조선민주주의인민공화국', common: '조선' } } }, cca2: 'KP', flag: '🇰🇵' },
-    { name: { common: 'Ukraine', official: 'Ukraine', nativeName: { ukr: { official: 'Україна', common: 'Україна' } } }, cca2: 'UA', flag: '🇺🇦' },
     {
-        name: {
-            common: 'Guinea-Bissau',
-            official: 'Republic of Guinea-Bissau',
-            nativeName: { por: { official: 'República da Guiné-Bissau', common: 'Guiné-Bissau' }, pov: { official: 'República da Guiné-Bissau', common: 'Guiné-Bissau' } }
-        },
+        name: { common: 'North Korea', official: "Democratic People's Republic of Korea" },
+        cca2: 'KP',
+        altNames: "KP,Democratic People's Republic of Korea,DPRK,조선민주주의인민공화국,Chosŏn Minjujuŭi Inmin Konghwaguk,Korea, Democratic People's Republic of,북한,북조선",
+        flag: '🇰🇵'
+    },
+    {
+        name: { common: 'Ukraine', official: 'Ukraine' },
+        cca2: 'UA',
+        altNames: 'UA,Ukrayina',
+        flag: '🇺🇦'
+    },
+    {
+        name: { common: 'Guinea-Bissau', official: 'Republic of Guinea-Bissau' },
         cca2: 'GW',
+        altNames: 'GW,Republic of Guinea-Bissau,República da Guiné-Bissau',
         flag: '🇬🇼'
     },
-    { name: { common: 'Antarctica', official: 'Antarctica' }, cca2: 'AQ', flag: '🇦🇶' },
-    { name: { common: 'Mayotte', official: 'Department of Mayotte', nativeName: { fra: { official: 'Département de Mayotte', common: 'Mayotte' } } }, cca2: 'YT', flag: '🇾🇹' },
-    { name: { common: 'Tuvalu', official: 'Tuvalu', nativeName: { eng: { official: 'Tuvalu', common: 'Tuvalu' }, tvl: { official: 'Tuvalu', common: 'Tuvalu' } } }, cca2: 'TV', flag: '🇹🇻' },
     {
-        name: { common: 'Morocco', official: 'Kingdom of Morocco', nativeName: { ara: { official: 'المملكة المغربية', common: 'المغرب' }, ber: { official: 'ⵜⴰⴳⵍⴷⵉⵜ ⵏ ⵍⵎⵖⵔⵉⴱ', common: 'ⵍⵎⴰⵖⵔⵉⴱ' } } },
+        name: { common: 'Antarctica', official: 'Antarctica' },
+        cca2: 'AQ',
+        altNames: 'AQ',
+        flag: '🇦🇶'
+    },
+    {
+        name: { common: 'Mayotte', official: 'Department of Mayotte' },
+        cca2: 'YT',
+        altNames: 'YT,Department of Mayotte,Département de Mayotte',
+        flag: '🇾🇹'
+    },
+    {
+        name: { common: 'Tuvalu', official: 'Tuvalu' },
+        cca2: 'TV',
+        altNames: 'TV',
+        flag: '🇹🇻'
+    },
+    {
+        name: { common: 'Morocco', official: 'Kingdom of Morocco' },
         cca2: 'MA',
+        altNames: 'MA,Kingdom of Morocco,Al-Mamlakah al-Maġribiyah',
         flag: '🇲🇦'
     },
-    { name: { common: 'Moldova', official: 'Republic of Moldova', nativeName: { ron: { official: 'Republica Moldova', common: 'Moldova' } } }, cca2: 'MD', flag: '🇲🇩' },
-    { name: { common: 'Oman', official: 'Sultanate of Oman', nativeName: { ara: { official: 'سلطنة عمان', common: 'عمان' } } }, cca2: 'OM', flag: '🇴🇲' },
-    { name: { common: 'Italy', official: 'Italian Republic', nativeName: { ita: { official: 'Repubblica italiana', common: 'Italia' } } }, cca2: 'IT', flag: '🇮🇹' },
-    { name: { common: 'Yemen', official: 'Republic of Yemen', nativeName: { ara: { official: 'الجمهورية اليمنية', common: 'اليَمَن' } } }, cca2: 'YE', flag: '🇾🇪' },
-    { name: { common: 'Kuwait', official: 'State of Kuwait', nativeName: { ara: { official: 'دولة الكويت', common: 'الكويت' } } }, cca2: 'KW', flag: '🇰🇼' },
     {
-        name: {
-            common: 'Puerto Rico',
-            official: 'Commonwealth of Puerto Rico',
-            nativeName: { eng: { official: 'Commonwealth of Puerto Rico', common: 'Puerto Rico' }, spa: { official: 'Estado Libre Asociado de Puerto Rico', common: 'Puerto Rico' } }
-        },
+        name: { common: 'Moldova', official: 'Republic of Moldova' },
+        cca2: 'MD',
+        altNames: 'MD,Moldova, Republic of,Republic of Moldova,Republica Moldova',
+        flag: '🇲🇩'
+    },
+    {
+        name: { common: 'Oman', official: 'Sultanate of Oman' },
+        cca2: 'OM',
+        altNames: 'OM,Sultanate of Oman,Salṭanat ʻUmān',
+        flag: '🇴🇲'
+    },
+    {
+        name: { common: 'Italy', official: 'Italian Republic' },
+        cca2: 'IT',
+        altNames: 'IT,Italian Republic,Repubblica italiana',
+        flag: '🇮🇹'
+    },
+    {
+        name: { common: 'Yemen', official: 'Republic of Yemen' },
+        cca2: 'YE',
+        altNames: 'YE,Yemeni Republic,al-Jumhūriyyah al-Yamaniyyah',
+        flag: '🇾🇪'
+    },
+    {
+        name: { common: 'Kuwait', official: 'State of Kuwait' },
+        cca2: 'KW',
+        altNames: 'KW,State of Kuwait,Dawlat al-Kuwait',
+        flag: '🇰🇼'
+    },
+    {
+        name: { common: 'Puerto Rico', official: 'Commonwealth of Puerto Rico' },
         cca2: 'PR',
+        altNames: 'PR,Commonwealth of Puerto Rico,Estado Libre Asociado de Puerto Rico',
         flag: '🇵🇷'
     },
-    { name: { common: 'Palestine', official: 'State of Palestine', nativeName: { ara: { official: 'دولة فلسطين', common: 'فلسطين' } } }, cca2: 'PS', flag: '🇵🇸' },
-    { name: { common: 'Colombia', official: 'Republic of Colombia', nativeName: { spa: { official: 'República de Colombia', common: 'Colombia' } } }, cca2: 'CO', flag: '🇨🇴' },
-    { name: { common: 'North Macedonia', official: 'Republic of North Macedonia', nativeName: { mkd: { official: 'Република Северна Македонија', common: 'Македонија' } } }, cca2: 'MK', flag: '🇲🇰' },
-    { name: { common: 'Qatar', official: 'State of Qatar', nativeName: { ara: { official: 'دولة قطر', common: 'قطر' } } }, cca2: 'QA', flag: '🇶🇦' },
-    { name: { common: 'Taiwan', official: 'Republic of China (Taiwan)', nativeName: { zho: { official: '中華民國', common: '台灣' } } }, cca2: 'TW', flag: '🇹🇼' },
     {
-        name: {
-            common: 'Madagascar',
-            official: 'Republic of Madagascar',
-            nativeName: { fra: { official: 'République de Madagascar', common: 'Madagascar' }, mlg: { official: "Repoblikan'i Madagasikara", common: 'Madagasikara' } }
-        },
+        name: { common: 'Palestine', official: 'State of Palestine' },
+        cca2: 'PS',
+        altNames: 'PS,Palestine, State of,State of Palestine,Dawlat Filasṭin',
+        flag: '🇵🇸'
+    },
+    {
+        name: { common: 'Colombia', official: 'Republic of Colombia' },
+        cca2: 'CO',
+        altNames: 'CO,Republic of Colombia,República de Colombia',
+        flag: '🇨🇴'
+    },
+    {
+        name: { common: 'North Macedonia', official: 'Republic of North Macedonia' },
+        cca2: 'MK',
+        altNames: 'MK,The former Yugoslav Republic of Macedonia,Republic of North Macedonia,Macedonia, The Former Yugoslav Republic of,Република Северна Македонија',
+        flag: '🇲🇰'
+    },
+    {
+        name: { common: 'Qatar', official: 'State of Qatar' },
+        cca2: 'QA',
+        altNames: 'QA,State of Qatar,Dawlat Qaṭar',
+        flag: '🇶🇦'
+    },
+    {
+        name: { common: 'Taiwan', official: 'Republic of China (Taiwan)' },
+        cca2: 'TW',
+        altNames: 'TW,Táiwān,Republic of China,中華民國,Zhōnghuá Mínguó,Chinese Taipei',
+        flag: '🇹🇼'
+    },
+    {
+        name: { common: 'Madagascar', official: 'Republic of Madagascar' },
         cca2: 'MG',
+        altNames: "MG,Republic of Madagascar,Repoblikan'i Madagasikara,République de Madagascar",
         flag: '🇲🇬'
     },
-    { name: { common: 'Bahamas', official: 'Commonwealth of the Bahamas', nativeName: { eng: { official: 'Commonwealth of the Bahamas', common: 'Bahamas' } } }, cca2: 'BS', flag: '🇧🇸' },
     {
-        name: {
-            common: 'Curaçao',
-            official: 'Country of Curaçao',
-            nativeName: { eng: { official: 'Country of Curaçao', common: 'Curaçao' }, nld: { official: 'Land Curaçao', common: 'Curaçao' }, pap: { official: 'Pais Kòrsou', common: 'Pais Kòrsou' } }
-        },
+        name: { common: 'Bahamas', official: 'Commonwealth of the Bahamas' },
+        cca2: 'BS',
+        altNames: 'BS,Commonwealth of the Bahamas',
+        flag: '🇧🇸'
+    },
+    {
+        name: { common: 'Curaçao', official: 'Country of Curaçao' },
         cca2: 'CW',
+        altNames: 'CW,Curacao,Kòrsou,Country of Curaçao,Land Curaçao,Pais Kòrsou',
         flag: '🇨🇼'
     },
-    { name: { common: 'Solomon Islands', official: 'Solomon Islands', nativeName: { eng: { official: 'Solomon Islands', common: 'Solomon Islands' } } }, cca2: 'SB', flag: '🇸🇧' },
+    {
+        name: { common: 'Solomon Islands', official: 'Solomon Islands' },
+        cca2: 'SB',
+        altNames: 'SB',
+        flag: '🇸🇧'
+    },
     {
         name: {
             common: 'Saint Helena, Ascension and Tristan da Cunha',
-            official: 'Saint Helena, Ascension and Tristan da Cunha',
-            nativeName: { eng: { official: 'Saint Helena, Ascension and Tristan da Cunha', common: 'Saint Helena, Ascension and Tristan da Cunha' } }
+            official: 'Saint Helena, Ascension and Tristan da Cunha'
         },
         cca2: 'SH',
+        altNames: 'Saint Helena,St. Helena, Ascension and Tristan da Cunha',
         flag: '🇸🇭'
     },
-    { name: { common: 'Honduras', official: 'Republic of Honduras', nativeName: { spa: { official: 'República de Honduras', common: 'Honduras' } } }, cca2: 'HN', flag: '🇭🇳' },
-    { name: { common: 'Armenia', official: 'Republic of Armenia', nativeName: { hye: { official: 'Հայաստանի Հանրապետություն', common: 'Հայաստան' } } }, cca2: 'AM', flag: '🇦🇲' },
-    { name: { common: 'Guatemala', official: 'Republic of Guatemala', nativeName: { spa: { official: 'República de Guatemala', common: 'Guatemala' } } }, cca2: 'GT', flag: '🇬🇹' },
-    { name: { common: 'Togo', official: 'Togolese Republic', nativeName: { fra: { official: 'République togolaise', common: 'Togo' } } }, cca2: 'TG', flag: '🇹🇬' },
-    { name: { common: 'Senegal', official: 'Republic of Senegal', nativeName: { fra: { official: 'République du Sénégal', common: 'Sénégal' } } }, cca2: 'SN', flag: '🇸🇳' },
     {
-        name: { common: 'Czechia', official: 'Czech Republic', nativeName: { ces: { official: 'Česká republika', common: 'Česko' }, slk: { official: 'Česká republika', common: 'Česko' } } },
+        name: { common: 'Honduras', official: 'Republic of Honduras' },
+        cca2: 'HN',
+        altNames: 'HN,Republic of Honduras,República de Honduras',
+        flag: '🇭🇳'
+    },
+    {
+        name: { common: 'Armenia', official: 'Republic of Armenia' },
+        cca2: 'AM',
+        altNames: 'AM,Hayastan,Republic of Armenia,Հայաստանի Հանրապետություն',
+        flag: '🇦🇲'
+    },
+    {
+        name: { common: 'Guatemala', official: 'Republic of Guatemala' },
+        cca2: 'GT',
+        altNames: 'GT',
+        flag: '🇬🇹'
+    },
+    {
+        name: { common: 'Togo', official: 'Togolese Republic' },
+        cca2: 'TG',
+        altNames: 'TG,Togolese,Togolese Republic,République Togolaise',
+        flag: '🇹🇬'
+    },
+    {
+        name: { common: 'Senegal', official: 'Republic of Senegal' },
+        cca2: 'SN',
+        altNames: 'SN,Republic of Senegal,République du Sénégal',
+        flag: '🇸🇳'
+    },
+    {
+        name: { common: 'Czechia', official: 'Czech Republic' },
         cca2: 'CZ',
+        altNames: 'CZ,Česká republika,Česko',
         flag: '🇨🇿'
     },
     {
-        name: { common: 'Kosovo', official: 'Republic of Kosovo', nativeName: { sqi: { official: 'Republika e Kosovës', common: 'Kosova' }, srp: { official: 'Република Косово', common: 'Косово' } } },
+        name: { common: 'Kosovo', official: 'Republic of Kosovo' },
         cca2: 'XK',
+        altNames: 'XK,Република Косово',
         flag: '🇽🇰'
     },
     {
-        name: {
-            common: 'Marshall Islands',
-            official: 'Republic of the Marshall Islands',
-            nativeName: { eng: { official: 'Republic of the Marshall Islands', common: 'Marshall Islands' }, mah: { official: 'Republic of the Marshall Islands', common: 'M̧ajeļ' } }
-        },
+        name: { common: 'Marshall Islands', official: 'Republic of the Marshall Islands' },
         cca2: 'MH',
+        altNames: 'MH,Republic of the Marshall Islands,Aolepān Aorōkin M̧ajeļ',
         flag: '🇲🇭'
     },
     {
-        name: {
-            common: 'Mauritius',
-            official: 'Republic of Mauritius',
-            nativeName: {
-                eng: { official: 'Republic of Mauritius', common: 'Mauritius' },
-                fra: { official: 'République de Maurice', common: 'Maurice' },
-                mfe: { official: 'Republik Moris', common: 'Moris' }
-            }
-        },
+        name: { common: 'Mauritius', official: 'Republic of Mauritius' },
         cca2: 'MU',
+        altNames: 'MU,Republic of Mauritius,République de Maurice',
         flag: '🇲🇺'
     },
-    { name: { common: 'Georgia', official: 'Georgia', nativeName: { kat: { official: 'საქართველო', common: 'საქართველო' } } }, cca2: 'GE', flag: '🇬🇪' },
     {
-        name: {
-            common: 'Philippines',
-            official: 'Republic of the Philippines',
-            nativeName: { eng: { official: 'Republic of the Philippines', common: 'Philippines' }, fil: { official: 'Republic of the Philippines', common: 'Pilipinas' } }
-        },
+        name: { common: 'Georgia', official: 'Georgia' },
+        cca2: 'GE',
+        altNames: 'GE,Sakartvelo',
+        flag: '🇬🇪'
+    },
+    {
+        name: { common: 'Philippines', official: 'Republic of the Philippines' },
         cca2: 'PH',
+        altNames: 'PH,Republic of the Philippines,Repúblika ng Pilipinas',
         flag: '🇵🇭'
     },
-    { name: { common: 'Albania', official: 'Republic of Albania', nativeName: { sqi: { official: 'Republika e Shqipërisë', common: 'Shqipëria' } } }, cca2: 'AL', flag: '🇦🇱' },
-    { name: { common: 'Jamaica', official: 'Jamaica', nativeName: { eng: { official: 'Jamaica', common: 'Jamaica' }, jam: { official: 'Jamaica', common: 'Jamaica' } } }, cca2: 'JM', flag: '🇯🇲' },
-    { name: { common: 'Serbia', official: 'Republic of Serbia', nativeName: { srp: { official: 'Република Србија', common: 'Србија' } } }, cca2: 'RS', flag: '🇷🇸' },
-    { name: { common: 'Chile', official: 'Republic of Chile', nativeName: { spa: { official: 'República de Chile', common: 'Chile' } } }, cca2: 'CL', flag: '🇨🇱' },
-    { name: { common: 'Guyana', official: 'Co-operative Republic of Guyana', nativeName: { eng: { official: 'Co-operative Republic of Guyana', common: 'Guyana' } } }, cca2: 'GY', flag: '🇬🇾' },
     {
-        name: {
-            common: 'Tanzania',
-            official: 'United Republic of Tanzania',
-            nativeName: { eng: { official: 'United Republic of Tanzania', common: 'Tanzania' }, swa: { official: 'Jamhuri ya Muungano wa Tanzania', common: 'Tanzania' } }
-        },
+        name: { common: 'Albania', official: 'Republic of Albania' },
+        cca2: 'AL',
+        altNames: 'AL,Shqipëri,Shqipëria,Shqipnia',
+        flag: '🇦🇱'
+    },
+    {
+        name: { common: 'Jamaica', official: 'Jamaica' },
+        cca2: 'JM',
+        altNames: 'JM',
+        flag: '🇯🇲'
+    },
+    {
+        name: { common: 'Serbia', official: 'Republic of Serbia' },
+        cca2: 'RS',
+        altNames: 'RS,Srbija,Republic of Serbia,Република Србија,Republika Srbija',
+        flag: '🇷🇸'
+    },
+    {
+        name: { common: 'Chile', official: 'Republic of Chile' },
+        cca2: 'CL',
+        altNames: 'CL,Republic of Chile,República de Chile',
+        flag: '🇨🇱'
+    },
+    {
+        name: { common: 'Guyana', official: 'Co-operative Republic of Guyana' },
+        cca2: 'GY',
+        altNames: 'GY,Co-operative Republic of Guyana',
+        flag: '🇬🇾'
+    },
+    {
+        name: { common: 'Tanzania', official: 'United Republic of Tanzania' },
         cca2: 'TZ',
+        altNames: 'TZ,Tanzania, United Republic of,United Republic of Tanzania,Jamhuri ya Muungano wa Tanzania',
         flag: '🇹🇿'
     },
-    { name: { common: 'Bangladesh', official: "People's Republic of Bangladesh", nativeName: { ben: { official: 'বাংলাদেশ গণপ্রজাতন্ত্রী', common: 'বাংলাদেশ' } } }, cca2: 'BD', flag: '🇧🇩' },
-    { name: { common: 'Ecuador', official: 'Republic of Ecuador', nativeName: { spa: { official: 'República del Ecuador', common: 'Ecuador' } } }, cca2: 'EC', flag: '🇪🇨' },
     {
-        name: {
-            common: 'Cyprus',
-            official: 'Republic of Cyprus',
-            nativeName: { ell: { official: 'Δημοκρατία της Κύπρος', common: 'Κύπρος' }, tur: { official: 'Kıbrıs Cumhuriyeti', common: 'Kıbrıs' } }
-        },
+        name: { common: 'Bangladesh', official: "People's Republic of Bangladesh" },
+        cca2: 'BD',
+        altNames: "BD,People's Republic of Bangladesh,Gônôprôjatôntri Bangladesh",
+        flag: '🇧🇩'
+    },
+    {
+        name: { common: 'Ecuador', official: 'Republic of Ecuador' },
+        cca2: 'EC',
+        altNames: 'EC,Republic of Ecuador,República del Ecuador',
+        flag: '🇪🇨'
+    },
+    {
+        name: { common: 'Cyprus', official: 'Republic of Cyprus' },
         cca2: 'CY',
+        altNames: 'CY,Kýpros,Kıbrıs,Republic of Cyprus,Κυπριακή Δημοκρατία,Kıbrıs Cumhuriyeti',
         flag: '🇨🇾'
     },
-    { name: { common: 'Dominican Republic', official: 'Dominican Republic', nativeName: { spa: { official: 'República Dominicana', common: 'República Dominicana' } } }, cca2: 'DO', flag: '🇩🇴' },
+    {
+        name: { common: 'Dominican Republic', official: 'Dominican Republic' },
+        cca2: 'DO',
+        altNames: 'DO',
+        flag: '🇩🇴'
+    },
     {
         name: {
             common: 'South Georgia',
-            official: 'South Georgia and the South Sandwich Islands',
-            nativeName: { eng: { official: 'South Georgia and the South Sandwich Islands', common: 'South Georgia' } }
+            official: 'South Georgia and the South Sandwich Islands'
         },
         cca2: 'GS',
+        altNames: 'GS,South Georgia and the South Sandwich Islands',
         flag: '🇬🇸'
     },
-    { name: { common: 'Åland Islands', official: 'Åland Islands', nativeName: { swe: { official: 'Landskapet Åland', common: 'Åland' } } }, cca2: 'AX', flag: '🇦🇽' },
     {
-        name: {
-            common: 'Finland',
-            official: 'Republic of Finland',
-            nativeName: { fin: { official: 'Suomen tasavalta', common: 'Suomi' }, swe: { official: 'Republiken Finland', common: 'Finland' } }
-        },
+        name: { common: 'Åland Islands', official: 'Åland Islands' },
+        cca2: 'AX',
+        altNames: 'AX,Aaland,Aland,Ahvenanmaa',
+        flag: '🇦🇽'
+    },
+    {
+        name: { common: 'Finland', official: 'Republic of Finland' },
         cca2: 'FI',
+        altNames: 'FI,Suomi,Republic of Finland,Suomen tasavalta,Republiken Finland',
         flag: '🇫🇮'
     },
-    { name: { common: 'South Korea', official: 'Republic of Korea', nativeName: { kor: { official: '대한민국', common: '한국' } } }, cca2: 'KR', flag: '🇰🇷' },
-    { name: { common: 'Burkina Faso', official: 'Burkina Faso', nativeName: { fra: { official: 'République du Burkina', common: 'Burkina Faso' } } }, cca2: 'BF', flag: '🇧🇫' },
     {
-        name: {
-            common: 'Norfolk Island',
-            official: 'Territory of Norfolk Island',
-            nativeName: { eng: { official: 'Territory of Norfolk Island', common: 'Norfolk Island' }, pih: { official: "Teratri of Norf'k Ailen", common: "Norf'k Ailen" } }
-        },
+        name: { common: 'South Korea', official: 'Republic of Korea' },
+        cca2: 'KR',
+        altNames: 'KR,Korea, Republic of,Republic of Korea,남한,남조선',
+        flag: '🇰🇷'
+    },
+    {
+        name: { common: 'Burkina Faso', official: 'Burkina Faso' },
+        cca2: 'BF',
+        altNames: 'BF',
+        flag: '🇧🇫'
+    },
+    {
+        name: { common: 'Norfolk Island', official: 'Territory of Norfolk Island' },
         cca2: 'NF',
+        altNames: "NF,Territory of Norfolk Island,Teratri of Norf'k Ailen",
         flag: '🇳🇫'
     },
-    { name: { common: 'Portugal', official: 'Portuguese Republic', nativeName: { por: { official: 'República português', common: 'Portugal' } } }, cca2: 'PT', flag: '🇵🇹' },
-    { name: { common: 'Barbados', official: 'Barbados', nativeName: { eng: { official: 'Barbados', common: 'Barbados' } } }, cca2: 'BB', flag: '🇧🇧' },
-    { name: { common: 'Jordan', official: 'Hashemite Kingdom of Jordan', nativeName: { ara: { official: 'المملكة الأردنية الهاشمية', common: 'الأردن' } } }, cca2: 'JO', flag: '🇯🇴' },
-    { name: { common: 'Nigeria', official: 'Federal Republic of Nigeria', nativeName: { eng: { official: 'Federal Republic of Nigeria', common: 'Nigeria' } } }, cca2: 'NG', flag: '🇳🇬' },
-    { name: { common: 'Bahrain', official: 'Kingdom of Bahrain', nativeName: { ara: { official: 'مملكة البحرين', common: '‏البحرين' } } }, cca2: 'BH', flag: '🇧🇭' },
+    {
+        name: { common: 'Portugal', official: 'Portuguese Republic' },
+        cca2: 'PT',
+        altNames: 'PT,Portuguesa,Portuguese Republic,República Portuguesa',
+        flag: '🇵🇹'
+    },
+    {
+        name: { common: 'Barbados', official: 'Barbados' },
+        cca2: 'BB',
+        altNames: 'BB',
+        flag: '🇧🇧'
+    },
+    {
+        name: { common: 'Jordan', official: 'Hashemite Kingdom of Jordan' },
+        cca2: 'JO',
+        altNames: 'JO,Hashemite Kingdom of Jordan,al-Mamlakah al-Urdunīyah al-Hāshimīyah',
+        flag: '🇯🇴'
+    },
+    {
+        name: { common: 'Nigeria', official: 'Federal Republic of Nigeria' },
+        cca2: 'NG',
+        altNames: 'NG,Nijeriya,Naíjíríà,Federal Republic of Nigeria',
+        flag: '🇳🇬'
+    },
+    {
+        name: { common: 'Bahrain', official: 'Kingdom of Bahrain' },
+        cca2: 'BH',
+        altNames: 'BH,Kingdom of Bahrain,Mamlakat al-Baḥrayn',
+        flag: '🇧🇭'
+    },
     {
         name: {
             common: 'Kiribati',
-            official: 'Independent and Sovereign Republic of Kiribati',
-            nativeName: { eng: { official: 'Independent and Sovereign Republic of Kiribati', common: 'Kiribati' }, gil: { official: 'Ribaberiki Kiribati', common: 'Kiribati' } }
+            official: 'Independent and Sovereign Republic of Kiribati'
         },
         cca2: 'KI',
+        altNames: 'KI,Republic of Kiribati,Ribaberiki Kiribati',
         flag: '🇰🇮'
     },
     {
         name: {
             common: 'São Tomé and Príncipe',
-            official: 'Democratic Republic of São Tomé and Príncipe',
-            nativeName: { por: { official: 'República Democrática do São Tomé e Príncipe', common: 'São Tomé e Príncipe' } }
+            official: 'Democratic Republic of São Tomé and Príncipe'
         },
         cca2: 'ST',
+        altNames: 'ST,Democratic Republic of São Tomé and Príncipe,Sao Tome and Principe,República Democrática de São Tomé e Príncipe',
         flag: '🇸🇹'
     },
-    { name: { common: 'China', official: "People's Republic of China", nativeName: { zho: { official: '中华人民共和国', common: '中国' } } }, cca2: 'CN', flag: '🇨🇳' },
     {
-        name: {
-            common: 'Switzerland',
-            official: 'Swiss Confederation',
-            nativeName: {
-                fra: { official: 'Confédération suisse', common: 'Suisse' },
-                gsw: { official: 'Schweizerische Eidgenossenschaft', common: 'Schweiz' },
-                ita: { official: 'Confederazione Svizzera', common: 'Svizzera' },
-                roh: { official: 'Confederaziun svizra', common: 'Svizra' }
-            }
-        },
+        name: { common: 'China', official: "People's Republic of China" },
+        cca2: 'CN',
+        altNames: "CN,Zhōngguó,Zhongguo,Zhonghua,People's Republic of China,中华人民共和国,Zhōnghuá Rénmín Gònghéguó",
+        flag: '🇨🇳'
+    },
+    {
+        name: { common: 'Switzerland', official: 'Swiss Confederation' },
         cca2: 'CH',
+        altNames: 'CH,Swiss Confederation,Schweiz,Suisse,Svizzera,Svizra',
         flag: '🇨🇭'
     },
     {
-        name: { common: 'Kenya', official: 'Republic of Kenya', nativeName: { eng: { official: 'Republic of Kenya', common: 'Kenya' }, swa: { official: 'Republic of Kenya', common: 'Kenya' } } },
+        name: { common: 'Kenya', official: 'Republic of Kenya' },
         cca2: 'KE',
+        altNames: 'KE,Republic of Kenya,Jamhuri ya Kenya',
         flag: '🇰🇪'
     },
-    { name: { common: 'Maldives', official: 'Republic of the Maldives', nativeName: { div: { official: 'ދިވެހިރާއްޖޭގެ ޖުމްހޫރިއްޔާ', common: 'ދިވެހިރާއްޖޭގެ' } } }, cca2: 'MV', flag: '🇲🇻' },
-    { name: { common: 'El Salvador', official: 'Republic of El Salvador', nativeName: { spa: { official: 'República de El Salvador', common: 'El Salvador' } } }, cca2: 'SV', flag: '🇸🇻' },
+    {
+        name: { common: 'Maldives', official: 'Republic of the Maldives' },
+        cca2: 'MV',
+        altNames: 'MV,Maldive Islands,Republic of the Maldives,Dhivehi Raajjeyge Jumhooriyya',
+        flag: '🇲🇻'
+    },
+    {
+        name: { common: 'El Salvador', official: 'Republic of El Salvador' },
+        cca2: 'SV',
+        altNames: 'SV,Republic of El Salvador,República de El Salvador',
+        flag: '🇸🇻'
+    },
     {
         name: {
             common: 'Saint Kitts and Nevis',
-            official: 'Federation of Saint Christopher and Nevis',
-            nativeName: { eng: { official: 'Federation of Saint Christopher and Nevis', common: 'Saint Kitts and Nevis' } }
+            official: 'Federation of Saint Christopher and Nevis'
         },
         cca2: 'KN',
+        altNames: 'KN,Federation of Saint Christopher and Nevis',
         flag: '🇰🇳'
     },
     {
-        name: { common: 'Brunei', official: 'Nation of Brunei, Abode of Peace', nativeName: { msa: { official: 'Nation of Brunei, Abode Damai', common: 'Negara Brunei Darussalam' } } },
+        name: { common: 'Brunei', official: 'Nation of Brunei, Abode of Peace' },
         cca2: 'BN',
+        altNames: 'BN,Brunei Darussalam,Nation of Brunei,the Abode of Peace',
         flag: '🇧🇳'
     },
-    { name: { common: 'Benin', official: 'Republic of Benin', nativeName: { fra: { official: 'République du Bénin', common: 'Bénin' } } }, cca2: 'BJ', flag: '🇧🇯' },
-    { name: { common: 'Guinea', official: 'Republic of Guinea', nativeName: { fra: { official: 'République de Guinée', common: 'Guinée' } } }, cca2: 'GN', flag: '🇬🇳' },
+    {
+        name: { common: 'Benin', official: 'Republic of Benin' },
+        cca2: 'BJ',
+        altNames: 'BJ,Republic of Benin,République du Bénin',
+        flag: '🇧🇯'
+    },
+    {
+        name: { common: 'Guinea', official: 'Republic of Guinea' },
+        cca2: 'GN',
+        altNames: 'GN,Republic of Guinea,République de Guinée',
+        flag: '🇬🇳'
+    },
     {
         name: {
             common: 'Macau',
-            official: "Macao Special Administrative Region of the People's Republic of China",
-            nativeName: {
-                por: { official: 'Região Administrativa Especial de Macau da República Popular da China', common: 'Macau' },
-                zho: { official: '中华人民共和国澳门特别行政区', common: '澳门' }
-            }
+            official: "Macao Special Administrative Region of the People's Republic of China"
         },
         cca2: 'MO',
+        altNames:
+            "MO,澳门,Macao,Macao Special Administrative Region of the People's Republic of China,中華人民共和國澳門特別行政區,Região Administrativa Especial de Macau da República Popular da China",
         flag: '🇲🇴'
     },
-    { name: { common: 'United States', official: 'United States of America', nativeName: { eng: { official: 'United States of America', common: 'United States' } } }, cca2: 'US', flag: '🇺🇸' },
     {
-        name: {
-            common: 'Eritrea',
-            official: 'State of Eritrea',
-            nativeName: { ara: { official: 'دولة إرتريا', common: 'إرتريا‎' }, eng: { official: 'State of Eritrea', common: 'Eritrea' }, tir: { official: 'ሃገረ ኤርትራ', common: 'ኤርትራ' } }
-        },
+        name: { common: 'United States', official: 'United States of America' },
+        cca2: 'US',
+        altNames: 'US,USA,United States of America',
+        flag: '🇺🇸'
+    },
+    {
+        name: { common: 'Eritrea', official: 'State of Eritrea' },
         cca2: 'ER',
+        altNames: 'ER,State of Eritrea,ሃገረ ኤርትራ,Dawlat Iritriyá,ʾErtrā,Iritriyā',
         flag: '🇪🇷'
     },
-    { name: { common: 'Sweden', official: 'Kingdom of Sweden', nativeName: { swe: { official: 'Konungariket Sverige', common: 'Sverige' } } }, cca2: 'SE', flag: '🇸🇪' },
+    {
+        name: { common: 'Sweden', official: 'Kingdom of Sweden' },
+        cca2: 'SE',
+        altNames: 'SE,Kingdom of Sweden,Konungariket Sverige',
+        flag: '🇸🇪'
+    },
     {
         name: {
             common: 'French Southern and Antarctic Lands',
-            official: 'Territory of the French Southern and Antarctic Lands',
-            nativeName: { fra: { official: 'Territoire des Terres australes et antarctiques françaises', common: 'Terres australes et antarctiques françaises' } }
+            official: 'Territory of the French Southern and Antarctic Lands'
         },
         cca2: 'TF',
+        altNames: 'TF,French Southern Territories',
         flag: '🇹🇫'
     },
-    { name: { common: 'Ghana', official: 'Republic of Ghana', nativeName: { eng: { official: 'Republic of Ghana', common: 'Ghana' } } }, cca2: 'GH', flag: '🇬🇭' },
-    { name: { common: 'Denmark', official: 'Kingdom of Denmark', nativeName: { dan: { official: 'Kongeriget Danmark', common: 'Danmark' } } }, cca2: 'DK', flag: '🇩🇰' },
-    { name: { common: 'Bulgaria', official: 'Republic of Bulgaria', nativeName: { bul: { official: 'Република България', common: 'България' } } }, cca2: 'BG', flag: '🇧🇬' },
     {
-        name: {
-            common: 'Botswana',
-            official: 'Republic of Botswana',
-            nativeName: { eng: { official: 'Republic of Botswana', common: 'Botswana' }, tsn: { official: 'Lefatshe la Botswana', common: 'Botswana' } }
-        },
+        name: { common: 'Ghana', official: 'Republic of Ghana' },
+        cca2: 'GH',
+        altNames: 'GH',
+        flag: '🇬🇭'
+    },
+    {
+        name: { common: 'Denmark', official: 'Kingdom of Denmark' },
+        cca2: 'DK',
+        altNames: 'DK,Danmark,Kingdom of Denmark,Kongeriget Danmark',
+        flag: '🇩🇰'
+    },
+    {
+        name: { common: 'Bulgaria', official: 'Republic of Bulgaria' },
+        cca2: 'BG',
+        altNames: 'BG,Republic of Bulgaria,Република България',
+        flag: '🇧🇬'
+    },
+    {
+        name: { common: 'Botswana', official: 'Republic of Botswana' },
         cca2: 'BW',
+        altNames: 'BW,Republic of Botswana,Lefatshe la Botswana',
         flag: '🇧🇼'
     },
-    { name: { common: 'Iran', official: 'Islamic Republic of Iran', nativeName: { fas: { official: 'جمهوری اسلامی ایران', common: 'ایران' } } }, cca2: 'IR', flag: '🇮🇷' },
-    { name: { common: 'Bouvet Island', official: 'Bouvet Island', nativeName: { nor: { official: 'Bouvetøya', common: 'Bouvetøya' } } }, cca2: 'BV', flag: '🇧🇻' },
     {
-        name: {
-            common: 'Bolivia',
-            official: 'Plurinational State of Bolivia',
-            nativeName: {
-                aym: { official: 'Wuliwya Suyu', common: 'Wuliwya' },
-                grn: { official: 'Tetã Volívia', common: 'Volívia' },
-                que: { official: 'Buliwya Mamallaqta', common: 'Buliwya' },
-                spa: { official: 'Estado Plurinacional de Bolivia', common: 'Bolivia' }
-            }
-        },
+        name: { common: 'Iran', official: 'Islamic Republic of Iran' },
+        cca2: 'IR',
+        altNames: 'IR,Islamic Republic of Iran,Iran, Islamic Republic of,Jomhuri-ye Eslāmi-ye Irān',
+        flag: '🇮🇷'
+    },
+    {
+        name: { common: 'Bouvet Island', official: 'Bouvet Island' },
+        cca2: 'BV',
+        altNames: 'BV,Bouvetøya,Bouvet-øya',
+        flag: '🇧🇻'
+    },
+    {
+        name: { common: 'Bolivia', official: 'Plurinational State of Bolivia' },
         cca2: 'BO',
+        altNames: 'BO,Buliwya,Wuliwya,Bolivia, Plurinational State of,Plurinational State of Bolivia,Estado Plurinacional de Bolivia,Buliwya Mamallaqta,Wuliwya Suyu,Tetã Volívia',
         flag: '🇧🇴'
     },
-    { name: { common: 'Pitcairn Islands', official: 'Pitcairn Group of Islands', nativeName: { eng: { official: 'Pitcairn Group of Islands', common: 'Pitcairn Islands' } } }, cca2: 'PN', flag: '🇵🇳' },
     {
-        name: {
-            common: 'Belarus',
-            official: 'Republic of Belarus',
-            nativeName: { bel: { official: 'Рэспубліка Беларусь', common: 'Белару́сь' }, rus: { official: 'Республика Беларусь', common: 'Беларусь' } }
-        },
+        name: { common: 'Pitcairn Islands', official: 'Pitcairn Group of Islands' },
+        cca2: 'PN',
+        altNames: 'PN,Pitcairn,Pitcairn Henderson Ducie and Oeno Islands',
+        flag: '🇵🇳'
+    },
+    {
+        name: { common: 'Belarus', official: 'Republic of Belarus' },
         cca2: 'BY',
+        altNames: 'BY,Bielaruś,Republic of Belarus,Белоруссия,Республика Белоруссия',
         flag: '🇧🇾'
     },
-    { name: { common: 'Bermuda', official: 'Bermuda', nativeName: { eng: { official: 'Bermuda', common: 'Bermuda' } } }, cca2: 'BM', flag: '🇧🇲' },
     {
-        name: {
-            common: 'Kazakhstan',
-            official: 'Republic of Kazakhstan',
-            nativeName: { kaz: { official: 'Қазақстан Республикасы', common: 'Қазақстан' }, rus: { official: 'Республика Казахстан', common: 'Казахстан' } }
-        },
+        name: { common: 'Bermuda', official: 'Bermuda' },
+        cca2: 'BM',
+        altNames: 'BM,The Islands of Bermuda,The Bermudas,Somers Isles',
+        flag: '🇧🇲'
+    },
+    {
+        name: { common: 'Kazakhstan', official: 'Republic of Kazakhstan' },
         cca2: 'KZ',
+        altNames: 'KZ,Qazaqstan,Казахстан,Republic of Kazakhstan,Қазақстан Республикасы,Qazaqstan Respublïkası,Республика Казахстан,Respublika Kazakhstan',
         flag: '🇰🇿'
     },
-    { name: { common: 'Laos', official: "Lao People's Democratic Republic", nativeName: { lao: { official: 'ສາທາລະນະ ຊາທິປະໄຕ ຄົນລາວ ຂອງ', common: 'ສປປລາວ' } } }, cca2: 'LA', flag: '🇱🇦' },
     {
-        name: {
-            common: 'Uzbekistan',
-            official: 'Republic of Uzbekistan',
-            nativeName: { rus: { official: 'Республика Узбекистан', common: 'Узбекистан' }, uzb: { official: "O'zbekiston Respublikasi", common: 'O‘zbekiston' } }
-        },
+        name: { common: 'Laos', official: "Lao People's Democratic Republic" },
+        cca2: 'LA',
+        altNames: "LA,Lao,Lao People's Democratic Republic,Sathalanalat Paxathipatai Paxaxon Lao",
+        flag: '🇱🇦'
+    },
+    {
+        name: { common: 'Uzbekistan', official: 'Republic of Uzbekistan' },
         cca2: 'UZ',
+        altNames: 'UZ,Republic of Uzbekistan,O‘zbekiston Respublikasi,Ўзбекистон Республикаси',
         flag: '🇺🇿'
     },
-    { name: { common: 'Malaysia', official: 'Malaysia', nativeName: { eng: { official: 'Malaysia', common: 'Malaysia' }, msa: { official: 'مليسيا', common: 'مليسيا' } } }, cca2: 'MY', flag: '🇲🇾' },
-    { name: { common: 'British Virgin Islands', official: 'Virgin Islands', nativeName: { eng: { official: 'Virgin Islands', common: 'British Virgin Islands' } } }, cca2: 'VG', flag: '🇻🇬' },
     {
-        name: {
-            common: 'Saint Pierre and Miquelon',
-            official: 'Saint Pierre and Miquelon',
-            nativeName: { fra: { official: 'Collectivité territoriale de Saint-Pierre-et-Miquelon', common: 'Saint-Pierre-et-Miquelon' } }
-        },
+        name: { common: 'Malaysia', official: 'Malaysia' },
+        cca2: 'MY',
+        altNames: 'MY',
+        flag: '🇲🇾'
+    },
+    {
+        name: { common: 'British Virgin Islands', official: 'Virgin Islands' },
+        cca2: 'VG',
+        altNames: 'VG,Virgin Islands, British',
+        flag: '🇻🇬'
+    },
+    {
+        name: { common: 'Saint Pierre and Miquelon', official: 'Saint Pierre and Miquelon' },
         cca2: 'PM',
+        altNames: 'PM,Collectivité territoriale de Saint-Pierre-et-Miquelon',
         flag: '🇵🇲'
     },
-    { name: { common: 'Iceland', official: 'Iceland', nativeName: { isl: { official: 'Ísland', common: 'Ísland' } } }, cca2: 'IS', flag: '🇮🇸' },
-    { name: { common: 'Greece', official: 'Hellenic Republic', nativeName: { ell: { official: 'Ελληνική Δημοκρατία', common: 'Ελλάδα' } } }, cca2: 'GR', flag: '🇬🇷' },
     {
-        name: {
-            common: 'Paraguay',
-            official: 'Republic of Paraguay',
-            nativeName: { grn: { official: 'Tetã Paraguái', common: 'Paraguái' }, spa: { official: 'República de Paraguay', common: 'Paraguay' } }
-        },
+        name: { common: 'Iceland', official: 'Iceland' },
+        cca2: 'IS',
+        altNames: 'IS,Island,Republic of Iceland,Lýðveldið Ísland',
+        flag: '🇮🇸'
+    },
+    {
+        name: { common: 'Greece', official: 'Hellenic Republic' },
+        cca2: 'GR',
+        altNames: 'GR,Elláda,Hellenic Republic,Ελληνική Δημοκρατία',
+        flag: '🇬🇷'
+    },
+    {
+        name: { common: 'Paraguay', official: 'Republic of Paraguay' },
         cca2: 'PY',
+        altNames: 'PY,Republic of Paraguay,República del Paraguay,Tetã Paraguái',
         flag: '🇵🇾'
     },
     {
-        name: {
-            common: 'Cameroon',
-            official: 'Republic of Cameroon',
-            nativeName: { eng: { official: 'Republic of Cameroon', common: 'Cameroon' }, fra: { official: 'République du Cameroun', common: 'Cameroun' } }
-        },
+        name: { common: 'Cameroon', official: 'Republic of Cameroon' },
         cca2: 'CM',
+        altNames: 'CM,Republic of Cameroon,République du Cameroun',
         flag: '🇨🇲'
     },
     {
-        name: { common: 'Palau', official: 'Republic of Palau', nativeName: { eng: { official: 'Republic of Palau', common: 'Palau' }, pau: { official: 'Beluu er a Belau', common: 'Belau' } } },
+        name: { common: 'Palau', official: 'Republic of Palau' },
         cca2: 'PW',
+        altNames: 'PW,Republic of Palau,Beluu er a Belau',
         flag: '🇵🇼'
     },
-    { name: { common: 'Brazil', official: 'Federative Republic of Brazil', nativeName: { por: { official: 'República Federativa do Brasil', common: 'Brasil' } } }, cca2: 'BR', flag: '🇧🇷' },
     {
-        name: { common: 'Saint Barthélemy', official: 'Collectivity of Saint Barthélemy', nativeName: { fra: { official: 'Collectivité de Saint-Barthélemy', common: 'Saint-Barthélemy' } } },
+        name: { common: 'Brazil', official: 'Federative Republic of Brazil' },
+        cca2: 'BR',
+        altNames: 'BR,Brasil,Federative Republic of Brazil,República Federativa do Brasil',
+        flag: '🇧🇷'
+    },
+    {
+        name: { common: 'Saint Barthélemy', official: 'Collectivity of Saint Barthélemy' },
         cca2: 'BL',
+        altNames: 'BL,St. Barthelemy,Collectivity of Saint Barthélemy,Collectivité de Saint-Barthélemy',
         flag: '🇧🇱'
     },
-    { name: { common: 'Anguilla', official: 'Anguilla', nativeName: { eng: { official: 'Anguilla', common: 'Anguilla' } } }, cca2: 'AI', flag: '🇦🇮' },
-    { name: { common: 'Ethiopia', official: 'Federal Democratic Republic of Ethiopia', nativeName: { amh: { official: 'የኢትዮጵያ ፌዴራላዊ ዲሞክራሲያዊ ሪፐብሊክ', common: 'ኢትዮጵያ' } } }, cca2: 'ET', flag: '🇪🇹' },
-    { name: { common: 'Germany', official: 'Federal Republic of Germany', nativeName: { deu: { official: 'Bundesrepublik Deutschland', common: 'Deutschland' } } }, cca2: 'DE', flag: '🇩🇪' },
-    { name: { common: 'Hungary', official: 'Hungary', nativeName: { hun: { official: 'Magyarország', common: 'Magyarország' } } }, cca2: 'HU', flag: '🇭🇺' },
     {
-        name: {
-            common: 'Sudan',
-            official: 'Republic of the Sudan',
-            nativeName: { ara: { official: 'جمهورية السودان', common: 'السودان' }, eng: { official: 'Republic of the Sudan', common: 'Sudan' } }
-        },
+        name: { common: 'Anguilla', official: 'Anguilla' },
+        cca2: 'AI',
+        altNames: 'AI',
+        flag: '🇦🇮'
+    },
+    {
+        name: { common: 'Ethiopia', official: 'Federal Democratic Republic of Ethiopia' },
+        cca2: 'ET',
+        altNames: 'ET,ʾĪtyōṗṗyā,Federal Democratic Republic of Ethiopia,የኢትዮጵያ ፌዴራላዊ ዲሞክራሲያዊ ሪፐብሊክ',
+        flag: '🇪🇹'
+    },
+    {
+        name: { common: 'Germany', official: 'Federal Republic of Germany' },
+        cca2: 'DE',
+        altNames: 'DE,Federal Republic of Germany,Bundesrepublik Deutschland',
+        flag: '🇩🇪'
+    },
+    {
+        name: { common: 'Hungary', official: 'Hungary' },
+        cca2: 'HU',
+        altNames: 'HU',
+        flag: '🇭🇺'
+    },
+    {
+        name: { common: 'Sudan', official: 'Republic of the Sudan' },
         cca2: 'SD',
+        altNames: 'SD,Republic of the Sudan,Jumhūrīyat as-Sūdān',
         flag: '🇸🇩'
     },
     {
-        name: {
-            common: 'Somalia',
-            official: 'Federal Republic of Somalia',
-            nativeName: { ara: { official: 'جمهورية الصومال‎‎', common: 'الصومال‎‎' }, som: { official: 'Jamhuuriyadda Federaalka Soomaaliya', common: 'Soomaaliya' } }
-        },
+        name: { common: 'Somalia', official: 'Federal Republic of Somalia' },
         cca2: 'SO',
+        altNames: 'SO,aṣ-Ṣūmāl,Federal Republic of Somalia,Jamhuuriyadda Federaalka Soomaaliya,Jumhūriyyat aṣ-Ṣūmāl al-Fcca2erāliyya',
         flag: '🇸🇴'
     },
-    { name: { common: 'Lithuania', official: 'Republic of Lithuania', nativeName: { lit: { official: 'Lietuvos Respublikos', common: 'Lietuva' } } }, cca2: 'LT', flag: '🇱🇹' },
-    { name: { common: 'Angola', official: 'Republic of Angola', nativeName: { por: { official: 'República de Angola', common: 'Angola' } } }, cca2: 'AO', flag: '🇦🇴' },
     {
-        name: {
-            common: 'Equatorial Guinea',
-            official: 'Republic of Equatorial Guinea',
-            nativeName: {
-                fra: { official: 'République de la Guinée Équatoriale', common: 'Guinée équatoriale' },
-                por: { official: 'República da Guiné Equatorial', common: 'Guiné Equatorial' },
-                spa: { official: 'República de Guinea Ecuatorial', common: 'Guinea Ecuatorial' }
-            }
-        },
+        name: { common: 'Lithuania', official: 'Republic of Lithuania' },
+        cca2: 'LT',
+        altNames: 'LT,Republic of Lithuania,Lietuvos Respublika',
+        flag: '🇱🇹'
+    },
+    {
+        name: { common: 'Angola', official: 'Republic of Angola' },
+        cca2: 'AO',
+        altNames: "AO,República de Angola,ʁɛpublika de an'ɡɔla",
+        flag: '🇦🇴'
+    },
+    {
+        name: { common: 'Equatorial Guinea', official: 'Republic of Equatorial Guinea' },
         cca2: 'GQ',
+        altNames: 'GQ,Republic of Equatorial Guinea,República de Guinea Ecuatorial,République de Guinée équatoriale,República da Guiné Equatorial',
         flag: '🇬🇶'
     },
-    { name: { common: 'Saudi Arabia', official: 'Kingdom of Saudi Arabia', nativeName: { ara: { official: 'المملكة العربية السعودية', common: 'العربية السعودية' } } }, cca2: 'SA', flag: '🇸🇦' },
-    { name: { common: 'Estonia', official: 'Republic of Estonia', nativeName: { est: { official: 'Eesti Vabariik', common: 'Eesti' } } }, cca2: 'EE', flag: '🇪🇪' },
     {
-        name: {
-            common: 'Luxembourg',
-            official: 'Grand Duchy of Luxembourg',
-            nativeName: {
-                deu: { official: 'Großherzogtum Luxemburg', common: 'Luxemburg' },
-                fra: { official: 'Grand-Duché de Luxembourg', common: 'Luxembourg' },
-                ltz: { official: 'Groussherzogtum Lëtzebuerg', common: 'Lëtzebuerg' }
-            }
-        },
+        name: { common: 'Saudi Arabia', official: 'Kingdom of Saudi Arabia' },
+        cca2: 'SA',
+        altNames: 'Saudi,SA,Kingdom of Saudi Arabia,Al-Mamlakah al-‘Arabiyyah as-Su‘ūdiyyah',
+        flag: '🇸🇦'
+    },
+    {
+        name: { common: 'Estonia', official: 'Republic of Estonia' },
+        cca2: 'EE',
+        altNames: 'EE,Eesti,Republic of Estonia,Eesti Vabariik',
+        flag: '🇪🇪'
+    },
+    {
+        name: { common: 'Luxembourg', official: 'Grand Duchy of Luxembourg' },
         cca2: 'LU',
+        altNames: 'LU,Grand Duchy of Luxembourg,Grand-Duché de Luxembourg,Großherzogtum Luxemburg,Groussherzogtum Lëtzebuerg',
         flag: '🇱🇺'
     },
     {
-        name: {
-            common: 'Zimbabwe',
-            official: 'Republic of Zimbabwe',
-            nativeName: {
-                bwg: { official: 'Republic of Zimbabwe', common: 'Zimbabwe' },
-                eng: { official: 'Republic of Zimbabwe', common: 'Zimbabwe' },
-                kck: { official: 'Republic of Zimbabwe', common: 'Zimbabwe' },
-                khi: { official: 'Republic of Zimbabwe', common: 'Zimbabwe' },
-                ndc: { official: 'Republic of Zimbabwe', common: 'Zimbabwe' },
-                nde: { official: 'Republic of Zimbabwe', common: 'Zimbabwe' },
-                nya: { official: 'Republic of Zimbabwe', common: 'Zimbabwe' },
-                sna: { official: 'Republic of Zimbabwe', common: 'Zimbabwe' },
-                sot: { official: 'Republic of Zimbabwe', common: 'Zimbabwe' },
-                toi: { official: 'Republic of Zimbabwe', common: 'Zimbabwe' },
-                tsn: { official: 'Republic of Zimbabwe', common: 'Zimbabwe' },
-                tso: { official: 'Republic of Zimbabwe', common: 'Zimbabwe' },
-                ven: { official: 'Republic of Zimbabwe', common: 'Zimbabwe' },
-                xho: { official: 'Republic of Zimbabwe', common: 'Zimbabwe' },
-                zib: { official: 'Republic of Zimbabwe', common: 'Zimbabwe' }
-            }
-        },
+        name: { common: 'Zimbabwe', official: 'Republic of Zimbabwe' },
         cca2: 'ZW',
+        altNames: 'ZW,Republic of Zimbabwe',
         flag: '🇿🇼'
     },
     {
-        name: {
-            common: 'New Zealand',
-            official: 'New Zealand',
-            nativeName: { eng: { official: 'New Zealand', common: 'New Zealand' }, mri: { official: 'Aotearoa', common: 'Aotearoa' }, nzs: { official: 'New Zealand', common: 'New Zealand' } }
-        },
+        name: { common: 'New Zealand', official: 'New Zealand' },
         cca2: 'NZ',
+        altNames: 'NZ,Aotearoa',
         flag: '🇳🇿'
     },
     {
-        name: { common: 'Venezuela', official: 'Bolivarian Republic of Venezuela', nativeName: { spa: { official: 'República Bolivariana de Venezuela', common: 'Venezuela' } } },
+        name: { common: 'Venezuela', official: 'Bolivarian Republic of Venezuela' },
         cca2: 'VE',
+        altNames: 'VE,Bolivarian Republic of Venezuela,Venezuela, Bolivarian Republic of,República Bolivariana de Venezuela',
         flag: '🇻🇪'
     },
-    { name: { common: 'Gambia', official: 'Republic of the Gambia', nativeName: { eng: { official: 'Republic of the Gambia', common: 'Gambia' } } }, cca2: 'GM', flag: '🇬🇲' },
+    {
+        name: { common: 'Gambia', official: 'Republic of the Gambia' },
+        cca2: 'GM',
+        altNames: 'GM,Republic of the Gambia',
+        flag: '🇬🇲'
+    },
     {
         name: {
             common: 'Wallis and Futuna',
-            official: 'Territory of the Wallis and Futuna Islands',
-            nativeName: { fra: { official: 'Territoire des îles Wallis et Futuna', common: 'Wallis et Futuna' } }
+            official: 'Territory of the Wallis and Futuna Islands'
         },
         cca2: 'WF',
+        altNames: 'WF,Territory of the Wallis and Futuna Islands,Territoire des îles Wallis et Futuna',
         flag: '🇼🇫'
     },
     {
-        name: {
-            common: 'Belgium',
-            official: 'Kingdom of Belgium',
-            nativeName: {
-                deu: { official: 'Königreich Belgien', common: 'Belgien' },
-                fra: { official: 'Royaume de Belgique', common: 'Belgique' },
-                nld: { official: 'Koninkrijk België', common: 'België' }
-            }
-        },
+        name: { common: 'Belgium', official: 'Kingdom of Belgium' },
         cca2: 'BE',
+        altNames: 'BE,België,Belgie,Belgien,Belgique,Kingdom of Belgium,Koninkrijk België,Royaume de Belgique,Königreich Belgien',
         flag: '🇧🇪'
     },
     {
-        name: {
-            common: 'Belize',
-            official: 'Belize',
-            nativeName: { bjz: { official: 'Belize', common: 'Belize' }, eng: { official: 'Belize', common: 'Belize' }, spa: { official: 'Belice', common: 'Belice' } }
-        },
+        name: { common: 'Belize', official: 'Belize' },
         cca2: 'BZ',
+        altNames: 'BZ',
         flag: '🇧🇿'
     },
     {
-        name: {
-            common: 'Western Sahara',
-            official: 'Sahrawi Arab Democratic Republic',
-            nativeName: {
-                ber: { official: 'Sahrawi Arab Democratic Republic', common: 'Western Sahara' },
-                mey: { official: 'الجمهورية العربية الصحراوية الديمقراطية', common: 'الصحراء الغربية' },
-                spa: { official: 'República Árabe Saharaui Democrática', common: 'Sahara Occidental' }
-            }
-        },
+        name: { common: 'Western Sahara', official: 'Sahrawi Arab Democratic Republic' },
         cca2: 'EH',
+        altNames: 'EH,Taneẓroft Tutrimt',
         flag: '🇪🇭'
     },
-    { name: { common: 'Slovenia', official: 'Republic of Slovenia', nativeName: { slv: { official: 'Republika Slovenija', common: 'Slovenija' } } }, cca2: 'SI', flag: '🇸🇮' },
-    { name: { common: 'Syria', official: 'Syrian Arab Republic', nativeName: { ara: { official: 'الجمهورية العربية السورية', common: 'سوريا' } } }, cca2: 'SY', flag: '🇸🇾' },
-    { name: { common: 'Japan', official: 'Japan', nativeName: { jpn: { official: '日本', common: '日本' } } }, cca2: 'JP', flag: '🇯🇵' },
-    { name: { common: 'Russia', official: 'Russian Federation', nativeName: { rus: { official: 'Российская Федерация', common: 'Россия' } } }, cca2: 'RU', flag: '🇷🇺' },
     {
-        name: {
-            common: 'Lesotho',
-            official: 'Kingdom of Lesotho',
-            nativeName: { eng: { official: 'Kingdom of Lesotho', common: 'Lesotho' }, sot: { official: 'Kingdom of Lesotho', common: 'Lesotho' } }
-        },
+        name: { common: 'Slovenia', official: 'Republic of Slovenia' },
+        cca2: 'SI',
+        altNames: 'SI,Republic of Slovenia,Republika Slovenija',
+        flag: '🇸🇮'
+    },
+    {
+        name: { common: 'Syria', official: 'Syrian Arab Republic' },
+        cca2: 'SY',
+        altNames: 'SY,Syrian Arab Republic,Al-Jumhūrīyah Al-ʻArabīyah As-Sūrīyah',
+        flag: '🇸🇾'
+    },
+    {
+        name: { common: 'Japan', official: 'Japan' },
+        cca2: 'JP',
+        altNames: 'JP,Nippon,Nihon',
+        flag: '🇯🇵'
+    },
+    {
+        name: { common: 'Russia', official: 'Russian Federation' },
+        cca2: 'RU',
+        altNames: 'RU,Russian Federation,Российская Федерация',
+        flag: '🇷🇺'
+    },
+    {
+        name: { common: 'Lesotho', official: 'Kingdom of Lesotho' },
         cca2: 'LS',
+        altNames: 'LS,Kingdom of Lesotho,Muso oa Lesotho',
         flag: '🇱🇸'
     },
     {
-        name: {
-            common: 'Ireland',
-            official: 'Republic of Ireland',
-            nativeName: { eng: { official: 'Republic of Ireland', common: 'Ireland' }, gle: { official: 'Poblacht na hÉireann', common: 'Éire' } }
-        },
+        name: { common: 'Ireland', official: 'Republic of Ireland' },
         cca2: 'IE',
+        altNames: 'IE,Éire,Republic of Ireland,Poblacht na hÉireann',
         flag: '🇮🇪'
     },
-    { name: { common: 'Montenegro', official: 'Montenegro', nativeName: { cnr: { official: 'Црна Гора', common: 'Црна Гора' } } }, cca2: 'ME', flag: '🇲🇪' },
-    { name: { common: 'Andorra', official: 'Principality of Andorra', nativeName: { cat: { official: "Principat d'Andorra", common: 'Andorra' } } }, cca2: 'AD', flag: '🇦🇩' },
-    { name: { common: 'Netherlands', official: 'Kingdom of the Netherlands', nativeName: { nld: { official: 'Koninkrijk der Nederlanden', common: 'Nederland' } } }, cca2: 'NL', flag: '🇳🇱' },
-    { name: { common: 'Latvia', official: 'Republic of Latvia', nativeName: { lav: { official: 'Latvijas Republikas', common: 'Latvija' } } }, cca2: 'LV', flag: '🇱🇻' },
-    { name: { common: 'Tunisia', official: 'Tunisian Republic', nativeName: { ara: { official: 'الجمهورية التونسية', common: 'تونس' } } }, cca2: 'TN', flag: '🇹🇳' },
-    { name: { common: 'Aruba', official: 'Aruba', nativeName: { nld: { official: 'Aruba', common: 'Aruba' }, pap: { official: 'Aruba', common: 'Aruba' } } }, cca2: 'AW', flag: '🇦🇼' },
-    { name: { common: 'Croatia', official: 'Republic of Croatia', nativeName: { hrv: { official: 'Republika Hrvatska', common: 'Hrvatska' } } }, cca2: 'HR', flag: '🇭🇷' },
-    { name: { common: 'Mali', official: 'Republic of Mali', nativeName: { fra: { official: 'République du Mali', common: 'Mali' } } }, cca2: 'ML', flag: '🇲🇱' },
     {
-        name: {
-            common: 'Afghanistan',
-            official: 'Islamic Republic of Afghanistan',
-            nativeName: {
-                prs: { official: 'جمهوری اسلامی افغانستان', common: 'افغانستان' },
-                pus: { official: 'د افغانستان اسلامي جمهوریت', common: 'افغانستان' },
-                tuk: { official: 'Owganystan Yslam Respublikasy', common: 'Owganystan' }
-            }
-        },
+        name: { common: 'Montenegro', official: 'Montenegro' },
+        cca2: 'ME',
+        altNames: 'ME,Crna Gora',
+        flag: '🇲🇪'
+    },
+    {
+        name: { common: 'Andorra', official: 'Principality of Andorra' },
+        cca2: 'AD',
+        altNames: "AD,Principality of Andorra,Principat d'Andorra",
+        flag: '🇦🇩'
+    },
+    {
+        name: { common: 'Netherlands', official: 'Kingdom of the Netherlands' },
+        cca2: 'NL',
+        altNames: 'NL,Holland,Nederland,The Netherlands',
+        flag: '🇳🇱'
+    },
+    {
+        name: { common: 'Latvia', official: 'Republic of Latvia' },
+        cca2: 'LV',
+        altNames: 'LV,Republic of Latvia,Latvijas Republika',
+        flag: '🇱🇻'
+    },
+    {
+        name: { common: 'Tunisia', official: 'Tunisian Republic' },
+        cca2: 'TN',
+        altNames: 'TN,Republic of Tunisia,al-Jumhūriyyah at-Tūnisiyyah',
+        flag: '🇹🇳'
+    },
+    {
+        name: { common: 'Aruba', official: 'Aruba' },
+        cca2: 'AW',
+        altNames: 'AW',
+        flag: '🇦🇼'
+    },
+    {
+        name: { common: 'Croatia', official: 'Republic of Croatia' },
+        cca2: 'HR',
+        altNames: 'HR,Hrvatska,Republic of Croatia,Republika Hrvatska',
+        flag: '🇭🇷'
+    },
+    {
+        name: { common: 'Mali', official: 'Republic of Mali' },
+        cca2: 'ML',
+        altNames: 'ML,Republic of Mali,République du Mali',
+        flag: '🇲🇱'
+    },
+    {
+        name: { common: 'Afghanistan', official: 'Islamic Republic of Afghanistan' },
         cca2: 'AF',
+        altNames: 'AF,Afġānistān',
         flag: '🇦🇫'
     },
-    { name: { common: 'Sierra Leone', official: 'Republic of Sierra Leone', nativeName: { eng: { official: 'Republic of Sierra Leone', common: 'Sierra Leone' } } }, cca2: 'SL', flag: '🇸🇱' },
     {
-        name: {
-            common: 'Iraq',
-            official: 'Republic of Iraq',
-            nativeName: { ara: { official: 'جمهورية العراق', common: 'العراق' }, arc: { official: 'ܩܘܼܛܢܵܐ ܐܝܼܪܲܩ', common: 'ܩܘܼܛܢܵܐ' }, ckb: { official: 'کۆماری عێراق', common: 'کۆماری' } }
-        },
+        name: { common: 'Sierra Leone', official: 'Republic of Sierra Leone' },
+        cca2: 'SL',
+        altNames: 'SL,Republic of Sierra Leone',
+        flag: '🇸🇱'
+    },
+    {
+        name: { common: 'Iraq', official: 'Republic of Iraq' },
         cca2: 'IQ',
+        altNames: 'IQ,Republic of Iraq,Jumhūriyyat al-‘Irāq',
         flag: '🇮🇶'
     },
     {
-        name: {
-            common: 'Comoros',
-            official: 'Union of the Comoros',
-            nativeName: { ara: { official: 'الاتحاد القمري', common: 'القمر‎' }, fra: { official: 'Union des Comores', common: 'Comores' }, zdj: { official: 'Udzima wa Komori', common: 'Komori' } }
-        },
+        name: { common: 'Comoros', official: 'Union of the Comoros' },
         cca2: 'KM',
+        altNames: 'KM,Union of the Comoros,Union des Comores,Udzima wa Komori,al-Ittiḥād al-Qumurī',
         flag: '🇰🇲'
     },
-    { name: { common: 'Egypt', official: 'Arab Republic of Egypt', nativeName: { ara: { official: 'جمهورية مصر العربية', common: 'مصر' } } }, cca2: 'EG', flag: '🇪🇬' },
-    { name: { common: 'Vietnam', official: 'Socialist Republic of Vietnam', nativeName: { vie: { official: 'Cộng hòa xã hội chủ nghĩa Việt Nam', common: 'Việt Nam' } } }, cca2: 'VN', flag: '🇻🇳' },
     {
-        name: {
-            common: 'Vatican City',
-            official: 'Vatican City State',
-            nativeName: { ita: { official: 'Stato della Città del Vaticano', common: 'Vaticano' }, lat: { official: 'Status Civitatis Vaticanæ', common: 'Vaticanæ' } }
-        },
+        name: { common: 'Egypt', official: 'Arab Republic of Egypt' },
+        cca2: 'EG',
+        altNames: 'EG,Arab Republic of Egypt',
+        flag: '🇪🇬'
+    },
+    {
+        name: { common: 'Vietnam', official: 'Socialist Republic of Vietnam' },
+        cca2: 'VN',
+        altNames: 'VN,Socialist Republic of Vietnam,Cộng hòa Xã hội chủ nghĩa Việt Nam,Viet Nam',
+        flag: '🇻🇳'
+    },
+    {
+        name: { common: 'Vatican City', official: 'Vatican City State' },
         cca2: 'VA',
+        altNames: 'VA,Holy See (Vatican City State),Vatican City State,Stato della Città del Vaticano',
         flag: '🇻🇦'
     },
     {
-        name: {
-            common: 'Sint Maarten',
-            official: 'Sint Maarten',
-            nativeName: {
-                eng: { official: 'Sint Maarten', common: 'Sint Maarten' },
-                fra: { official: 'Saint-Martin', common: 'Saint-Martin' },
-                nld: { official: 'Sint Maarten', common: 'Sint Maarten' }
-            }
-        },
+        name: { common: 'Sint Maarten', official: 'Sint Maarten' },
         cca2: 'SX',
+        altNames: 'SX,Sint Maarten (Dutch part)',
         flag: '🇸🇽'
     },
-    { name: { common: 'Slovakia', official: 'Slovak Republic', nativeName: { slk: { official: 'Slovenská republika', common: 'Slovensko' } } }, cca2: 'SK', flag: '🇸🇰' },
     {
-        name: {
-            common: 'Singapore',
-            official: 'Republic of Singapore',
-            nativeName: {
-                zho: { official: '新加坡共和国', common: '新加坡' },
-                eng: { official: 'Republic of Singapore', common: 'Singapore' },
-                msa: { official: 'Republik Singapura', common: 'Singapura' },
-                tam: { official: 'சிங்கப்பூர் குடியரசு', common: 'சிங்கப்பூர்' }
-            }
-        },
+        name: { common: 'Slovakia', official: 'Slovak Republic' },
+        cca2: 'SK',
+        altNames: 'SK,Slovak Republic,Slovenská republika',
+        flag: '🇸🇰'
+    },
+    {
+        name: { common: 'Singapore', official: 'Republic of Singapore' },
         cca2: 'SG',
+        altNames: 'SG,Singapura,Republik Singapura,新加坡共和国',
         flag: '🇸🇬'
     },
     {
-        name: {
-            common: 'Cook Islands',
-            official: 'Cook Islands',
-            nativeName: { eng: { official: 'Cook Islands', common: 'Cook Islands' }, rar: { official: "Kūki 'Āirani", common: "Kūki 'Āirani" } }
-        },
+        name: { common: 'Cook Islands', official: 'Cook Islands' },
         cca2: 'CK',
+        altNames: "CK,Kūki 'Āirani",
         flag: '🇨🇰'
     },
     {
-        name: {
-            common: 'Eswatini',
-            official: 'Kingdom of Eswatini',
-            nativeName: { eng: { official: 'Kingdom of Eswatini', common: 'Eswatini' }, ssw: { official: 'Umbuso weSwatini', common: 'eSwatini' } }
-        },
+        name: { common: 'Eswatini', official: 'Kingdom of Eswatini' },
         cca2: 'SZ',
+        altNames: 'SZ,Swaziland,weSwatini,Swatini,Ngwane,Kingdom of Eswatini,Umbuso weSwatini',
         flag: '🇸🇿'
     },
     {
-        name: { common: 'Tonga', official: 'Kingdom of Tonga', nativeName: { eng: { official: 'Kingdom of Tonga', common: 'Tonga' }, ton: { official: 'Kingdom of Tonga', common: 'Tonga' } } },
+        name: { common: 'Tonga', official: 'Kingdom of Tonga' },
         cca2: 'TO',
+        altNames: 'TO',
         flag: '🇹🇴'
     },
     {
-        name: {
-            common: 'Republic of the Congo',
-            official: 'Republic of the Congo',
-            nativeName: {
-                fra: { official: 'République du Congo', common: 'République du Congo' },
-                kon: { official: 'Repubilika ya Kongo', common: 'Repubilika ya Kongo' },
-                lin: { official: 'Republíki ya Kongó', common: 'Republíki ya Kongó' }
-            }
-        },
+        name: { common: 'Republic of the Congo', official: 'Republic of the Congo' },
         cca2: 'CG',
+        altNames: 'CG,Congo,Congo-Brazzaville',
         flag: '🇨🇬'
     },
     {
-        name: {
-            common: 'Guernsey',
-            official: 'Bailiwick of Guernsey',
-            nativeName: {
-                eng: { official: 'Bailiwick of Guernsey', common: 'Guernsey' },
-                fra: { official: 'Bailliage de Guernesey', common: 'Guernesey' },
-                nfr: { official: 'Dgèrnésiais', common: 'Dgèrnésiais' }
-            }
-        },
+        name: { common: 'Guernsey', official: 'Bailiwick of Guernsey' },
         cca2: 'GG',
+        altNames: 'GG,Bailiwick of Guernsey,Bailliage de Guernesey',
         flag: '🇬🇬'
     },
-    { name: { common: 'Guadeloupe', official: 'Guadeloupe', nativeName: { fra: { official: 'Guadeloupe', common: 'Guadeloupe' } } }, cca2: 'GP', flag: '🇬🇵' },
     {
-        name: {
-            common: 'Namibia',
-            official: 'Republic of Namibia',
-            nativeName: {
-                afr: { official: 'Republiek van Namibië', common: 'Namibië' },
-                deu: { official: 'Republik Namibia', common: 'Namibia' },
-                eng: { official: 'Republic of Namibia', common: 'Namibia' },
-                her: { official: 'Republic of Namibia', common: 'Namibia' },
-                hgm: { official: 'Republic of Namibia', common: 'Namibia' },
-                kwn: { official: 'Republic of Namibia', common: 'Namibia' },
-                loz: { official: 'Republic of Namibia', common: 'Namibia' },
-                ndo: { official: 'Republic of Namibia', common: 'Namibia' },
-                tsn: { official: 'Lefatshe la Namibia', common: 'Namibia' }
-            }
-        },
+        name: { common: 'Guadeloupe', official: 'Guadeloupe' },
+        cca2: 'GP',
+        altNames: 'GP,Gwadloup',
+        flag: '🇬🇵'
+    },
+    {
+        name: { common: 'Namibia', official: 'Republic of Namibia' },
         cca2: 'NA',
+        altNames: 'NA,Namibië,Republic of Namibia',
         flag: '🇳🇦'
     },
     {
-        name: { common: 'Trinidad and Tobago', official: 'Republic of Trinidad and Tobago', nativeName: { eng: { official: 'Republic of Trinidad and Tobago', common: 'Trinidad and Tobago' } } },
+        name: {
+            common: 'Trincca2ad and Tobago',
+            official: 'Republic of Trincca2ad and Tobago'
+        },
         cca2: 'TT',
+        altNames: 'TT,Republic of Trincca2ad and Tobago',
         flag: '🇹🇹'
     },
-    { name: { common: 'Bhutan', official: 'Kingdom of Bhutan', nativeName: { dzo: { official: 'འབྲུག་རྒྱལ་ཁབ་', common: 'འབྲུག་ཡུལ་' } } }, cca2: 'BT', flag: '🇧🇹' },
+    {
+        name: { common: 'Bhutan', official: 'Kingdom of Bhutan' },
+        cca2: 'BT',
+        altNames: 'BT,Kingdom of Bhutan',
+        flag: '🇧🇹'
+    },
     {
         name: {
             common: 'Hong Kong',
-            official: "Hong Kong Special Administrative Region of the People's Republic of China",
-            nativeName: {
-                eng: { official: "Hong Kong Special Administrative Region of the People's Republic of China", common: 'Hong Kong' },
-                zho: { official: '中华人民共和国香港特别行政区', common: '香港' }
-            }
+            official: "Hong Kong Special Administrative Region of the People's Republic of China"
         },
         cca2: 'HK',
+        altNames: 'HK',
         flag: '🇭🇰'
     },
-    { name: { common: 'South Sudan', official: 'Republic of South Sudan', nativeName: { eng: { official: 'Republic of South Sudan', common: 'South Sudan' } } }, cca2: 'SS', flag: '🇸🇸' },
-    { name: { common: 'San Marino', official: 'Republic of San Marino', nativeName: { ita: { official: 'Repubblica di San Marino', common: 'San Marino' } } }, cca2: 'SM', flag: '🇸🇲' },
     {
-        name: {
-            common: 'Tajikistan',
-            official: 'Republic of Tajikistan',
-            nativeName: { rus: { official: 'Республика Таджикистан', common: 'Таджикистан' }, tgk: { official: 'Ҷумҳурии Тоҷикистон', common: 'Тоҷикистон' } }
-        },
+        name: { common: 'South Sudan', official: 'Republic of South Sudan' },
+        cca2: 'SS',
+        altNames: 'SS',
+        flag: '🇸🇸'
+    },
+    {
+        name: { common: 'San Marino', official: 'Republic of San Marino' },
+        cca2: 'SM',
+        altNames: 'SM,Republic of San Marino,Repubblica di San Marino',
+        flag: '🇸🇲'
+    },
+    {
+        name: { common: 'Tajikistan', official: 'Republic of Tajikistan' },
         cca2: 'TJ',
+        altNames: 'TJ,Toçikiston,Republic of Tajikistan,Ҷумҳурии Тоҷикистон,Çumhuriyi Toçikiston',
         flag: '🇹🇯'
     },
     {
-        name: {
-            common: 'Uganda',
-            official: 'Republic of Uganda',
-            nativeName: { eng: { official: 'Republic of Uganda', common: 'Uganda' }, swa: { official: 'Republic of Uganda', common: 'Uganda' } }
-        },
+        name: { common: 'Uganda', official: 'Republic of Uganda' },
         cca2: 'UG',
+        altNames: 'UG,Republic of Uganda,Jamhuri ya Uganda',
         flag: '🇺🇬'
     },
     {
-        name: {
-            common: 'Samoa',
-            official: 'Independent State of Samoa',
-            nativeName: { eng: { official: 'Independent State of Samoa', common: 'Samoa' }, smo: { official: 'Malo Saʻoloto Tutoʻatasi o Sāmoa', common: 'Sāmoa' } }
-        },
+        name: { common: 'Samoa', official: 'Independent State of Samoa' },
         cca2: 'WS',
+        altNames: 'WS,Independent State of Samoa,Malo Saʻoloto Tutoʻatasi o Sāmoa',
         flag: '🇼🇸'
     },
     {
-        name: { common: 'Algeria', official: "People's Democratic Republic of Algeria", nativeName: { ara: { official: 'الجمهورية الديمقراطية الشعبية الجزائرية', common: 'الجزائر' } } },
+        name: { common: 'Algeria', official: "People's Democratic Republic of Algeria" },
         cca2: 'DZ',
+        altNames: 'DZ,Dzayer,Algérie',
         flag: '🇩🇿'
     },
-    { name: { common: 'Ivory Coast', official: "Republic of Côte d'Ivoire", nativeName: { fra: { official: "République de Côte d'Ivoire", common: "Côte d'Ivoire" } } }, cca2: 'CI', flag: '🇨🇮' },
+    {
+        name: { common: 'Ivory Coast', official: "Republic of Côte d'Ivoire" },
+        cca2: 'CI',
+        altNames: "CI,Côte d'Ivoire,Ivory Coast,Republic of Côte d'Ivoire,République de Côte d'Ivoire",
+        flag: '🇨🇮'
+    },
     {
         name: {
             common: 'United States Virgin Islands',
-            official: 'Virgin Islands of the United States',
-            nativeName: { eng: { official: 'Virgin Islands of the United States', common: 'United States Virgin Islands' } }
+            official: 'Virgin Islands of the United States'
         },
         cca2: 'VI',
+        altNames: 'VI,Virgin Islands, U.S.',
         flag: '🇻🇮'
     },
     {
-        name: {
-            common: 'Azerbaijan',
-            official: 'Republic of Azerbaijan',
-            nativeName: { aze: { official: 'Azərbaycan Respublikası', common: 'Azərbaycan' }, rus: { official: 'Азербайджанская Республика', common: 'Азербайджан' } }
-        },
+        name: { common: 'Azerbaijan', official: 'Republic of Azerbaijan' },
         cca2: 'AZ',
+        altNames: 'AZ,Republic of Azerbaijan,Azərbaycan Respublikası',
         flag: '🇦🇿'
     },
     {
-        name: {
-            common: 'Sri Lanka',
-            official: 'Democratic Socialist Republic of Sri Lanka',
-            nativeName: { sin: { official: 'ශ්‍රී ලංකා ප්‍රජාතාන්ත්‍රික සමාජවාදී ජනරජය', common: 'ශ්‍රී ලංකාව' }, tam: { official: 'இலங்கை சனநாயக சோசலிசக் குடியரசு', common: 'இலங்கை' } }
-        },
+        name: { common: 'Sri Lanka', official: 'Democratic Socialist Republic of Sri Lanka' },
         cca2: 'LK',
+        altNames: 'LK,ilaṅkai,Democratic Socialist Republic of Sri Lanka',
         flag: '🇱🇰'
     },
     {
-        name: { common: 'Christmas Island', official: 'Territory of Christmas Island', nativeName: { eng: { official: 'Territory of Christmas Island', common: 'Christmas Island' } } },
+        name: { common: 'Christmas Island', official: 'Territory of Christmas Island' },
         cca2: 'CX',
+        altNames: 'CX,Territory of Christmas Island',
         flag: '🇨🇽'
     },
     {
-        name: { common: 'Chad', official: 'Republic of Chad', nativeName: { ara: { official: 'جمهورية تشاد', common: 'تشاد‎' }, fra: { official: 'République du Tchad', common: 'Tchad' } } },
+        name: { common: 'Chad', official: 'Republic of Chad' },
         cca2: 'TD',
+        altNames: 'TD,Tchad,Republic of Chad,République du Tchad',
         flag: '🇹🇩'
     },
     {
-        name: {
-            common: 'Argentina',
-            official: 'Argentine Republic',
-            nativeName: { grn: { official: 'Argentine Republic', common: 'Argentina' }, spa: { official: 'República Argentina', common: 'Argentina' } }
-        },
+        name: { common: 'Argentina', official: 'Argentine Republic' },
         cca2: 'AR',
+        altNames: 'AR,Argentine Republic,República Argentina',
         flag: '🇦🇷'
     },
     {
-        name: {
-            common: 'India',
-            official: 'Republic of India',
-            nativeName: { eng: { official: 'Republic of India', common: 'India' }, hin: { official: 'भारत गणराज्य', common: 'भारत' }, tam: { official: 'இந்தியக் குடியரசு', common: 'இந்தியா' } }
-        },
+        name: { common: 'India', official: 'Republic of India' },
         cca2: 'IN',
+        altNames: 'IN,Bhārat,Republic of India,Bharat Ganrajya,இந்தியா',
         flag: '🇮🇳'
     },
-    { name: { common: 'Saint Martin', official: 'Saint Martin', nativeName: { fra: { official: 'Saint-Martin', common: 'Saint-Martin' } } }, cca2: 'MF', flag: '🇲🇫' },
     {
-        name: { common: 'Haiti', official: 'Republic of Haiti', nativeName: { fra: { official: "République d'Haïti", common: 'Haïti' }, hat: { official: 'Repiblik Ayiti', common: 'Ayiti' } } },
+        name: { common: 'Saint Martin', official: 'Saint Martin' },
+        cca2: 'MF',
+        altNames: 'MF,Collectivity of Saint Martin,Collectivité de Saint-Martin,Saint Martin (French part)',
+        flag: '🇲🇫'
+    },
+    {
+        name: { common: 'Haiti', official: 'Republic of Haiti' },
         cca2: 'HT',
+        altNames: "HT,Republic of Haiti,République d'Haïti,Repiblik Ayiti",
         flag: '🇭🇹'
     },
-    { name: { common: 'Saint Lucia', official: 'Saint Lucia', nativeName: { eng: { official: 'Saint Lucia', common: 'Saint Lucia' } } }, cca2: 'LC', flag: '🇱🇨' },
-    { name: { common: 'Nepal', official: 'Federal Democratic Republic of Nepal', nativeName: { nep: { official: 'नेपाल संघीय लोकतान्त्रिक गणतन्त्र', common: 'नेपाल' } } }, cca2: 'NP', flag: '🇳🇵' },
     {
-        name: {
-            common: 'Tokelau',
-            official: 'Tokelau',
-            nativeName: { eng: { official: 'Tokelau', common: 'Tokelau' }, smo: { official: 'Tokelau', common: 'Tokelau' }, tkl: { official: 'Tokelau', common: 'Tokelau' } }
-        },
+        name: { common: 'Saint Lucia', official: 'Saint Lucia' },
+        cca2: 'LC',
+        altNames: 'LC',
+        flag: '🇱🇨'
+    },
+    {
+        name: { common: 'Nepal', official: 'Federal Democratic Republic of Nepal' },
+        cca2: 'NP',
+        altNames: 'NP,Federal Democratic Republic of Nepal,Loktāntrik Ganatantra Nepāl',
+        flag: '🇳🇵'
+    },
+    {
+        name: { common: 'Tokelau', official: 'Tokelau' },
         cca2: 'TK',
+        altNames: 'TK',
         flag: '🇹🇰'
     },
     {
-        name: { common: 'Turkmenistan', official: 'Turkmenistan', nativeName: { rus: { official: 'Туркменистан', common: 'Туркмения' }, tuk: { official: 'Türkmenistan', common: 'Türkmenistan' } } },
+        name: { common: 'Turkmenistan', official: 'Turkmenistan' },
         cca2: 'TM',
+        altNames: 'TM',
         flag: '🇹🇲'
     },
     {
-        name: { common: 'Israel', official: 'State of Israel', nativeName: { ara: { official: 'دولة إسرائيل', common: 'إسرائيل' }, heb: { official: 'מדינת ישראל', common: 'ישראל' } } },
+        name: { common: 'Israel', official: 'State of Israel' },
         cca2: 'IL',
+        altNames: "IL,State of Israel,Medīnat Yisrā'el",
         flag: '🇮🇱'
     },
     {
         name: {
             common: 'Caribbean Netherlands',
-            official: 'Bonaire, Sint Eustatius and Saba',
-            nativeName: {
-                nld: { official: 'Bonaire, Sint Eustatius en Saba', common: 'Caribisch Nederland' },
-                pap: { official: 'Boneiru, Sint Eustatius y Saba', common: 'Boneiru, Sint Eustatius y Saba' }
-            }
+            official: 'Bonaire, Sint Eustatius and Saba'
         },
         cca2: 'BQ',
+        altNames: 'BES islands',
         flag: '🇧🇶'
     },
     {
-        name: { common: 'Malta', official: 'Republic of Malta', nativeName: { eng: { official: 'Republic of Malta', common: 'Malta' }, mlt: { official: "Repubblika ta ' Malta", common: 'Malta' } } },
+        name: { common: 'Malta', official: 'Republic of Malta' },
         cca2: 'MT',
+        altNames: "MT,Republic of Malta,Repubblika ta' Malta",
         flag: '🇲🇹'
     },
     {
         name: {
             common: 'Northern Mariana Islands',
-            official: 'Commonwealth of the Northern Mariana Islands',
-            nativeName: {
-                cal: { official: 'Commonwealth of the Northern Mariana Islands', common: 'Northern Mariana Islands' },
-                cha: { official: 'Sankattan Siha Na Islas Mariånas', common: 'Na Islas Mariånas' },
-                eng: { official: 'Commonwealth of the Northern Mariana Islands', common: 'Northern Mariana Islands' }
-            }
+            official: 'Commonwealth of the Northern Mariana Islands'
         },
         cca2: 'MP',
+        altNames: 'MP,Commonwealth of the Northern Mariana Islands,Sankattan Siha Na Islas Mariånas',
         flag: '🇲🇵'
     },
     {
-        name: {
-            common: 'Malawi',
-            official: 'Republic of Malawi',
-            nativeName: { eng: { official: 'Republic of Malawi', common: 'Malawi' }, nya: { official: 'Chalo cha Malawi, Dziko la Malaŵi', common: 'Malaŵi' } }
-        },
+        name: { common: 'Malawi', official: 'Republic of Malawi' },
         cca2: 'MW',
+        altNames: 'MW,Republic of Malawi',
         flag: '🇲🇼'
     },
-    { name: { common: 'Gibraltar', official: 'Gibraltar', nativeName: { eng: { official: 'Gibraltar', common: 'Gibraltar' } } }, cca2: 'GI', flag: '🇬🇮' },
     {
-        name: {
-            common: 'Vanuatu',
-            official: 'Republic of Vanuatu',
-            nativeName: {
-                bis: { official: 'Ripablik blong Vanuatu', common: 'Vanuatu' },
-                eng: { official: 'Republic of Vanuatu', common: 'Vanuatu' },
-                fra: { official: 'République de Vanuatu', common: 'Vanuatu' }
-            }
-        },
+        name: { common: 'Gibraltar', official: 'Gibraltar' },
+        cca2: 'GI',
+        altNames: 'GI',
+        flag: '🇬🇮'
+    },
+    {
+        name: { common: 'Vanuatu', official: 'Republic of Vanuatu' },
         cca2: 'VU',
+        altNames: 'VU,Republic of Vanuatu,Ripablik blong Vanuatu,République de Vanuatu',
         flag: '🇻🇺'
     },
     {
         name: {
             common: 'United Kingdom',
-            official: 'United Kingdom of Great Britain and Northern Ireland',
-            nativeName: { eng: { official: 'United Kingdom of Great Britain and Northern Ireland', common: 'United Kingdom' } }
+            official: 'United Kingdom of Great Britain and Northern Ireland'
         },
         cca2: 'GB',
+        altNames: 'GB,UK,Great Britain',
         flag: '🇬🇧'
     },
-    { name: { common: 'Martinique', official: 'Martinique', nativeName: { fra: { official: 'Martinique', common: 'Martinique' } } }, cca2: 'MQ', flag: '🇲🇶' },
-    { name: { common: 'Mexico', official: 'United Mexican States', nativeName: { spa: { official: 'Estados Unidos Mexicanos', common: 'México' } } }, cca2: 'MX', flag: '🇲🇽' },
     {
-        name: {
-            common: 'Bosnia and Herzegovina',
-            official: 'Bosnia and Herzegovina',
-            nativeName: {
-                bos: { official: 'Bosna i Hercegovina', common: 'Bosna i Hercegovina' },
-                hrv: { official: 'Bosna i Hercegovina', common: 'Bosna i Hercegovina' },
-                srp: { official: 'Боснa и Херцеговина', common: 'Боснa и Херцеговина' }
-            }
-        },
+        name: { common: 'Martinique', official: 'Martinique' },
+        cca2: 'MQ',
+        altNames: 'MQ',
+        flag: '🇲🇶'
+    },
+    {
+        name: { common: 'Mexico', official: 'United Mexican States' },
+        cca2: 'MX',
+        altNames: 'MX,Mexicanos,United Mexican States,Estados Uncca2os Mexicanos',
+        flag: '🇲🇽'
+    },
+    {
+        name: { common: 'Bosnia and Herzegovina', official: 'Bosnia and Herzegovina' },
         cca2: 'BA',
+        altNames: 'BA,Bosnia-Herzegovina,Босна и Херцеговина',
         flag: '🇧🇦'
     },
-    { name: { common: 'Romania', official: 'Romania', nativeName: { ron: { official: 'România', common: 'România' } } }, cca2: 'RO', flag: '🇷🇴' },
     {
-        name: { common: 'Svalbard and Jan Mayen', official: 'Svalbard og Jan Mayen', nativeName: { nor: { official: 'Svalbard og Jan Mayen', common: 'Svalbard og Jan Mayen' } } },
+        name: { common: 'Romania', official: 'Romania' },
+        cca2: 'RO',
+        altNames: 'RO,Rumania,Roumania,România',
+        flag: '🇷🇴'
+    },
+    {
+        name: { common: 'Svalbard and Jan Mayen', official: 'Svalbard og Jan Mayen' },
         cca2: 'SJ',
+        altNames: 'SJ,Svalbard and Jan Mayen Islands',
         flag: '🇸🇯'
     },
     {
         name: {
             common: 'Heard Island and McDonald Islands',
-            official: 'Heard Island and McDonald Islands',
-            nativeName: { eng: { official: 'Heard Island and McDonald Islands', common: 'Heard Island and McDonald Islands' } }
+            official: 'Heard Island and McDonald Islands'
         },
         cca2: 'HM',
+        altNames: 'HM,Heard Island and McDonald Islands',
         flag: '🇭🇲'
     },
     {
         name: {
             common: 'British Indian Ocean Territory',
-            official: 'British Indian Ocean Territory',
-            nativeName: { eng: { official: 'British Indian Ocean Territory', common: 'British Indian Ocean Territory' } }
+            official: 'British Indian Ocean Territory'
         },
         cca2: 'IO',
+        altNames: 'IO',
         flag: '🇮🇴'
     },
-    { name: { common: 'Réunion', official: 'Réunion Island', nativeName: { fra: { official: 'Ile de la Réunion', common: 'La Réunion' } } }, cca2: 'RE', flag: '🇷🇪' },
     {
-        name: {
-            common: 'Kyrgyzstan',
-            official: 'Kyrgyz Republic',
-            nativeName: { kir: { official: 'Кыргыз Республикасы', common: 'Кыргызстан' }, rus: { official: 'Кыргызская Республика', common: 'Киргизия' } }
-        },
+        name: { common: 'Réunion', official: 'Réunion Island' },
+        cca2: 'RE',
+        altNames: 'RE,Reunion',
+        flag: '🇷🇪'
+    },
+    {
+        name: { common: 'Kyrgyzstan', official: 'Kyrgyz Republic' },
         cca2: 'KG',
+        altNames: 'KG,Киргизия,Kyrgyz Republic,Кыргыз Республикасы,Kyrgyz Respublikasy',
         flag: '🇰🇬'
     },
-    { name: { common: 'Thailand', official: 'Kingdom of Thailand', nativeName: { tha: { official: 'ราชอาณาจักรไทย', common: 'ประเทศไทย' } } }, cca2: 'TH', flag: '🇹🇭' },
     {
-        name: {
-            common: 'Burundi',
-            official: 'Republic of Burundi',
-            nativeName: { fra: { official: 'République du Burundi', common: 'Burundi' }, run: { official: "Republika y'Uburundi ", common: 'Uburundi' } }
-        },
+        name: { common: 'Thailand', official: 'Kingdom of Thailand' },
+        cca2: 'TH',
+        altNames: 'TH,Prathet,Thai,Kingdom of Thailand,ราชอาณาจักรไทย,Ratcha Anachak Thai',
+        flag: '🇹🇭'
+    },
+    {
+        name: { common: 'Burundi', official: 'Republic of Burundi' },
         cca2: 'BI',
+        altNames: "BI,Republic of Burundi,Republika y'Uburundi,République du Burundi",
         flag: '🇧🇮'
     },
-    { name: { common: 'Greenland', official: 'Greenland', nativeName: { kal: { official: 'Kalaallit Nunaat', common: 'Kalaallit Nunaat' } } }, cca2: 'GL', flag: '🇬🇱' },
-    { name: { common: 'Austria', official: 'Republic of Austria', nativeName: { bar: { official: 'Republik Österreich', common: 'Österreich' } } }, cca2: 'AT', flag: '🇦🇹' },
-    { name: { common: 'France', official: 'French Republic', nativeName: { fra: { official: 'République française', common: 'France' } } }, cca2: 'FR', flag: '🇫🇷' },
-    { name: { common: 'Monaco', official: 'Principality of Monaco', nativeName: { fra: { official: 'Principauté de Monaco', common: 'Monaco' } } }, cca2: 'MC', flag: '🇲🇨' },
     {
-        name: { common: 'Nauru', official: 'Republic of Nauru', nativeName: { eng: { official: 'Republic of Nauru', common: 'Nauru' }, nau: { official: 'Republic of Nauru', common: 'Nauru' } } },
+        name: { common: 'Greenland', official: 'Greenland' },
+        cca2: 'GL',
+        altNames: 'GL,Grønland',
+        flag: '🇬🇱'
+    },
+    {
+        name: { common: 'Austria', official: 'Republic of Austria' },
+        cca2: 'AT',
+        altNames: 'AT,Osterreich,Oesterreich',
+        flag: '🇦🇹'
+    },
+    {
+        name: { common: 'France', official: 'French Republic' },
+        cca2: 'FR',
+        altNames: 'FR,French Republic,République française',
+        flag: '🇫🇷'
+    },
+    {
+        name: { common: 'Monaco', official: 'Principality of Monaco' },
+        cca2: 'MC',
+        altNames: 'MC,Principality of Monaco,Principauté de Monaco',
+        flag: '🇲🇨'
+    },
+    {
+        name: { common: 'Nauru', official: 'Republic of Nauru' },
         cca2: 'NR',
+        altNames: 'NR,Naoero,Pleasant Island,Republic of Nauru,Ripublik Naoero',
         flag: '🇳🇷'
     },
-    { name: { common: 'Niger', official: 'Republic of Niger', nativeName: { fra: { official: 'République du Niger', common: 'Niger' } } }, cca2: 'NE', flag: '🇳🇪' },
     {
-        name: {
-            common: 'American Samoa',
-            official: 'American Samoa',
-            nativeName: { eng: { official: 'American Samoa', common: 'American Samoa' }, smo: { official: 'Sāmoa Amelika', common: 'Sāmoa Amelika' } }
-        },
+        name: { common: 'Niger', official: 'Republic of Niger' },
+        cca2: 'NE',
+        altNames: 'NE,Nijar',
+        flag: '🇳🇪'
+    },
+    {
+        name: { common: 'American Samoa', official: 'American Samoa' },
         cca2: 'AS',
+        altNames: 'AS,Amerika Sāmoa,Amelika Sāmoa,Sāmoa Amelika',
         flag: '🇦🇸'
     },
-    { name: { common: 'Mozambique', official: 'Republic of Mozambique', nativeName: { por: { official: 'República de Moçambique', common: 'Moçambique' } } }, cca2: 'MZ', flag: '🇲🇿' },
     {
-        name: {
-            common: 'Timor-Leste',
-            official: 'Democratic Republic of Timor-Leste',
-            nativeName: { por: { official: 'República Democrática de Timor-Leste', common: 'Timor-Leste' }, tet: { official: 'Repúblika Demokrátika Timór-Leste', common: 'Timór-Leste' } }
-        },
+        name: { common: 'Mozambique', official: 'Republic of Mozambique' },
+        cca2: 'MZ',
+        altNames: 'MZ,Republic of Mozambique,República de Moçambique',
+        flag: '🇲🇿'
+    },
+    {
+        name: { common: 'Timor-Leste', official: 'Democratic Republic of Timor-Leste' },
         cca2: 'TL',
+        altNames: "TL,East Timor,Democratic Republic of Timor-Leste,República Democrática de Timor-Leste,Repúblika Demokrátika Timór-Leste,Timór Lorosa'e,Timor Lorosae",
         flag: '🇹🇱'
     },
-    { name: { common: 'Nicaragua', official: 'Republic of Nicaragua', nativeName: { spa: { official: 'República de Nicaragua', common: 'Nicaragua' } } }, cca2: 'NI', flag: '🇳🇮' },
-    { name: { common: 'Panama', official: 'Republic of Panama', nativeName: { spa: { official: 'República de Panamá', common: 'Panamá' } } }, cca2: 'PA', flag: '🇵🇦' },
-    { name: { common: 'Poland', official: 'Republic of Poland', nativeName: { pol: { official: 'Rzeczpospolita Polska', common: 'Polska' } } }, cca2: 'PL', flag: '🇵🇱' },
-    { name: { common: 'Libya', official: 'State of Libya', nativeName: { ara: { official: 'الدولة ليبيا', common: '‏ليبيا' } } }, cca2: 'LY', flag: '🇱🇾' }
+    {
+        name: { common: 'Nicaragua', official: 'Republic of Nicaragua' },
+        cca2: 'NI',
+        altNames: 'NI,Republic of Nicaragua,República de Nicaragua',
+        flag: '🇳🇮'
+    },
+    {
+        name: { common: 'Panama', official: 'Republic of Panama' },
+        cca2: 'PA',
+        altNames: 'PA,Republic of Panama,República de Panamá',
+        flag: '🇵🇦'
+    },
+    {
+        name: { common: 'Poland', official: 'Republic of Poland' },
+        cca2: 'PL',
+        altNames: 'PL,Republic of Poland,Rzeczpospolita Polska',
+        flag: '🇵🇱'
+    },
+    {
+        name: { common: 'Libya', official: 'State of Libya' },
+        cca2: 'LY',
+        altNames: 'LY,State of Libya,Dawlat Libya',
+        flag: '🇱🇾'
+    }
 ];
