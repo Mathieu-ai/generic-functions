@@ -32,13 +32,22 @@ export function $capitalize(str: string) {
  * @param {string} str
  * @returns Number[]
  */
-export async function $minAndMaxYears(arr: any[], str: string): Promise<number[]> {
+export async function $minAndMaxYears(
+    arr: any[],
+    str: string
+): Promise<{
+    min: number;
+    max: number;
+}> {
     let min = 0;
     arr.forEach((m) => {
         const year = dayjs(m[str]).year();
         if (!min || year < min) min = year;
     });
-    return [Math.round(min / 10) * 10, Math.round(dayjs(Date.now()).year() / 10) * 10 + 10];
+    return {
+        min: Math.round(min / 10) * 10,
+        max: Math.round(dayjs(Date.now()).year() / 10) * 10 + 10
+    };
 }
 
 /**

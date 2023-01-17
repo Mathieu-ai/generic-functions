@@ -220,21 +220,48 @@ export const $TypeOfMembers: Array<{
  * @returns Array
  */
 export const $TypeOfCompanies = [
-    { type: 'recent', bgColor: 'blue-11', icon: 'person_add' },
     {
-        type: 'Freight',
+        state: 'recent',
+        bgColor: 'blue-11',
+        icon: 'person_add',
+        type: 'info'
+    },
+    {
+        state: 'Freight',
         bgColor: 'light-blue-5',
-        icon: 'directions_boat'
+        icon: 'directions_boat',
+        type: 'warning'
     },
-    { type: 'Passenger', bgColor: 'cyan-5', icon: 'person' },
-    { type: 'infraStructure', bgColor: 'teal-4', icon: 'business' },
-    { type: 'Holding', bgColor: 'teal-12', icon: 'data_thresholding' },
     {
-        type: 'Integrated',
-        bgColor: 'green-3',
-        icon: 'integration_instructions'
+        state: 'Passenger',
+        bgColor: 'cyan-5',
+        icon: 'person',
+        type: 'info'
     },
-    { type: 'Other', bgColor: 'blue-grey-7', icon: 'alt_route' }
+    {
+        state: 'infraStructure',
+        bgColor: 'teal-4',
+        icon: 'business',
+        type: 'warning'
+    },
+    {
+        state: 'Holding',
+        bgColor: 'teal-12',
+        icon: 'data_thresholding',
+        type: 'info'
+    },
+    {
+        state: 'Integrated',
+        bgColor: 'green-3',
+        icon: 'integration_instructions',
+        type: 'info'
+    },
+    {
+        state: 'Other',
+        bgColor: 'blue-grey-7',
+        icon: 'alt_route',
+        type: 'warning'
+    }
 ];
 
 /**
