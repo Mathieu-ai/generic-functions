@@ -25,11 +25,34 @@ pnpm i generic-functions.mlai
 ## Example
 
 ```js
-import { $removeBreakLines } from 'generic-functions.mlai';
+import { $flat } from 'generic-functions.mlai';
 
-console.log($removeBreakLines('IHave\nBreaklines'));
+const obj = {
+    id: 1,
+    name: 'John',
+    lastName: 'Doe',
+    coor: {
+        lat: 23.56,
+        long: 784.542
+    },
+    family: {
+        parents: [
+            { name: 'Pierre', lastName: 'Doe', role: 'father' },
+            { name: 'Blanche', lastName: 'Doe', role: 'mother' }
+        ],
+        broAndSis: [
+            { name: 'Jean', lastName: 'Doe', role: 'brother' },
+            { name: 'Clementine', lastName: 'Doe', role: 'sister' }
+        ]
+    },
+    moneyPerTrim: [1500, 1521, 1521]
+};
 
-// prints: IHaveBreaklines
+$flat(obj, ['name', 'lastName', 'lat', 'long']);
+// 'John, Doe, 23.56, 784.542'
+
+$flat(obj, ['*']);
+// 'John, Doe, 23.56, 784.542, Pierre, Blanche, Jean, Clementine, Doe, 1500, 1521, 1521'
 ```
 
 ## Contributing
