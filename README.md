@@ -25,7 +25,7 @@ pnpm i generic-functions.mlai
 ## Example
 
 ```js
-import { $flat } from 'generic-functions.mlai';
+import { mlFn } from 'generic-functions.mlai';
 
 const obj = {
     id: 1,
@@ -48,10 +48,10 @@ const obj = {
     moneyPerTrim: [1500, 1521, 1521]
 };
 
-$flat(obj, ['name', 'lastName', 'lat', 'long']);
+mlFn.flat(obj, ['name', 'lastName', 'lat', 'long']);
 // 'John, Doe, 23.56, 784.542'
 
-$flat(obj, ['*']);
+mlFn.flat(obj, ['*']);
 // 'John, Doe, 23.56, 784.542, Pierre, Blanche, Jean, Clementine, Doe, 1500, 1521, 1521'
 ```
 
