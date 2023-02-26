@@ -1,4 +1,21 @@
-import dayjs from 'dayjs';
+import dayjs, { Dayjs } from 'dayjs';
+
+/**
+ * Return type of the function `extractFromString`
+ * * 🟢 generic, it is a type
+ */
+export type ExtractionResult = string | boolean | number | Date | any[] | null;
+
+/**
+ * Return type of the function `extractFromString`
+ * * 🟢 generic, it is a type
+ *
+ */
+export interface ExtractOptions {
+    str: string;
+    reg: RegExp;
+    type: 'string' | 'boolean' | 'array' | 'number' | 'date';
+}
 
 /**
  * Object with all the properties
@@ -6,7 +23,7 @@ import dayjs from 'dayjs';
 export const mlProp = {
     /**
      * List of countries
-     * * ✔️ - generic, it is a Array
+     * * 🟢 generic, it is a Array
      * ```js
      * // Print => [{...}, { ...}]
      * ```
@@ -1577,8 +1594,8 @@ export const mlProp = {
         }
     ],
     /**
-     * Where all regexps are defined to identify different types of strings
-     * * ✔️ - generic, it is a Object
+     * Where all regexps are defined to identify different type of strings
+     * * 🟢 generic, it is a Object
      * ```js
      * // Print => { delHtmlTag : ..., ... }
      * ```
@@ -1588,19 +1605,44 @@ export const mlProp = {
     Reg: {
         /**
          * identify string in html tag
-         * * ✔️ - generic, it is a regexp
-         * ```js
-         * // Print => /.*?>([^<]*)/
-         * ```
+         * * 🟢 generic, it is a regexp
          * ___
          * @returns String
          */
-        delHtmlTag: new RegExp(/.*?>([^<]*)/)
+        htmlTag: new RegExp(/.*?>([^<]*)/),
+        /**
+         * identify Brackets in html tag
+         * * 🟢 generic, it is a regexp
+         * ___
+         * @returns String
+         */
+        inBrackets: new RegExp(/.*?\[([^\]]*)/),
+        /**
+         * identify Strings in html tag
+         * * 🟢 generic, it is a regexp
+         * ___
+         * @returns String
+         */
+        inStrings: new RegExp(/.*?\"([^\"]*)/),
+        /**
+         * identify html tag or arrays (brackets)
+         * * 🟢 generic, it is a regexp
+         * ___
+         * @returns String
+         */
+        TagRegex: new RegExp(/<([a-z][a-z0-9]*)[^>]*>([^<]*)<\/\1>|(\[(.*?)\])/i),
+        /**
+         * identify the first open Parenthese
+         * * 🟢 generic, it is a regexp
+         * ___
+         * @returns String
+         */
+        openParentheses: new RegExp(/^(.*?)\(/)
     },
     /**
      * Object with dates properties and function
-     * * 🚫 - needs [dayjs](https://day.js.org/docs/en/installation/installation) to function
-     * * ✔️ - generic, it is a Object
+     * * 🔴 needs [dayjs](https://day.js.org/docs/en/installation/installation) to function
+     * * 🟢 generic, it is a Object
      * ___
      * @returns Object
      */
@@ -1608,7 +1650,7 @@ export const mlProp = {
         format: {
             /**
              * Return Day, month and year
-             * * ✔️ - generic, it is a string
+             * * 🟢 generic, it is a string
              * ```js
              * // Print => "DD/MM/YYYY"
              * ```
@@ -1618,7 +1660,7 @@ export const mlProp = {
             DATE: 'DD/MM/YYYY',
             /**
              * Return the hours with minutes
-             * * ✔️ - generic, it is a string
+             * * 🟢 generic, it is a string
              * ```js
              * // Print => "HH:mm:ss"
              * ```
@@ -1628,7 +1670,7 @@ export const mlProp = {
             TIME: 'HH:mm',
             /**
              * Return the Date with Hours and minutes
-             * * ✔️ - generic, it is a string
+             * * 🟢 generic, it is a string
              * ```js
              * // Print => "DD/MM/YYYY,HH:mm:ss"
              * ```
@@ -1639,8 +1681,8 @@ export const mlProp = {
         },
         /**
          * Format current time to any format specified
-         * * 🚫 - needs [dayjs](https://day.js.org/docs/en/installation/installation) to function
-         * * ✔️ - Function is generic, it can takes any string for any case to format
+         * * 🔴 needs [dayjs](https://day.js.org/docs/en/installation/installation) to function
+         * * 🟢 Function is generic, it can takes any string for any case to format
          * * Example :
          * ```js
          * now(Date.now(), "DD/MM/YYYY")
@@ -1650,12 +1692,12 @@ export const mlProp = {
          * @param {String} str
          * @returns String
          */
-        now: function (str: string): string {
-            return dayjs(new Date(Date.now())).format(str);
+        now: function (str?: string): string | Dayjs {
+            return str ? dayjs(new Date(Date.now())).format(str) : dayjs(new Date(Date.now()));
         },
         /**
          * Get number of seconds from now to midnight
-         * * ✔️ - Function is generic, it returns a number
+         * * 🟢 Function is generic, it returns a number
          * * Example :
          * ```js
          * secondsToTomorrow()
@@ -1672,7 +1714,7 @@ export const mlProp = {
         },
         /**
          * * Takes a String to check if is a Date
-         * * ✔️ - Function is generic, it can takes any string for any case to check if is a Date
+         * * 🟢 Function is generic, it can takes any string for any case to check if is a Date
          * * Example :
          * ```js
          * isDate("I Love Dev")
@@ -1688,8 +1730,8 @@ export const mlProp = {
         },
         /**
          *  Takes a String to format to any date format
-         * * 🚫 - needs [dayjs](https://day.js.org/docs/en/installation/installation) to function
-         * * ✔️ - Function is generic, it can takes any string for any case to format if is a Date
+         * * 🔴 needs [dayjs](https://day.js.org/docs/en/installation/installation) to function
+         * * 🟢 Function is generic, it can takes any string for any case to format if is a Date
          * * Example :
          * ```js
          * formatDate(Date.now(), 'YYYY/MM/DD')
@@ -1706,14 +1748,14 @@ export const mlProp = {
 
     /**
      * Custom response codes
-     * * ✔️ - generic, it is a Object
+     * * 🟢 generic, it is a Object
      * ___
      * @returns Number
      */
     ResCodes: {
         /**
          * Custom Property that indicates the first state of the members ( should never have this status code )
-         * * ✔️ - generic, it is a number
+         * * 🟢 generic, it is a number
          * ```js
          * // Prints => 0
          * ```
@@ -1723,7 +1765,7 @@ export const mlProp = {
         NOT_INIT: 0,
         /**
          * Custom Property that indicates that the members have been initialized at least once
-         * * ✔️ - generic, it is a number
+         * * 🟢 generic, it is a number
          * ```js
          * // Prints => 1
          * ```
@@ -1733,7 +1775,7 @@ export const mlProp = {
         IS_INIT: 1,
         /**
          * Custom Property that indicates that the members have been initialized at least once but the api is down
-         * * ✔️ - generic, it is a number
+         * * 🟢 generic, it is a number
          * ```js
          * // Prints => 2
          * ```
@@ -1743,7 +1785,7 @@ export const mlProp = {
         NOT_FOUND_INIT: 2,
         /**
          * Custom Property that indicates that the members have not been initialized at least once and that the api is down
-         * * ✔️ - generic, it is a number
+         * * 🟢 generic, it is a number
          * ```js
          * // Prints: 9
          * ```
@@ -1754,7 +1796,7 @@ export const mlProp = {
         //INFORMATIONAL: [100, 199],
         // /**
         //  * Represents HTTP success response resCodes
-        //  * * ✔️ - generic, it is a array
+        //  * * 🟢 generic, it is a array
         //  * * ```js
         //  *  // Print => [200,299]
         //  * ```
@@ -1768,7 +1810,7 @@ export const mlProp = {
 
     /**
      * Where all the members types are stored, most of properties are used for the front
-     * * ✔️ - generic, it is a array
+     * * 🟢 generic, it is a array
      * ```js
      * // Print => [{...}, { ...}]
      * ```
@@ -1804,7 +1846,7 @@ export const mlProp = {
 
     /**
      * Where all the companies types are stored, most of properties are used for the front
-     * * ✔️ - generic, it is a array
+     * * 🟢 generic, it is a array
      * ```js
      * // Print => [{...}, { ...}]
      * ```

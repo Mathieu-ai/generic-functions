@@ -6,6 +6,6 @@
     "editor.wordWrap": "on",
     "git.ignoreLimitWarning": true,
     "[typescript]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
+        "editor.defaultFormatter": "vscode.typescript-language-features"
     }
 }

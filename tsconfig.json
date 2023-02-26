@@ -22,7 +22,7 @@
         "strict": true,
         "target": "es6",
         "skipLibCheck": true,
-        "removeComments": true
+        "removeComments": false
     },
     "include": [
         "src/**/*.ts"
