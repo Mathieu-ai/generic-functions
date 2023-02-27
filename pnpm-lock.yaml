@@ -1,10 +1,14 @@
 lockfileVersion: 5.4
 
 specifiers:
+  '@types/node': ^18.14.2
   tsup: ^6.6.3
+  typescript: ^4.9.5
 
 dependencies:
-  tsup: 6.6.3
+  '@types/node': 18.14.2
+  tsup: 6.6.3_typescript@4.9.5
+  typescript: 4.9.5
 
 packages:
 
@@ -225,6 +229,10 @@ packages:
     dependencies:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.15.0
+    dev: false
+
+  /@types/node/18.14.2:
+    resolution: {integrity: sha512-1uEQxww3DaghA0RxqHx0O0ppVlo43pJhepY51OxuQIKHpjbnYLA7vcdwioNPzIqmC2u3I/dmylcqjlh0e7AyUA==}
     dev: false
 
   /any-promise/1.3.0:
@@ -759,7 +767,7 @@ packages:
     resolution: {integrity: sha512-Y/arvbn+rrz3JCKl9C4kVNfTfSm2/mEp5FSz5EsZSANGPSlQrpRI5M4PKF+mJnE52jOO90PnPSc3Ur3bTQw0gA==}
     dev: false
 
-  /tsup/6.6.3:
+  /tsup/6.6.3_typescript@4.9.5:
     resolution: {integrity: sha512-OLx/jFllYlVeZQ7sCHBuRVEQBBa1tFbouoc/gbYakyipjVQdWy/iQOvmExUA/ewap9iQ7tbJf9pW0PgcEFfJcQ==}
     engines: {node: '>=14.18'}
     hasBin: true
@@ -789,9 +797,16 @@ packages:
       source-map: 0.8.0-beta.0
       sucrase: 3.29.0
       tree-kill: 1.2.2
+      typescript: 4.9.5
     transitivePeerDependencies:
       - supports-color
       - ts-node
+    dev: false
+
+  /typescript/4.9.5:
+    resolution: {integrity: sha512-1FXk9E2Hm+QzZQ7z+McJiHL4NW1F2EzMu9Nq9i3zAaGqibafqYwCVU6WyWAuyQRRzOlxou8xZSyXLEN8oKj24g==}
+    engines: {node: '>=4.2.0'}
+    hasBin: true
     dev: false
 
   /webidl-conversions/4.0.2:

@@ -4,9 +4,9 @@
         "type": "git",
         "url": "https://github.com/Mathieu-ai/generic-functions.git"
     },
-    "version": "0.2.0",
+    "version": "0.2.1",
     "description": "Generic props and functions for any usage",
-    "main": "dist/cjs/index.js",
+    "main": "dist/index.js",
     "module": "dist/esm/index.js",
     "files": [
         "dist"
@@ -17,12 +17,17 @@
         "ts"
     ],
     "scripts": {
-        "build": "rm -rf dist/ && tsup ./src/index.ts"
+        "build": "rm -rf dist/ && tsup ./src/index.ts --treeshake --format esm,cjs --legacy-output "
     },
     "author": "mathieu-ai <mathieu.lievre@efrei.net>",
     "license": "MIT",
     "peerDependencies": {
         "axios": ">=1.2.2",
         "dayjs": ">=1.11.7"
+    },
+    "dependencies": {
+        "@types/node": "^18.14.2",
+        "tsup": "^6.6.3",
+        "typescript": "^4.9.5"
     }
 }
