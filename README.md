@@ -2,7 +2,8 @@
 
 [![npm version][npm-badge]][npm-url] [![Open issues][issues-badge]][issues-url] [![TypeScript][typescript-badge]][typescript-url]
 
-🚩 Have some useful props & functions
+* 💪 Have some useful props & functions
+* 📦 light library
 
 ## Install
 
@@ -25,7 +26,7 @@ pnpm i generic-functions.mlai
 ## Example
 
 ```js
-import { mlFn } from 'generic-functions.mlai';
+import { flat } from 'generic-functions.mlai';
 
 const obj = {
     id: 1,
@@ -48,10 +49,10 @@ const obj = {
     moneyPerTrim: [1500, 1521, 1521]
 };
 
-mlFn.flat(obj, ['name', 'lastName', 'lat', 'long']);
+flat(obj, ['name', 'lastName', 'lat', 'long']);
 // 'John, Doe, 23.56, 784.542'
 
-mlFn.flat(obj, ['*']);
+flat(obj);
 // 'John, Doe, 23.56, 784.542, Pierre, Blanche, Jean, Clementine, Doe, 1500, 1521, 1521'
 ```
 
@@ -70,3 +71,4 @@ All contributions are welcome!
 ## License
 
 generic-functions.mlai is [MIT licensed](LICENSE).
+
