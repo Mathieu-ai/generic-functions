@@ -1,1 +1,3 @@
-export * from './library';
+export * from './functions';
+export * from './props';
+export * from './types'

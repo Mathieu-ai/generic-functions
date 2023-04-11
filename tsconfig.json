@@ -1,6 +1,5 @@
 {
     "compilerOptions": {
-        "allowSyntheticDefaultImports": true,
         "declaration": true,
         "esModuleInterop": true,
         "lib": [
@@ -13,18 +12,24 @@
         "types": [
             "node"
         ],
-        "module": "es2015",
-        "moduleResolution": "node",
-        "noImplicitAny": true,
+        "noImplicitAny": false,
         "noUnusedLocals": true,
-        "outDir": "dist/esm",
-        "sourceMap": true,
-        "strict": true,
-        "target": "es6",
         "skipLibCheck": true,
-        "removeComments": false
+        "removeComments": false,
+        "allowSyntheticDefaultImports": true,
+        "moduleResolution": "node",
+        "target": "es6",
+        "module": "esnext",
+        "outDir": "dist",
+        "declarationDir": "dist",
+        "sourceMap": true,
+        "strict": true
     },
     "include": [
         "src/**/*.ts"
+    ],
+    "exclude": [
+        "node_modules",
+        "dist"
     ]
 }
