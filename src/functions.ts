@@ -108,17 +108,21 @@ export function minAndMaxYears(
         // Returns, e.g, "TTMD"
 */
 export function getInitials(str: string): string {
-    const words = str.split(" ");
-    const usedInitials: string[] = [];
-    const initials = words.reduce((acc: string[], word: string) => {
-        const firstLetter = word.charAt(0).toUpperCase();
-        if (/^[A-Za-z]$/.test(firstLetter) && acc.length < 4 && !usedInitials.includes(firstLetter)) {
-            acc.push(firstLetter);
-            usedInitials.push(firstLetter);
-        }
-        return acc;
-    }, []);
-    return initials.join("");
+    return str
+        .trim()
+        .split(/\s+/)
+        .reduce((initials: string[], word: string) => {
+            const firstLetter = word.charAt(0);
+            if (/^[A-Za-z]$/.test(firstLetter) && initials.length < 4) {
+                if (/^[A-Z]$/.test(firstLetter)) {
+                    initials.push(firstLetter);
+                } else if (initials.filter(c => /^[A-Z]$/.test(c)).length === 0) {
+                    initials.push(firstLetter.toUpperCase());
+                }
+            }
+            return initials;
+        }, [])
+        .join("");
 }
 
 /**
@@ -205,10 +209,14 @@ export function flat(data: any, options: FlatOptions = {}): string {
         for (const key in obj) {
             const val = obj[key];
 
-            if (typeof val === "object") {
+            if (typeof val === "object" && val) {
                 traverse(val);
-            } else if ((props.includes(key) || !props.length) && val) {
-                result.push(val);
+            } else if (!props.length || props.includes(key)) {
+                if (Array.isArray(val)) {
+                    result.push(...val.filter(item => item));
+                } else if (val) {
+                    result.push(val);
+                }
             }
         }
     };

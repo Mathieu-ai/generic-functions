@@ -23,37 +23,33 @@ or
 pnpm i generic-functions.mlai
 ```
 
-## Example
+## Usage
+
+Once you have installed the module, you can import like this:
 
 ```js
-import { flat } from 'generic-functions.mlai';
+// Load all
+import * as ml from 'generic-functions.mlai';
+console.log( ml.trim('ff fff') );
+// ff fff
 
-const obj = {
-    id: 1,
-    name: 'John',
-    lastName: 'Doe',
-    coor: {
-        lat: 23.56,
-        long: 784.542
-    },
-    family: {
-        parents: [
-            { name: 'Pierre', lastName: 'Doe', role: 'father' },
-            { name: 'Blanche', lastName: 'Doe', role: 'mother' }
-        ],
-        broAndSis: [
-            { name: 'Jean', lastName: 'Doe', role: 'brother' },
-            { name: 'Clementine', lastName: 'Doe', role: 'sister' }
-        ]
-    },
-    moneyPerTrim: [1500, 1521, 1521]
-};
+// only import functions
+import * as mlFunc from 'generic-functions.mlai/functions';
+console.log( mlFunc.trim('ff fff') );
+// ff fff
 
-flat(obj, ['name', 'lastName', 'lat', 'long']);
-// 'John, Doe, 23.56, 784.542'
+// only import properties
+import { mlProp } from 'generic-functions.mlai/props';
 
-flat(obj);
-// 'John, Doe, 23.56, 784.542, Pierre, Blanche, Jean, Clementine, Doe, 1500, 1521, 1521'
+// only import `trim` from the various functions
+const { trim } = require('generic-functions.mlai/functions')
+console.log( trim('ff fff') );
+// ff fff
+
+// only import the `trim` from the module
+const { trim: trim2 } = require('generic-functions.mlai')
+console.log( trim2('ff fff') );
+// ff fff
 ```
 
 ## Contributing
