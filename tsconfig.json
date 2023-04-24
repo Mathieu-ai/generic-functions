@@ -1,5 +1,7 @@
 {
     "compilerOptions": {
+        "outDir": "./src",
+        "rootDir": "./src",
         "declaration": true,
         "esModuleInterop": true,
         "lib": [
@@ -20,8 +22,6 @@
         "moduleResolution": "node",
         "target": "es6",
         "module": "esnext",
-        "outDir": "dist",
-        "declarationDir": "dist",
         "sourceMap": true,
         "strict": true
     },
@@ -31,5 +31,5 @@
     "exclude": [
         "node_modules",
         "dist"
-    ]
+    ],
 }

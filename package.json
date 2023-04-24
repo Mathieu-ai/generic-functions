@@ -4,11 +4,11 @@
         "type": "git",
         "url": "https://github.com/Mathieu-ai/generic-functions.git"
     },
-    "version": "0.3.6",
+    "version": "0.4.0",
     "description": "Generic props and functions for any usage",
-    "main": "dist/index.js",
-    "types": "dist/index.d.ts",
-    "module": "dist/esm/index.js",
+    "main": "./index.js",
+    "types": "./index.d.ts",
+    "module": "./index.js",
     "files": [
         "dist"
     ],
@@ -18,7 +18,7 @@
         "ts"
     ],
     "scripts": {
-        "build": "rm -rf dist/ && tsc --outDir ./dist --declaration --module commonjs --target es6 --sourceMap"
+        "build": "tsc --outDir ./ --declaration --module commonjs --target es6 --sourceMap"
     },
     "author": "mathieu-ai <mathieu.lievre@efrei.net>",
     "license": "MIT",

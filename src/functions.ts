@@ -1,7 +1,10 @@
 import request from "axios";
 import { decodeHTML } from 'entities';
 import objectHash from 'object-hash';
-import dayjs, { Dayjs } from "dayjs";
+import dayjs from "dayjs";
+import isBetween from 'dayjs/plugin/isBetween'
+dayjs.extend(isBetween)
+
 import {
     ExtractionResult,
     logErrorOptions,
@@ -14,6 +17,7 @@ import {
     compareTypes_o,
     compareTypes_t,
     number_t,
+    filterData_arr_type,
 } from "./types";
 import { mlProp } from "./props";
 
@@ -163,12 +167,11 @@ export function sort({ arr, prop }: { arr: any[]; prop: string }): object[] {
 }
 
 /**
-    Flatten an object and return the values of the specified keys as a string.
+    Flatten an object and return the values of the specified keys as a string
     * * 🟢 Function is generic
-    * * 🟠 can't take parent object or array ( c.f example below, ex: family )
-    @param {any} data - The object to flatten.
-    @param {string[]} [options.props] - The keys to extract from the data
-    @return {string} - The values of the specified keys as a string, separated by a comma.
+    @param {any} data - Object to flatten.
+    @param {string[]} [options.props] - Keys to extract from the data
+    @return {string} - Values of the specified keys as a string, separated by a comma
     @example
         const data = [
             {
@@ -196,8 +199,8 @@ export function sort({ arr, prop }: { arr: any[]; prop: string }): object[] {
                 "moneyPerTrim": [1500, 1521, 1521]
             }
         ]
-        console.log(flat(data, {acceptALl: true}));
-        // "1, John, Doe, false, France, Paris, null, true, 784.542, Pierre, Doe, father, Blanche, Doe, mother, Jean, Doe, brother, Clementine, Doe, sister, 1500, 1521, 1521"
+        console.log(flat(data));
+        // "1, John, Doe, France, Paris, true, 784.542, Pierre, father, Blanche, mother, Jean, brother, Clementine, sister, 1500, 1521"
         flat(data, { props: ["city"] });
         // "Paris"
  */
@@ -222,7 +225,7 @@ export function flat(data: any, options: FlatOptions = {}): string {
     };
 
     traverse(data);
-    return result.join(', ');
+    return [...new Set(result)].join(', ');
 }
 
 /**
@@ -401,7 +404,7 @@ export function getCountry(
         now(Date.now(), "DD/MM/YYYY")
         // 01/10/2022
 */
-export function now(str?: string): string | Dayjs {
+export function now(str?: string) {
     return str
         ? dayjs(new Date(Date.now())).format(str)
         : dayjs(new Date(Date.now()));
@@ -707,7 +710,7 @@ export function getObjectValueByPath(obj: any, path: string[]): any {
         const uniqueByName = getUnique(data, 'name'); 
         // [{ id: 1, name: 'Alice' }, { id: 2, name: 'Bob' }, { id: 4, name: 'Charlie' }]
 */
-export function getUnique(data: (string | object)[], field?: string) {
+export function getUnique({ data, field }: { data: (string | object)[], field?: string }): (string | object)[] {
     const fieldPath = field ? field.split('.') : [];
     const uniqueValues: (string | object)[] = [];
     const seen = new Set<string>();
@@ -730,4 +733,90 @@ export function getUnique(data: (string | object)[], field?: string) {
     }
 
     return uniqueValues;
+}
+
+/**
+ * Returns an array with the last element of the input array of strings,
+ * or an empty array if the input array is empty.
+ *
+ * @param strings - The array of strings to get the last element from.
+ * @returns An array with the last element of the input array,
+ * or an empty array if the input array is empty.
+ *
+ * @example
+ * const arrayOfStrings = ['hello', 'world', 'how', 'are', 'you'];
+ * const lastElement = getLastElement(arrayOfStrings);
+ * console.log(lastElement);
+ * // Output: ['you']
+ */
+export function getLastElement(strings: string[]): string[] {
+    return isEmpty(strings) ? [] : [(strings.pop() as string)];
+}
+
+/**
+    Checks if the length of the first argument is less than the given size, and returns it if it is, otherwise returns the second argument
+    @param {Array.<(object|string)>} first - First argument to be checked for length
+    @param {string} second - Second argument to be returned if the length of the first argument is greater than or equal to the given size
+    @param {number} size - Maximum length allowed for the first argument
+    @returns {(string | (string | number)[])} - Either the first argument or the second argument, depending on their lengths
+    @example
+        console.log(checkLength("hello", "world", 5));
+        // "hello"
+*/
+export function checkLength(first: (string | (number | string)[]), second: (string | (number | string)[]), size: number): (string | (string | number)[]) {
+    return first.length < size ? first : second
+}
+
+/**
+    Filters array with three parameters
+    @remarks
+    The `arr` parameter must be an array of objects with at least the following properties:
+    * - `field_state`: an array of objects where each object has at least the property `state`
+    * - `field_search`: a string
+    * - `field_period`: an object with at least the property `ddeb`
+    * @param {filterData_arr_type[]} arr
+    * @param {object} param
+    * @returns filterData_arr_type[]
+ */
+export function filterData(
+    arr: filterData_arr_type[],
+    param: { sW: string; tbSO: string[]; tbRS?: number[] },
+): filterData_arr_type[] {
+    const { sW, tbSO, tbRS } = param
+    const tbExp = sW.match(/[A-Za-zÀ-ÖØ-öø-ÿ]+/gi) || []
+
+    return arr.filter((item: filterData_arr_type) => {
+        for (let i = 0; i < tbExp.length; i++) {
+            const searchedWord = purify(tbExp[i].toUpperCase())
+            if (!new RegExp(searchedWord, 'gi').test(item.field_search)) {
+                return false
+            }
+        }
+
+        for (const selected of tbSO) {
+            const len = item.field_state.length
+            if (!len) {
+                return false
+            }
+            for (let j = 0; j < len; j++) {
+                const memberState = item.field_state[j]
+
+                if (!memberState.state.includes(selected)) {
+                    return false
+                }
+            }
+        }
+
+        if (
+            tbRS && tbRS.length &&
+            !dayjs(item.field_period.ddeb).isBetween(
+                `01/01/${tbRS[0]}`,
+                `01/01/${tbRS[1]}`,
+                'year',
+            )
+        ) {
+            return false
+        }
+        return true
+    })
 }

@@ -134,3 +134,20 @@ export interface DecodeOptions {
     /** If true, looks up the entity in the named entity map. Otherwise, assumes the entity is a decimal code. */
     useNamedReferences?: boolean;
 }
+
+/**
+    props needed for the filterData function
+*/
+export type filterData_props = {
+    field_state: Array<{ state: string } & Record<string, any>>;
+    field_search: string;
+    field_period: { ddeb: any } & Record<string, any>;
+};
+
+/**
+    type for the filterData function
+*/
+export type filterData_arr_type = filterData_props & Record<string, any>;
+
+
+
