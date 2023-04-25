@@ -1,8 +1,10 @@
 {
     "compilerOptions": {
-        "outDir": "./src",
-        "rootDir": "./src",
+        "target": "es6",
+        "module": "commonjs",
+        "outDir": "dist",
         "declaration": true,
+        "strict": true,
         "esModuleInterop": true,
         "lib": [
             "es5",
@@ -20,10 +22,7 @@
         "removeComments": false,
         "allowSyntheticDefaultImports": true,
         "moduleResolution": "node",
-        "target": "es6",
-        "module": "esnext",
         "sourceMap": true,
-        "strict": true
     },
     "include": [
         "src/**/*.ts"
