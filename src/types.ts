@@ -5,6 +5,11 @@ import { Dayjs } from "dayjs";
     * * 🟢 generic, it is a type
 */
 export type ExtractionResult=string|boolean|number|Date|any[]|null;
+
+export type IndexableType = { 
+    [key: string]: any;
+};
+
 /**
     Return type of the function `extractFromString`
     * * 🟢 generic, it is a type
@@ -149,8 +154,19 @@ export type filterData_props={
 */
 export type filterData_arr_type=filterData_props&Record<string,any>;
 
-export type Indexable={
-    [ key: string ]: any;
+
+export interface FlatOptions {
+    props?: string[];
 }
 
-export type InputType=string|number|boolean|Date|Indexable;
+export interface NamedCharacter {
+    code: number;
+    name: string;
+}
+
+export interface NamedCharacters {
+    [ name: string ]: {
+        codepoints: number[];
+        characters: string;
+    };
+}

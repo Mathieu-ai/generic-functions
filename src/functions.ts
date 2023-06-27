@@ -18,15 +18,11 @@ import {
     compareTypes_t,
     number_t,
     filterData_arr_type,
-    Indexable,
-    InputType,
+    IndexableType,
 } from "./types";
-import { mlProp } from "./props";
+import { mlProp } from './props'
 
-const {
-    Dates: { DATE_ISO },
-    Reg: { allSpaces },
-}=mlProp;
+const { Reg: { allSpaces },Dates: { DATE_ISO } }=mlProp
 /**
     Make a request with [axios](https://axios-http.com/fr/docs/intro) to return the data
     * * 🟢 Function is generic
@@ -518,17 +514,18 @@ export function trim ( str: any ): string|ExtractionResult {
         includes("france", "fr");
         // true
 */
-export function includes<Type extends InputType> (
+export function includes<Type extends ExtractionResult> (
     input: Type,
     value: any
 ): boolean {
     if( !input ) {
         return false;
     }
-    return typeof input==="string"
-        ? input.indexOf( value,0 )!==-1
-        :( typeof input==="object"&&Object.keys( input as Indexable )
-            .some( ( key ) => Object.is( ( input as Indexable )[ key ],value ) ) );
+    return typeof input === "string"
+        ? input.indexOf( value, 0 ) !== -1
+        : ( input !== null && Object.keys( input as IndexableType )
+            .slice( 0 )
+            .some( ( key ) => Object.is( (input as IndexableType)[key], value ) ) );
 }
 
 /**
