@@ -4,10 +4,10 @@
         "type": "git",
         "url": "https://github.com/Mathieu-ai/generic-functions.git"
     },
-    "version": "0.5.6",
+    "version": "0.5.601",
     "description": "Generic props and functions for any usage",
-    "main": "index.js",
-    "types": "index.d.ts",
+    "main": "./files/index.js",
+    "types": "./files/index.d.ts",
     "files": [
         "files"
     ],
