@@ -3,7 +3,7 @@
         "target": "es6",
         "module": "commonjs",
         "declaration": true,
-        "outDir": "dist",
+        "outDir": "./",
         "strict": true,
         "esModuleInterop": true,
         "skipLibCheck": true,
@@ -13,7 +13,6 @@
         "src"
     ],
     "exclude": [
-        "node_modules",
-        "dist"
+        "node_modules"
     ]
 }
