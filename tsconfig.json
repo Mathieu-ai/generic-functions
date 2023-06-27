@@ -2,33 +2,18 @@
     "compilerOptions": {
         "target": "es6",
         "module": "commonjs",
-        "outDir": "dist",
         "declaration": true,
+        "outDir": "dist",
         "strict": true,
         "esModuleInterop": true,
-        "lib": [
-            "es5",
-            "es2015",
-            "es2016",
-            "dom",
-            "esnext"
-        ],
-        "types": [
-            "node"
-        ],
-        "noImplicitAny": false,
-        "noUnusedLocals": true,
         "skipLibCheck": true,
-        "removeComments": false,
-        "allowSyntheticDefaultImports": true,
-        "moduleResolution": "node",
-        "sourceMap": true,
+        "forceConsistentCasingInFileNames": true
     },
     "include": [
-        "src/**/*.ts"
+        "src"
     ],
     "exclude": [
         "node_modules",
         "dist"
-    ],
+    ]
 }

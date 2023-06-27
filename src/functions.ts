@@ -18,6 +18,8 @@ import {
     compareTypes_t,
     number_t,
     filterData_arr_type,
+    Indexable,
+    InputType,
 } from "./types";
 import { mlProp } from "./props";
 
@@ -327,7 +329,7 @@ export function getError ( { err,log }: logErrorOptions ) {
 */
 export function toUpperCase (
     data: string|object|any[]|any
-) {
+): any {
     if( typeof data==="string" ) {
         return data.toUpperCase();
     }
@@ -516,7 +518,7 @@ export function trim ( str: any ): string|ExtractionResult {
         includes("france", "fr");
         // true
 */
-export function includes<Type extends ExtractionResult> (
+export function includes<Type extends InputType> (
     input: Type,
     value: any
 ): boolean {
@@ -525,9 +527,8 @@ export function includes<Type extends ExtractionResult> (
     }
     return typeof input==="string"
         ? input.indexOf( value,0 )!==-1
-        :( input!==null&&Object.keys( input )
-            .slice( 0 )
-            .some( ( key ) => Object.is( input[ key ],value ) ) );
+        :( typeof input==="object"&&Object.keys( input as Indexable )
+            .some( ( key ) => Object.is( ( input as Indexable )[ key ],value ) ) );
 }
 
 /**

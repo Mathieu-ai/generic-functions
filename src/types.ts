@@ -149,5 +149,8 @@ export type filterData_props={
 */
 export type filterData_arr_type=filterData_props&Record<string,any>;
 
+export type Indexable={
+    [ key: string ]: any;
+}
 
-
+export type InputType=string|number|boolean|Date|Indexable;
