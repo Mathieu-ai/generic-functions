@@ -4,7 +4,7 @@
         "type": "git",
         "url": "https://github.com/Mathieu-ai/generic-functions.git"
     },
-    "version": "0.5.603",
+    "version": "0.5.604",
     "description": "Generic props and functions for any usage",
     "main": "./files/index.js",
     "types": "./files/index.d.ts",
@@ -17,7 +17,7 @@
         "ts"
     ],
     "scripts": {
-        "build": "tsc --outDir ./files ",
+        "build": "tsc",
         "preBuild": "npm run build"
     },
     "author": "mathieu-ai <mathieu.lievre@efrei.net>",
