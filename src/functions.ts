@@ -3,7 +3,7 @@ import { decodeHTML } from 'entities';
 import objectHash from 'object-hash';
 import dayjs from "dayjs";
 import isBetween from 'dayjs/plugin/isBetween'
-dayjs.extend(isBetween)
+dayjs.extend( isBetween )
 
 import {
     ExtractionResult,
@@ -24,7 +24,7 @@ import { mlProp } from "./props";
 const {
     Dates: { DATE_ISO },
     Reg: { allSpaces },
-} = mlProp;
+}=mlProp;
 /**
     Make a request with [axios](https://axios-http.com/fr/docs/intro) to return the data
     * * 🟢 Function is generic
@@ -34,13 +34,13 @@ const {
     @example
         api("http://localhost:8080/members")
 */
-export async function api(env: string): Promise<object[]> {
-    const res = await request({
+export async function api ( env: string ): Promise<object[]> {
+    const res=await request( {
         url: env,
         method: "GET",
-    });
-    if (res.status != 200)
-        throw new Error("axios request is different from 200");
+    } );
+    if( res.status!=200 )
+        throw new Error( "axios request is different from 200" );
     return res.data;
 }
 
@@ -53,8 +53,8 @@ export async function api(env: string): Promise<object[]> {
         capitalize('hello')
         // Hello
 */
-export function capitalize(str: string) {
-    return str.charAt(0).toUpperCase() + str.slice(1);
+export function capitalize ( str: string ) {
+    return str.charAt( 0 ).toUpperCase()+str.slice( 1 );
 }
 
 /**
@@ -67,10 +67,10 @@ export function capitalize(str: string) {
         console.log(cleanedText);
         // Output: "Hello World"
  */
-export function purify(str: any): string {
-    return typeof str === "string"
-        ? str.normalize("NFD").replace(/[\u0300-\u036f]/g, "")
-        : "";
+export function purify ( str: any ): string {
+    return typeof str==="string"
+        ? str.normalize( "NFD" ).replace( /[\u0300-\u036f]/g,"" )
+        :"";
 }
 
 /**
@@ -84,21 +84,21 @@ export function purify(str: any): string {
         minAndMax(ArrOfObj, 'field_ddeb')
         // [1900,2030]
 */
-export function minAndMaxYears(
+export function minAndMaxYears (
     arr: any[],
     str: string
 ): {
     min: number;
     max: number;
 } {
-    let min = 0;
-    arr.forEach((m) => {
-        const year = dayjs(m[str]).year();
-        if (!min || year < min) min = year;
-    });
+    let min=0;
+    arr.forEach( ( m ) => {
+        const year=dayjs( m[ str ] ).year();
+        if( !min||year<min ) min=year;
+    } );
     return {
-        min: Math.round(min / 10) * 10,
-        max: Math.round(dayjs(Date.now()).year() / 10) * 10 + 10,
+        min: Math.round( min/10 )*10,
+        max: Math.round( dayjs( Date.now() ).year()/10 )*10+10,
     };
 }
 
@@ -111,22 +111,22 @@ export function minAndMaxYears(
         getAcronym("Toto titi Mathieu Dev Wow");
         // Returns, e.g, "TTMD"
 */
-export function getInitials(str: string): string {
+export function getInitials ( str: string ): string {
     return str
         .trim()
-        .split(/\s+/)
-        .reduce((initials: string[], word: string) => {
-            const firstLetter = word.charAt(0);
-            if (/^[A-Za-z]$/.test(firstLetter) && initials.length < 4) {
-                if (/^[A-Z]$/.test(firstLetter)) {
-                    initials.push(firstLetter);
-                } else if (initials.filter(c => /^[A-Z]$/.test(c)).length === 0) {
-                    initials.push(firstLetter.toUpperCase());
+        .split( /\s+/ )
+        .reduce( ( initials: string[],word: string ) => {
+            const firstLetter=word.charAt( 0 );
+            if( /^[A-Za-z]$/.test( firstLetter )&&initials.length<4 ) {
+                if( /^[A-Z]$/.test( firstLetter ) ) {
+                    initials.push( firstLetter );
+                } else if( initials.filter( c => /^[A-Z]$/.test( c ) ).length===0 ) {
+                    initials.push( firstLetter.toUpperCase() );
                 }
             }
             return initials;
-        }, [])
-        .join("");
+        },[] )
+        .join( "" );
 }
 
 /**
@@ -136,10 +136,10 @@ export function getInitials(str: string): string {
         console.log(removeBreakLines("A String\r\n breaklines"));
         // AStringBreaklines
 */
-export function removeBreakLines(str: string): string {
+export function removeBreakLines ( str: string ): string {
     return str
-        .replace(/[\r\n]+/g, " ")
-        .replace(/ {2,}/g, " ")
+        .replace( /[\r\n]+/g," " )
+        .replace( / {2,}/g," " )
         .trim();
 }
 
@@ -160,9 +160,9 @@ export function removeBreakLines(str: string): string {
         const sortedCountries = sort({ arr: countries, prop: 'name' });
         // [ { name: 'Australia'}, { name: 'France'} ]
 */
-export function sort({ arr, prop }: { arr: any[]; prop: string }): object[] {
-    return arr.sort((a: any, b: any) =>
-        purify(a[prop]) > purify(b[prop]) ? -1 : 1
+export function sort ( { arr,prop }: { arr: any[]; prop: string } ): object[] {
+    return arr.sort( ( a: any,b: any ) =>
+        purify( a[ prop ] )>purify( b[ prop ] )? -1:1
     );
 }
 
@@ -204,28 +204,28 @@ export function sort({ arr, prop }: { arr: any[]; prop: string }): object[] {
         flat(data, { props: ["city"] });
         // "Paris"
  */
-export function flat(data: any, options: FlatOptions = {}): string {
-    const { props = [] } = options;
-    const result: string[] = [];
+export function flat ( data: any,options: FlatOptions={} ): string {
+    const { props=[] }=options;
+    const result: string[]=[];
 
-    const traverse = (obj: any) => {
-        for (const key in obj) {
-            const val = obj[key];
+    const traverse=( obj: any ) => {
+        for( const key in obj ) {
+            const val=obj[ key ];
 
-            if (typeof val === "object" && val) {
-                traverse(val);
-            } else if (!props.length || props.includes(key)) {
-                if (Array.isArray(val)) {
-                    result.push(...val.filter(item => item));
-                } else if (val) {
-                    result.push(val);
+            if( typeof val==="object"&&val ) {
+                traverse( val );
+            } else if( !props.length||props.includes( key ) ) {
+                if( Array.isArray( val ) ) {
+                    result.push( ...val.filter( item => item ) );
+                } else if( val ) {
+                    result.push( val );
                 }
             }
         }
     };
 
-    traverse(data);
-    return [...new Set(result)].join(', ');
+    traverse( data );
+    return [ ...new Set( result ) ].join( ', ' );
 }
 
 /**
@@ -241,13 +241,9 @@ export function flat(data: any, options: FlatOptions = {}): string {
         number(str2)
         // 'two'
 */
-export function number(input: number_t): number_t {
-    const values = Array.isArray(input) ? input : [input];
-    const convertedValues = values.map(value => {
-        const num = Number(value);
-        return isNaN(num) ? value : num;
-    });
-    return convertedValues.length === 1 ? convertedValues[0] : convertedValues;
+export function number ( input: number_t ): number_t {
+    const num=Number( input );
+    return isNaN( num )? input:num;
 }
 
 /**
@@ -262,33 +258,33 @@ export function number(input: number_t): number_t {
         console.log(extractFromString({ str, reg, type }));
         // 42
 */
-export function extractFromString(
+export function extractFromString (
     str: any,
     reg: RegExp,
-    type: string): ExtractionResult {
-    const match = str ? str.match(reg) : undefined;
-    if (!match) {
+    type: string ): ExtractionResult {
+    const match=str? str.match( reg ):undefined;
+    if( !match ) {
         return str;
     } else {
-        switch (type) {
+        switch( type ) {
             case "string":
-                return convertHtmlEntities(match[2] || match[1]);
+                return convertHtmlEntities( match[ 2 ]||match[ 1 ] );
             case "boolean":
                 // true if the second captured group is 'true' or 'false'
-                return match[2] === "true" || "false" ? match[2] : null;
+                return match[ 2 ]==="true"||"false"? match[ 2 ]:null;
             case "array":
                 // return the splitted fourth captured group and parse each with the number function
-                return JSON.parse(match[0]);
+                return JSON.parse( match[ 0 ] );
             case "number":
-                return number(match[1]);
+                return number( match[ 1 ] );
             case "date":
                 // parse string to Date
-                const datetime = new Date(match[2]);
+                const datetime=new Date( match[ 2 ] );
                 // parse failed => new Date
-                return isNaN(datetime.getTime()) ? new Date() : datetime;
+                return isNaN( datetime.getTime() )? new Date():datetime;
             default:
                 // type not recognized => return string
-                return match[0];
+                return match[ 0 ];
         }
     }
 }
@@ -301,15 +297,15 @@ export function extractFromString(
     @param [options.log] - defines if the function logs the error information
     @return The error's information
 */
-export function getError({ err, log }: logErrorOptions) {
-    const errorInfo = {
-        message: err.code || err.message,
-        method: toUpperCase(err.config),
+export function getError ( { err,log }: logErrorOptions ) {
+    const errorInfo={
+        message: err.code||err.message,
+        method: toUpperCase( err.config ),
         // url: err.request._currentUrl
     };
-    if (log) {
-        console.error("Err::");
-        console.error(errorInfo);
+    if( log ) {
+        console.error( "Err::" );
+        console.error( errorInfo );
     } else {
         return errorInfo;
     }
@@ -329,19 +325,19 @@ export function getError({ err, log }: logErrorOptions) {
         handleData([1, 'Hello World', { message: 'Hello World' }]);
         // [1, "HELLO WORLD", { message: "HELLO WORLD" }]
 */
-export function toUpperCase(
-    data: string | object | any[] | any
+export function toUpperCase (
+    data: string|object|any[]|any
 ) {
-    if (typeof data === "string") {
+    if( typeof data==="string" ) {
         return data.toUpperCase();
     }
-    if (Array.isArray(data)) {
-        return data.map((item) => toUpperCase(item));
+    if( Array.isArray( data ) ) {
+        return data.map( ( item ) => toUpperCase( item ) );
     }
-    if (typeof data === "object") {
-        const upperCaseData: { [key: string]: string | object | any[] } = {};
-        for (const key in data) {
-            upperCaseData[key] = toUpperCase(data[key]);
+    if( typeof data==="object" ) {
+        const upperCaseData: { [ key: string ]: string|object|any[] }={};
+        for( const key in data ) {
+            upperCaseData[ key ]=toUpperCase( data[ key ] );
         }
         return upperCaseData;
     }
@@ -370,28 +366,28 @@ export function toUpperCase(
         const invalid = getCountry({ cc: "INVALID" }, countries); 
         // Returns undefined
 */
-export function getCountry(
-    { cc, cn, cf }: { cc?: string; cn?: string; cf?: string },
+export function getCountry (
+    { cc,cn,cf }: { cc?: string; cn?: string; cf?: string },
     countries: any[]
-): typeOfCountries | undefined {
-    const normalizedCn = cn && cn !== undefined || null ? purify(cn) : undefined;
+): typeOfCountries|undefined {
+    const normalizedCn=cn&&cn!==undefined||null? purify( cn ):undefined;
 
-    function searchInAltNames(altNames: string) {
-        return new RegExp(`\\b${normalizedCn}\\b`, "i").test(altNames);
+    function searchInAltNames ( altNames: string ) {
+        return new RegExp( `\\b${ normalizedCn }\\b`,"i" ).test( altNames );
     }
 
-    const country = countries
-        .sort((a, b) => (a.cca2 > b.cca2 ? 1 : -1))
+    const country=countries
+        .sort( ( a,b ) => ( a.cca2>b.cca2? 1:-1 ) )
         .find(
-            ({ name, altNames, cca2, flag }) =>
-                name.common === normalizedCn ||
-                name.official === normalizedCn ||
-                searchInAltNames(purify(altNames)) ||
-                cca2 === cc ||
-                flag === cf
+            ( { name,altNames,cca2,flag } ) =>
+                name.common===normalizedCn||
+                name.official===normalizedCn||
+                searchInAltNames( purify( altNames ) )||
+                cca2===cc||
+                flag===cf
         );
 
-    return country ? country : {};
+    return country? country:{};
 }
 
 /**
@@ -404,10 +400,10 @@ export function getCountry(
         now(Date.now(), "DD/MM/YYYY")
         // 01/10/2022
 */
-export function now(str?: string) {
+export function now ( str?: string ) {
     return str
-        ? dayjs(new Date(Date.now())).format(str)
-        : dayjs(new Date(Date.now()));
+        ? dayjs( new Date( Date.now() ) ).format( str )
+        :dayjs( new Date( Date.now() ) );
 }
 
 /**
@@ -418,11 +414,11 @@ export function now(str?: string) {
         secondsToTomorrow()
         // 48087
  */
-export function secondsToTomorrow(): number {
+export function secondsToTomorrow (): number {
     // var d = new Date()
     // const toTomorrow: number = Math.round((-d + d.setHours(24, 0, 0, 0)) /Example Example6e4) * 60
-    const now = new Date(Date.now()).getHours();
-    return -now + 24 * 3600;
+    const now=new Date( Date.now() ).getHours();
+    return -now+24*3600;
 }
 
 /**
@@ -436,8 +432,8 @@ export function secondsToTomorrow(): number {
         isDate(Date.now())
         // true
  */
-export function isDate(date: Date): boolean {
-    return Object.prototype.toString.call(date) === "[object Date]";
+export function isDate ( date: Date ): boolean {
+    return Object.prototype.toString.call( date )==="[object Date]";
 }
 
 /**
@@ -451,8 +447,8 @@ export function isDate(date: Date): boolean {
         formatDate(Date.now(), 'YYYY/MM/DD')
         // 2022/12/31
 */
-export function formatDate(date: any, format: string): string {
-    return typeof date === "string" || "Date" ? dayjs(date).format(format) : "";
+export function formatDate ( date: any,format: string ): string {
+    return typeof date==="string"||"Date"? dayjs( date ).format( format ):"";
 }
 
 /**
@@ -470,23 +466,23 @@ export function formatDate(date: any, format: string): string {
         console.log(isEmpty(b))
         // false
 */
-export function isEmpty(
-    value: string | object | any[],
-    options: { props: boolean } = { props: false }
+export function isEmpty (
+    value: string|object|any[],
+    options: { props: boolean }={ props: false }
 ): boolean {
-    switch (typeof value) {
+    switch( typeof value ) {
         case "string":
-            return value.length === 0;
+            return value.length===0;
         case "object":
-            if (Array.isArray(value)) {
-                return value.every((item) => isEmpty(item, options));
+            if( Array.isArray( value ) ) {
+                return value.every( ( item ) => isEmpty( item,options ) );
             } else {
-                if (options.props) {
-                    return Object.values(value).every((prop) =>
-                        isEmpty(prop, options)
+                if( options.props ) {
+                    return Object.values( value ).every( ( prop ) =>
+                        isEmpty( prop,options )
                     );
                 }
-                return Object.keys(value).length === 0;
+                return Object.keys( value ).length===0;
             }
         default:
             return true;
@@ -503,8 +499,8 @@ export function isEmpty(
         console.log(cleanedStr)
         // I Love dev and France
 */
-export function trim(str: any): string | ExtractionResult {
-    return typeof str === 'string' ? str.match(allSpaces)?.join(" ") ?? "" : "";
+export function trim ( str: any ): string|ExtractionResult {
+    return typeof str==='string'? str.match( allSpaces )?.join( " " )??"":"";
 }
 
 /**
@@ -520,18 +516,18 @@ export function trim(str: any): string | ExtractionResult {
         includes("france", "fr");
         // true
 */
-export function includes<Type extends ExtractionResult>(
+export function includes<Type extends ExtractionResult> (
     input: Type,
     value: any
 ): boolean {
-    if (!input) {
+    if( !input ) {
         return false;
     }
-    return typeof input === "string"
-        ? input.indexOf(value, 0) !== -1
-        : (input !== null && Object.keys(input)
-            .slice(0)
-            .some((key) => Object.is(input[key], value)));
+    return typeof input==="string"
+        ? input.indexOf( value,0 )!==-1
+        :( input!==null&&Object.keys( input )
+            .slice( 0 )
+            .some( ( key ) => Object.is( input[ key ],value ) ) );
 }
 
 /**
@@ -544,9 +540,9 @@ export function includes<Type extends ExtractionResult>(
         console.log(isDateDifferent(today, 'hour'))
         // false
 */
-export function isDateDifferent(nb: number, unit: timeUnit): ExtractionResult {
-    const method = timeUnitMap[unit];
-    return nb !== (dayjs()[method] as () => number)();
+export function isDateDifferent ( nb: number,unit: timeUnit ): ExtractionResult {
+    const method=timeUnitMap[ unit ];
+    return nb!==( dayjs()[ method ] as () => number )();
 }
 
 /**
@@ -557,8 +553,8 @@ export function isDateDifferent(nb: number, unit: timeUnit): ExtractionResult {
         console.log(randomString(arr))
         // e.g: France
 */
-export function randomString(arr: string[]): ExtractionResult {
-    return arr[Math.floor(Math.random() * arr.length)];
+export function randomString ( arr: string[] ): ExtractionResult {
+    return arr[ Math.floor( Math.random()*arr.length ) ];
 }
 
 /**
@@ -570,16 +566,16 @@ export function randomString(arr: string[]): ExtractionResult {
         getFormat('DATE', 'FR');
         // 'DD/MM/YYYY'
 */
-export function getFormat(format: formatType, ISO: codeISO) {
-    const dateFormat = DATE_ISO[ISO];
+export function getFormat ( format: formatType,ISO: codeISO ) {
+    const dateFormat=DATE_ISO[ ISO ];
 
-    switch (format) {
+    switch( format ) {
         case "DATE":
             return dateFormat;
         case "TIME":
             return "HH:mm:ss";
         case "DATE_TIME":
-            return `${dateFormat}, HH:mm:ss`;
+            return `${ dateFormat }, HH:mm:ss`;
         default:
             return null;
     }
@@ -600,10 +596,10 @@ export function getFormat(format: formatType, ISO: codeISO) {
         const keys = getObjectKeysByType(obj, "string");
         // ["name", "email"]
 */
-export function getObjectKeysByType(obj: object, type: string): string[] {
-    return Object.entries(obj)
-        .filter(([_, value]) => typeof value === type)
-        .map(([key, _]) => key);
+export function getObjectKeysByType ( obj: object,type: string ): string[] {
+    return Object.entries( obj )
+        .filter( ( [ _,value ] ) => typeof value===type )
+        .map( ( [ key,_ ] ) => key );
 }
 
 /**
@@ -616,7 +612,7 @@ export function getObjectKeysByType(obj: object, type: string): string[] {
         getValueType("hello world");
         // "string"
 */
-export function getValueType(value: any): compareTypes_t {
+export function getValueType ( value: any ): compareTypes_t {
     return typeof value as compareTypes_t;
 }
 
@@ -632,36 +628,36 @@ export function getValueType(value: any): compareTypes_t {
         compareTypes(data, "number", { getKeys: true });
         // Returns [0, "age", "age"]
 */
-export function compareTypes(
-    data: (any)[],
+export function compareTypes (
+    data: ( any )[],
     type: string,
-    options: compareTypes_o = {}
+    options: compareTypes_o={}
 ): any[] {
-    const notType = type.startsWith('!');
+    const notType=type.startsWith( '!' );
 
-    const { getKeys = false } = options;
+    const { getKeys=false }=options;
 
-    return data.reduce((result: (any)[], value, index) => {
-        const valueType = getValueType(value);
+    return data.reduce( ( result: ( any )[],value,index ) => {
+        const valueType=getValueType( value );
 
-        const typeMatches =
-            !notType && (valueType === type.toLowerCase() ||
-                (valueType === 'object' && getObjectKeysByType(value, type).length > 0));
+        const typeMatches=
+            !notType&&( valueType===type.toLowerCase()||
+                ( valueType==='object'&&getObjectKeysByType( value,type ).length>0 ) );
 
-        const notTypeMatches =
-            notType && (valueType.toLowerCase() !== type.substring(1).toLowerCase());
+        const notTypeMatches=
+            notType&&( valueType.toLowerCase()!==type.substring( 1 ).toLowerCase() );
 
-        if (typeMatches || notTypeMatches) {
-            if (getKeys && valueType === 'object') {
-                const keys = getObjectKeysByType(value, type);
-                result.push(...keys);
+        if( typeMatches||notTypeMatches ) {
+            if( getKeys&&valueType==='object' ) {
+                const keys=getObjectKeysByType( value,type );
+                result.push( ...keys );
             } else {
-                result.push(getKeys ? number(index) : index);
+                result.push( getKeys? number( index ):index );
             }
         }
 
         return result;
-    }, []);
+    },[] );
 }
 
 /**
@@ -672,8 +668,8 @@ export function compareTypes(
         console.log(convertHtmlEntities("&amp; toto"));
         // Outputs: "& toto"
 */
-export function convertHtmlEntities(str: string): string {
-    return decodeHTML(str)
+export function convertHtmlEntities ( str: string ): string {
+    return decodeHTML( str )
 }
 
 /**
@@ -686,13 +682,13 @@ export function convertHtmlEntities(str: string): string {
         const path = ['foo', 'bar'];
         const value = getObjectValueByPath(obj, path); // 'baz'
 */
-export function getObjectValueByPath(obj: any, path: string[]): any {
-    return path.reduce((o, key) => {
-        if (o && Array.isArray(o)) {
-            return o.map((item) => getObjectValueByPath(item, [key])).flat();
+export function getObjectValueByPath ( obj: any,path: string[] ): any {
+    return path.reduce( ( o,key ) => {
+        if( o&&Array.isArray( o ) ) {
+            return o.map( ( item ) => getObjectValueByPath( item,[ key ] ) ).flat();
         }
-        return (o && o[key]) ? o[key] : null;
-    }, obj);
+        return ( o&&o[ key ] )? o[ key ]:null;
+    },obj );
 }
 
 /**
@@ -710,24 +706,24 @@ export function getObjectValueByPath(obj: any, path: string[]): any {
         const uniqueByName = getUnique(data, 'name'); 
         // [{ id: 1, name: 'Alice' }, { id: 2, name: 'Bob' }, { id: 4, name: 'Charlie' }]
 */
-export function getUnique({ data, field }: { data: (string | object)[], field?: string }): (string | object)[] {
-    const fieldPath = field ? field.split('.') : [];
-    const uniqueValues: (string | object)[] = [];
-    const seen = new Set<string>();
+export function getUnique ( { data,field }: { data: ( string|object )[],field?: string } ): ( string|object )[] {
+    const fieldPath=field? field.split( '.' ):[];
+    const uniqueValues: ( string|object )[]=[];
+    const seen=new Set<string>();
 
-    for (const value of data) {
-        const uniqueValue = getObjectValueByPath(value, fieldPath);
-        if (Array.isArray(uniqueValue)) {
-            const uniqueValueHashes = uniqueValue.map((uv) => objectHash(uv));
-            if (!uniqueValueHashes.some((hash) => seen.has(hash))) {
-                uniqueValueHashes.forEach((hash) => seen.add(hash));
-                uniqueValues.push(value);
+    for( const value of data ) {
+        const uniqueValue=getObjectValueByPath( value,fieldPath );
+        if( Array.isArray( uniqueValue ) ) {
+            const uniqueValueHashes=uniqueValue.map( ( uv ) => objectHash( uv ) );
+            if( !uniqueValueHashes.some( ( hash ) => seen.has( hash ) ) ) {
+                uniqueValueHashes.forEach( ( hash ) => seen.add( hash ) );
+                uniqueValues.push( value );
             }
         } else {
-            const uniqueValueHash = objectHash(uniqueValue);
-            if (uniqueValue && !seen.has(uniqueValueHash)) {
-                seen.add(uniqueValueHash);
-                uniqueValues.push(value);
+            const uniqueValueHash=objectHash( uniqueValue );
+            if( uniqueValue&&!seen.has( uniqueValueHash ) ) {
+                seen.add( uniqueValueHash );
+                uniqueValues.push( value );
             }
         }
     }
@@ -749,8 +745,8 @@ export function getUnique({ data, field }: { data: (string | object)[], field?: 
  * console.log(lastElement);
  * // Output: ['you']
  */
-export function getLastElement(strings: string[]): string[] {
-    return isEmpty(strings) ? [] : [(strings.pop() as string)];
+export function getLastElement ( strings: string[] ): string[] {
+    return isEmpty( strings )? []:[ ( strings.pop() as string ) ];
 }
 
 /**
@@ -763,8 +759,8 @@ export function getLastElement(strings: string[]): string[] {
         console.log(checkLength("hello", "world", 5));
         // "hello"
 */
-export function checkLength(first: (string | (number | string)[]), second: (string | (number | string)[]), size: number): (string | (string | number)[]) {
-    return first.length < size ? first : second
+export function checkLength ( first: ( string|( number|string )[] ),second: ( string|( number|string )[] ),size: number ): ( string|( string|number )[] ) {
+    return first.length<size? first:second
 }
 
 /**
@@ -778,45 +774,45 @@ export function checkLength(first: (string | (number | string)[]), second: (stri
     * @param {object} param
     * @returns filterData_arr_type[]
  */
-export function filterData(
+export function filterData (
     arr: filterData_arr_type[],
     param: { sW: string; tbSO: string[]; tbRS?: number[] },
 ): filterData_arr_type[] {
-    const { sW, tbSO, tbRS } = param
-    const tbExp = sW.match(/[A-Za-zÀ-ÖØ-öø-ÿ]+/gi) || []
+    const { sW,tbSO,tbRS }=param
+    const tbExp=sW.match( /[A-Za-zÀ-ÖØ-öø-ÿ]+/gi )||[]
 
-    return arr.filter((item: filterData_arr_type) => {
-        for (let i = 0; i < tbExp.length; i++) {
-            const searchedWord = purify(tbExp[i].toUpperCase())
-            if (!new RegExp(searchedWord, 'gi').test(item.field_search)) {
+    return arr.filter( ( item: filterData_arr_type ) => {
+        for( let i=0;i<tbExp.length;i++ ) {
+            const searchedWord=purify( tbExp[ i ].toUpperCase() )
+            if( !new RegExp( searchedWord,'gi' ).test( item.field_search ) ) {
                 return false
             }
         }
 
-        for (const selected of tbSO) {
-            const len = item.field_state.length
-            if (!len) {
+        for( const selected of tbSO ) {
+            const len=item.field_state.length
+            if( !len ) {
                 return false
             }
-            for (let j = 0; j < len; j++) {
-                const memberState = item.field_state[j]
+            for( let j=0;j<len;j++ ) {
+                const memberState=item.field_state[ j ]
 
-                if (!memberState.state.includes(selected)) {
+                if( !memberState.state.includes( selected ) ) {
                     return false
                 }
             }
         }
 
-        if (
-            tbRS && tbRS.length &&
-            !dayjs(item.field_period.ddeb).isBetween(
-                `01/01/${tbRS[0]}`,
-                `01/01/${tbRS[1]}`,
+        if(
+            tbRS&&tbRS.length&&
+            !dayjs( item.field_period.ddeb ).isBetween(
+                `01/01/${ tbRS[ 0 ] }`,
+                `01/01/${ tbRS[ 1 ] }`,
                 'year',
             )
         ) {
             return false
         }
         return true
-    })
+    } )
 }

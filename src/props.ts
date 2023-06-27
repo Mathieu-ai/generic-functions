@@ -1,7 +1,7 @@
 /**
     Object with all the properties
 */
-export const mlProp = {
+export const mlProp={
     /**
         List of countries
         * * 🟢 generic, it is a Array
@@ -20,13 +20,13 @@ export const mlProp = {
             flag: "🇻🇨",
         },
         {
-            name: { common: "French Guiana", official: "Guiana" },
+            name: { common: "French Guiana",official: "Guiana" },
             cca2: "GF",
             altNames: "GF,Guiana,Guyane",
             flag: "🇬🇫",
         },
         {
-            name: { common: "Faroe Islands", official: "Faroe Islands" },
+            name: { common: "Faroe Islands",official: "Faroe Islands" },
             cca2: "FO",
             altNames: "FO,Føroyar,Færøerne",
             flag: "🇫🇴",
@@ -42,14 +42,14 @@ export const mlProp = {
             flag: "🇵🇰",
         },
         {
-            name: { common: "Fiji", official: "Republic of Fiji" },
+            name: { common: "Fiji",official: "Republic of Fiji" },
             cca2: "FJ",
             altNames:
                 "FJ,Viti,Republic of Fiji,Matanitu ko Viti,Fijī Gaṇarājya",
             flag: "🇫🇯",
         },
         {
-            name: { common: "Mongolia", official: "Mongolia" },
+            name: { common: "Mongolia",official: "Mongolia" },
             cca2: "MN",
             altNames: "MN",
             flag: "🇲🇳",
@@ -74,7 +74,7 @@ export const mlProp = {
             flag: "🇫🇲",
         },
         {
-            name: { common: "Norway", official: "Kingdom of Norway" },
+            name: { common: "Norway",official: "Kingdom of Norway" },
             cca2: "NO",
             altNames:
                 "NO,Norge,Noreg,Kingdom of Norway,Kongeriket Norge,Kongeriket Noreg",
@@ -91,13 +91,13 @@ export const mlProp = {
             flag: "🇲🇷",
         },
         {
-            name: { common: "Spain", official: "Kingdom of Spain" },
+            name: { common: "Spain",official: "Kingdom of Spain" },
             cca2: "ES",
             altNames: "ES,Kingdom of Spain,Reino de España",
             flag: "🇪🇸",
         },
         {
-            name: { common: "Turkey", official: "Republic of Turkey" },
+            name: { common: "Turkey",official: "Republic of Turkey" },
             cca2: "TR",
             altNames: "TR,Turkiye,Republic of Turkey,Türkiye Cumhuriyeti",
             flag: "🇹🇷",
@@ -122,13 +122,13 @@ export const mlProp = {
             flag: "🇨🇩",
         },
         {
-            name: { common: "New Caledonia", official: "New Caledonia" },
+            name: { common: "New Caledonia",official: "New Caledonia" },
             cca2: "NC",
             altNames: "NC",
             flag: "🇳🇨",
         },
         {
-            name: { common: "Rwanda", official: "Republic of Rwanda" },
+            name: { common: "Rwanda",official: "Republic of Rwanda" },
             cca2: "RW",
             altNames:
                 "RW,Republic of Rwanda,Repubulika y'u Rwanda,République du Rwanda",
@@ -144,25 +144,25 @@ export const mlProp = {
             flag: "🇦🇺",
         },
         {
-            name: { common: "Isle of Man", official: "Isle of Man" },
+            name: { common: "Isle of Man",official: "Isle of Man" },
             cca2: "IM",
             altNames: "IM,Ellan Vannin,Mann,Mannin",
             flag: "🇮🇲",
         },
         {
-            name: { common: "Indonesia", official: "Republic of Indonesia" },
+            name: { common: "Indonesia",official: "Republic of Indonesia" },
             cca2: "cca2",
             altNames: "cca2,Republic of Indonesia,Republik Indonesia",
             flag: "🇮🇩",
         },
         {
-            name: { common: "Zambia", official: "Republic of Zambia" },
+            name: { common: "Zambia",official: "Republic of Zambia" },
             cca2: "ZM",
             altNames: "ZM,Republic of Zambia",
             flag: "🇿🇲",
         },
         {
-            name: { common: "Jersey", official: "Bailiwick of Jersey" },
+            name: { common: "Jersey",official: "Bailiwick of Jersey" },
             cca2: "JE",
             altNames:
                 "JE,Bailiwick of Jersey,Bailliage de Jersey,Bailliage dé Jèrri",
@@ -179,19 +179,19 @@ export const mlProp = {
             flag: "🇺🇾",
         },
         {
-            name: { common: "Canada", official: "Canada" },
+            name: { common: "Canada",official: "Canada" },
             cca2: "CA",
             altNames: "CA",
             flag: "🇨🇦",
         },
         {
-            name: { common: "Peru", official: "Republic of Peru" },
+            name: { common: "Peru",official: "Republic of Peru" },
             cca2: "PE",
             altNames: "PE,Republic of Peru,República del Perú",
             flag: "🇵🇪",
         },
         {
-            name: { common: "Montserrat", official: "Montserrat" },
+            name: { common: "Montserrat",official: "Montserrat" },
             cca2: "MS",
             altNames: "MS",
             flag: "🇲🇸",
@@ -206,25 +206,25 @@ export const mlProp = {
             flag: "🇦🇬",
         },
         {
-            name: { common: "Dominica", official: "Commonwealth of Dominica" },
+            name: { common: "Dominica",official: "Commonwealth of Dominica" },
             cca2: "DM",
             altNames: "DM,Dominique,Wai‘tu kubuli,Commonwealth of Dominica",
             flag: "🇩🇲",
         },
         {
-            name: { common: "Cambodia", official: "Kingdom of Cambodia" },
+            name: { common: "Cambodia",official: "Kingdom of Cambodia" },
             cca2: "KH",
             altNames: "KH,Kingdom of Cambodia",
             flag: "🇰🇭",
         },
         {
-            name: { common: "Falkland Islands", official: "Falkland Islands" },
+            name: { common: "Falkland Islands",official: "Falkland Islands" },
             cca2: "FK",
             altNames: "FK,Islas Malvinas,Falkland Islands (Malvinas)",
             flag: "🇫🇰",
         },
         {
-            name: { common: "Guam", official: "Guam" },
+            name: { common: "Guam",official: "Guam" },
             cca2: "GU",
             altNames: "GU,Guåhån",
             flag: "🇬🇺",
@@ -240,45 +240,45 @@ export const mlProp = {
             flag: "🇵🇬",
         },
         {
-            name: { common: "Seychelles", official: "Republic of Seychelles" },
+            name: { common: "Seychelles",official: "Republic of Seychelles" },
             cca2: "SC",
             altNames:
                 "SC,Republic of Seychelles,Repiblik Sesel,République des Seychelles",
             flag: "🇸🇨",
         },
         {
-            name: { common: "Liberia", official: "Republic of Liberia" },
+            name: { common: "Liberia",official: "Republic of Liberia" },
             cca2: "LR",
             altNames: "LR,Republic of Liberia",
             flag: "🇱🇷",
         },
         {
-            name: { common: "Cape Verde", official: "Republic of Cabo Verde" },
+            name: { common: "Cape Verde",official: "Republic of Cabo Verde" },
             cca2: "CV",
             altNames: "CV,Republic of Cabo Verde,República de Cabo Verde",
             flag: "🇨🇻",
         },
         {
-            name: { common: "Grenada", official: "Grenada" },
+            name: { common: "Grenada",official: "Grenada" },
             cca2: "GD",
             altNames: "GD",
             flag: "🇬🇩",
         },
         {
-            name: { common: "Cuba", official: "Republic of Cuba" },
+            name: { common: "Cuba",official: "Republic of Cuba" },
             cca2: "CU",
             altNames: "CU,Republic of Cuba,República de Cuba",
             flag: "🇨🇺",
         },
         {
-            name: { common: "Djibouti", official: "Republic of Djibouti" },
+            name: { common: "Djibouti",official: "Republic of Djibouti" },
             cca2: "DJ",
             altNames:
                 "DJ,Jabuuti,Gabuuti,Republic of Djibouti,République de Djibouti,Gabuutih Ummuuno,Jamhuuriyadda Jabuuti",
             flag: "🇩🇯",
         },
         {
-            name: { common: "Lebanon", official: "Lebanese Republic" },
+            name: { common: "Lebanon",official: "Lebanese Republic" },
             cca2: "LB",
             altNames: "LB,Lebanese Republic,Al-Jumhūrīyah Al-Libnānīyah",
             flag: "🇱🇧",
@@ -294,19 +294,19 @@ export const mlProp = {
             flag: "🇲🇲",
         },
         {
-            name: { common: "Cayman Islands", official: "Cayman Islands" },
+            name: { common: "Cayman Islands",official: "Cayman Islands" },
             cca2: "KY",
             altNames: "KY",
             flag: "🇰🇾",
         },
         {
-            name: { common: "Gabon", official: "Gabonese Republic" },
+            name: { common: "Gabon",official: "Gabonese Republic" },
             cca2: "GA",
             altNames: "GA,Gabonese Republic,République Gabonaise",
             flag: "🇬🇦",
         },
         {
-            name: { common: "French Polynesia", official: "French Polynesia" },
+            name: { common: "French Polynesia",official: "French Polynesia" },
             cca2: "PF",
             altNames:
                 "PF,Polynésie française,French Polynesia,Pōrīnetia Farāni",
@@ -322,14 +322,14 @@ export const mlProp = {
             flag: "🇿🇦",
         },
         {
-            name: { common: "Suriname", official: "Republic of Suriname" },
+            name: { common: "Suriname",official: "Republic of Suriname" },
             cca2: "SR",
             altNames:
                 "SR,Sarnam,Sranangron,Republic of Suriname,Republiek Suriname",
             flag: "🇸🇷",
         },
         {
-            name: { common: "Costa Rica", official: "Republic of Costa Rica" },
+            name: { common: "Costa Rica",official: "Republic of Costa Rica" },
             cca2: "CR",
             altNames: "CR,Republic of Costa Rica,República de Costa Rica",
             flag: "🇨🇷",
@@ -363,7 +363,7 @@ export const mlProp = {
             flag: "🇱🇮",
         },
         {
-            name: { common: "Niue", official: "Niue" },
+            name: { common: "Niue",official: "Niue" },
             cca2: "NU",
             altNames: "NU",
             flag: "🇳🇺",
@@ -388,7 +388,7 @@ export const mlProp = {
             flag: "🇰🇵",
         },
         {
-            name: { common: "Ukraine", official: "Ukraine" },
+            name: { common: "Ukraine",official: "Ukraine" },
             cca2: "UA",
             altNames: "UA,Ukrayina",
             flag: "🇺🇦",
@@ -403,56 +403,56 @@ export const mlProp = {
             flag: "🇬🇼",
         },
         {
-            name: { common: "Antarctica", official: "Antarctica" },
+            name: { common: "Antarctica",official: "Antarctica" },
             cca2: "AQ",
             altNames: "AQ",
             flag: "🇦🇶",
         },
         {
-            name: { common: "Mayotte", official: "Department of Mayotte" },
+            name: { common: "Mayotte",official: "Department of Mayotte" },
             cca2: "YT",
             altNames: "YT,Department of Mayotte,Département de Mayotte",
             flag: "🇾🇹",
         },
         {
-            name: { common: "Tuvalu", official: "Tuvalu" },
+            name: { common: "Tuvalu",official: "Tuvalu" },
             cca2: "TV",
             altNames: "TV",
             flag: "🇹🇻",
         },
         {
-            name: { common: "Morocco", official: "Kingdom of Morocco" },
+            name: { common: "Morocco",official: "Kingdom of Morocco" },
             cca2: "MA",
             altNames: "MA,Kingdom of Morocco,Al-Mamlakah al-Maġribiyah",
             flag: "🇲🇦",
         },
         {
-            name: { common: "Moldova", official: "Republic of Moldova" },
+            name: { common: "Moldova",official: "Republic of Moldova" },
             cca2: "MD",
             altNames:
                 "MD,Moldova, Republic of,Republic of Moldova,Republica Moldova",
             flag: "🇲🇩",
         },
         {
-            name: { common: "Oman", official: "Sultanate of Oman" },
+            name: { common: "Oman",official: "Sultanate of Oman" },
             cca2: "OM",
             altNames: "OM,Sultanate of Oman,Salṭanat ʻUmān",
             flag: "🇴🇲",
         },
         {
-            name: { common: "Italy", official: "Italian Republic" },
+            name: { common: "Italy",official: "Italian Republic" },
             cca2: "IT",
             altNames: "IT,Italian Republic,Repubblica italiana",
             flag: "🇮🇹",
         },
         {
-            name: { common: "Yemen", official: "Republic of Yemen" },
+            name: { common: "Yemen",official: "Republic of Yemen" },
             cca2: "YE",
             altNames: "YE,Yemeni Republic,al-Jumhūriyyah al-Yamaniyyah",
             flag: "🇾🇪",
         },
         {
-            name: { common: "Kuwait", official: "State of Kuwait" },
+            name: { common: "Kuwait",official: "State of Kuwait" },
             cca2: "KW",
             altNames: "KW,State of Kuwait,Dawlat al-Kuwait",
             flag: "🇰🇼",
@@ -468,14 +468,14 @@ export const mlProp = {
             flag: "🇵🇷",
         },
         {
-            name: { common: "Palestine", official: "State of Palestine" },
+            name: { common: "Palestine",official: "State of Palestine" },
             cca2: "PS",
             altNames:
                 "PS,Palestine, State of,State of Palestine,Dawlat Filasṭin",
             flag: "🇵🇸",
         },
         {
-            name: { common: "Colombia", official: "Republic of Colombia" },
+            name: { common: "Colombia",official: "Republic of Colombia" },
             cca2: "CO",
             altNames: "CO,Republic of Colombia,República de Colombia",
             flag: "🇨🇴",
@@ -491,20 +491,20 @@ export const mlProp = {
             flag: "🇲🇰",
         },
         {
-            name: { common: "Qatar", official: "State of Qatar" },
+            name: { common: "Qatar",official: "State of Qatar" },
             cca2: "QA",
             altNames: "QA,State of Qatar,Dawlat Qaṭar",
             flag: "🇶🇦",
         },
         {
-            name: { common: "Taiwan", official: "Republic of China (Taiwan)" },
+            name: { common: "Taiwan",official: "Republic of China (Taiwan)" },
             cca2: "TW",
             altNames:
                 "TW,Táiwān,Republic of China,中華民國,Zhōnghuá Mínguó,Chinese Taipei",
             flag: "🇹🇼",
         },
         {
-            name: { common: "Madagascar", official: "Republic of Madagascar" },
+            name: { common: "Madagascar",official: "Republic of Madagascar" },
             cca2: "MG",
             altNames:
                 "MG,Republic of Madagascar,Repoblikan'i Madagasikara,République de Madagascar",
@@ -520,14 +520,14 @@ export const mlProp = {
             flag: "🇧🇸",
         },
         {
-            name: { common: "Curaçao", official: "Country of Curaçao" },
+            name: { common: "Curaçao",official: "Country of Curaçao" },
             cca2: "CW",
             altNames:
                 "CW,Curacao,Kòrsou,Country of Curaçao,Land Curaçao,Pais Kòrsou",
             flag: "🇨🇼",
         },
         {
-            name: { common: "Solomon Islands", official: "Solomon Islands" },
+            name: { common: "Solomon Islands",official: "Solomon Islands" },
             cca2: "SB",
             altNames: "SB",
             flag: "🇸🇧",
@@ -542,44 +542,44 @@ export const mlProp = {
             flag: "🇸🇭",
         },
         {
-            name: { common: "Honduras", official: "Republic of Honduras" },
+            name: { common: "Honduras",official: "Republic of Honduras" },
             cca2: "HN",
             altNames: "HN,Republic of Honduras,República de Honduras",
             flag: "🇭🇳",
         },
         {
-            name: { common: "Armenia", official: "Republic of Armenia" },
+            name: { common: "Armenia",official: "Republic of Armenia" },
             cca2: "AM",
             altNames:
                 "AM,Hayastan,Republic of Armenia,Հայաստանի Հանրապետություն",
             flag: "🇦🇲",
         },
         {
-            name: { common: "Guatemala", official: "Republic of Guatemala" },
+            name: { common: "Guatemala",official: "Republic of Guatemala" },
             cca2: "GT",
             altNames: "GT",
             flag: "🇬🇹",
         },
         {
-            name: { common: "Togo", official: "Togolese Republic" },
+            name: { common: "Togo",official: "Togolese Republic" },
             cca2: "TG",
             altNames: "TG,Togolese,Togolese Republic,République Togolaise",
             flag: "🇹🇬",
         },
         {
-            name: { common: "Senegal", official: "Republic of Senegal" },
+            name: { common: "Senegal",official: "Republic of Senegal" },
             cca2: "SN",
             altNames: "SN,Republic of Senegal,République du Sénégal",
             flag: "🇸🇳",
         },
         {
-            name: { common: "Czechia", official: "Czech Republic" },
+            name: { common: "Czechia",official: "Czech Republic" },
             cca2: "CZ",
             altNames: "CZ,Česká republika,Česko",
             flag: "🇨🇿",
         },
         {
-            name: { common: "Kosovo", official: "Republic of Kosovo" },
+            name: { common: "Kosovo",official: "Republic of Kosovo" },
             cca2: "XK",
             altNames: "XK,Република Косово",
             flag: "🇽🇰",
@@ -595,13 +595,13 @@ export const mlProp = {
             flag: "🇲🇭",
         },
         {
-            name: { common: "Mauritius", official: "Republic of Mauritius" },
+            name: { common: "Mauritius",official: "Republic of Mauritius" },
             cca2: "MU",
             altNames: "MU,Republic of Mauritius,République de Maurice",
             flag: "🇲🇺",
         },
         {
-            name: { common: "Georgia", official: "Georgia" },
+            name: { common: "Georgia",official: "Georgia" },
             cca2: "GE",
             altNames: "GE,Sakartvelo",
             flag: "🇬🇪",
@@ -616,26 +616,26 @@ export const mlProp = {
             flag: "🇵🇭",
         },
         {
-            name: { common: "Albania", official: "Republic of Albania" },
+            name: { common: "Albania",official: "Republic of Albania" },
             cca2: "AL",
             altNames: "AL,Shqipëri,Shqipëria,Shqipnia",
             flag: "🇦🇱",
         },
         {
-            name: { common: "Jamaica", official: "Jamaica" },
+            name: { common: "Jamaica",official: "Jamaica" },
             cca2: "JM",
             altNames: "JM",
             flag: "🇯🇲",
         },
         {
-            name: { common: "Serbia", official: "Republic of Serbia" },
+            name: { common: "Serbia",official: "Republic of Serbia" },
             cca2: "RS",
             altNames:
                 "RS,Srbija,Republic of Serbia,Република Србија,Republika Srbija",
             flag: "🇷🇸",
         },
         {
-            name: { common: "Chile", official: "Republic of Chile" },
+            name: { common: "Chile",official: "Republic of Chile" },
             cca2: "CL",
             altNames: "CL,Republic of Chile,República de Chile",
             flag: "🇨🇱",
@@ -670,13 +670,13 @@ export const mlProp = {
             flag: "🇧🇩",
         },
         {
-            name: { common: "Ecuador", official: "Republic of Ecuador" },
+            name: { common: "Ecuador",official: "Republic of Ecuador" },
             cca2: "EC",
             altNames: "EC,Republic of Ecuador,República del Ecuador",
             flag: "🇪🇨",
         },
         {
-            name: { common: "Cyprus", official: "Republic of Cyprus" },
+            name: { common: "Cyprus",official: "Republic of Cyprus" },
             cca2: "CY",
             altNames:
                 "CY,Kýpros,Kıbrıs,Republic of Cyprus,Κυπριακή Δημοκρατία,Kıbrıs Cumhuriyeti",
@@ -701,26 +701,26 @@ export const mlProp = {
             flag: "🇬🇸",
         },
         {
-            name: { common: "Åland Islands", official: "Åland Islands" },
+            name: { common: "Åland Islands",official: "Åland Islands" },
             cca2: "AX",
             altNames: "AX,Aaland,Aland,Ahvenanmaa",
             flag: "🇦🇽",
         },
         {
-            name: { common: "Finland", official: "Republic of Finland" },
+            name: { common: "Finland",official: "Republic of Finland" },
             cca2: "FI",
             altNames:
                 "FI,Suomi,Republic of Finland,Suomen tasavalta,Republiken Finland",
             flag: "🇫🇮",
         },
         {
-            name: { common: "South Korea", official: "Republic of Korea" },
+            name: { common: "South Korea",official: "Republic of Korea" },
             cca2: "KR",
             altNames: "KR,Korea, Republic of,Republic of Korea,남한,남조선",
             flag: "🇰🇷",
         },
         {
-            name: { common: "Burkina Faso", official: "Burkina Faso" },
+            name: { common: "Burkina Faso",official: "Burkina Faso" },
             cca2: "BF",
             altNames: "BF",
             flag: "🇧🇫",
@@ -735,19 +735,19 @@ export const mlProp = {
             flag: "🇳🇫",
         },
         {
-            name: { common: "Portugal", official: "Portuguese Republic" },
+            name: { common: "Portugal",official: "Portuguese Republic" },
             cca2: "PT",
             altNames: "PT,Portuguesa,Portuguese Republic,República Portuguesa",
             flag: "🇵🇹",
         },
         {
-            name: { common: "Barbados", official: "Barbados" },
+            name: { common: "Barbados",official: "Barbados" },
             cca2: "BB",
             altNames: "BB",
             flag: "🇧🇧",
         },
         {
-            name: { common: "Jordan", official: "Hashemite Kingdom of Jordan" },
+            name: { common: "Jordan",official: "Hashemite Kingdom of Jordan" },
             cca2: "JO",
             altNames:
                 "JO,Hashemite Kingdom of Jordan,al-Mamlakah al-Urdunīyah al-Hāshimīyah",
@@ -763,7 +763,7 @@ export const mlProp = {
             flag: "🇳🇬",
         },
         {
-            name: { common: "Bahrain", official: "Kingdom of Bahrain" },
+            name: { common: "Bahrain",official: "Kingdom of Bahrain" },
             cca2: "BH",
             altNames: "BH,Kingdom of Bahrain,Mamlakat al-Baḥrayn",
             flag: "🇧🇭",
@@ -788,26 +788,26 @@ export const mlProp = {
             flag: "🇸🇹",
         },
         {
-            name: { common: "China", official: "People's Republic of China" },
+            name: { common: "China",official: "People's Republic of China" },
             cca2: "CN",
             altNames:
                 "CN,Zhōngguó,Zhongguo,Zhonghua,People's Republic of China,中华人民共和国,Zhōnghuá Rénmín Gònghéguó",
             flag: "🇨🇳",
         },
         {
-            name: { common: "Switzerland", official: "Swiss Confederation" },
+            name: { common: "Switzerland",official: "Swiss Confederation" },
             cca2: "CH",
             altNames: "CH,Swiss Confederation,Schweiz,Suisse,Svizzera,Svizra",
             flag: "🇨🇭",
         },
         {
-            name: { common: "Kenya", official: "Republic of Kenya" },
+            name: { common: "Kenya",official: "Republic of Kenya" },
             cca2: "KE",
             altNames: "KE,Republic of Kenya,Jamhuri ya Kenya",
             flag: "🇰🇪",
         },
         {
-            name: { common: "Maldives", official: "Republic of the Maldives" },
+            name: { common: "Maldives",official: "Republic of the Maldives" },
             cca2: "MV",
             altNames:
                 "MV,Maldive Islands,Republic of the Maldives,Dhivehi Raajjeyge Jumhooriyya",
@@ -842,13 +842,13 @@ export const mlProp = {
             flag: "🇧🇳",
         },
         {
-            name: { common: "Benin", official: "Republic of Benin" },
+            name: { common: "Benin",official: "Republic of Benin" },
             cca2: "BJ",
             altNames: "BJ,Republic of Benin,République du Bénin",
             flag: "🇧🇯",
         },
         {
-            name: { common: "Guinea", official: "Republic of Guinea" },
+            name: { common: "Guinea",official: "Republic of Guinea" },
             cca2: "GN",
             altNames: "GN,Republic of Guinea,République de Guinée",
             flag: "🇬🇳",
@@ -874,14 +874,14 @@ export const mlProp = {
             flag: "🇺🇸",
         },
         {
-            name: { common: "Eritrea", official: "State of Eritrea" },
+            name: { common: "Eritrea",official: "State of Eritrea" },
             cca2: "ER",
             altNames:
                 "ER,State of Eritrea,ሃገረ ኤርትራ,Dawlat Iritriyá,ʾErtrā,Iritriyā",
             flag: "🇪🇷",
         },
         {
-            name: { common: "Sweden", official: "Kingdom of Sweden" },
+            name: { common: "Sweden",official: "Kingdom of Sweden" },
             cca2: "SE",
             altNames: "SE,Kingdom of Sweden,Konungariket Sverige",
             flag: "🇸🇪",
@@ -897,38 +897,38 @@ export const mlProp = {
             flag: "🇹🇫",
         },
         {
-            name: { common: "Ghana", official: "Republic of Ghana" },
+            name: { common: "Ghana",official: "Republic of Ghana" },
             cca2: "GH",
             altNames: "GH",
             flag: "🇬🇭",
         },
         {
-            name: { common: "Denmark", official: "Kingdom of Denmark" },
+            name: { common: "Denmark",official: "Kingdom of Denmark" },
             cca2: "DK",
             altNames: "DK,Danmark,Kingdom of Denmark,Kongeriget Danmark",
             flag: "🇩🇰",
         },
         {
-            name: { common: "Bulgaria", official: "Republic of Bulgaria" },
+            name: { common: "Bulgaria",official: "Republic of Bulgaria" },
             cca2: "BG",
             altNames: "BG,Republic of Bulgaria,Република България",
             flag: "🇧🇬",
         },
         {
-            name: { common: "Botswana", official: "Republic of Botswana" },
+            name: { common: "Botswana",official: "Republic of Botswana" },
             cca2: "BW",
             altNames: "BW,Republic of Botswana,Lefatshe la Botswana",
             flag: "🇧🇼",
         },
         {
-            name: { common: "Iran", official: "Islamic Republic of Iran" },
+            name: { common: "Iran",official: "Islamic Republic of Iran" },
             cca2: "IR",
             altNames:
                 "IR,Islamic Republic of Iran,Iran, Islamic Republic of,Jomhuri-ye Eslāmi-ye Irān",
             flag: "🇮🇷",
         },
         {
-            name: { common: "Bouvet Island", official: "Bouvet Island" },
+            name: { common: "Bouvet Island",official: "Bouvet Island" },
             cca2: "BV",
             altNames: "BV,Bouvetøya,Bouvet-øya",
             flag: "🇧🇻",
@@ -953,20 +953,20 @@ export const mlProp = {
             flag: "🇵🇳",
         },
         {
-            name: { common: "Belarus", official: "Republic of Belarus" },
+            name: { common: "Belarus",official: "Republic of Belarus" },
             cca2: "BY",
             altNames:
                 "BY,Bielaruś,Republic of Belarus,Белоруссия,Республика Белоруссия",
             flag: "🇧🇾",
         },
         {
-            name: { common: "Bermuda", official: "Bermuda" },
+            name: { common: "Bermuda",official: "Bermuda" },
             cca2: "BM",
             altNames: "BM,The Islands of Bermuda,The Bermudas,Somers Isles",
             flag: "🇧🇲",
         },
         {
-            name: { common: "Kazakhstan", official: "Republic of Kazakhstan" },
+            name: { common: "Kazakhstan",official: "Republic of Kazakhstan" },
             cca2: "KZ",
             altNames:
                 "KZ,Qazaqstan,Казахстан,Republic of Kazakhstan,Қазақстан Республикасы,Qazaqstan Respublïkası,Республика Казахстан,Respublika Kazakhstan",
@@ -983,14 +983,14 @@ export const mlProp = {
             flag: "🇱🇦",
         },
         {
-            name: { common: "Uzbekistan", official: "Republic of Uzbekistan" },
+            name: { common: "Uzbekistan",official: "Republic of Uzbekistan" },
             cca2: "UZ",
             altNames:
                 "UZ,Republic of Uzbekistan,O‘zbekiston Respublikasi,Ўзбекистон Республикаси",
             flag: "🇺🇿",
         },
         {
-            name: { common: "Malaysia", official: "Malaysia" },
+            name: { common: "Malaysia",official: "Malaysia" },
             cca2: "MY",
             altNames: "MY",
             flag: "🇲🇾",
@@ -1015,32 +1015,32 @@ export const mlProp = {
             flag: "🇵🇲",
         },
         {
-            name: { common: "Iceland", official: "Iceland" },
+            name: { common: "Iceland",official: "Iceland" },
             cca2: "IS",
             altNames: "IS,Island,Republic of Iceland,Lýðveldið Ísland",
             flag: "🇮🇸",
         },
         {
-            name: { common: "Greece", official: "Hellenic Republic" },
+            name: { common: "Greece",official: "Hellenic Republic" },
             cca2: "GR",
             altNames: "GR,Elláda,Hellenic Republic,Ελληνική Δημοκρατία",
             flag: "🇬🇷",
         },
         {
-            name: { common: "Paraguay", official: "Republic of Paraguay" },
+            name: { common: "Paraguay",official: "Republic of Paraguay" },
             cca2: "PY",
             altNames:
                 "PY,Republic of Paraguay,República del Paraguay,Tetã Paraguái",
             flag: "🇵🇾",
         },
         {
-            name: { common: "Cameroon", official: "Republic of Cameroon" },
+            name: { common: "Cameroon",official: "Republic of Cameroon" },
             cca2: "CM",
             altNames: "CM,Republic of Cameroon,République du Cameroun",
             flag: "🇨🇲",
         },
         {
-            name: { common: "Palau", official: "Republic of Palau" },
+            name: { common: "Palau",official: "Republic of Palau" },
             cca2: "PW",
             altNames: "PW,Republic of Palau,Beluu er a Belau",
             flag: "🇵🇼",
@@ -1066,7 +1066,7 @@ export const mlProp = {
             flag: "🇧🇱",
         },
         {
-            name: { common: "Anguilla", official: "Anguilla" },
+            name: { common: "Anguilla",official: "Anguilla" },
             cca2: "AI",
             altNames: "AI",
             flag: "🇦🇮",
@@ -1092,13 +1092,13 @@ export const mlProp = {
             flag: "🇩🇪",
         },
         {
-            name: { common: "Hungary", official: "Hungary" },
+            name: { common: "Hungary",official: "Hungary" },
             cca2: "HU",
             altNames: "HU",
             flag: "🇭🇺",
         },
         {
-            name: { common: "Sudan", official: "Republic of the Sudan" },
+            name: { common: "Sudan",official: "Republic of the Sudan" },
             cca2: "SD",
             altNames: "SD,Republic of the Sudan,Jumhūrīyat as-Sūdān",
             flag: "🇸🇩",
@@ -1114,13 +1114,13 @@ export const mlProp = {
             flag: "🇸🇴",
         },
         {
-            name: { common: "Lithuania", official: "Republic of Lithuania" },
+            name: { common: "Lithuania",official: "Republic of Lithuania" },
             cca2: "LT",
             altNames: "LT,Republic of Lithuania,Lietuvos Respublika",
             flag: "🇱🇹",
         },
         {
-            name: { common: "Angola", official: "Republic of Angola" },
+            name: { common: "Angola",official: "Republic of Angola" },
             cca2: "AO",
             altNames: "AO,República de Angola,ʁɛpublika de an'ɡɔla",
             flag: "🇦🇴",
@@ -1146,7 +1146,7 @@ export const mlProp = {
             flag: "🇸🇦",
         },
         {
-            name: { common: "Estonia", official: "Republic of Estonia" },
+            name: { common: "Estonia",official: "Republic of Estonia" },
             cca2: "EE",
             altNames: "EE,Eesti,Republic of Estonia,Eesti Vabariik",
             flag: "🇪🇪",
@@ -1162,13 +1162,13 @@ export const mlProp = {
             flag: "🇱🇺",
         },
         {
-            name: { common: "Zimbabwe", official: "Republic of Zimbabwe" },
+            name: { common: "Zimbabwe",official: "Republic of Zimbabwe" },
             cca2: "ZW",
             altNames: "ZW,Republic of Zimbabwe",
             flag: "🇿🇼",
         },
         {
-            name: { common: "New Zealand", official: "New Zealand" },
+            name: { common: "New Zealand",official: "New Zealand" },
             cca2: "NZ",
             altNames: "NZ,Aotearoa",
             flag: "🇳🇿",
@@ -1184,7 +1184,7 @@ export const mlProp = {
             flag: "🇻🇪",
         },
         {
-            name: { common: "Gambia", official: "Republic of the Gambia" },
+            name: { common: "Gambia",official: "Republic of the Gambia" },
             cca2: "GM",
             altNames: "GM,Republic of the Gambia",
             flag: "🇬🇲",
@@ -1200,14 +1200,14 @@ export const mlProp = {
             flag: "🇼🇫",
         },
         {
-            name: { common: "Belgium", official: "Kingdom of Belgium" },
+            name: { common: "Belgium",official: "Kingdom of Belgium" },
             cca2: "BE",
             altNames:
                 "BE,België,Belgie,Belgien,Belgique,Kingdom of Belgium,Koninkrijk België,Royaume de Belgique,Königreich Belgien",
             flag: "🇧🇪",
         },
         {
-            name: { common: "Belize", official: "Belize" },
+            name: { common: "Belize",official: "Belize" },
             cca2: "BZ",
             altNames: "BZ",
             flag: "🇧🇿",
@@ -1222,50 +1222,50 @@ export const mlProp = {
             flag: "🇪🇭",
         },
         {
-            name: { common: "Slovenia", official: "Republic of Slovenia" },
+            name: { common: "Slovenia",official: "Republic of Slovenia" },
             cca2: "SI",
             altNames: "SI,Republic of Slovenia,Republika Slovenija",
             flag: "🇸🇮",
         },
         {
-            name: { common: "Syria", official: "Syrian Arab Republic" },
+            name: { common: "Syria",official: "Syrian Arab Republic" },
             cca2: "SY",
             altNames:
                 "SY,Syrian Arab Republic,Al-Jumhūrīyah Al-ʻArabīyah As-Sūrīyah",
             flag: "🇸🇾",
         },
         {
-            name: { common: "Japan", official: "Japan" },
+            name: { common: "Japan",official: "Japan" },
             cca2: "JP",
             altNames: "JP,Nippon,Nihon",
             flag: "🇯🇵",
         },
         {
-            name: { common: "Russia", official: "Russian Federation" },
+            name: { common: "Russia",official: "Russian Federation" },
             cca2: "RU",
             altNames: "RU,Russian Federation,Российская Федерация",
             flag: "🇷🇺",
         },
         {
-            name: { common: "Lesotho", official: "Kingdom of Lesotho" },
+            name: { common: "Lesotho",official: "Kingdom of Lesotho" },
             cca2: "LS",
             altNames: "LS,Kingdom of Lesotho,Muso oa Lesotho",
             flag: "🇱🇸",
         },
         {
-            name: { common: "Ireland", official: "Republic of Ireland" },
+            name: { common: "Ireland",official: "Republic of Ireland" },
             cca2: "IE",
             altNames: "IE,Éire,Republic of Ireland,Poblacht na hÉireann",
             flag: "🇮🇪",
         },
         {
-            name: { common: "Montenegro", official: "Montenegro" },
+            name: { common: "Montenegro",official: "Montenegro" },
             cca2: "ME",
             altNames: "ME,Crna Gora",
             flag: "🇲🇪",
         },
         {
-            name: { common: "Andorra", official: "Principality of Andorra" },
+            name: { common: "Andorra",official: "Principality of Andorra" },
             cca2: "AD",
             altNames: "AD,Principality of Andorra,Principat d'Andorra",
             flag: "🇦🇩",
@@ -1280,31 +1280,31 @@ export const mlProp = {
             flag: "🇳🇱",
         },
         {
-            name: { common: "Latvia", official: "Republic of Latvia" },
+            name: { common: "Latvia",official: "Republic of Latvia" },
             cca2: "LV",
             altNames: "LV,Republic of Latvia,Latvijas Republika",
             flag: "🇱🇻",
         },
         {
-            name: { common: "Tunisia", official: "Tunisian Republic" },
+            name: { common: "Tunisia",official: "Tunisian Republic" },
             cca2: "TN",
             altNames: "TN,Republic of Tunisia,al-Jumhūriyyah at-Tūnisiyyah",
             flag: "🇹🇳",
         },
         {
-            name: { common: "Aruba", official: "Aruba" },
+            name: { common: "Aruba",official: "Aruba" },
             cca2: "AW",
             altNames: "AW",
             flag: "🇦🇼",
         },
         {
-            name: { common: "Croatia", official: "Republic of Croatia" },
+            name: { common: "Croatia",official: "Republic of Croatia" },
             cca2: "HR",
             altNames: "HR,Hrvatska,Republic of Croatia,Republika Hrvatska",
             flag: "🇭🇷",
         },
         {
-            name: { common: "Mali", official: "Republic of Mali" },
+            name: { common: "Mali",official: "Republic of Mali" },
             cca2: "ML",
             altNames: "ML,Republic of Mali,République du Mali",
             flag: "🇲🇱",
@@ -1328,20 +1328,20 @@ export const mlProp = {
             flag: "🇸🇱",
         },
         {
-            name: { common: "Iraq", official: "Republic of Iraq" },
+            name: { common: "Iraq",official: "Republic of Iraq" },
             cca2: "IQ",
             altNames: "IQ,Republic of Iraq,Jumhūriyyat al-‘Irāq",
             flag: "🇮🇶",
         },
         {
-            name: { common: "Comoros", official: "Union of the Comoros" },
+            name: { common: "Comoros",official: "Union of the Comoros" },
             cca2: "KM",
             altNames:
                 "KM,Union of the Comoros,Union des Comores,Udzima wa Komori,al-Ittiḥād al-Qumurī",
             flag: "🇰🇲",
         },
         {
-            name: { common: "Egypt", official: "Arab Republic of Egypt" },
+            name: { common: "Egypt",official: "Arab Republic of Egypt" },
             cca2: "EG",
             altNames: "EG,Arab Republic of Egypt",
             flag: "🇪🇬",
@@ -1357,45 +1357,45 @@ export const mlProp = {
             flag: "🇻🇳",
         },
         {
-            name: { common: "Vatican City", official: "Vatican City State" },
+            name: { common: "Vatican City",official: "Vatican City State" },
             cca2: "VA",
             altNames:
                 "VA,Holy See (Vatican City State),Vatican City State,Stato della Città del Vaticano",
             flag: "🇻🇦",
         },
         {
-            name: { common: "Sint Maarten", official: "Sint Maarten" },
+            name: { common: "Sint Maarten",official: "Sint Maarten" },
             cca2: "SX",
             altNames: "SX,Sint Maarten (Dutch part)",
             flag: "🇸🇽",
         },
         {
-            name: { common: "Slovakia", official: "Slovak Republic" },
+            name: { common: "Slovakia",official: "Slovak Republic" },
             cca2: "SK",
             altNames: "SK,Slovak Republic,Slovenská republika",
             flag: "🇸🇰",
         },
         {
-            name: { common: "Singapore", official: "Republic of Singapore" },
+            name: { common: "Singapore",official: "Republic of Singapore" },
             cca2: "SG",
             altNames: "SG,Singapura,Republik Singapura,新加坡共和国",
             flag: "🇸🇬",
         },
         {
-            name: { common: "Cook Islands", official: "Cook Islands" },
+            name: { common: "Cook Islands",official: "Cook Islands" },
             cca2: "CK",
             altNames: "CK,Kūki 'Āirani",
             flag: "🇨🇰",
         },
         {
-            name: { common: "Eswatini", official: "Kingdom of Eswatini" },
+            name: { common: "Eswatini",official: "Kingdom of Eswatini" },
             cca2: "SZ",
             altNames:
                 "SZ,Swaziland,weSwatini,Swatini,Ngwane,Kingdom of Eswatini,Umbuso weSwatini",
             flag: "🇸🇿",
         },
         {
-            name: { common: "Tonga", official: "Kingdom of Tonga" },
+            name: { common: "Tonga",official: "Kingdom of Tonga" },
             cca2: "TO",
             altNames: "TO",
             flag: "🇹🇴",
@@ -1410,19 +1410,19 @@ export const mlProp = {
             flag: "🇨🇬",
         },
         {
-            name: { common: "Guernsey", official: "Bailiwick of Guernsey" },
+            name: { common: "Guernsey",official: "Bailiwick of Guernsey" },
             cca2: "GG",
             altNames: "GG,Bailiwick of Guernsey,Bailliage de Guernesey",
             flag: "🇬🇬",
         },
         {
-            name: { common: "Guadeloupe", official: "Guadeloupe" },
+            name: { common: "Guadeloupe",official: "Guadeloupe" },
             cca2: "GP",
             altNames: "GP,Gwadloup",
             flag: "🇬🇵",
         },
         {
-            name: { common: "Namibia", official: "Republic of Namibia" },
+            name: { common: "Namibia",official: "Republic of Namibia" },
             cca2: "NA",
             altNames: "NA,Namibië,Republic of Namibia",
             flag: "🇳🇦",
@@ -1437,7 +1437,7 @@ export const mlProp = {
             flag: "🇹🇹",
         },
         {
-            name: { common: "Bhutan", official: "Kingdom of Bhutan" },
+            name: { common: "Bhutan",official: "Kingdom of Bhutan" },
             cca2: "BT",
             altNames: "BT,Kingdom of Bhutan",
             flag: "🇧🇹",
@@ -1462,26 +1462,26 @@ export const mlProp = {
             flag: "🇸🇸",
         },
         {
-            name: { common: "San Marino", official: "Republic of San Marino" },
+            name: { common: "San Marino",official: "Republic of San Marino" },
             cca2: "SM",
             altNames: "SM,Republic of San Marino,Repubblica di San Marino",
             flag: "🇸🇲",
         },
         {
-            name: { common: "Tajikistan", official: "Republic of Tajikistan" },
+            name: { common: "Tajikistan",official: "Republic of Tajikistan" },
             cca2: "TJ",
             altNames:
                 "TJ,Toçikiston,Republic of Tajikistan,Ҷумҳурии Тоҷикистон,Çumhuriyi Toçikiston",
             flag: "🇹🇯",
         },
         {
-            name: { common: "Uganda", official: "Republic of Uganda" },
+            name: { common: "Uganda",official: "Republic of Uganda" },
             cca2: "UG",
             altNames: "UG,Republic of Uganda,Jamhuri ya Uganda",
             flag: "🇺🇬",
         },
         {
-            name: { common: "Samoa", official: "Independent State of Samoa" },
+            name: { common: "Samoa",official: "Independent State of Samoa" },
             cca2: "WS",
             altNames:
                 "WS,Independent State of Samoa,Malo Saʻoloto Tutoʻatasi o Sāmoa",
@@ -1516,7 +1516,7 @@ export const mlProp = {
             flag: "🇻🇮",
         },
         {
-            name: { common: "Azerbaijan", official: "Republic of Azerbaijan" },
+            name: { common: "Azerbaijan",official: "Republic of Azerbaijan" },
             cca2: "AZ",
             altNames: "AZ,Republic of Azerbaijan,Azərbaycan Respublikası",
             flag: "🇦🇿",
@@ -1540,38 +1540,38 @@ export const mlProp = {
             flag: "🇨🇽",
         },
         {
-            name: { common: "Chad", official: "Republic of Chad" },
+            name: { common: "Chad",official: "Republic of Chad" },
             cca2: "TD",
             altNames: "TD,Tchad,Republic of Chad,République du Tchad",
             flag: "🇹🇩",
         },
         {
-            name: { common: "Argentina", official: "Argentine Republic" },
+            name: { common: "Argentina",official: "Argentine Republic" },
             cca2: "AR",
             altNames: "AR,Argentine Republic,República Argentina",
             flag: "🇦🇷",
         },
         {
-            name: { common: "India", official: "Republic of India" },
+            name: { common: "India",official: "Republic of India" },
             cca2: "IN",
             altNames: "IN,Bhārat,Republic of India,Bharat Ganrajya,இந்தியா",
             flag: "🇮🇳",
         },
         {
-            name: { common: "Saint Martin", official: "Saint Martin" },
+            name: { common: "Saint Martin",official: "Saint Martin" },
             cca2: "MF",
             altNames:
                 "MF,Collectivity of Saint Martin,Collectivité de Saint-Martin,Saint Martin (French part)",
             flag: "🇲🇫",
         },
         {
-            name: { common: "Haiti", official: "Republic of Haiti" },
+            name: { common: "Haiti",official: "Republic of Haiti" },
             cca2: "HT",
             altNames: "HT,Republic of Haiti,République d'Haïti,Repiblik Ayiti",
             flag: "🇭🇹",
         },
         {
-            name: { common: "Saint Lucia", official: "Saint Lucia" },
+            name: { common: "Saint Lucia",official: "Saint Lucia" },
             cca2: "LC",
             altNames: "LC",
             flag: "🇱🇨",
@@ -1587,19 +1587,19 @@ export const mlProp = {
             flag: "🇳🇵",
         },
         {
-            name: { common: "Tokelau", official: "Tokelau" },
+            name: { common: "Tokelau",official: "Tokelau" },
             cca2: "TK",
             altNames: "TK",
             flag: "🇹🇰",
         },
         {
-            name: { common: "Turkmenistan", official: "Turkmenistan" },
+            name: { common: "Turkmenistan",official: "Turkmenistan" },
             cca2: "TM",
             altNames: "TM",
             flag: "🇹🇲",
         },
         {
-            name: { common: "Israel", official: "State of Israel" },
+            name: { common: "Israel",official: "State of Israel" },
             cca2: "IL",
             altNames: "IL,State of Israel,Medīnat Yisrā'el",
             flag: "🇮🇱",
@@ -1614,7 +1614,7 @@ export const mlProp = {
             flag: "🇧🇶",
         },
         {
-            name: { common: "Malta", official: "Republic of Malta" },
+            name: { common: "Malta",official: "Republic of Malta" },
             cca2: "MT",
             altNames: "MT,Republic of Malta,Repubblika ta' Malta",
             flag: "🇲🇹",
@@ -1630,19 +1630,19 @@ export const mlProp = {
             flag: "🇲🇵",
         },
         {
-            name: { common: "Malawi", official: "Republic of Malawi" },
+            name: { common: "Malawi",official: "Republic of Malawi" },
             cca2: "MW",
             altNames: "MW,Republic of Malawi",
             flag: "🇲🇼",
         },
         {
-            name: { common: "Gibraltar", official: "Gibraltar" },
+            name: { common: "Gibraltar",official: "Gibraltar" },
             cca2: "GI",
             altNames: "GI",
             flag: "🇬🇮",
         },
         {
-            name: { common: "Vanuatu", official: "Republic of Vanuatu" },
+            name: { common: "Vanuatu",official: "Republic of Vanuatu" },
             cca2: "VU",
             altNames:
                 "VU,Republic of Vanuatu,Ripablik blong Vanuatu,République de Vanuatu",
@@ -1659,13 +1659,13 @@ export const mlProp = {
             flag: "🇬🇧",
         },
         {
-            name: { common: "Martinique", official: "Martinique" },
+            name: { common: "Martinique",official: "Martinique" },
             cca2: "MQ",
             altNames: "MQ",
             flag: "🇲🇶",
         },
         {
-            name: { common: "Mexico", official: "United Mexican States" },
+            name: { common: "Mexico",official: "United Mexican States" },
             cca2: "MX",
             altNames:
                 "MX,Mexicanos,United Mexican States,Estados Uncca2os Mexicanos",
@@ -1681,7 +1681,7 @@ export const mlProp = {
             flag: "🇧🇦",
         },
         {
-            name: { common: "Romania", official: "Romania" },
+            name: { common: "Romania",official: "Romania" },
             cca2: "RO",
             altNames: "RO,Rumania,Roumania,România",
             flag: "🇷🇴",
@@ -1714,77 +1714,77 @@ export const mlProp = {
             flag: "🇮🇴",
         },
         {
-            name: { common: "Réunion", official: "Réunion Island" },
+            name: { common: "Réunion",official: "Réunion Island" },
             cca2: "RE",
             altNames: "RE,Reunion",
             flag: "🇷🇪",
         },
         {
-            name: { common: "Kyrgyzstan", official: "Kyrgyz Republic" },
+            name: { common: "Kyrgyzstan",official: "Kyrgyz Republic" },
             cca2: "KG",
             altNames:
                 "KG,Киргизия,Kyrgyz Republic,Кыргыз Республикасы,Kyrgyz Respublikasy",
             flag: "🇰🇬",
         },
         {
-            name: { common: "Thailand", official: "Kingdom of Thailand" },
+            name: { common: "Thailand",official: "Kingdom of Thailand" },
             cca2: "TH",
             altNames:
                 "TH,Prathet,Thai,Kingdom of Thailand,ราชอาณาจักรไทย,Ratcha Anachak Thai",
             flag: "🇹🇭",
         },
         {
-            name: { common: "Burundi", official: "Republic of Burundi" },
+            name: { common: "Burundi",official: "Republic of Burundi" },
             cca2: "BI",
             altNames:
                 "BI,Republic of Burundi,Republika y'Uburundi,République du Burundi",
             flag: "🇧🇮",
         },
         {
-            name: { common: "Greenland", official: "Greenland" },
+            name: { common: "Greenland",official: "Greenland" },
             cca2: "GL",
             altNames: "GL,Grønland",
             flag: "🇬🇱",
         },
         {
-            name: { common: "Austria", official: "Republic of Austria" },
+            name: { common: "Austria",official: "Republic of Austria" },
             cca2: "AT",
             altNames: "AT,Osterreich,Oesterreich",
             flag: "🇦🇹",
         },
         {
-            name: { common: "France", official: "French Republic" },
+            name: { common: "France",official: "French Republic" },
             cca2: "FR",
             altNames: "FR,French Republic,République française",
             flag: "🇫🇷",
         },
         {
-            name: { common: "Monaco", official: "Principality of Monaco" },
+            name: { common: "Monaco",official: "Principality of Monaco" },
             cca2: "MC",
             altNames: "MC,Principality of Monaco,Principauté de Monaco",
             flag: "🇲🇨",
         },
         {
-            name: { common: "Nauru", official: "Republic of Nauru" },
+            name: { common: "Nauru",official: "Republic of Nauru" },
             cca2: "NR",
             altNames:
                 "NR,Naoero,Pleasant Island,Republic of Nauru,Ripublik Naoero",
             flag: "🇳🇷",
         },
         {
-            name: { common: "Niger", official: "Republic of Niger" },
+            name: { common: "Niger",official: "Republic of Niger" },
             cca2: "NE",
             altNames: "NE,Nijar",
             flag: "🇳🇪",
         },
         {
-            name: { common: "American Samoa", official: "American Samoa" },
+            name: { common: "American Samoa",official: "American Samoa" },
             cca2: "AS",
             altNames: "AS,Amerika Sāmoa,Amelika Sāmoa,Sāmoa Amelika",
             flag: "🇦🇸",
         },
         {
-            name: { common: "Mozambique", official: "Republic of Mozambique" },
+            name: { common: "Mozambique",official: "Republic of Mozambique" },
             cca2: "MZ",
             altNames: "MZ,Republic of Mozambique,República de Moçambique",
             flag: "🇲🇿",
@@ -1800,25 +1800,25 @@ export const mlProp = {
             flag: "🇹🇱",
         },
         {
-            name: { common: "Nicaragua", official: "Republic of Nicaragua" },
+            name: { common: "Nicaragua",official: "Republic of Nicaragua" },
             cca2: "NI",
             altNames: "NI,Republic of Nicaragua,República de Nicaragua",
             flag: "🇳🇮",
         },
         {
-            name: { common: "Panama", official: "Republic of Panama" },
+            name: { common: "Panama",official: "Republic of Panama" },
             cca2: "PA",
             altNames: "PA,Republic of Panama,República de Panamá",
             flag: "🇵🇦",
         },
         {
-            name: { common: "Poland", official: "Republic of Poland" },
+            name: { common: "Poland",official: "Republic of Poland" },
             cca2: "PL",
             altNames: "PL,Republic of Poland,Rzeczpospolita Polska",
             flag: "🇵🇱",
         },
         {
-            name: { common: "Libya", official: "State of Libya" },
+            name: { common: "Libya",official: "State of Libya" },
             cca2: "LY",
             altNames: "LY,State of Libya,Dawlat Libya",
             flag: "🇱🇾",
@@ -1838,19 +1838,19 @@ export const mlProp = {
             * * 🟢 generic, it is a regexp
             @@return Regexp
         */
-        htmlTag: new RegExp(/.*?>([^<]*)/),
+        htmlTag: new RegExp( /.*?>([^<]*)/ ),
         /**
             Identify Brackets in html tag
             * * 🟢 generic, it is a regexp
             @@return Regexp
         */
-        inBrackets: new RegExp(/\[[^\[\]]*\]/),
+        inBrackets: new RegExp( /\[[^\[\]]*\]/ ),
         /**
             Identify Strings in html tag
             * * 🟢 generic, it is a regexp
             @@return Regexp
         */
-        inStrings: new RegExp(/.*?\"([^\"]*)/),
+        inStrings: new RegExp( /.*?\"([^\"]*)/ ),
         /**
             Identify html tag or arrays (brackets)
             * * 🟢 generic, it is a regexp
@@ -1864,13 +1864,13 @@ export const mlProp = {
             * * 🟢 generic, it is a regexp
             @return Regexp
         */
-        openParentheses: new RegExp(/^(.*?)\(/),
+        openParentheses: new RegExp( /^(.*?)\(/ ),
         /**
             Identify all spaces
             * * 🟢 generic, it is a regexp
             @return Regexp
         */
-        allSpaces: new RegExp(/\S+/g),
+        allSpaces: new RegExp( /\S+/g ),
         /**
             Identify any date
             * * 🟢 generic, it is a regexp
@@ -2034,7 +2034,7 @@ export const mlProp = {
             color: "grey-4",
             icon: "alpha-s-circle",
             state: "Suspended",
-        }, {
+        },{
             type: "info",
             color: "blue-11",
             icon: "person_add",

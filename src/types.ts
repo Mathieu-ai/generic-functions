@@ -4,7 +4,7 @@ import { Dayjs } from "dayjs";
     Return type of the function `extractFromString`
     * * 🟢 generic, it is a type
 */
-export type ExtractionResult = string | boolean | number | Date | any[] | null;
+export type ExtractionResult=string|boolean|number|Date|any[]|null;
 /**
     Return type of the function `extractFromString`
     * * 🟢 generic, it is a type
@@ -12,7 +12,7 @@ export type ExtractionResult = string | boolean | number | Date | any[] | null;
 export interface ExtractOptions {
     str: string;
     reg: RegExp;
-    type: "string" | "boolean" | "array" | "number" | "date";
+    type: "string"|"boolean"|"array"|"number"|"date";
 }
 /**
     Return type of the axios error object
@@ -20,7 +20,7 @@ export interface ExtractOptions {
 */
 export interface logErrorOptions {
     err: {
-        [key: string]: any
+        [ key: string ]: any
     };
     log?: boolean;
 }
@@ -28,12 +28,12 @@ export interface logErrorOptions {
     Return type of time unit
     * * 🟢 generic, it is a type
 */
-export type timeUnit = | "hour" | "minute" | "second" | "millisecond" | "day" | "month" | "year";
+export type timeUnit=|"hour"|"minute"|"second"|"millisecond"|"day"|"month"|"year";
 /**
     Return a const that possesses al Dayjs variables
     * * 🟢 generic, it is a object
 */
-export const timeUnitMap: Record<timeUnit, keyof Dayjs> = {
+export const timeUnitMap: Record<timeUnit,keyof Dayjs>={
     hour: "hour",
     minute: "minute",
     second: "second",
@@ -46,12 +46,12 @@ export const timeUnitMap: Record<timeUnit, keyof Dayjs> = {
     Return type of the format date function
     * * 🟢 generic, it is a type
 */
-export type formatType = "DATE" | "TIME" | "DATE_TIME";
+export type formatType="DATE"|"TIME"|"DATE_TIME";
 /**
     Return type of all codeISO of countries
     * * 🟢 generic, it is a type
 */
-export type codeISO = | "AD" | "AT" | "BE" | "BG" | "CH" | "CY" | "CZ" | "DE" | "DK" | "EE" | "ES" | "FI" | "FR" | "GB" | "GR" | "HR" | "HU" | "IE" | "IS" | "IT" | "LI" | "LT" | "LU" | "LV" | "MC" | "MT" | "NL" | "NO" | "PL" | "PT" | "RO" | "SE" | "SI" | "SK" | "SM" | "TR" | "US" | "CA" | "JP" | "CN" | "KR";
+export type codeISO=|"AD"|"AT"|"BE"|"BG"|"CH"|"CY"|"CZ"|"DE"|"DK"|"EE"|"ES"|"FI"|"FR"|"GB"|"GR"|"HR"|"HU"|"IE"|"IS"|"IT"|"LI"|"LT"|"LU"|"LV"|"MC"|"MT"|"NL"|"NO"|"PL"|"PT"|"RO"|"SE"|"SI"|"SK"|"SM"|"TR"|"US"|"CA"|"JP"|"CN"|"KR";
 
 /**
     Return interface of the getCountries function
@@ -90,7 +90,7 @@ export interface FlatOptions {
     Return type of the compareType function
     * * 🟢 generic, it is a type
 */
-export type compareTypes_o = {
+export type compareTypes_o={
     getKeys?: boolean;
 };
 
@@ -98,14 +98,14 @@ export type compareTypes_o = {
     Return type of the compareType function
     * * 🟢 generic, it is a type
 */
-export type compareTypes_t = 'string' | 'number' | 'boolean' | 'object';
+export type compareTypes_t='string'|'number'|'boolean'|'object';
 
-export type number_t = number | string | (string | number)[]
+export type number_t=number|string
 
 /**
  * Represents an HTML entity with its code and name.
  */
-export type Entity = {
+export type Entity={
     /** The decimal code point for the entity. */
     code: number;
     /** The entity name or character. */
@@ -116,7 +116,7 @@ export type Entity = {
  * A map of entity names to their corresponding codes and names.
  */
 export interface EntityMap {
-    [key: string]: Entity;
+    [ key: string ]: Entity;
 }
 
 /**
@@ -138,16 +138,16 @@ export interface DecodeOptions {
 /**
     props needed for the filterData function
 */
-export type filterData_props = {
-    field_state: Array<{ state: string } & Record<string, any>>;
+export type filterData_props={
+    field_state: Array<{ state: string }&Record<string,any>>;
     field_search: string;
-    field_period: { ddeb: any } & Record<string, any>;
+    field_period: { ddeb: any }&Record<string,any>;
 };
 
 /**
     type for the filterData function
 */
-export type filterData_arr_type = filterData_props & Record<string, any>;
+export type filterData_arr_type=filterData_props&Record<string,any>;
 
 
 
