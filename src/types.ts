@@ -6,10 +6,6 @@ import { Dayjs } from "dayjs";
 */
 export type ExtractionResult=string|boolean|number|Date|any[]|null;
 
-export type IndexableType = { 
-    [key: string]: any;
-};
-
 /**
     Return type of the function `extractFromString`
     * * 🟢 generic, it is a type
@@ -105,7 +101,13 @@ export type compareTypes_o={
 */
 export type compareTypes_t='string'|'number'|'boolean'|'object';
 
-export type number_t=number|string
+export type ArrayOrObject=Array<any>|Record<string,any>;
+
+export interface CompareTypesOptions {
+    getKeys?: boolean;
+}
+
+export type NumOrStr=number|string
 
 /**
  * Represents an HTML entity with its code and name.
@@ -152,7 +154,11 @@ export type filterData_props={
 /**
     type for the filterData function
 */
-export type filterData_arr_type=filterData_props&Record<string,any>;
+export type FilterDataProps={
+    field_search: string;
+    state: { state: string }[];
+    ddeb: string;
+};
 
 
 export interface FlatOptions {
@@ -169,4 +175,8 @@ export interface NamedCharacters {
         codepoints: number[];
         characters: string;
     };
+}
+
+export interface obj {
+    [ key: string ]: any;
 }

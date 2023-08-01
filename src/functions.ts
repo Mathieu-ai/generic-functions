@@ -1,4 +1,4 @@
-import request from "axios";
+import axios,{ AxiosError,AxiosRequestConfig } from "axios";
 import { decodeHTML } from 'entities';
 import objectHash from 'object-hash';
 import dayjs from "dayjs";
@@ -6,40 +6,51 @@ import isBetween from 'dayjs/plugin/isBetween'
 dayjs.extend( isBetween )
 
 import {
-    ExtractionResult,
-    logErrorOptions,
-    timeUnit,
-    timeUnitMap,
-    formatType,
+    ArrayOrObject,
     codeISO,
-    typeOfCountries,
-    FlatOptions,
     compareTypes_o,
     compareTypes_t,
-    number_t,
-    filterData_arr_type,
-    IndexableType,
+    ExtractionResult,
+    FlatOptions,
+    formatType,
+    logErrorOptions,
+    obj,
+    timeUnit,
+    timeUnitMap,
+    typeOfCountries,
 } from "./types";
-import { mlProp } from './props'
+import { MLAIP } from './props'
 
-const { Reg: { allSpaces },Dates: { DATE_ISO } }=mlProp
+const { Reg: { allSpaces },Dates: { DATE_ISO } }=MLAIP
 /**
     Make a request with [axios](https://axios-http.com/fr/docs/intro) to return the data
     * * 🟢 Function is generic
     * * 🔴 needs [axios](https://axios-http.com/fr/docs/intro) to function
-    @param {String} env
-    @return Object | data
+    @param {String} route The route
+    @param {AxiosRequestConfig} parameters The parameters
+    @param {boolean} fullLog to log the full err or not
+    @return Promise<any>
     @example
         api("http://localhost:8080/members")
 */
-export async function api ( env: string ): Promise<object[]> {
-    const res=await request( {
-        url: env,
-        method: "GET",
-    } );
-    if( res.status!=200 )
-        throw new Error( "axios request is different from 200" );
-    return res.data;
+export async function api(
+    route: string,
+    parameters: AxiosRequestConfig={},
+    fullLog: boolean=false
+) {
+    const config: AxiosRequestConfig={
+        url: route,
+        method: 'GET',
+        ...parameters,
+    };
+
+    return axios.request( config )
+        .then( ( response ) => {
+            return response.data;
+        } )
+        .catch( ( e: AxiosError ) => {
+            return { ok: false,message: fullLog? e:e.message };
+        } );
 }
 
 /**
@@ -51,7 +62,7 @@ export async function api ( env: string ): Promise<object[]> {
         capitalize('hello')
         // Hello
 */
-export function capitalize ( str: string ) {
+export function capitalize( str: string ) {
     return str.charAt( 0 ).toUpperCase()+str.slice( 1 );
 }
 
@@ -65,39 +76,39 @@ export function capitalize ( str: string ) {
         console.log(cleanedText);
         // Output: "Hello World"
  */
-export function purify ( str: any ): string {
+export function purify( str: any ): string {
     return typeof str==="string"
         ? str.normalize( "NFD" ).replace( /[\u0300-\u036f]/g,"" )
         :"";
 }
 
 /**
-    Calculate newest and oldest years
+    Calculates the minimum  year
     * * 🔴 needs [dayjs](https://day.js.org/docs/en/installation/installation) to function
     * * 🟢 Function is generic
-    @param {object[]} arr
-    @param {string} str
-    @return Number[]
-    @example
-        minAndMax(ArrOfObj, 'field_ddeb')
-        // [1900,2030]
+    * @param arr - An array of objects
+    * @param prop - The property name in each object that holds the date value.
+    * @returns object with minimum and maximum years from now rounded to the nearest decade
+    * @example
+       const data = [
+           { ddeb: '2020-01-15' },
+           { ddeb: '2015-05-20' },
+           { ddeb: '2018-11-30' },
+       ];
+       const result = minAndMaxYears(data, 'ddeb');
+       // result: { min: 2010, max: 2030 }
 */
-export function minAndMaxYears (
-    arr: any[],
-    str: string
-): {
-    min: number;
-    max: number;
-} {
-    let min=0;
-    arr.forEach( ( m ) => {
-        const year=dayjs( m[ str ] ).year();
-        if( !min||year<min ) min=year;
-    } );
+export function minAndMaxYears( arr: obj[],prop: string ): { min: number,max: number } {
+    let min=0
+    arr.forEach( ( o ) => {
+        const year=dayjs( o[ prop ] ).year()
+        if( !min||year<min ) min=year
+    } )
+
     return {
         min: Math.round( min/10 )*10,
         max: Math.round( dayjs( Date.now() ).year()/10 )*10+10,
-    };
+    }
 }
 
 /**
@@ -109,7 +120,7 @@ export function minAndMaxYears (
         getAcronym("Toto titi Mathieu Dev Wow");
         // Returns, e.g, "TTMD"
 */
-export function getInitials ( str: string ): string {
+export function getInitials( str: string ): string {
     return str
         .trim()
         .split( /\s+/ )
@@ -134,7 +145,7 @@ export function getInitials ( str: string ): string {
         console.log(removeBreakLines("A String\r\n breaklines"));
         // AStringBreaklines
 */
-export function removeBreakLines ( str: string ): string {
+export function removeBreakLines( str: string ): string {
     return str
         .replace( /[\r\n]+/g," " )
         .replace( / {2,}/g," " )
@@ -158,10 +169,26 @@ export function removeBreakLines ( str: string ): string {
         const sortedCountries = sort({ arr: countries, prop: 'name' });
         // [ { name: 'Australia'}, { name: 'France'} ]
 */
-export function sort ( { arr,prop }: { arr: any[]; prop: string } ): object[] {
-    return arr.sort( ( a: any,b: any ) =>
-        purify( a[ prop ] )>purify( b[ prop ] )? -1:1
-    );
+export function sort<T extends { [ key: string ]: any }>( {
+    arr,
+    prop,
+    ascending=true,
+}: {
+    arr: T[];
+    prop: keyof T;
+    ascending?: boolean;
+} ): T[] {
+    const compare=( a: T,b: T ) => {
+        const valueA=a[ prop ];
+        const valueB=b[ prop ];
+
+        const sortOrder=ascending? 1:-1;
+        return typeof valueA==='number'&&typeof valueB==='number'
+            ? sortOrder*( valueA-valueB )
+            :sortOrder*purify( String( valueA ) ).localeCompare( purify( String( valueB ) ) );
+    };
+
+    return arr.slice().sort( compare );
 }
 
 /**
@@ -202,7 +229,7 @@ export function sort ( { arr,prop }: { arr: any[]; prop: string } ): object[] {
         flat(data, { props: ["city"] });
         // "Paris"
  */
-export function flat ( data: any,options: FlatOptions={} ): string {
+export function flat( data: any,options: FlatOptions={} ): string {
     const { props=[] }=options;
     const result: string[]=[];
 
@@ -229,7 +256,7 @@ export function flat ( data: any,options: FlatOptions={} ): string {
 /**
     Parse a string to a number if possible
     * * 🟢 function is generic
-    @param {String} str - the String
+    @param {String} input - the String
     @return {String} - The parsed string.
     @example
         const str1 = "2"
@@ -239,9 +266,17 @@ export function flat ( data: any,options: FlatOptions={} ): string {
         number(str2)
         // 'two'
 */
-export function number ( input: number_t ): number_t {
-    const num=Number( input );
-    return isNaN( num )? input:num;
+export function number<T>( data: T ): T {
+    if( Array.isArray( data ) ) {
+        return data.map( item => ( typeof item==='string'? parseInt( item,10 ):item ) ) as T;
+    }
+
+    if( typeof data==='string' ) {
+        const parsedInt=parseInt( data,10 );
+        return isNaN( parsedInt )? data:( parsedInt as any as T );
+    }
+
+    return data;
 }
 
 /**
@@ -256,7 +291,7 @@ export function number ( input: number_t ): number_t {
         console.log(extractFromString({ str, reg, type }));
         // 42
 */
-export function extractFromString (
+export function extractFromString(
     str: any,
     reg: RegExp,
     type: string ): ExtractionResult {
@@ -295,7 +330,7 @@ export function extractFromString (
     @param [options.log] - defines if the function logs the error information
     @return The error's information
 */
-export function getError ( { err,log }: logErrorOptions ) {
+export function getError( { err,log }: logErrorOptions ) {
     const errorInfo={
         message: err.code||err.message,
         method: toUpperCase( err.config ),
@@ -323,21 +358,19 @@ export function getError ( { err,log }: logErrorOptions ) {
         handleData([1, 'Hello World', { message: 'Hello World' }]);
         // [1, "HELLO WORLD", { message: "HELLO WORLD" }]
 */
-export function toUpperCase (
-    data: string|object|any[]|any
-): any {
+export function toUpperCase<T>( data: T ): T {
     if( typeof data==="string" ) {
-        return data.toUpperCase();
+        return data.toUpperCase() as any;
     }
     if( Array.isArray( data ) ) {
-        return data.map( ( item ) => toUpperCase( item ) );
+        return data.map( ( item ) => toUpperCase( item ) ) as any;
     }
     if( typeof data==="object" ) {
-        const upperCaseData: { [ key: string ]: string|object|any[] }={};
+        const upperCaseData: any={};
         for( const key in data ) {
             upperCaseData[ key ]=toUpperCase( data[ key ] );
         }
-        return upperCaseData;
+        return upperCaseData as any;
     }
     return data;
 }
@@ -364,13 +397,13 @@ export function toUpperCase (
         const invalid = getCountry({ cc: "INVALID" }, countries); 
         // Returns undefined
 */
-export function getCountry (
+export function getCountry(
     { cc,cn,cf }: { cc?: string; cn?: string; cf?: string },
     countries: any[]
 ): typeOfCountries|undefined {
     const normalizedCn=cn&&cn!==undefined||null? purify( cn ):undefined;
 
-    function searchInAltNames ( altNames: string ) {
+    function searchInAltNames( altNames: string ) {
         return new RegExp( `\\b${ normalizedCn }\\b`,"i" ).test( altNames );
     }
 
@@ -398,7 +431,7 @@ export function getCountry (
         now(Date.now(), "DD/MM/YYYY")
         // 01/10/2022
 */
-export function now ( str?: string ) {
+export function now( str?: string ) {
     return str
         ? dayjs( new Date( Date.now() ) ).format( str )
         :dayjs( new Date( Date.now() ) );
@@ -412,7 +445,7 @@ export function now ( str?: string ) {
         secondsToTomorrow()
         // 48087
  */
-export function secondsToTomorrow (): number {
+export function secondsToTomorrow(): number {
     // var d = new Date()
     // const toTomorrow: number = Math.round((-d + d.setHours(24, 0, 0, 0)) /Example Example6e4) * 60
     const now=new Date( Date.now() ).getHours();
@@ -430,7 +463,7 @@ export function secondsToTomorrow (): number {
         isDate(Date.now())
         // true
  */
-export function isDate ( date: Date ): boolean {
+export function isDate( date: Date ): boolean {
     return Object.prototype.toString.call( date )==="[object Date]";
 }
 
@@ -445,7 +478,7 @@ export function isDate ( date: Date ): boolean {
         formatDate(Date.now(), 'YYYY/MM/DD')
         // 2022/12/31
 */
-export function formatDate ( date: any,format: string ): string {
+export function formatDate( date: any,format: string ): string {
     return typeof date==="string"||"Date"? dayjs( date ).format( format ):"";
 }
 
@@ -464,7 +497,7 @@ export function formatDate ( date: any,format: string ): string {
         console.log(isEmpty(b))
         // false
 */
-export function isEmpty (
+export function isEmpty(
     value: string|object|any[],
     options: { props: boolean }={ props: false }
 ): boolean {
@@ -497,7 +530,7 @@ export function isEmpty (
         console.log(cleanedStr)
         // I Love dev and France
 */
-export function trim ( str: any ): string|ExtractionResult {
+export function trim( str: any ): string|ExtractionResult {
     return typeof str==='string'? str.match( allSpaces )?.join( " " )??"":"";
 }
 
@@ -514,18 +547,19 @@ export function trim ( str: any ): string|ExtractionResult {
         includes("france", "fr");
         // true
 */
-export function includes<Type extends ExtractionResult> (
-    input: Type,
-    value: any
-): boolean {
-    if( !input ) {
-        return false;
+export function includes( input: any[]|string|object,value: string|object|number ): boolean {
+    switch( typeof input ) {
+        case 'string':
+            return ( input as string ).includes( value as string );
+        case 'object':
+            if( Array.isArray( input ) ) {
+                return input.includes( value );
+            } else if( input ) {
+                return Object.values( input ).includes( value );
+            }
+            break;
     }
-    return typeof input === "string"
-        ? input.indexOf( value, 0 ) !== -1
-        : ( input !== null && Object.keys( input as IndexableType )
-            .slice( 0 )
-            .some( ( key ) => Object.is( (input as IndexableType)[key], value ) ) );
+    return false;
 }
 
 /**
@@ -538,7 +572,7 @@ export function includes<Type extends ExtractionResult> (
         console.log(isDateDifferent(today, 'hour'))
         // false
 */
-export function isDateDifferent ( nb: number,unit: timeUnit ): ExtractionResult {
+export function isDateDifferent( nb: number,unit: timeUnit ): boolean {
     const method=timeUnitMap[ unit ];
     return nb!==( dayjs()[ method ] as () => number )();
 }
@@ -551,7 +585,7 @@ export function isDateDifferent ( nb: number,unit: timeUnit ): ExtractionResult 
         console.log(randomString(arr))
         // e.g: France
 */
-export function randomString ( arr: string[] ): ExtractionResult {
+export function randomString( arr: string[] ): string {
     return arr[ Math.floor( Math.random()*arr.length ) ];
 }
 
@@ -564,7 +598,7 @@ export function randomString ( arr: string[] ): ExtractionResult {
         getFormat('DATE', 'FR');
         // 'DD/MM/YYYY'
 */
-export function getFormat ( format: formatType,ISO: codeISO ) {
+export function getFormat( format: formatType,ISO: codeISO ): string|null {
     const dateFormat=DATE_ISO[ ISO ];
 
     switch( format ) {
@@ -594,7 +628,7 @@ export function getFormat ( format: formatType,ISO: codeISO ) {
         const keys = getObjectKeysByType(obj, "string");
         // ["name", "email"]
 */
-export function getObjectKeysByType ( obj: object,type: string ): string[] {
+export function getObjectKeysByType( obj: object,type: string ): string[] {
     return Object.entries( obj )
         .filter( ( [ _,value ] ) => typeof value===type )
         .map( ( [ key,_ ] ) => key );
@@ -610,7 +644,7 @@ export function getObjectKeysByType ( obj: object,type: string ): string[] {
         getValueType("hello world");
         // "string"
 */
-export function getValueType ( value: any ): compareTypes_t {
+export function getValueType( value: any ): compareTypes_t {
     return typeof value as compareTypes_t;
 }
 
@@ -626,7 +660,7 @@ export function getValueType ( value: any ): compareTypes_t {
         compareTypes(data, "number", { getKeys: true });
         // Returns [0, "age", "age"]
 */
-export function compareTypes (
+export function compareTypes(
     data: ( any )[],
     type: string,
     options: compareTypes_o={}
@@ -666,7 +700,7 @@ export function compareTypes (
         console.log(convertHtmlEntities("&amp; toto"));
         // Outputs: "& toto"
 */
-export function convertHtmlEntities ( str: string ): string {
+export function convertHtmlEntities( str: string ): string {
     return decodeHTML( str )
 }
 
@@ -680,7 +714,7 @@ export function convertHtmlEntities ( str: string ): string {
         const path = ['foo', 'bar'];
         const value = getObjectValueByPath(obj, path); // 'baz'
 */
-export function getObjectValueByPath ( obj: any,path: string[] ): any {
+export function getObjectValueByPath( obj: any,path: string[] ): any {
     return path.reduce( ( o,key ) => {
         if( o&&Array.isArray( o ) ) {
             return o.map( ( item ) => getObjectValueByPath( item,[ key ] ) ).flat();
@@ -704,7 +738,7 @@ export function getObjectValueByPath ( obj: any,path: string[] ): any {
         const uniqueByName = getUnique(data, 'name'); 
         // [{ id: 1, name: 'Alice' }, { id: 2, name: 'Bob' }, { id: 4, name: 'Charlie' }]
 */
-export function getUnique ( { data,field }: { data: ( string|object )[],field?: string } ): ( string|object )[] {
+export function getUnique( { data,field }: { data: ( string|object )[],field?: string } ): ( string|object )[] {
     const fieldPath=field? field.split( '.' ):[];
     const uniqueValues: ( string|object )[]=[];
     const seen=new Set<string>();
@@ -743,8 +777,15 @@ export function getUnique ( { data,field }: { data: ( string|object )[],field?: 
  * console.log(lastElement);
  * // Output: ['you']
  */
-export function getLastElement ( strings: string[] ): string[] {
-    return isEmpty( strings )? []:[ ( strings.pop() as string ) ];
+export function getLastElement<T extends ArrayOrObject>( data: T ): T {
+    if( Array.isArray( data ) ) {
+        return data.length>0? [ data[ data.length-1 ] ] as T:( [] as any as T );
+    } else if( typeof data==='object'&&data!==null ) {
+        const keys=Object.keys( data );
+        return keys.length>0? { [ keys[ keys.length-1 ] ]: data[ keys[ keys.length-1 ] ] } as T:( {} as T );
+    } else {
+        return data;
+    }
 }
 
 /**
@@ -757,60 +798,85 @@ export function getLastElement ( strings: string[] ): string[] {
         console.log(checkLength("hello", "world", 5));
         // "hello"
 */
-export function checkLength ( first: ( string|( number|string )[] ),second: ( string|( number|string )[] ),size: number ): ( string|( string|number )[] ) {
-    return first.length<size? first:second
+export function checkLength<T extends string|any[]|object>(
+    first: T,
+    second: T,
+    size: number
+): T {
+    if( Array.isArray( first )&&Array.isArray( second ) ) {
+        return first.length<size? first:second;
+    } else if( typeof first==='object'&&typeof second==='object' ) {
+        const firstKeys=Object.keys( first ).length;
+        return firstKeys<size? first:second;
+    }
+
+    return first;
 }
+
 
 /**
     Filters array with three parameters
-    @remarks
-    The `arr` parameter must be an array of objects with at least the following properties:
-    * - `field_state`: an array of objects where each object has at least the property `state`
-    * - `field_search`: a string
-    * - `field_period`: an object with at least the property `ddeb`
-    * @param {filterData_arr_type[]} arr
+    * * 🟠 The `arr` parameter must be an array of objects with at least the following properties:
+    * * - `state`: an array of objects where each object has at least the property `state`
+    * * - `field_search`: a string
+    * * - `ddeb`: a string ( date )
+    * @param {T[]} arr
     * @param {object} param
-    * @returns filterData_arr_type[]
+    * @returns T[]
  */
-export function filterData (
-    arr: filterData_arr_type[],
-    param: { sW: string; tbSO: string[]; tbRS?: number[] },
-): filterData_arr_type[] {
-    const { sW,tbSO,tbRS }=param
-    const tbExp=sW.match( /[A-Za-zÀ-ÖØ-öø-ÿ]+/gi )||[]
+export function filterData<T extends obj>(
+    arr: T[],
+    param: {
+        sW: string;
+        tbSO: string[];
+        tbRS?: number[];
+        field_search?: string;
+        state?: string;
+        ddeb?: string;
+        regex?: string;
+    }
+): T[] {
+    const {
+        sW,
+        tbSO,
+        tbRS,
+        field_search='field_search',
+        state='state',
+        ddeb='ddeb',
+        regex='[A-Za-zÀ-ÖØ-öø-ÿ0-9]+',
+    }=param;
 
-    return arr.filter( ( item: filterData_arr_type ) => {
+    const tbExp=sW.match( new RegExp( regex,'gi' ) )||[];
+
+    return arr.filter( ( item: T ) => {
         for( let i=0;i<tbExp.length;i++ ) {
-            const searchedWord=purify( tbExp[ i ].toUpperCase() )
-            if( !new RegExp( searchedWord,'gi' ).test( item.field_search ) ) {
-                return false
+            const searchedWord=purify( tbExp[ i ].toUpperCase() );
+            if( !new RegExp( searchedWord,'gi' ).test( item[ field_search ] ) ) {
+                return false;
             }
         }
 
         for( const selected of tbSO ) {
-            const len=item.field_state.length
+            const len=item[ state ].length;
             if( !len ) {
-                return false
+                return false;
             }
             for( let j=0;j<len;j++ ) {
-                const memberState=item.field_state[ j ]
+                const memberState=item[ state ][ j ];
 
                 if( !memberState.state.includes( selected ) ) {
-                    return false
+                    return false;
                 }
             }
         }
 
         if(
-            tbRS&&tbRS.length&&
-            !dayjs( item.field_period.ddeb ).isBetween(
-                `01/01/${ tbRS[ 0 ] }`,
-                `01/01/${ tbRS[ 1 ] }`,
-                'year',
-            )
+            tbRS&&
+            tbRS.length&&
+            !dayjs( item[ ddeb ] ).isBetween( `01/01/${ tbRS[ 0 ] }`,`01/01/${ tbRS[ 1 ] }`,'year' )
         ) {
-            return false
+            return false;
         }
-        return true
+        return true;
     } )
 }
