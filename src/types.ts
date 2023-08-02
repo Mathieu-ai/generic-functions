@@ -4,17 +4,16 @@ import { Dayjs } from "dayjs";
     Return type of the function `extractFromString`
     * * 🟢 generic, it is a type
 */
-export type ExtractionResult=string|boolean|number|Date|any[]|null;
+export type t_SBAND=string|boolean|any[]|number|Date;
 
-/**
-    Return type of the function `extractFromString`
-    * * 🟢 generic, it is a type
-*/
-export interface ExtractOptions {
-    str: string;
-    reg: RegExp;
-    type: "string"|"boolean"|"array"|"number"|"date";
+export interface i_func_extractFromString {
+    string: "string";
+    boolean: "boolean";
+    array: "array";
+    number: "number";
+    date: "date";
 }
+
 /**
     Return type of the axios error object
     * * 🟢 generic, it is a interface
@@ -34,7 +33,7 @@ export type timeUnit=|"hour"|"minute"|"second"|"millisecond"|"day"|"month"|"year
     Return a const that possesses al Dayjs variables
     * * 🟢 generic, it is a object
 */
-export const timeUnitMap: Record<timeUnit,keyof Dayjs>={
+export const timeUnitMap: Record<timeUnit, keyof Dayjs>={
     hour: "hour",
     minute: "minute",
     second: "second",
@@ -58,7 +57,7 @@ export type codeISO=|"AD"|"AT"|"BE"|"BG"|"CH"|"CY"|"CZ"|"DE"|"DK"|"EE"|"ES"|"FI"
     Return interface of the getCountries function
     * * 🟢 generic, it is a interface
 */
-export interface typeOfCountries {
+export interface i_country {
     name: {
         common: string;
         official: string;
@@ -72,7 +71,7 @@ export interface typeOfCountries {
     Return interface of the typeOfData prop in the props
     * * 🟢 generic, it is a interface
 */
-export interface typeOfState {
+export interface type_state {
     type: string,
     color: string,
     icon: string,
@@ -83,7 +82,7 @@ export interface typeOfState {
     Return interface of the flat function
     * * 🟢 generic, it is a interface
 */
-export interface FlatOptions {
+export interface i_func_flat {
     props?: string[];
 }
 
@@ -91,7 +90,7 @@ export interface FlatOptions {
     Return type of the compareType function
     * * 🟢 generic, it is a type
 */
-export type compareTypes_o={
+export interface i_func_compareTypes {
     getKeys?: boolean;
 };
 
@@ -99,20 +98,16 @@ export type compareTypes_o={
     Return type of the compareType function
     * * 🟢 generic, it is a type
 */
-export type compareTypes_t='string'|'number'|'boolean'|'object';
+export type t_SNBO='string'|'number'|'boolean'|'object';
 
-export type ArrayOrObject=Array<any>|Record<string,any>;
+export type t_AO=Array<any>|Record<string, any>;
 
-export interface CompareTypesOptions {
-    getKeys?: boolean;
-}
-
-export type NumOrStr=number|string
+export type t_NS=number|string
 
 /**
  * Represents an HTML entity with its code and name.
  */
-export type Entity={
+export type HTML_Entity={
     /** The decimal code point for the entity. */
     code: number;
     /** The entity name or character. */
@@ -122,22 +117,22 @@ export type Entity={
 /**
  * A map of entity names to their corresponding codes and names.
  */
-export interface EntityMap {
-    [ key: string ]: Entity;
+export interface HTML_EntityMap {
+    [ key: string ]: HTML_Entity;
 }
 
 /**
  * Options for encoding behavior.
  */
-export interface EncodeOptions {
-    /** If true, returns ASCII entities (e.g. "&#38;") for characters above 127. */
+export interface i_func_encode {
+    /** If true, returns ASCII entities (e.g. "&#38;") for characters above 127 */
     onlyASCII?: boolean;
 }
 
 /**
  * Options for decoding behavior.
  */
-export interface DecodeOptions {
+export interface i_func_decode {
     /** If true, looks up the entity in the named entity map. Otherwise, assumes the entity is a decimal code. */
     useNamedReferences?: boolean;
 }
@@ -145,38 +140,51 @@ export interface DecodeOptions {
 /**
     props needed for the filterData function
 */
-export type filterData_props={
-    field_state: Array<{ state: string }&Record<string,any>>;
+export interface filterData_props {
+    field_state: Array<{ state: string }&Record<string, any>>;
     field_search: string;
-    field_period: { ddeb: any }&Record<string,any>;
+    field_period: { ddeb: any }&Record<string, any>;
 };
 
-/**
-    type for the filterData function
-*/
-export type FilterDataProps={
-    field_search: string;
-    state: { state: string }[];
-    ddeb: string;
-};
-
-
-export interface FlatOptions {
-    props?: string[];
-}
-
-export interface NamedCharacter {
+export interface i_C_CN {
     code: number;
     name: string;
 }
 
-export interface NamedCharacters {
+export interface i_C_OCC {
     [ name: string ]: {
         codepoints: number[];
         characters: string;
     };
 }
 
-export interface obj {
+export interface o {
     [ key: string ]: any;
 }
+
+export interface i_func_number {
+    deep?: boolean;
+};
+
+export type t_SAO=string|any[]|object
+
+export interface i_func_filterData {
+    sW: string;
+    tbSO: string[];
+    tbRS?: number[];
+    field_search?: string;
+    state?: string;
+    ddeb?: string;
+    regex?: string;
+}
+
+export interface func_Number_O {
+    deep?: boolean;
+};
+
+export type t_NSB = string | number| boolean;
+export interface i_ONS {
+    [key: string]: t_NSONBA;
+};
+export type t_A_t_NSONBA = Array<t_NSONBA>;
+export type t_NSONBA = t_NSB | i_ONS | t_A_t_NSONBA;

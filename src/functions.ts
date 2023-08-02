@@ -1,27 +1,34 @@
-import axios,{ AxiosError,AxiosRequestConfig } from "axios";
+import axios, { AxiosError, AxiosRequestConfig } from "axios";
 import { decodeHTML } from 'entities';
 import objectHash from 'object-hash';
-import dayjs from "dayjs";
+import dayjs, { Dayjs } from "dayjs";
 import isBetween from 'dayjs/plugin/isBetween'
 dayjs.extend( isBetween )
 
 import {
-    ArrayOrObject,
     codeISO,
-    compareTypes_o,
-    compareTypes_t,
-    ExtractionResult,
-    FlatOptions,
     formatType,
+    func_Number_O,
+    i_country,
+    i_func_compareTypes,
+    i_func_extractFromString,
+    i_func_filterData,
+    i_func_flat,
+    i_func_number,
     logErrorOptions,
-    obj,
+    o,
+    t_AO,
+    t_NSB,
+    t_NSONBA,
+    t_SAO,
+    t_SBAND,
+    t_SNBO,
     timeUnit,
-    timeUnitMap,
-    typeOfCountries,
+    timeUnitMap
 } from "./types";
 import { MLAIP } from './props'
 
-const { Reg: { allSpaces },Dates: { DATE_ISO } }=MLAIP
+const { Reg: { allSpaces }, Dates: { DATE_ISO } }=MLAIP
 /**
     Make a request with [axios](https://axios-http.com/fr/docs/intro) to return the data
     * * 🟢 Function is generic
@@ -49,7 +56,7 @@ export async function api(
             return response.data;
         } )
         .catch( ( e: AxiosError ) => {
-            return { ok: false,message: fullLog? e:e.message };
+            return { ok: false, message: fullLog? e:e.message };
         } );
 }
 
@@ -78,7 +85,7 @@ export function capitalize( str: string ) {
  */
 export function purify( str: any ): string {
     return typeof str==="string"
-        ? str.normalize( "NFD" ).replace( /[\u0300-\u036f]/g,"" )
+        ? str.normalize( "NFD" ).replace( /[\u0300-\u036f]/g, "" )
         :"";
 }
 
@@ -98,7 +105,7 @@ export function purify( str: any ): string {
        const result = minAndMaxYears(data, 'ddeb');
        // result: { min: 2010, max: 2030 }
 */
-export function minAndMaxYears( arr: obj[],prop: string ): { min: number,max: number } {
+export function minAndMaxYears( arr: o[], prop: string ): { min: number, max: number } {
     let min=0
     arr.forEach( ( o ) => {
         const year=dayjs( o[ prop ] ).year()
@@ -124,7 +131,7 @@ export function getInitials( str: string ): string {
     return str
         .trim()
         .split( /\s+/ )
-        .reduce( ( initials: string[],word: string ) => {
+        .reduce( ( initials: string[], word: string ) => {
             const firstLetter=word.charAt( 0 );
             if( /^[A-Za-z]$/.test( firstLetter )&&initials.length<4 ) {
                 if( /^[A-Z]$/.test( firstLetter ) ) {
@@ -134,7 +141,7 @@ export function getInitials( str: string ): string {
                 }
             }
             return initials;
-        },[] )
+        }, [] )
         .join( "" );
 }
 
@@ -147,8 +154,8 @@ export function getInitials( str: string ): string {
 */
 export function removeBreakLines( str: string ): string {
     return str
-        .replace( /[\r\n]+/g," " )
-        .replace( / {2,}/g," " )
+        .replace( /[\r\n]+/g, " " )
+        .replace( / {2,}/g, " " )
         .trim();
 }
 
@@ -169,7 +176,7 @@ export function removeBreakLines( str: string ): string {
         const sortedCountries = sort({ arr: countries, prop: 'name' });
         // [ { name: 'Australia'}, { name: 'France'} ]
 */
-export function sort<T extends { [ key: string ]: any }>( {
+export function sort<T extends o>( {
     arr,
     prop,
     ascending=true,
@@ -178,7 +185,7 @@ export function sort<T extends { [ key: string ]: any }>( {
     prop: keyof T;
     ascending?: boolean;
 } ): T[] {
-    const compare=( a: T,b: T ) => {
+    const compare=( a: T, b: T ) => {
         const valueA=a[ prop ];
         const valueB=b[ prop ];
 
@@ -229,7 +236,7 @@ export function sort<T extends { [ key: string ]: any }>( {
         flat(data, { props: ["city"] });
         // "Paris"
  */
-export function flat( data: any,options: FlatOptions={} ): string {
+export function flat( data: any, options: i_func_flat={} ): string {
     const { props=[] }=options;
     const result: string[]=[];
 
@@ -266,35 +273,44 @@ export function flat( data: any,options: FlatOptions={} ): string {
         number(str2)
         // 'two'
 */
-export function number<T>( data: T ): T {
+export function number( data: t_NSONBA, options: func_Number_O={ deep: false } ): t_NSB|t_NSONBA[]|{ [ key: string ]: t_NSONBA } {
+    const { deep }=options
+
     if( Array.isArray( data ) ) {
-        return data.map( item => ( typeof item==='string'? parseInt( item,10 ):item ) ) as T;
+        return data.map( ( item ): t_NSONBA => number( item, options ) );
     }
 
-    if( typeof data==='string' ) {
-        const parsedInt=parseInt( data,10 );
-        return isNaN( parsedInt )? data:( parsedInt as any as T );
+    if( typeof data==="object"&&data ) {
+        const result: { [ key: string ]: t_NSONBA }={};
+        for( const [ key, value ] of Object.entries( data ) ) {
+            result[ key ]=deep? number( value, options ):value;
+        }
+        return result;
     }
 
-    return data;
+    const parsedNumber=parseInt( data as string );
+    return isNaN( parsedNumber )? ( data as t_NSB ):parsedNumber;
 }
 
 /**
     * Extracts a value from a string using a regex to extract the value with it specific type.
     * * 🟢 Function is generic
-    @param {ExtractOptions} options - object containing the string, the regexp and type
-    @return {ExtractionResult} - The value with its data type or empty string if there's no match.
+    @param {} str - the string
+    @param {} reg -  the RegExp
+    @param {} type - the type
+    @return {t_SBAND} - The value with its data type or empty string if there's no match.
     @example
         const str = "The meaning of life is 42";
         const reg = /\d+/;
         const type = "number";
-        console.log(extractFromString({ str, reg, type }));
+        console.log(extractFromString(str, reg, type ));
         // 42
 */
-export function extractFromString(
+export function extractFromString<T extends keyof i_func_extractFromString>(
     str: any,
     reg: RegExp,
-    type: string ): ExtractionResult {
+    type: T
+): string|number|boolean|Date|null|any[]|object {
     const match=str? str.match( reg ):undefined;
     if( !match ) {
         return str;
@@ -330,7 +346,7 @@ export function extractFromString(
     @param [options.log] - defines if the function logs the error information
     @return The error's information
 */
-export function getError( { err,log }: logErrorOptions ) {
+export function getError( { err, log }: logErrorOptions ) {
     const errorInfo={
         message: err.code||err.message,
         method: toUpperCase( err.config ),
@@ -398,19 +414,19 @@ export function toUpperCase<T>( data: T ): T {
         // Returns undefined
 */
 export function getCountry(
-    { cc,cn,cf }: { cc?: string; cn?: string; cf?: string },
+    { cc, cn, cf }: { cc?: string; cn?: string; cf?: string },
     countries: any[]
-): typeOfCountries|undefined {
-    const normalizedCn=cn&&cn!==undefined||null? purify( cn ):undefined;
+): i_country|undefined {
+    const normalizedCn=cn? purify( cn ):undefined;
 
     function searchInAltNames( altNames: string ) {
-        return new RegExp( `\\b${ normalizedCn }\\b`,"i" ).test( altNames );
+        return new RegExp( `\\b${ normalizedCn }\\b`, "i" ).test( altNames );
     }
 
     const country=countries
-        .sort( ( a,b ) => ( a.cca2>b.cca2? 1:-1 ) )
+        .sort( ( a, b ) => ( a.cca2>b.cca2? 1:-1 ) )
         .find(
-            ( { name,altNames,cca2,flag } ) =>
+            ( { name, altNames, cca2, flag } ) =>
                 name.common===normalizedCn||
                 name.official===normalizedCn||
                 searchInAltNames( purify( altNames ) )||
@@ -431,7 +447,7 @@ export function getCountry(
         now(Date.now(), "DD/MM/YYYY")
         // 01/10/2022
 */
-export function now( str?: string ) {
+export function now( str?: string ): string|Dayjs {
     return str
         ? dayjs( new Date( Date.now() ) ).format( str )
         :dayjs( new Date( Date.now() ) );
@@ -478,8 +494,8 @@ export function isDate( date: Date ): boolean {
         formatDate(Date.now(), 'YYYY/MM/DD')
         // 2022/12/31
 */
-export function formatDate( date: any,format: string ): string {
-    return typeof date==="string"||"Date"? dayjs( date ).format( format ):"";
+export function formatDate( date: string|Date, format: string ): string {
+    return dayjs( date ).format( format )||"";
 }
 
 /**
@@ -506,11 +522,11 @@ export function isEmpty(
             return value.length===0;
         case "object":
             if( Array.isArray( value ) ) {
-                return value.every( ( item ) => isEmpty( item,options ) );
+                return value.every( ( item ) => isEmpty( item, options ) );
             } else {
                 if( options.props ) {
                     return Object.values( value ).every( ( prop ) =>
-                        isEmpty( prop,options )
+                        isEmpty( prop, options )
                     );
                 }
                 return Object.keys( value ).length===0;
@@ -530,7 +546,7 @@ export function isEmpty(
         console.log(cleanedStr)
         // I Love dev and France
 */
-export function trim( str: any ): string|ExtractionResult {
+export function trim( str: any ): string {
     return typeof str==='string'? str.match( allSpaces )?.join( " " )??"":"";
 }
 
@@ -547,7 +563,7 @@ export function trim( str: any ): string|ExtractionResult {
         includes("france", "fr");
         // true
 */
-export function includes( input: any[]|string|object,value: string|object|number ): boolean {
+export function includes( input: any[]|string|object, value: string|object|number ): boolean {
     switch( typeof input ) {
         case 'string':
             return ( input as string ).includes( value as string );
@@ -572,7 +588,7 @@ export function includes( input: any[]|string|object,value: string|object|number
         console.log(isDateDifferent(today, 'hour'))
         // false
 */
-export function isDateDifferent( nb: number,unit: timeUnit ): boolean {
+export function isDateDifferent( nb: number, unit: timeUnit ): boolean {
     const method=timeUnitMap[ unit ];
     return nb!==( dayjs()[ method ] as () => number )();
 }
@@ -598,7 +614,7 @@ export function randomString( arr: string[] ): string {
         getFormat('DATE', 'FR');
         // 'DD/MM/YYYY'
 */
-export function getFormat( format: formatType,ISO: codeISO ): string|null {
+export function getFormat( format: formatType, ISO: codeISO ): string|null {
     const dateFormat=DATE_ISO[ ISO ];
 
     switch( format ) {
@@ -628,10 +644,10 @@ export function getFormat( format: formatType,ISO: codeISO ): string|null {
         const keys = getObjectKeysByType(obj, "string");
         // ["name", "email"]
 */
-export function getObjectKeysByType( obj: object,type: string ): string[] {
+export function getObjectKeysByType( obj: object, type: string ): string[] {
     return Object.entries( obj )
-        .filter( ( [ _,value ] ) => typeof value===type )
-        .map( ( [ key,_ ] ) => key );
+        .filter( ( [ _, value ] ) => typeof value===type )
+        .map( ( [ key, _ ] ) => key );
 }
 
 /**
@@ -644,8 +660,8 @@ export function getObjectKeysByType( obj: object,type: string ): string[] {
         getValueType("hello world");
         // "string"
 */
-export function getValueType( value: any ): compareTypes_t {
-    return typeof value as compareTypes_t;
+export function getValueType( value: t_SNBO ): t_SNBO {
+    return typeof value as t_SNBO;
 }
 
 /**
@@ -663,25 +679,25 @@ export function getValueType( value: any ): compareTypes_t {
 export function compareTypes(
     data: ( any )[],
     type: string,
-    options: compareTypes_o={}
+    options: i_func_compareTypes={}
 ): any[] {
     const notType=type.startsWith( '!' );
 
     const { getKeys=false }=options;
 
-    return data.reduce( ( result: ( any )[],value,index ) => {
+    return data.reduce( ( result: ( any )[], value, index ) => {
         const valueType=getValueType( value );
 
         const typeMatches=
             !notType&&( valueType===type.toLowerCase()||
-                ( valueType==='object'&&getObjectKeysByType( value,type ).length>0 ) );
+                ( valueType==='object'&&getObjectKeysByType( value, type ).length>0 ) );
 
         const notTypeMatches=
             notType&&( valueType.toLowerCase()!==type.substring( 1 ).toLowerCase() );
 
         if( typeMatches||notTypeMatches ) {
             if( getKeys&&valueType==='object' ) {
-                const keys=getObjectKeysByType( value,type );
+                const keys=getObjectKeysByType( value, type );
                 result.push( ...keys );
             } else {
                 result.push( getKeys? number( index ):index );
@@ -689,7 +705,7 @@ export function compareTypes(
         }
 
         return result;
-    },[] );
+    }, [] );
 }
 
 /**
@@ -714,13 +730,13 @@ export function convertHtmlEntities( str: string ): string {
         const path = ['foo', 'bar'];
         const value = getObjectValueByPath(obj, path); // 'baz'
 */
-export function getObjectValueByPath( obj: any,path: string[] ): any {
-    return path.reduce( ( o,key ) => {
+export function getObjectValueByPath<T>( obj: any, path: string[] ): T|null {
+    return path.reduce( ( o, key ) => {
         if( o&&Array.isArray( o ) ) {
-            return o.map( ( item ) => getObjectValueByPath( item,[ key ] ) ).flat();
+            return o.map( ( item ) => getObjectValueByPath<T>( item, [ key ] ) ).flat();
         }
         return ( o&&o[ key ] )? o[ key ]:null;
-    },obj );
+    }, obj );
 }
 
 /**
@@ -738,29 +754,26 @@ export function getObjectValueByPath( obj: any,path: string[] ): any {
         const uniqueByName = getUnique(data, 'name'); 
         // [{ id: 1, name: 'Alice' }, { id: 2, name: 'Bob' }, { id: 4, name: 'Charlie' }]
 */
-export function getUnique( { data,field }: { data: ( string|object )[],field?: string } ): ( string|object )[] {
-    const fieldPath=field? field.split( '.' ):[];
-    const uniqueValues: ( string|object )[]=[];
-    const seen=new Set<string>();
+export function getUnique( data: ( any|object )[], field?: string ) {
+    return data.reduce( ( uniqueValues: ( string|object )[], value ) => {
+        const uniqueValue=field
+            ? { ...( ( value as any )[ field.split( '.' )[ 0 ] ]||[] )[ 0 ] }
+            :value
 
-    for( const value of data ) {
-        const uniqueValue=getObjectValueByPath( value,fieldPath );
-        if( Array.isArray( uniqueValue ) ) {
-            const uniqueValueHashes=uniqueValue.map( ( uv ) => objectHash( uv ) );
-            if( !uniqueValueHashes.some( ( hash ) => seen.has( hash ) ) ) {
-                uniqueValueHashes.forEach( ( hash ) => seen.add( hash ) );
-                uniqueValues.push( value );
-            }
-        } else {
-            const uniqueValueHash=objectHash( uniqueValue );
-            if( uniqueValue&&!seen.has( uniqueValueHash ) ) {
-                seen.add( uniqueValueHash );
-                uniqueValues.push( value );
-            }
+        if( field&&uniqueValue.propertyIsEnumerable.call( field.split( '.' )[ 1 ] ) ) {
+            uniqueValue[ field.split( '.' )[ 1 ] ]=( ( value as any )[ field.split( '.' )[ 0 ] ]||[] )[ 0 ]?.[
+                field.split( '.' )[ 1 ]
+            ]
         }
-    }
-
-    return uniqueValues;
+        if(
+            !uniqueValues.some(
+                ( v ) => JSON.stringify( v )===JSON.stringify( uniqueValue ),
+            )
+        ) {
+            uniqueValues.push( uniqueValue )
+        }
+        return uniqueValues
+    }, [] )
 }
 
 /**
@@ -777,10 +790,10 @@ export function getUnique( { data,field }: { data: ( string|object )[],field?: s
  * console.log(lastElement);
  * // Output: ['you']
  */
-export function getLastElement<T extends ArrayOrObject>( data: T ): T {
+export function getLastElement<T extends t_AO>( data: T ): T {
     if( Array.isArray( data ) ) {
         return data.length>0? [ data[ data.length-1 ] ] as T:( [] as any as T );
-    } else if( typeof data==='object'&&data!==null ) {
+    } else if( typeof data==='object'&&data ) {
         const keys=Object.keys( data );
         return keys.length>0? { [ keys[ keys.length-1 ] ]: data[ keys[ keys.length-1 ] ] } as T:( {} as T );
     } else {
@@ -798,43 +811,57 @@ export function getLastElement<T extends ArrayOrObject>( data: T ): T {
         console.log(checkLength("hello", "world", 5));
         // "hello"
 */
-export function checkLength<T extends string|any[]|object>(
+export function checkLength<T extends t_SAO>(
     first: T,
     second: T,
-    size: number
+    size: number,
 ): T {
-    if( Array.isArray( first )&&Array.isArray( second ) ) {
-        return first.length<size? first:second;
-    } else if( typeof first==='object'&&typeof second==='object' ) {
-        const firstKeys=Object.keys( first ).length;
-        return firstKeys<size? first:second;
+    if( typeof first==='string'&&typeof second==='string' ) {
+        return first.length<=size? first:second;
     }
 
-    return first;
+    if( Array.isArray( first )&&Array.isArray( second ) ) {
+        return first.length<=size? first:second;
+    }
+
+    if( typeof first==='object'&&typeof second==='object' ) {
+        if( Object.keys( first ).length<=size ) {
+            return first;
+        }
+    }
+
+    return second;
 }
 
-
 /**
-    Filters array with three parameters
-    * * 🟠 The `arr` parameter must be an array of objects with at least the following properties:
-    * * - `state`: an array of objects where each object has at least the property `state`
-    * * - `field_search`: a string
-    * * - `ddeb`: a string ( date )
-    * @param {T[]} arr
-    * @param {object} param
-    * @returns T[]
- */
-export function filterData<T extends obj>(
+    Filters an array of objects based on provided parameters.
+    * @template T
+    * @param {T[]} arr - The array of objects to be filtered.
+    * @param param - The filtering parameters.
+    * @returns {T[]} - The filtered array containing objects of type T.
+    *
+    * @description Filtering Function
+    * | Parameter | Description |
+    * | --- | --- |
+    * | `sW` | A string containing space-separated words. The function filters objects that have a match for each word in the `field_search` property (case-insensitive). |
+    * | `tbSO` | An array of strings representing selected states. The function filters objects that contain at least one of the selected states in the `state` property. |
+    * | `tbRS` (optional) | An array of two numbers representing a range of years. The function filters objects that have a date in the `ddeb` property falling between the two specified years. |
+    * | `field_search` (optional) | The key of the property in the objects to perform the word search. Defaults to 'field_search'. |
+    * | `state` (optional) | The key of the property in the objects that contains an array of states. Defaults to 'state'. |
+    * | `ddeb` (optional) | The key of the property in the objects that contains a date. Defaults to 'ddeb'. |
+    * | `regex` (optional) | A regular expression string to filter words from `sW`. Defaults to '[A-Za-zÀ-ÖØ-öø-ÿ0-9]+' which matches alphabets and digits. |
+    *
+    * 🟠 Default Values for Optional Parameters
+    * | Parameter | Default Value |
+    * | --- | --- |
+    * | `field_search`  | 'field_search' |
+    * | `state`     | 'state' |
+    * | `ddeb`  | 'ddeb' |
+    * | `regex` | '[A-Za-zÀ-ÖØ-öø-ÿ0-9]+' |
+*/
+export function filterData<T extends o>(
     arr: T[],
-    param: {
-        sW: string;
-        tbSO: string[];
-        tbRS?: number[];
-        field_search?: string;
-        state?: string;
-        ddeb?: string;
-        regex?: string;
-    }
+    param: i_func_filterData
 ): T[] {
     const {
         sW,
@@ -846,12 +873,12 @@ export function filterData<T extends obj>(
         regex='[A-Za-zÀ-ÖØ-öø-ÿ0-9]+',
     }=param;
 
-    const tbExp=sW.match( new RegExp( regex,'gi' ) )||[];
+    const tbExp=sW.match( new RegExp( regex, 'gi' ) )||[];
 
     return arr.filter( ( item: T ) => {
-        for( let i=0;i<tbExp.length;i++ ) {
+        for( let i=0; i<tbExp.length; i++ ) {
             const searchedWord=purify( tbExp[ i ].toUpperCase() );
-            if( !new RegExp( searchedWord,'gi' ).test( item[ field_search ] ) ) {
+            if( !new RegExp( searchedWord, 'gi' ).test( item[ field_search ] ) ) {
                 return false;
             }
         }
@@ -861,10 +888,10 @@ export function filterData<T extends obj>(
             if( !len ) {
                 return false;
             }
-            for( let j=0;j<len;j++ ) {
-                const memberState=item[ state ][ j ];
+            for( let j=0; j<len; j++ ) {
+                const itemState=item[ state ][ j ];
 
-                if( !memberState.state.includes( selected ) ) {
+                if( !includes( itemState.state, selected ) ) {
                     return false;
                 }
             }
@@ -873,7 +900,7 @@ export function filterData<T extends obj>(
         if(
             tbRS&&
             tbRS.length&&
-            !dayjs( item[ ddeb ] ).isBetween( `01/01/${ tbRS[ 0 ] }`,`01/01/${ tbRS[ 1 ] }`,'year' )
+            !dayjs( item[ ddeb ] ).isBetween( `01/01/${ tbRS[ 0 ] }`, `01/01/${ tbRS[ 1 ] }`, 'year' )
         ) {
             return false;
         }
