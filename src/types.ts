@@ -68,7 +68,7 @@ export interface i_country {
 }
 
 /**
-    Return interface of the typeOfData prop in the props
+    Custom interface
     * * 🟢 generic, it is a interface
 */
 export interface type_state {
@@ -188,3 +188,17 @@ export interface i_ONS {
 };
 export type t_A_t_NSONBA = Array<t_NSONBA>;
 export type t_NSONBA = t_NSB | i_ONS | t_A_t_NSONBA;
+
+export interface Route {
+    category: string
+    icon: string
+    name: string
+    path: string
+}
+
+export interface i_TbCheckboxes {
+    color: string;
+    label: string;
+    model: boolean;
+    value: string;
+}

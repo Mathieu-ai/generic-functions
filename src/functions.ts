@@ -803,34 +803,16 @@ export function getLastElement<T extends t_AO>( data: T ): T {
 
 /**
     Checks if the length of the first argument is less than the given size, and returns it if it is, otherwise returns the second argument
-    @param {Array.<(object|string)>} first - First argument to be checked for length
+    @param {Array.<o>} first - First argument to be checked for length
     @param {string} second - Second argument to be returned if the length of the first argument is greater than or equal to the given size
     @param {number} size - Maximum length allowed for the first argument
-    @returns {(string | (string | number)[])} - Either the first argument or the second argument, depending on their lengths
+    @returns {string | o[]} - Either the first argument or the second argument, depending on their lengths
     @example
         console.log(checkLength("hello", "world", 5));
         // "hello"
 */
-export function checkLength<T extends t_SAO>(
-    first: T,
-    second: T,
-    size: number,
-): T {
-    if( typeof first==='string'&&typeof second==='string' ) {
-        return first.length<=size? first:second;
-    }
-
-    if( Array.isArray( first )&&Array.isArray( second ) ) {
-        return first.length<=size? first:second;
-    }
-
-    if( typeof first==='object'&&typeof second==='object' ) {
-        if( Object.keys( first ).length<=size ) {
-            return first;
-        }
-    }
-
-    return second;
+export function checkLength( first: o[], second: string, size: number ): string | o[] {
+    return first.length<size? first:second
 }
 
 /**
