@@ -189,76 +189,76 @@ export const MLAIP={
     */
     typeOfData: [
         {
-            type: "success",
             color: "teal-3",
-            icon: "alpha-a-circle",
             state: "Active member",
         },
         {
-            type: "warning",
             color: "blue-4",
-            icon: "alpha-a-circle",
             state: "Affiliate member",
         },
         {
-            type: "info",
             color: "cyan-11",
-            icon: "alpha-a-circle",
             state: "Associate member",
         },
         {
-            type: "error",
             color: "grey-4",
-            icon: "alpha-s-circle",
             state: "Suspended",
         },
         {
-            type: "error",
             color: "grey-7",
-            icon: "alpha-a-circle",
             state: "Excluded",
         },
         {
-            type: "info",
             color: "blue-11",
-            icon: "person_add",
             state: "recent",
         },
         {
-            type: "warning",
             color: "light-blue-5",
-            icon: "directions_boat",
             state: "Freight",
         },
         {
-            type: "info",
             color: "cyan-5",
-            icon: "person",
             state: "Passenger",
         },
         {
-            type: "warning",
             color: "teal-4",
-            icon: "business",
             state: "Infra- structure",
         },
         {
-            type: "info",
             color: "teal-12",
-            icon: "data_thresholding",
             state: "Holding",
         },
         {
-            type: "info",
             color: "green-3",
-            icon: "integration_instructions",
             state: "Integrated",
         },
         {
-            type: "warning",
             color: "blue-grey-7",
-            icon: "alt_route",
             state: "Other",
-        }
+        },
+        {
+            color: "blue-grey-6",
+            state: "Europe",
+        },
+        {
+            color: "blue-grey-6",
+            state: "Middle-East",
+        },
+        {
+            color: "blue-grey-6",
+            state: "Asia Pacific",
+        },
+        {
+            color: "blue-grey-6",
+            state: "North America",
+        },
+        {
+            color: "blue-grey-6",
+            state: "Latin America",
+        },
+        {
+            color: "blue-grey-6",
+            state: "Africa",
+        },
     ],
 };

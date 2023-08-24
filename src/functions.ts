@@ -14,21 +14,18 @@ import {
     i_func_extractFromString,
     i_func_filterData,
     i_func_flat,
-    i_func_number,
     logErrorOptions,
     o,
     t_AO,
     t_NSB,
     t_NSONBA,
-    t_SAO,
-    t_SBAND,
     t_SNBO,
     timeUnit,
     timeUnitMap
 } from "./types";
 import { MLAIP } from './props'
 
-const { Reg: { allSpaces }, Dates: { DATE_ISO } }=MLAIP
+const { Reg: { allSpaces }, Dates: { DATE_ISO, DATE_TIME } }=MLAIP
 /**
     Make a request with [axios](https://axios-http.com/fr/docs/intro) to return the data
     * * 🟢 Function is generic
@@ -811,7 +808,7 @@ export function getLastElement<T extends t_AO>( data: T ): T {
         console.log(checkLength("hello", "world", 5));
         // "hello"
 */
-export function checkLength( first: o[], second: string, size: number ): string | o[] {
+export function checkLength( first: o[], second: string, size: number ): string|o[] {
     return first.length<size? first:second
 }
 
@@ -841,51 +838,57 @@ export function checkLength( first: o[], second: string, size: number ): string 
     * | `ddeb`  | 'ddeb' |
     * | `regex` | '[A-Za-zÀ-ÖØ-öø-ÿ0-9]+' |
 */
-export function filterData<T extends o>(
+export function filterData<T extends o> (
     arr: T[],
-    param: i_func_filterData
+    param: i_func_filterData,
 ): T[] {
     const {
         sW,
-        tbSO,
         tbRS,
         field_search='field_search',
-        state='state',
         ddeb='ddeb',
         regex='[A-Za-zÀ-ÖØ-öø-ÿ0-9]+',
+        selections=[],
     }=param;
 
-    const tbExp=sW.match( new RegExp( regex, 'gi' ) )||[];
+    const tbExp=sW.match( new RegExp( regex, 'gi' ))||[];
+    const dates=tbRS.length? tbRS.map(( e: number ) => formatDate( e.toString() , DATE_TIME )):[];
 
-    return arr.filter( ( item: T ) => {
+    console.log( dates )
+    return arr.filter(( item: T ) => {
         for( let i=0; i<tbExp.length; i++ ) {
-            const searchedWord=purify( tbExp[ i ].toUpperCase() );
-            if( !new RegExp( searchedWord, 'gi' ).test( item[ field_search ] ) ) {
+            const searchedWord=purify( tbExp[ i ].toUpperCase());
+            if( !new RegExp( searchedWord, 'gi' ).test( item[ field_search ])) {
                 return false;
             }
         }
 
-        for( const selected of tbSO ) {
-            const len=item[ state ].length;
-            if( !len ) {
-                return false;
-            }
-            for( let j=0; j<len; j++ ) {
-                const itemState=item[ state ][ j ];
-
-                if( !includes( itemState.state, selected ) ) {
+        function checkSelections ( selectedItems: string[], itemProperty: string ) {
+            for( const selected of selectedItems ) {
+                const len=item[ itemProperty ].length;
+                if( !len ) {
                     return false;
                 }
+                for( let j=0; j<len; j++ ) {
+                    const itemState=item[ itemProperty ][ j ];
+                    if( !includes( itemState.state, selected )) {
+                        return false;
+                    }
+                }
             }
+            return true;
         }
 
-        if(
-            tbRS&&
-            tbRS.length&&
-            !dayjs( item[ ddeb ] ).isBetween( `01/01/${ tbRS[ 0 ] }`, `01/01/${ tbRS[ 1 ] }`, 'year' )
-        ) {
+        for( const { selection, property } of selections ) {
+            if( !checkSelections( selection, property )) {
+                return false;
+            }
+        }
+        
+
+        if( dates?.length&&!dayjs( item[ ddeb ]).isBetween( dates[ 0 ], dates[ 1 ])) {
             return false;
         }
         return true;
-    } )
+    } );
 }

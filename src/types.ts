@@ -168,14 +168,18 @@ export interface i_func_number {
 
 export type t_SAO=string|any[]|object
 
+export interface SelectionObject {
+    selection: string[];
+    property: string;
+}
+
 export interface i_func_filterData {
     sW: string;
-    tbSO: string[];
-    tbRS?: number[];
+    tbRS: number[];
+    selections: SelectionObject[];
     field_search?: string;
-    state?: string;
     ddeb?: string;
-    regex?: string;
+    regex?: RegExp;
 }
 
 export interface func_Number_O {
