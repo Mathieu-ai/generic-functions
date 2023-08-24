@@ -200,6 +200,8 @@ export interface Route {
     path: string
 }
 
+export interface type_data { color: string, state: string }
+
 export interface i_TbCheckboxes {
     color: string;
     label: string;
