@@ -1,5 +1,7 @@
 # exclude everything except the files and directories we want to include
-*
+
+node_modules/
+dist/
 
 # include the src directory and its contents
 !src/
@@ -12,3 +14,5 @@
 
 # include the LICENSE file (replace with your own license file if needed)
 !LICENSE
+
+!.github/
