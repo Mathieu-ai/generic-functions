@@ -854,7 +854,6 @@ export function filterData<T extends o> (
     const tbExp=sW.match( new RegExp( regex, 'gi' ))||[];
     const dates=tbRS.length? tbRS.map(( e: number ) => formatDate( e.toString() , DATE_TIME )):[];
 
-    console.log( dates )
     return arr.filter(( item: T ) => {
         for( let i=0; i<tbExp.length; i++ ) {
             const searchedWord=purify( tbExp[ i ].toUpperCase());
