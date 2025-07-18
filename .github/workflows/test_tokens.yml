@@ -1,0 +1,32 @@
+name: Test NPM Token
+
+on:
+  workflow_dispatch:  # Manual trigger only
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          
+      - name: Test NPM Token
+        run: |
+          if [ -z "$NPM_TOKEN" ]; then
+            echo "❌ NPM_TOKEN is empty or not set"
+            exit 1
+          fi
+          
+          echo "✅ NPM_TOKEN is set"
+          echo "Token length: ${#NPM_TOKEN}"
+          echo "Token starts with: $(echo $NPM_TOKEN | cut -c1-4)..."
+          
+          # Setup npmrc
+          echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ~/.npmrc
+          
+          # Test authentication
+          npm whoami
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
