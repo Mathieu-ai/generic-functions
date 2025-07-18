@@ -24,13 +24,23 @@ export interface RequestOptions {
   headers?: Record<string, string>;
   body?: any;
 }
+
 /**
  * Simple HTTP client using fetch (no axios dependency)
- * @param url - Request URL
- * @param options - Request options
- * @returns Promise with response data
+ * @param {string} url - Request URL
+ * @param {RequestOptions} [options={}] - Request options including method, headers, and body
+ * @returns {Promise<T | { ok: false; message: string }>} Promise with response data or error object
+ * @example
+ * // GET request
+ * const data = await api('https://api.example.com/users');
+ * 
+ * // POST request
+ * const result = await api('https://api.example.com/users', {
+ *   method: 'POST',
+ *   body: { name: 'John' }
+ * });
  */
-export async function api(url: string, options: RequestOptions = {}): Promise<any> {
+export async function api<T = unknown>(url: string, options: RequestOptions = {}): Promise<T | { ok: false; message: string }> {
   const { method = 'GET', headers = {}, body } = options;
   
   try {
@@ -52,7 +62,7 @@ export async function api(url: string, options: RequestOptions = {}): Promise<an
       throw new Error(`HTTP error! status: ${response.status}`);
     }
     
-    return await response.json();
+    return await response.json() as T;
   } catch (error) {
     return { 
       ok: false, 
@@ -63,9 +73,15 @@ export async function api(url: string, options: RequestOptions = {}): Promise<an
 
 /**
  * Find country by various criteria
- * @param searchParams - Search criteria
- * @param countries - Array of countries
- * @returns Found country or empty object
+ * @param {Object} searchParams - Search criteria
+ * @param {string} [searchParams.cc] - Country code (ISO 3166-1 alpha-2)
+ * @param {string} [searchParams.cn] - Country name (common or official)
+ * @param {string} [searchParams.cf] - Country flag emoji
+ * @param {Country[]} countries - Array of countries to search in
+ * @returns {Partial<Country>} Found country or empty object if not found
+ * @example
+ * const country = getCountry({ cc: 'US' }, countries);
+ * const country2 = getCountry({ cn: 'France' }, countries);
  */
 export function getCountry(
   { cc, cn, cf }: { cc?: string; cn?: string; cf?: string },
@@ -96,47 +112,54 @@ export function getCountry(
 
 /**
  * Extract value from string using regex
- * @param str - Input string
- * @param regex - Regular expression
- * @param type - Expected return type
- * @returns Extracted value
+ * @param {string} str - Input string to extract from
+ * @param {RegExp} regex - Regular expression with capture groups
+ * @param {T} type - Expected return type ('string' | 'number' | 'boolean' | 'array' | 'date')
+ * @returns {ExtractedValue} Extracted and converted value based on type
+ * @example
+ * extractFromString('Price: $25.99', /\$(\d+\.\d+)/, 'number'); // 25.99
+ * extractFromString('Active: true', /Active: (\w+)/, 'boolean'); // true
+ * extractFromString('Date: 2023-12-25', /Date: (.+)/, 'date'); // Date object
  */
-export function extractFromString(
-  str: any,
+export function extractFromString<T extends 'string' | 'number' | 'boolean' | 'array' | 'date'>(
+  str: string,
   regex: RegExp,
-  type: 'string' | 'number' | 'boolean' | 'array' | 'date'
-): any {
+  type: T
+): T extends 'string' ? string : T extends 'number' ? number : T extends 'boolean' ? boolean : T extends 'array' ? unknown[] : T extends 'date' ? Date : unknown {
   const match = str?.match?.(regex);
-  if (!match) return str;
+  if (!match) return str as never;
   
   switch (type) {
     case 'string':
-      return match[2] || match[1] || match[0];
+      return (match[2] || match[1] || match[0]) as never;
     case 'boolean':
-      return match[2] === 'true' || match[1] === 'true';
+      return (match[2] === 'true' || match[1] === 'true') as never;
     case 'array':
       try {
-        return JSON.parse(match[0]);
+        return JSON.parse(match[0]) as never;
       } catch {
-        return [];
+        return [] as never;
       }
     case 'number':
       const num = parseFloat(match[1] || match[0]);
-      return isNaN(num) ? str : num;
+      return (isNaN(num) ? str : num) as never;
     case 'date':
       const date = new Date(match[2] || match[1] || match[0]);
-      return isNaN(date.getTime()) ? new Date() : date;
+      return (isNaN(date.getTime()) ? new Date() : date) as never;
     default:
-      return match[0];
+      return match[0] as never;
   }
 }
 
 /**
  * Simple hash function (lightweight alternative to object-hash)
- * @param obj - Object to hash
- * @returns Simple hash string
+ * @param {unknown} obj - Object or value to hash
+ * @returns {string} Simple hash string in base 36
+ * @example
+ * simpleHash('hello'); // "1k4xd"
+ * simpleHash({ a: 1, b: 2 }); // "1x3k2d"
  */
-export function simpleHash(obj: any): string {
+export function simpleHash(obj: unknown): string {
   const str = typeof obj === 'string' ? obj : JSON.stringify(obj);
   let hash = 0;
   for (let i = 0; i < str.length; i++) {

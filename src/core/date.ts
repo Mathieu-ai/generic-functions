@@ -8,12 +8,16 @@ export type FormatType = "DATE" | "TIME" | "DATE_TIME";
 export type CodeISO = "AD" | "AT" | "BE" | "BG" | "CH" | "CY" | "CZ" | "DE" | "DK" | "EE" | "ES" | "FI" | "FR" | "GB" | "GR" | "HR" | "HU" | "IE" | "IS" | "IT" | "LI" | "LT" | "LU" | "LV" | "MC" | "MT" | "NL" | "NO" | "PL" | "PT" | "RO" | "SE" | "SI" | "SK" | "SM" | "TR" | "US" | "CA" | "JP" | "CN" | "KR";
 
 /**
- * Format a date to string
- * @param date - The date to format
- * @param format - The format string (DD/MM/YYYY, HH:mm:ss, etc.)
- * @returns Formatted date string
+ * Format a date to string using a custom format pattern
+ * @param date - The date to format (Date object or date string)
+ * @param format - The format string pattern (supports YYYY, MM, DD, HH, mm, ss)
+ * @returns Formatted date string, or empty string if date is invalid
  * @example
+ * ```typescript
  * formatDate(new Date(), 'DD/MM/YYYY') // '25/12/2023'
+ * formatDate('2023-12-25', 'HH:mm:ss') // '00:00:00'
+ * formatDate('invalid', 'DD/MM/YYYY') // ''
+ * ```
  */
 export function formatDate(date: string | Date, format: string): string {
   const d = new Date(date);
@@ -39,18 +43,29 @@ export function formatDate(date: string | Date, format: string): string {
 }
 
 /**
- * Check if a value is a valid date
- * @param date - The value to check
- * @returns Whether it's a valid date
+ * Check if a value is a valid Date object
+ * @param date - The value to check for date validity
+ * @returns True if the value is a valid Date object, false otherwise
+ * @example
+ * ```typescript
+ * isDate(new Date()) // true
+ * isDate('2023-12-25') // false (string, not Date object)
+ * isDate(new Date('invalid')) // false (invalid date)
+ * ```
  */
 export function isDate(date: any): boolean {
   return date instanceof Date && !isNaN(date.getTime());
 }
 
 /**
- * Get current time formatted
- * @param format - Optional format string
- * @returns Current time as string or Date object
+ * Get the current date and time, optionally formatted
+ * @param format - Optional format string to apply to the current date
+ * @returns Current date as Date object, or formatted string if format is provided
+ * @example
+ * ```typescript
+ * now() // Date object for current time
+ * now('DD/MM/YYYY HH:mm') // '25/12/2023 14:30'
+ * ```
  */
 export function now(format?: string): string | Date {
   const currentDate = new Date();
@@ -58,8 +73,13 @@ export function now(format?: string): string | Date {
 }
 
 /**
- * Get seconds until tomorrow
- * @returns Number of seconds until midnight
+ * Calculate the number of seconds remaining until tomorrow (midnight)
+ * @returns Number of seconds until the next day begins
+ * @example
+ * ```typescript
+ * // If current time is 23:30:00
+ * secondsToTomorrow() // 1800 (30 minutes = 1800 seconds)
+ * ```
  */
 export function secondsToTomorrow(): number {
   const now = new Date();
@@ -71,10 +91,17 @@ export function secondsToTomorrow(): number {
 }
 
 /**
- * Check if two dates are different by a time unit
- * @param nb - Number to compare
- * @param unit - Time unit
- * @returns Whether they are different
+ * Check if a given number differs from the current time's corresponding unit
+ * @param nb - The number to compare against the current time unit
+ * @param unit - The time unit to compare (hour, minute, second, day, month, year)
+ * @returns True if the number differs from the current time's unit value
+ * @example
+ * ```typescript
+ * // If current time is 14:30:45 on 25th December 2023
+ * isDateDifferent(15, 'hour') // true (current hour is 14)
+ * isDateDifferent(30, 'minute') // false (current minute is 30)
+ * isDateDifferent(2023, 'year') // false (current year is 2023)
+ * ```
  */
 export function isDateDifferent(nb: number, unit: TimeUnit): boolean {
   const now = new Date();
@@ -98,10 +125,17 @@ export function isDateDifferent(nb: number, unit: TimeUnit): boolean {
 }
 
 /**
- * Get date format by country code and format type
- * @param format - Format type
- * @param iso - Country ISO code
- * @returns Date format string
+ * Get the date/time format string for a specific country and format type
+ * @param format - The type of format to retrieve (DATE, TIME, or DATE_TIME)
+ * @param iso - The ISO country code
+ * @returns The format string for the specified country and type, or null if not found
+ * @example
+ * ```typescript
+ * getFormat('DATE', 'US') // 'MM/DD/YYYY'
+ * getFormat('DATE', 'FR') // 'DD/MM/YYYY'
+ * getFormat('TIME', 'US') // 'HH:mm:ss'
+ * getFormat('DATE_TIME', 'DE') // 'DD.MM.YYYY, HH:mm:ss'
+ * ```
  */
 export function getFormat(format: FormatType, iso: CodeISO): string | null {
   const dateFormats: Record<CodeISO, string> = {
@@ -132,11 +166,17 @@ export function getFormat(format: FormatType, iso: CodeISO): string | null {
 }
 
 /**
- * Check if date is between two dates
- * @param date - Date to check
- * @param start - Start date
- * @param end - End date
- * @returns Whether date is between start and end
+ * Check if a date falls between two other dates (inclusive)
+ * @param date - The date to check (Date object or date string)
+ * @param start - The start date of the range (Date object or date string)
+ * @param end - The end date of the range (Date object or date string)
+ * @returns True if the date is between start and end dates (inclusive)
+ * @example
+ * ```typescript
+ * isBetween('2023-12-25', '2023-12-01', '2023-12-31') // true
+ * isBetween(new Date('2023-11-30'), '2023-12-01', '2023-12-31') // false
+ * isBetween('2023-12-01', '2023-12-01', '2023-12-31') // true (inclusive)
+ * ```
  */
 export function isBetween(date: Date | string, start: Date | string, end: Date | string): boolean {
   const d = new Date(date);
@@ -147,11 +187,18 @@ export function isBetween(date: Date | string, start: Date | string, end: Date |
 }
 
 /**
- * Add time to a date
- * @param date - Base date
- * @param amount - Amount to add
- * @param unit - Time unit
- * @returns New date with added time
+ * Add a specified amount of time to a date
+ * @param date - The base date to add time to (Date object or date string)
+ * @param amount - The amount of time to add (can be negative to subtract)
+ * @param unit - The time unit for the amount (millisecond, second, minute, hour, day, month, year)
+ * @returns A new Date object with the added time
+ * @example
+ * ```typescript
+ * addTime(new Date('2023-12-25'), 5, 'day') // 2023-12-30
+ * addTime('2023-12-25T10:00:00', 2, 'hour') // 2023-12-25T12:00:00
+ * addTime(new Date(), -1, 'month') // One month ago
+ * addTime('2023-01-31', 1, 'month') // 2023-02-28 (handles month overflow)
+ * ```
  */
 export function addTime(date: Date | string, amount: number, unit: TimeUnit): Date {
   const d = new Date(date);

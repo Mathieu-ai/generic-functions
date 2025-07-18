@@ -4,9 +4,8 @@
         "type": "git",
         "url": "https://github.com/Mathieu-ai/generic-functions.git"
     },
-    "version": "0.8.3",
+    "version": "0.9.0",
     "description": "Lightweight generic utility functions for any usage",
-    "type": "module",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
     "exports": {
@@ -44,6 +43,31 @@
             "import": "./dist/core/date.js",
             "require": "./dist/core/date.js",
             "types": "./dist/core/date.d.ts"
+        },
+        "./core/math": {
+            "import": "./dist/core/math.js",
+            "require": "./dist/core/math.js",
+            "types": "./dist/core/math.d.ts"
+        },
+        "./core/type": {
+            "import": "./dist/core/type.js",
+            "require": "./dist/core/type.js",
+            "types": "./dist/core/type.d.ts"
+        },
+        "./core/utility": {
+            "import": "./dist/core/utility.js",
+            "require": "./dist/core/utility.js",
+            "types": "./dist/core/utility.d.ts"
+        },
+        "./core/function": {
+            "import": "./dist/core/function.js",
+            "require": "./dist/core/function.js",
+            "types": "./dist/core/function.d.ts"
+        },
+        "./core/collection": {
+            "import": "./dist/core/collection.js",
+            "require": "./dist/core/collection.js",
+            "types": "./dist/core/collection.d.ts"
         },
         "./utils": {
             "import": "./dist/utils/index.js",

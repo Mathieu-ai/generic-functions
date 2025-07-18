@@ -1,9 +1,10 @@
-/**
- * Core utilities - essential functions with no external dependencies
- */
-
 export * from './string.js';
 export * from './array.js';
 export * from './object.js';
 export * from './number.js';
 export * from './date.js';
+export * from './math.js';
+export * from './function.js';
+export * from './collection.js';
+export * from './utility.js';
+export * from './type.js';
