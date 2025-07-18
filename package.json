@@ -59,15 +59,15 @@
     "scripts": {
         "build": "tsc",
         "clean": "rmdir /s /q dist 2>nul || echo \"Directory not found\"",
+        "copy-files": "copy README.md dist\\ && copy LICENSE dist\\ && node scripts\\create-dist-package.cjs",
+        "prepare-dist": "npm run build && npm run copy-files",
         "prebuild": "npm run clean",
-        "prepare": "npm run build",
-        "prepack": "npm run build",
+        "prepare": "npm run prepare-dist",
+        "prepack": "npm run prepare-dist",
         "test": "echo \"No tests specified\" && exit 0"
     },
     "files": [
-        "dist",
-        "README.md",
-        "LICENSE"
+        "dist"
     ],
     "keywords": [
         "generic-functions",
