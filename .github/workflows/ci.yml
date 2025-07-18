@@ -25,8 +25,8 @@ jobs:
       - name: Install dependencies
         run: npm ci
       
-      - name: Build
-        run: npm run build
+      - name: Build and prepare dist
+        run: npm run prepare-dist
       
       - name: Check types
         run: npx tsc --noEmit

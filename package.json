@@ -58,8 +58,8 @@
     },
     "scripts": {
         "build": "tsc",
-        "clean": "rmdir /s /q dist 2>nul || echo \"Directory not found\"",
-        "copy-files": "copy README.md dist\\ && copy LICENSE dist\\ && node scripts\\create-dist-package.cjs",
+        "clean": "node scripts/build-helper.cjs clean",
+        "copy-files": "node scripts/build-helper.cjs copy-files",
         "prepare-dist": "npm run build && npm run copy-files",
         "prebuild": "npm run clean",
         "prepare": "npm run prepare-dist",
