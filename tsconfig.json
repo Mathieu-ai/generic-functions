@@ -2,21 +2,26 @@
     "compilerOptions": {
         "outDir": "./dist",
         "rootDir": "./src",
-        "module": "commonjs",
-        "target": "es6",
-        "declaration": true,
-        "esModuleInterop": true,
+        "module": "ESNext",
+        "target": "ES2018",
         "moduleResolution": "node",
+        "declaration": true,
+        "declarationMap": true,
+        "esModuleInterop": true,
+        "allowSyntheticDefaultImports": true,
         "sourceMap": true,
-        "inlineSources": true,
+        "inlineSources": false,
         "forceConsistentCasingInFileNames": true,
-        "strict": true
+        "strict": true,
+        "skipLibCheck": true,
+        "removeComments": true
     },
     "include": [
         "src/**/*.ts"
     ],
     "exclude": [
         "node_modules",
-        "**/*.spec.ts"
+        "**/*.spec.ts",
+        "dist"
     ]
 }

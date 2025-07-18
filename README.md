@@ -2,8 +2,10 @@
 
 [![npm version][npm-badge]][npm-url] [![Open issues][issues-badge]][issues-url] [![TypeScript][typescript-badge]][typescript-url]
 
-* 💪 Have some useful props & functions
-* 📦 light library
+* 💪 Essential utility functions for modern JavaScript/TypeScript
+* 📦 Lightweight library (< 50KB) with zero dependencies
+* 🌳 Perfect tree-shaking support
+* ⚡ Fast and efficient
 
 ## Install
 
@@ -25,31 +27,81 @@ pnpm i generic-functions.mlai
 
 ## Usage
 
-Once you have installed the module, you can import like this:
+### Tree-shakable imports (Recommended)
+
+Import only what you need for optimal bundle size:
 
 ```js
-// Load all
-import * as ml from 'generic-functions.mlai';
-console.log( ml.trim('ff fff') );
-// ff fff
+// String utilities
+import { trim, capitalize, purify } from 'generic-functions.mlai/core/string';
 
-// only import functions
-import * as mlFunc from 'generic-functions.mlai/functions';
-console.log( mlFunc.trim('ff fff') );
-// ff fff
+// Array utilities  
+import { sort, getUnique } from 'generic-functions.mlai/core/array';
 
-// only import properties
-import { mlProp } from 'generic-functions.mlai/props';
+// Date utilities
+import { formatDate, now } from 'generic-functions.mlai/core/date';
 
-// only import `trim` from the various functions
-const { trim } = require('generic-functions.mlai/functions')
-console.log( trim('ff fff') );
-// ff fff
+// Object utilities
+import { flat, isEmpty } from 'generic-functions.mlai/core/object';
 
-// only import the `trim` from the module
-const { trim: trim2 } = require('generic-functions.mlai')
-console.log( trim2('ff fff') );
-// ff fff
+// Number utilities
+import { number, clamp } from 'generic-functions.mlai/core/number';
+
+// Constants
+import { REGEX, DATE_FORMATS } from 'generic-functions.mlai/constants';
+
+console.log(trim('  hello world  ')); // 'hello world'
+console.log(capitalize('hello')); // 'Hello'
+console.log(formatDate(new Date(), 'DD/MM/YYYY')); // '25/12/2023'
+```
+
+### All-in-one import
+
+```js
+// Load all core functions (still lightweight!)
+import * as gf from 'generic-functions.mlai';
+
+console.log(gf.trim('  hello world  ')); // 'hello world'
+console.log(gf.formatDate(new Date(), 'DD/MM/YYYY')); // '25/12/2023'
+```
+
+### Category imports
+
+```js
+// Import specific categories
+import * as stringUtils from 'generic-functions.mlai/core/string';
+import * as dateUtils from 'generic-functions.mlai/core/date';
+
+console.log(stringUtils.purify('Héllo')); // 'Hello'
+console.log(dateUtils.now('HH:mm')); // '14:30'
+```
+
+## Architecture
+
+This library is designed with a modular architecture for optimal tree-shaking:
+
+- `core/string` - String manipulation functions
+- `core/array` - Array utilities
+- `core/object` - Object manipulation
+- `core/number` - Number utilities  
+- `core/date` - Date/time functions (no external dependencies)
+- `constants` - Useful constants and regex patterns
+- `utils` - Optional heavier utilities (import separately)
+
+## Migration from v0.x
+
+The new version removes heavy dependencies (axios, dayjs, etc.) for better performance. 
+
+**Before:**
+```js
+import { api, now } from 'generic-functions.mlai';
+```
+
+**After:**
+```js
+// Use native fetch or your preferred HTTP client
+import { api } from 'generic-functions.mlai/utils';
+import { now } from 'generic-functions.mlai/core/date';
 ```
 
 ## Contributing
