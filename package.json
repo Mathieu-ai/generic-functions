@@ -13,7 +13,8 @@
         "clean": "rm -rf dist",
         "prebuild": "npm run clean",
         "prepare": "npm run build",
-        "prepack": "npm run build"
+        "prepack": "npm run build",
+        "test": "echo \"No tests specified\" && exit 0"
     },
     "files": [
         "dist",
@@ -31,7 +32,8 @@
     "author": "mathieu-ai <mathieu.lievre@efrei.net>",
     "license": "MIT",
     "publishConfig": {
-        "access": "public"
+        "access": "public",
+        "registry": "https://registry.npmjs.org/"
     },
     "peerDependencies": {
         "axios": ">=1.2.2",

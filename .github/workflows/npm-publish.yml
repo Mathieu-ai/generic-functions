@@ -6,6 +6,10 @@ on:
   release:
     types: [ published ]
 
+permissions:
+  contents: write
+  packages: write
+
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
@@ -24,6 +28,9 @@ jobs:
       - name: Build
         run: npm run build
       
+      - name: Check types
+        run: npx tsc --noEmit
+      
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
         with:
@@ -33,10 +40,12 @@ jobs:
   publish-npm:
     needs: build-and-test
     runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
     steps:
       - uses: actions/checkout@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
       
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -55,13 +64,25 @@ jobs:
           path: dist/
       
       - name: Configure Git
-        if: github.event_name == 'push'
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
       
+      - name: Check if version needs bump
+        id: version-check
+        run: |
+          CURRENT_VERSION=$(node -p "require('./package.json').version")
+          PUBLISHED_VERSION=$(npm view generic-functions.mlai version 2>/dev/null || echo "0.0.0")
+          echo "current_version=$CURRENT_VERSION" >> $GITHUB_OUTPUT
+          echo "published_version=$PUBLISHED_VERSION" >> $GITHUB_OUTPUT
+          if [ "$CURRENT_VERSION" != "$PUBLISHED_VERSION" ]; then
+            echo "needs_publish=true" >> $GITHUB_OUTPUT
+          else
+            echo "needs_publish=false" >> $GITHUB_OUTPUT
+          fi
+      
       - name: Bump version
-        if: github.event_name == 'push'
+        if: steps.version-check.outputs.needs_publish == 'false'
         run: |
           npm version patch --no-git-tag-version
           git add package.json package-lock.json
@@ -69,6 +90,7 @@ jobs:
           git push
       
       - name: Publish to NPM
+        if: steps.version-check.outputs.needs_publish == 'true' || steps.version-check.outputs.needs_publish == 'false'
         run: npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
