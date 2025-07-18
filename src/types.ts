@@ -69,7 +69,7 @@ export interface i_country {
 
 /**
     Custom interface
-    * * 🟢 generic, it is a interface
+    * * 🟢 generic, it is a interfacew
 */
 export interface type_state {
     type: string,
