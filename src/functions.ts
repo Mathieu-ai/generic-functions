@@ -413,7 +413,7 @@ export function toUpperCase<T>( data: T ): T {
 export function getCountry(
     { cc, cn, cf }: { cc?: string; cn?: string; cf?: string },
     countries: any[]
-): i_country|undefined {
+): Partial<i_country> {
     const normalizedCn=cn? purify( cn ):undefined;
 
     function searchInAltNames( altNames: string ) {

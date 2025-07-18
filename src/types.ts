@@ -58,13 +58,13 @@ export type codeISO=|"AD"|"AT"|"BE"|"BG"|"CH"|"CY"|"CZ"|"DE"|"DK"|"EE"|"ES"|"FI"
     * * 🟢 generic, it is a interface
 */
 export interface i_country {
-    name: {
+    name?: {
         common: string;
         official: string;
     };
-    cca2: string;
-    altNames: string;
-    flag: string;
+    cca2?: string;
+    altNames?: string;
+    flag?: string;
 }
 
 /**
