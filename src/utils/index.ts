@@ -24,7 +24,6 @@ export interface RequestOptions {
   headers?: Record<string, string>;
   body?: any;
 }
-
 /**
  * Simple HTTP client using fetch (no axios dependency)
  * @param url - Request URL
