@@ -9,18 +9,30 @@
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
     "scripts": {
-        "build": "tsc --outDir ./dist --declaration --module commonjs --target es6 --sourceMap"
+        "build": "tsc --outDir ./dist --declaration --module commonjs --target es6 --sourceMap",
+        "clean": "rm -rf dist",
+        "prebuild": "npm run clean",
+        "prepare": "npm run build",
+        "prepack": "npm run build"
     },
     "files": [
-        "dist"
+        "dist",
+        "README.md",
+        "LICENSE"
     ],
     "keywords": [
         "generic-functions",
         "mlai",
-        "ts"
+        "ts",
+        "typescript",
+        "utilities",
+        "helpers"
     ],
     "author": "mathieu-ai <mathieu.lievre@efrei.net>",
     "license": "MIT",
+    "publishConfig": {
+        "access": "public"
+    },
     "peerDependencies": {
         "axios": ">=1.2.2",
         "dayjs": ">=1.11.7",
