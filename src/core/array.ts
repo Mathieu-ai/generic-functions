@@ -15,7 +15,7 @@ export interface SortOptions<T> {
  * @param {any} str - The string to purify
  * @returns {string} Returns the purified string
  */
-function purify(str: any): string {
+function purify (str: any): string {
   return typeof str === "string"
     ? str.normalize("NFD").replace(/[\u0300-\u036f]/g, "")
     : "";
@@ -32,22 +32,22 @@ function purify(str: any): string {
  * sort({ arr: [{name: 'Bob'}, {name: 'Alice'}], prop: 'name' })
  * // [{name: 'Alice'}, {name: 'Bob'}]
  */
-export function sort<T extends Record<string, any>>(options: SortOptions<T>): T[] {
+export function sort<T extends Record<string, any>> (options: SortOptions<T>): T[] {
   const { arr, prop, ascending = true } = options;
-  
+
   const compare = (a: T, b: T) => {
     const valueA = a[prop];
     const valueB = b[prop];
-    
+
     const sortOrder = ascending ? 1 : -1;
-    
+
     if (typeof valueA === 'number' && typeof valueB === 'number') {
       return sortOrder * (valueA - valueB);
     }
-    
+
     return sortOrder * purify(String(valueA)).localeCompare(purify(String(valueB)));
   };
-  
+
   return arr.slice().sort(compare);
 }
 
@@ -60,18 +60,18 @@ export function sort<T extends Record<string, any>>(options: SortOptions<T>): T[
  * getUnique([1, 2, 2, 3]); // [1, 2, 3]
  * getUnique([{id: 1}, {id: 2}, {id: 1}], 'id'); // [{id: 1}, {id: 2}]
  */
-export function getUnique<T>(data: T[], field?: string): T[] {
+export function getUnique<T> (data: T[], field?: string): T[] {
   const seen = new Set();
-  
+
   return data.filter(item => {
     const key = field && typeof item === 'object' && item !== null
       ? JSON.stringify((item as any)[field])
       : JSON.stringify(item);
-    
+
     if (seen.has(key)) {
       return false;
     }
-    
+
     seen.add(key);
     return true;
   });
@@ -82,13 +82,13 @@ export function getUnique<T>(data: T[], field?: string): T[] {
  * @param data - The data to get last element from
  * @returns The last element(s)
  */
-export function getLastElement<T>(data: T[] | Record<string, any>): T[] | Record<string, any> {
+export function getLastElement<T> (data: T[] | Record<string, any>): T[] | Record<string, any> {
   if (Array.isArray(data)) {
     return data.length > 0 ? [data[data.length - 1]] : [];
   } else if (typeof data === 'object' && data) {
     const keys = Object.keys(data);
-    return keys.length > 0 
-      ? { [keys[keys.length - 1]]: data[keys[keys.length - 1]] } 
+    return keys.length > 0
+      ? { [keys[keys.length - 1]]: data[keys[keys.length - 1]] }
       : {};
   }
   return data as any;
@@ -99,7 +99,7 @@ export function getLastElement<T>(data: T[] | Record<string, any>): T[] | Record
  * @param arr - Array of strings
  * @returns Random string from the array
  */
-export function randomString(arr: string[]): string {
+export function randomString (arr: string[]): string {
   return arr[Math.floor(Math.random() * arr.length)];
 }
 
@@ -110,7 +110,7 @@ export function randomString(arr: string[]): string {
  * @param size - Size threshold
  * @returns The array or fallback based on size
  */
-export function checkLength<T>(first: T[], second: string, size: number): T[] | string {
+export function checkLength<T> (first: T[], second: string, size: number): T[] | string {
   return first.length < size ? first : second;
 }
 
@@ -123,7 +123,7 @@ export function checkLength<T>(first: T[], second: string, size: number): T[] | 
  * chunk([1, 2, 3, 4], 2); // [[1, 2], [3, 4]]
  * chunk([1, 2, 3, 4, 5], 3); // [[1, 2, 3], [4, 5]]
  */
-export function chunk<T>(array: T[], size: number = 1): T[][] {
+export function chunk<T> (array: T[], size: number = 1): T[][] {
   const result: T[][] = [];
   for (let i = 0; i < array.length; i += size) {
     result.push(array.slice(i, i + size));
@@ -138,7 +138,7 @@ export function chunk<T>(array: T[], size: number = 1): T[][] {
  * @example
  * compact([0, 1, false, 2, '', 3]); // [1, 2, 3]
  */
-export function compact<T>(array: (T | null | undefined | false | 0 | "")[]): T[] {
+export function compact<T> (array: (T | null | undefined | false | 0 | "")[]): T[] {
   return array.filter(Boolean) as T[];
 }
 
@@ -150,7 +150,7 @@ export function compact<T>(array: (T | null | undefined | false | 0 | "")[]): T[
  * @example
  * concat([1], 2, [3], [[4]]); // [1, 2, 3, [4]]
  */
-export function concat<T>(array: T[], ...values: (T | T[])[]): T[] {
+export function concat<T> (array: T[], ...values: (T | T[])[]): T[] {
   const result = [...array];
   for (const value of values) {
     if (Array.isArray(value)) {
@@ -170,7 +170,7 @@ export function concat<T>(array: T[], ...values: (T | T[])[]): T[] {
  * @example
  * difference([2, 1], [2, 3]); // [1]
  */
-export function difference<T>(array: T[], ...values: T[][]): T[] {
+export function difference<T> (array: T[], ...values: T[][]): T[] {
   const excludeSet = new Set(values.flat());
   return array.filter(item => !excludeSet.has(item));
 }
@@ -184,7 +184,7 @@ export function difference<T>(array: T[], ...values: T[][]): T[] {
  * @example
  * differenceBy([2.1, 1.2], [2.3, 3.4], Math.floor); // [1.2]
  */
-export function differenceBy<T>(array: T[], values: T[], iteratee: (value: T) => any): T[] {
+export function differenceBy<T> (array: T[], values: T[], iteratee: (value: T) => any): T[] {
   const excludeSet = new Set(values.map(iteratee));
   return array.filter(item => !excludeSet.has(iteratee(item)));
 }
@@ -198,7 +198,7 @@ export function differenceBy<T>(array: T[], values: T[], iteratee: (value: T) =>
  * @example
  * differenceWith([{ 'x': 1 }, { 'x': 2 }], [{ 'x': 1 }], (a, b) => a.x === b.x); // [{ 'x': 2 }]
  */
-export function differenceWith<T>(array: T[], values: T[], comparator: (a: T, b: T) => boolean): T[] {
+export function differenceWith<T> (array: T[], values: T[], comparator: (a: T, b: T) => boolean): T[] {
   return array.filter(arrayItem => !values.some(valueItem => comparator(arrayItem, valueItem)));
 }
 
@@ -211,7 +211,7 @@ export function differenceWith<T>(array: T[], values: T[], comparator: (a: T, b:
  * drop([1, 2, 3]); // [2, 3]
  * drop([1, 2, 3], 2); // [3]
  */
-export function drop<T>(array: T[], n: number = 1): T[] {
+export function drop<T> (array: T[], n: number = 1): T[] {
   return array.slice(n);
 }
 
@@ -224,7 +224,7 @@ export function drop<T>(array: T[], n: number = 1): T[] {
  * dropRight([1, 2, 3]); // [1, 2]
  * dropRight([1, 2, 3], 2); // [1]
  */
-export function dropRight<T>(array: T[], n: number = 1): T[] {
+export function dropRight<T> (array: T[], n: number = 1): T[] {
   return array.slice(0, -n || array.length);
 }
 
@@ -236,7 +236,7 @@ export function dropRight<T>(array: T[], n: number = 1): T[] {
  * @example
  * dropWhile([1, 2, 3, 4], n => n < 3); // [3, 4]
  */
-export function dropWhile<T>(array: T[], predicate: (value: T) => boolean): T[] {
+export function dropWhile<T> (array: T[], predicate: (value: T) => boolean): T[] {
   let index = 0;
   while (index < array.length && predicate(array[index])) {
     index++;
@@ -252,7 +252,7 @@ export function dropWhile<T>(array: T[], predicate: (value: T) => boolean): T[] 
  * @example
  * dropRightWhile([1, 2, 3, 4], n => n > 2); // [1, 2]
  */
-export function dropRightWhile<T>(array: T[], predicate: (value: T) => boolean): T[] {
+export function dropRightWhile<T> (array: T[], predicate: (value: T) => boolean): T[] {
   let index = array.length;
   while (index > 0 && predicate(array[index - 1])) {
     index--;
@@ -271,7 +271,7 @@ export function dropRightWhile<T>(array: T[], predicate: (value: T) => boolean):
  * fill([1, 2, 3], 'a'); // ['a', 'a', 'a']
  * fill([4, 6, 8, 10], '*', 1, 3); // [4, '*', '*', 10]
  */
-export function fill<T>(array: T[], value: T, start: number = 0, end: number = array.length): T[] {
+export function fill<T> (array: T[], value: T, start: number = 0, end: number = array.length): T[] {
   const result = [...array];
   for (let i = start; i < end && i < result.length; i++) {
     result[i] = value;
@@ -288,7 +288,7 @@ export function fill<T>(array: T[], value: T, start: number = 0, end: number = a
  * @example
  * findIndex([1, 2, 3, 4], n => n % 2 === 0); // 1
  */
-export function findIndex<T>(array: T[], predicate: (value: T, index: number, array: T[]) => boolean, fromIndex: number = 0): number {
+export function findIndex<T> (array: T[], predicate: (value: T, index: number, array: T[]) => boolean, fromIndex: number = 0): number {
   for (let i = fromIndex; i < array.length; i++) {
     if (predicate(array[i], i, array)) {
       return i;
@@ -306,7 +306,7 @@ export function findIndex<T>(array: T[], predicate: (value: T, index: number, ar
  * @example
  * findLastIndex([1, 2, 3, 4], n => n % 2 === 1); // 2
  */
-export function findLastIndex<T>(array: T[], predicate: (value: T, index: number, array: T[]) => boolean, fromIndex: number = array.length - 1): number {
+export function findLastIndex<T> (array: T[], predicate: (value: T, index: number, array: T[]) => boolean, fromIndex: number = array.length - 1): number {
   for (let i = fromIndex; i >= 0; i--) {
     if (predicate(array[i], i, array)) {
       return i;
@@ -322,7 +322,7 @@ export function findLastIndex<T>(array: T[], predicate: (value: T, index: number
  * @example
  * flatten([1, [2, [3, [4]], 5]]); // [1, 2, [3, [4]], 5]
  */
-export function flatten<T>(array: (T | T[])[]): T[] {
+export function flatten<T> (array: (T | T[])[]): T[] {
   return array.flat() as T[];
 }
 
@@ -333,7 +333,7 @@ export function flatten<T>(array: (T | T[])[]): T[] {
  * @example
  * flattenDeep([1, [2, [3, [4]], 5]]); // [1, 2, 3, 4, 5]
  */
-export function flattenDeep<T>(array: any[]): T[] {
+export function flattenDeep<T> (array: any[]): T[] {
   return array.flat(Infinity) as T[];
 }
 
@@ -346,7 +346,7 @@ export function flattenDeep<T>(array: any[]): T[] {
  * flattenDepth([1, [2, [3, [4]], 5]], 1); // [1, 2, [3, [4]], 5]
  * flattenDepth([1, [2, [3, [4]], 5]], 2); // [1, 2, 3, [4], 5]
  */
-export function flattenDepth<T>(array: any[], depth: number = 1): T[] {
+export function flattenDepth<T> (array: any[], depth: number = 1): T[] {
   return array.flat(depth) as T[];
 }
 
@@ -357,7 +357,7 @@ export function flattenDepth<T>(array: any[], depth: number = 1): T[] {
  * @example
  * reverse([1, 2, 3]); // [3, 2, 1]
  */
-export function reverse<T>(array: T[]): T[] {
+export function reverse<T> (array: T[]): T[] {
   return [...array].reverse();
 }
 
@@ -368,7 +368,7 @@ export function reverse<T>(array: T[]): T[] {
  * @example
  * union([2], [1, 2]); // [2, 1]
  */
-export function union<T>(...arrays: T[][]): T[] {
+export function union<T> (...arrays: T[][]): T[] {
   return [...new Set(arrays.flat())];
 }
 
@@ -380,10 +380,10 @@ export function union<T>(...arrays: T[][]): T[] {
  * @example
  * unionBy([[2.1], [1.2, 2.3]], Math.floor); // [2.1, 1.2]
  */
-export function unionBy<T>(arrays: T[][], iteratee: (value: T) => any): T[] {
+export function unionBy<T> (arrays: T[][], iteratee: (value: T) => any): T[] {
   const seen = new Set();
   const result: T[] = [];
-  
+
   for (const array of arrays) {
     for (const item of array) {
       const key = iteratee(item);
@@ -403,10 +403,10 @@ export function unionBy<T>(arrays: T[][], iteratee: (value: T) => any): T[] {
  * @example
  * intersection([2, 1], [2, 3]); // [2]
  */
-export function intersection<T>(...arrays: T[][]): T[] {
+export function intersection<T> (...arrays: T[][]): T[] {
   if (arrays.length === 0) return [];
   if (arrays.length === 1) return [...arrays[0]];
-  
+
   const [first, ...rest] = arrays;
   return first.filter(item => rest.every(array => array.includes(item)));
 }
@@ -419,10 +419,10 @@ export function intersection<T>(...arrays: T[][]): T[] {
  * @example
  * intersectionBy([[2.1, 1.2], [2.3, 3.4]], Math.floor); // [2.1]
  */
-export function intersectionBy<T>(arrays: T[][], iteratee: (value: T) => any): T[] {
+export function intersectionBy<T> (arrays: T[][], iteratee: (value: T) => any): T[] {
   if (arrays.length === 0) return [];
   if (arrays.length === 1) return [...arrays[0]];
-  
+
   const [first, ...rest] = arrays;
   return first.filter(item => {
     const key = iteratee(item);
@@ -438,7 +438,7 @@ export function intersectionBy<T>(arrays: T[][], iteratee: (value: T) => any): T
  * @example
  * pull([1, 2, 3, 1, 2, 3], 2, 3); // [1, 1]
  */
-export function pull<T>(array: T[], ...values: T[]): T[] {
+export function pull<T> (array: T[], ...values: T[]): T[] {
   return array.filter(item => !values.includes(item));
 }
 
@@ -450,7 +450,7 @@ export function pull<T>(array: T[], ...values: T[]): T[] {
  * @example
  * pullAt(['a', 'b', 'c', 'd'], 1, 3); // ['a', 'c']
  */
-export function pullAt<T>(array: T[], ...indexes: number[]): T[] {
+export function pullAt<T> (array: T[], ...indexes: number[]): T[] {
   const indexSet = new Set(indexes);
   return array.filter((_, index) => !indexSet.has(index));
 }
@@ -464,7 +464,7 @@ export function pullAt<T>(array: T[], ...indexes: number[]): T[] {
  * const array = [1, 2, 3, 4];
  * const evens = remove(array, n => n % 2 === 0); // evens: [2, 4], array: [1, 3]
  */
-export function remove<T>(array: T[], predicate: (value: T, index: number, array: T[]) => boolean): T[] {
+export function remove<T> (array: T[], predicate: (value: T, index: number, array: T[]) => boolean): T[] {
   const removed: T[] = [];
   for (let i = array.length - 1; i >= 0; i--) {
     if (predicate(array[i], i, array)) {
@@ -481,7 +481,7 @@ export function remove<T>(array: T[], predicate: (value: T, index: number, array
  * @example
  * tail([1, 2, 3]); // [2, 3]
  */
-export function tail<T>(array: T[]): T[] {
+export function tail<T> (array: T[]): T[] {
   return array.slice(1);
 }
 
@@ -494,7 +494,7 @@ export function tail<T>(array: T[]): T[] {
  * take([1, 2, 3]); // [1]
  * take([1, 2, 3], 2); // [1, 2]
  */
-export function take<T>(array: T[], n: number = 1): T[] {
+export function take<T> (array: T[], n: number = 1): T[] {
   return array.slice(0, n);
 }
 
@@ -507,7 +507,7 @@ export function take<T>(array: T[], n: number = 1): T[] {
  * takeRight([1, 2, 3]); // [3]
  * takeRight([1, 2, 3], 2); // [2, 3]
  */
-export function takeRight<T>(array: T[], n: number = 1): T[] {
+export function takeRight<T> (array: T[], n: number = 1): T[] {
   return array.slice(-n);
 }
 
@@ -519,7 +519,7 @@ export function takeRight<T>(array: T[], n: number = 1): T[] {
  * @example
  * takeWhile([1, 2, 3], n => n < 3); // [1, 2]
  */
-export function takeWhile<T>(array: T[], predicate: (value: T) => boolean): T[] {
+export function takeWhile<T> (array: T[], predicate: (value: T) => boolean): T[] {
   const result: T[] = [];
   for (const item of array) {
     if (predicate(item)) {
@@ -539,7 +539,7 @@ export function takeWhile<T>(array: T[], predicate: (value: T) => boolean): T[] 
  * @example
  * takeRightWhile([1, 2, 3], n => n > 1); // [2, 3]
  */
-export function takeRightWhile<T>(array: T[], predicate: (value: T) => boolean): T[] {
+export function takeRightWhile<T> (array: T[], predicate: (value: T) => boolean): T[] {
   const result: T[] = [];
   for (let i = array.length - 1; i >= 0; i--) {
     if (predicate(array[i])) {
@@ -559,7 +559,7 @@ export function takeRightWhile<T>(array: T[], predicate: (value: T) => boolean):
  * @example
  * without([2, 1, 2, 3], 1, 2); // [3]
  */
-export function without<T>(array: T[], ...values: T[]): T[] {
+export function without<T> (array: T[], ...values: T[]): T[] {
   return array.filter(item => !values.includes(item));
 }
 
@@ -570,7 +570,7 @@ export function without<T>(array: T[], ...values: T[]): T[] {
  * @example
  * xor([2, 1], [2, 3]); // [1, 3]
  */
-export function xor<T>(...arrays: T[][]): T[] {
+export function xor<T> (...arrays: T[][]): T[] {
   const counts = new Map();
   for (const array of arrays) {
     for (const item of array) {
@@ -589,14 +589,14 @@ export function xor<T>(...arrays: T[][]): T[] {
  * @example
  * zip(['a', 'b'], [1, 2], [true, false]); // [['a', 1, true], ['b', 2, false]]
  */
-export function zip<T>(...arrays: T[][]): T[][] {
+export function zip<T> (...arrays: T[][]): T[][] {
   const length = Math.max(...arrays.map(arr => arr.length));
   const result: T[][] = [];
-  
+
   for (let i = 0; i < length; i++) {
     result.push(arrays.map(arr => arr[i]));
   }
-  
+
   return result;
 }
 
@@ -608,7 +608,7 @@ export function zip<T>(...arrays: T[][]): T[][] {
  * @example
  * zipObject(['a', 'b'], [1, 2]); // { 'a': 1, 'b': 2 }
  */
-export function zipObject<T>(keys: string[], values: T[]): Record<string, T> {
+export function zipObject<T> (keys: string[], values: T[]): Record<string, T> {
   const result: Record<string, T> = {};
   for (let i = 0; i < keys.length; i++) {
     if (i < values.length) {
@@ -625,18 +625,18 @@ export function zipObject<T>(keys: string[], values: T[]): Record<string, T> {
  * @example
  * zipWith([1, 2], [10, 20], [100, 200], (a, b, c) => a + b + c); // [111, 222]
  */
-export function zipWith<T, R>(...arrays: [...T[][], ((...values: T[]) => R)]): R[] {
+export function zipWith<T, R> (...arrays: [...T[][], ((...values: T[]) => R)]): R[] {
   const func = arrays.pop() as (...values: T[]) => R;
   const arraysToZip = arrays as T[][];
-  
+
   const length = Math.max(...arraysToZip.map(arr => arr.length));
   const result: R[] = [];
-  
+
   for (let i = 0; i < length; i++) {
     const values = arraysToZip.map(arr => arr[i]);
     result.push(func(...values));
   }
-  
+
   return result;
 }
 
@@ -647,16 +647,16 @@ export function zipWith<T, R>(...arrays: [...T[][], ((...values: T[]) => R)]): R
  * @example
  * unzip([['a', 1, true], ['b', 2, false]]); // [['a', 'b'], [1, 2], [true, false]]
  */
-export function unzip<T>(array: T[][]): T[][] {
+export function unzip<T> (array: T[][]): T[][] {
   if (array.length === 0) return [];
-  
+
   const length = Math.max(...array.map(arr => arr.length));
   const result: T[][] = [];
-  
+
   for (let i = 0; i < length; i++) {
     result.push(array.map(arr => arr[i]));
   }
-  
+
   return result;
 }
 
@@ -668,7 +668,7 @@ export function unzip<T>(array: T[][]): T[][] {
  * head([1, 2, 3]); // 1
  * head([]); // undefined
  */
-export function head<T>(array: T[]): T | undefined {
+export function head<T> (array: T[]): T | undefined {
   return array[0];
 }
 
@@ -680,7 +680,7 @@ export function head<T>(array: T[]): T | undefined {
  * last([1, 2, 3]); // 3
  * last([]); // undefined
  */
-export function last<T>(array: T[]): T | undefined {
+export function last<T> (array: T[]): T | undefined {
   return array[array.length - 1];
 }
 
@@ -693,7 +693,7 @@ export function last<T>(array: T[]): T | undefined {
  * nth(['a', 'b', 'c', 'd'], 1); // 'b'
  * nth(['a', 'b', 'c', 'd'], -2); // 'c'
  */
-export function nth<T>(array: T[], n: number = 0): T | undefined {
+export function nth<T> (array: T[], n: number = 0): T | undefined {
   const index = n < 0 ? array.length + n : n;
   return array[index];
 }
@@ -705,7 +705,7 @@ export function nth<T>(array: T[], n: number = 0): T | undefined {
  * @example
  * initial([1, 2, 3]); // [1, 2]
  */
-export function initial<T>(array: T[]): T[] {
+export function initial<T> (array: T[]): T[] {
   return array.slice(0, -1);
 }
 
@@ -717,10 +717,10 @@ export function initial<T>(array: T[]): T[] {
  * @example
  * unionWith([[{ 'x': 1 }], [{ 'x': 2 }, { 'x': 1 }]], (a, b) => a.x === b.x); // [{ 'x': 1 }, { 'x': 2 }]
  */
-export function unionWith<T>(arrays: T[][], comparator: (a: T, b: T) => boolean): T[] {
+export function unionWith<T> (arrays: T[][], comparator: (a: T, b: T) => boolean): T[] {
   const result: T[] = [];
   const allValues = arrays.flat();
-  
+
   for (const value of allValues) {
     if (!result.some(item => comparator(item, value))) {
       result.push(value);
@@ -737,13 +737,13 @@ export function unionWith<T>(arrays: T[][], comparator: (a: T, b: T) => boolean)
  * @example
  * intersectionWith([[{ 'x': 1 }], [{ 'x': 2 }, { 'x': 1 }]], (a, b) => a.x === b.x); // [{ 'x': 1 }]
  */
-export function intersectionWith<T>(arrays: T[][], comparator: (a: T, b: T) => boolean): T[] {
+export function intersectionWith<T> (arrays: T[][], comparator: (a: T, b: T) => boolean): T[] {
   if (arrays.length === 0) return [];
   if (arrays.length === 1) return [...arrays[0]];
-  
+
   const [first, ...rest] = arrays;
-  return first.filter(item => 
-    rest.every(array => 
+  return first.filter(item =>
+    rest.every(array =>
       array.some(arrayItem => comparator(item, arrayItem))
     )
   );
@@ -757,10 +757,10 @@ export function intersectionWith<T>(arrays: T[][], comparator: (a: T, b: T) => b
  * @example
  * xorWith([[{ 'x': 1 }], [{ 'x': 2 }, { 'x': 1 }]], (a, b) => a.x === b.x); // [{ 'x': 2 }]
  */
-export function xorWith<T>(arrays: T[][], comparator: (a: T, b: T) => boolean): T[] {
+export function xorWith<T> (arrays: T[][], comparator: (a: T, b: T) => boolean): T[] {
   const allValues = arrays.flat();
   const result: T[] = [];
-  
+
   for (const value of allValues) {
     const occurrences = allValues.filter(item => comparator(item, value)).length;
     if (occurrences === 1 && !result.some(item => comparator(item, value))) {
@@ -778,11 +778,11 @@ export function xorWith<T>(arrays: T[][], comparator: (a: T, b: T) => boolean): 
  * @example
  * xorBy([[2.1, 1.2], [2.3, 3.4]], Math.floor); // [1.2, 3.4]
  */
-export function xorBy<T>(arrays: T[][], iteratee: (value: T) => any): T[] {
+export function xorBy<T> (arrays: T[][], iteratee: (value: T) => any): T[] {
   const allValues = arrays.flat();
   const counts = new Map();
   const valueMap = new Map();
-  
+
   for (const value of allValues) {
     const key = iteratee(value);
     counts.set(key, (counts.get(key) || 0) + 1);
@@ -790,7 +790,7 @@ export function xorBy<T>(arrays: T[][], iteratee: (value: T) => any): T[] {
       valueMap.set(key, value);
     }
   }
-  
+
   return Array.from(counts.entries())
     .filter(([_, count]) => count === 1)
     .map(([key]) => valueMap.get(key));
@@ -804,25 +804,25 @@ export function xorBy<T>(arrays: T[][], iteratee: (value: T) => any): T[] {
  * @example
  * zipObjectDeep(['a.b[0].c', 'a.b[1].d'], [1, 2]); // { 'a': { 'b': [{ 'c': 1 }, { 'd': 2 }] } }
  */
-export function zipObjectDeep<T>(paths: string[], values: T[]): any {
+export function zipObjectDeep<T> (paths: string[], values: T[]): any {
   const result: any = {};
-  
+
   for (let i = 0; i < paths.length; i++) {
     if (i < values.length) {
       const path = paths[i].split('.');
       let current = result;
-      
+
       for (let j = 0; j < path.length - 1; j++) {
         if (!current[path[j]]) {
           current[path[j]] = {};
         }
         current = current[path[j]];
       }
-      
+
       current[path[path.length - 1]] = values[i];
     }
   }
-  
+
   return result;
 }
 
@@ -834,7 +834,7 @@ export function zipObjectDeep<T>(paths: string[], values: T[]): any {
  * @example
  * pullAll([1, 2, 3, 1, 2, 3], [2, 3]); // [1, 1]
  */
-export function pullAll<T>(array: T[], values: T[]): T[] {
+export function pullAll<T> (array: T[], values: T[]): T[] {
   return array.filter(item => !values.includes(item));
 }
 
@@ -847,7 +847,7 @@ export function pullAll<T>(array: T[], values: T[]): T[] {
  * @example
  * pullAllBy([{ 'x': 1 }, { 'x': 2 }, { 'x': 3 }, { 'x': 1 }], [{ 'x': 1 }, { 'x': 3 }], 'x'); // [{ 'x': 2 }]
  */
-export function pullAllBy<T>(array: T[], values: T[], iteratee: (value: T) => any): T[] {
+export function pullAllBy<T> (array: T[], values: T[], iteratee: (value: T) => any): T[] {
   const valueKeys = values.map(iteratee);
   return array.filter(item => !valueKeys.includes(iteratee(item)));
 }
@@ -861,7 +861,7 @@ export function pullAllBy<T>(array: T[], values: T[], iteratee: (value: T) => an
  * @example
  * pullAllWith([{ 'x': 1, 'y': 2 }, { 'x': 3, 'y': 4 }, { 'x': 5, 'y': 6 }], [{ 'x': 3, 'y': 4 }], (a, b) => a.x === b.x); // [{ 'x': 1, 'y': 2 }, { 'x': 5, 'y': 6 }]
  */
-export function pullAllWith<T>(array: T[], values: T[], comparator: (a: T, b: T) => boolean): T[] {
+export function pullAllWith<T> (array: T[], values: T[], comparator: (a: T, b: T) => boolean): T[] {
   return array.filter(arrayItem => !values.some(valueItem => comparator(arrayItem, valueItem)));
 }
 
@@ -872,7 +872,7 @@ export function pullAllWith<T>(array: T[], values: T[], comparator: (a: T, b: T)
  * @example
  * uniq([2, 1, 2]); // [2, 1]
  */
-export function uniq<T>(array: T[]): T[] {
+export function uniq<T> (array: T[]): T[] {
   return [...new Set(array)];
 }
 
@@ -884,7 +884,7 @@ export function uniq<T>(array: T[]): T[] {
  * @example
  * uniqBy([2.1, 1.2, 2.3], Math.floor); // [2.1, 1.2]
  */
-export function uniqBy<T>(array: T[], iteratee: (value: T) => any): T[] {
+export function uniqBy<T> (array: T[], iteratee: (value: T) => any): T[] {
   const seen = new Set();
   return array.filter(item => {
     const key = iteratee(item);
@@ -904,7 +904,7 @@ export function uniqBy<T>(array: T[], iteratee: (value: T) => any): T[] {
  * @example
  * uniqWith([{ 'x': 1, 'y': 2 }, { 'x': 2, 'y': 1 }, { 'x': 1, 'y': 2 }], (a, b) => a.x === b.x); // [{ 'x': 1, 'y': 2 }, { 'x': 2, 'y': 1 }]
  */
-export function uniqWith<T>(array: T[], comparator: (a: T, b: T) => boolean): T[] {
+export function uniqWith<T> (array: T[], comparator: (a: T, b: T) => boolean): T[] {
   const result: T[] = [];
   for (const item of array) {
     if (!result.some(resultItem => comparator(item, resultItem))) {
@@ -922,17 +922,17 @@ export function uniqWith<T>(array: T[], comparator: (a: T, b: T) => boolean): T[
  * @example
  * unzipWith([['1', '2'], ['3', '4'], ['5', '6']], (...group) => group.join('')); // ['135', '246']
  */
-export function unzipWith<T, R>(array: T[][], iteratee: (...values: T[]) => R): R[] {
+export function unzipWith<T, R> (array: T[][], iteratee: (...values: T[]) => R): R[] {
   if (array.length === 0) return [];
-  
+
   const length = Math.max(...array.map(arr => arr.length));
   const result: R[] = [];
-  
+
   for (let i = 0; i < length; i++) {
     const values = array.map(arr => arr[i]);
     result.push(iteratee(...values));
   }
-  
+
   return result;
 }
 
@@ -944,10 +944,10 @@ export function unzipWith<T, R>(array: T[][], iteratee: (...values: T[]) => R): 
  * @example
  * sortedIndex([30, 50], 40); // 1
  */
-export function sortedIndex<T>(array: T[], value: T): number {
+export function sortedIndex<T> (array: T[], value: T): number {
   let low = 0;
   let high = array.length;
-  
+
   while (low < high) {
     const mid = Math.floor((low + high) / 2);
     if (array[mid] < value) {
@@ -956,7 +956,7 @@ export function sortedIndex<T>(array: T[], value: T): number {
       high = mid;
     }
   }
-  
+
   return low;
 }
 
@@ -969,11 +969,11 @@ export function sortedIndex<T>(array: T[], value: T): number {
  * @example
  * sortedIndexBy([{ 'x': 4 }, { 'x': 5 }], { 'x': 4 }, o => o.x); // 0
  */
-export function sortedIndexBy<T>(array: T[], value: T, iteratee: (value: T) => any): number {
+export function sortedIndexBy<T> (array: T[], value: T, iteratee: (value: T) => any): number {
   let low = 0;
   let high = array.length;
   const computedValue = iteratee(value);
-  
+
   while (low < high) {
     const mid = Math.floor((low + high) / 2);
     if (iteratee(array[mid]) < computedValue) {
@@ -982,7 +982,7 @@ export function sortedIndexBy<T>(array: T[], value: T, iteratee: (value: T) => a
       high = mid;
     }
   }
-  
+
   return low;
 }
 
@@ -994,10 +994,10 @@ export function sortedIndexBy<T>(array: T[], value: T, iteratee: (value: T) => a
  * @example
  * sortedLastIndex([4, 5, 5, 5, 6], 5); // 4
  */
-export function sortedLastIndex<T>(array: T[], value: T): number {
+export function sortedLastIndex<T> (array: T[], value: T): number {
   let low = 0;
   let high = array.length;
-  
+
   while (low < high) {
     const mid = Math.floor((low + high) / 2);
     if (value < array[mid]) {
@@ -1006,7 +1006,7 @@ export function sortedLastIndex<T>(array: T[], value: T): number {
       low = mid + 1;
     }
   }
-  
+
   return low;
 }
 
@@ -1019,11 +1019,11 @@ export function sortedLastIndex<T>(array: T[], value: T): number {
  * @example
  * sortedLastIndexBy([{ 'x': 4 }, { 'x': 5 }], { 'x': 4 }, o => o.x); // 1
  */
-export function sortedLastIndexBy<T>(array: T[], value: T, iteratee: (value: T) => any): number {
+export function sortedLastIndexBy<T> (array: T[], value: T, iteratee: (value: T) => any): number {
   let low = 0;
   let high = array.length;
   const computedValue = iteratee(value);
-  
+
   while (low < high) {
     const mid = Math.floor((low + high) / 2);
     if (computedValue < iteratee(array[mid])) {
@@ -1032,7 +1032,7 @@ export function sortedLastIndexBy<T>(array: T[], value: T, iteratee: (value: T) 
       low = mid + 1;
     }
   }
-  
+
   return low;
 }
 
@@ -1044,7 +1044,7 @@ export function sortedLastIndexBy<T>(array: T[], value: T, iteratee: (value: T) 
  * @example
  * sortedIndexOf([4, 5, 5, 5, 6], 5); // 1
  */
-export function sortedIndexOf<T>(array: T[], value: T): number {
+export function sortedIndexOf<T> (array: T[], value: T): number {
   const index = sortedIndex(array, value);
   return index < array.length && array[index] === value ? index : -1;
 }
@@ -1057,7 +1057,7 @@ export function sortedIndexOf<T>(array: T[], value: T): number {
  * @example
  * sortedLastIndexOf([4, 5, 5, 5, 6], 5); // 3
  */
-export function sortedLastIndexOf<T>(array: T[], value: T): number {
+export function sortedLastIndexOf<T> (array: T[], value: T): number {
   const index = sortedLastIndex(array, value) - 1;
   return index >= 0 && array[index] === value ? index : -1;
 }
@@ -1072,7 +1072,7 @@ export function sortedLastIndexOf<T>(array: T[], value: T): number {
  * slice([1, 2, 3, 4], 2); // [3, 4]
  * slice([1, 2, 3, 4], 1, 3); // [2, 3]
  */
-export function slice<T>(array: T[], start: number = 0, end: number = array.length): T[] {
+export function slice<T> (array: T[], start: number = 0, end: number = array.length): T[] {
   return array.slice(start, end);
 }
 
@@ -1084,7 +1084,7 @@ export function slice<T>(array: T[], start: number = 0, end: number = array.leng
  * @example
  * join(['a', 'b', 'c'], '~'); // 'a~b~c'
  */
-export function join<T>(array: T[], separator: string = ','): string {
+export function join<T> (array: T[], separator: string = ','): string {
   return array.join(separator);
 }
 
@@ -1098,7 +1098,7 @@ export function join<T>(array: T[], separator: string = ','): string {
  * indexOf([1, 2, 1, 2], 2); // 1
  * indexOf([1, 2, 1, 2], 2, 2); // 3
  */
-export function indexOf<T>(array: T[], value: T, fromIndex: number = 0): number {
+export function indexOf<T> (array: T[], value: T, fromIndex: number = 0): number {
   return array.indexOf(value, fromIndex);
 }
 
@@ -1112,6 +1112,6 @@ export function indexOf<T>(array: T[], value: T, fromIndex: number = 0): number 
  * lastIndexOf([1, 2, 1, 2], 2); // 3
  * lastIndexOf([1, 2, 1, 2], 2, 2); // 1
  */
-export function lastIndexOf<T>(array: T[], value: T, fromIndex: number = array.length - 1): number {
+export function lastIndexOf<T> (array: T[], value: T, fromIndex: number = array.length - 1): number {
   return array.lastIndexOf(value, fromIndex);
 }

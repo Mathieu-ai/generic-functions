@@ -11,7 +11,7 @@
  * purify('café'); // 'cafe'
  * purify('naïve'); // 'naive'
  */
-export function purify(str: any): string {
+export function purify (str: any): string {
   return typeof str === "string"
     ? str.normalize("NFD").replace(/[\u0300-\u036f]/g, "")
     : "";
@@ -25,7 +25,7 @@ export function purify(str: any): string {
  * capitalize('hello'); // 'Hello'
  * capitalize('WORLD'); // 'WORLD'
  */
-export function capitalize(str: string): string {
+export function capitalize (str: string): string {
   return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
@@ -38,7 +38,7 @@ export function capitalize(str: string): string {
  * trim('  hello  '); // 'hello'
  * trim('---hello---', '-'); // 'hello'
  */
-export function trim(str: string, chars?: string): string {
+export function trim (str: string, chars?: string): string {
   if (chars === undefined) {
     return str.replace(/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g, '');
   }
@@ -55,7 +55,7 @@ export function trim(str: string, chars?: string): string {
  * trimStart('  hello  '); // 'hello  '
  * trimStart('---hello---', '-'); // 'hello---'
  */
-export function trimStart(str: string, chars?: string): string {
+export function trimStart (str: string, chars?: string): string {
   if (chars === undefined) {
     return str.replace(/^[\s\uFEFF\xA0]+/, '');
   }
@@ -72,7 +72,7 @@ export function trimStart(str: string, chars?: string): string {
  * trimEnd('  hello  '); // '  hello'
  * trimEnd('---hello---', '-'); // '---hello'
  */
-export function trimEnd(str: string, chars?: string): string {
+export function trimEnd (str: string, chars?: string): string {
   if (chars === undefined) {
     return str.replace(/[\s\uFEFF\xA0]+$/, '');
   }
@@ -88,9 +88,9 @@ export function trimEnd(str: string, chars?: string): string {
  * camelCase('hello world'); // 'helloWorld'
  * camelCase('hello-world'); // 'helloWorld'
  */
-export function camelCase(str: string): string {
+export function camelCase (str: string): string {
   return str
-    .replace(/(?:^\w|[A-Z]|\b\w)/g, (word, index) => 
+    .replace(/(?:^\w|[A-Z]|\b\w)/g, (word, index) =>
       index === 0 ? word.toLowerCase() : word.toUpperCase())
     .replace(/\s+/g, '')
     .replace(/[^a-zA-Z0-9]/g, '');
@@ -104,7 +104,7 @@ export function camelCase(str: string): string {
  * kebabCase('hello world'); // 'hello-world'
  * kebabCase('HelloWorld'); // 'hello-world'
  */
-export function kebabCase(str: string): string {
+export function kebabCase (str: string): string {
   return str
     .replace(/([a-z])([A-Z])/g, '$1-$2')
     .replace(/[\s_]+/g, '-')
@@ -119,7 +119,7 @@ export function kebabCase(str: string): string {
  * snakeCase('hello world'); // 'hello_world'
  * snakeCase('HelloWorld'); // 'hello_world'
  */
-export function snakeCase(str: string): string {
+export function snakeCase (str: string): string {
   return str
     .replace(/([a-z])([A-Z])/g, '$1_$2')
     .replace(/[\s-]+/g, '_')
@@ -134,7 +134,7 @@ export function snakeCase(str: string): string {
  * pascalCase('hello world'); // 'HelloWorld'
  * pascalCase('hello-world'); // 'HelloWorld'
  */
-export function pascalCase(str: string): string {
+export function pascalCase (str: string): string {
   return str
     .replace(/(?:^\w|[A-Z]|\b\w)/g, word => word.toUpperCase())
     .replace(/\s+/g, '')
@@ -149,7 +149,7 @@ export function pascalCase(str: string): string {
  * upperCase('hello world'); // 'HELLO WORLD'
  * upperCase('hello-world'); // 'HELLO WORLD'
  */
-export function upperCase(str: string): string {
+export function upperCase (str: string): string {
   return str
     .replace(/([a-z])([A-Z])/g, '$1 $2')
     .replace(/[\s-_]+/g, ' ')
@@ -164,7 +164,7 @@ export function upperCase(str: string): string {
  * lowerCase('HELLO WORLD'); // 'hello world'
  * lowerCase('Hello-World'); // 'hello world'
  */
-export function lowerCase(str: string): string {
+export function lowerCase (str: string): string {
   return str
     .replace(/([a-z])([A-Z])/g, '$1 $2')
     .replace(/[\s-_]+/g, ' ')
@@ -179,7 +179,7 @@ export function lowerCase(str: string): string {
  * startCase('hello world'); // 'Hello world'
  * startCase('hELLO wORLD'); // 'Hello world'
  */
-export function startCase(str: string): string {
+export function startCase (str: string): string {
   return str
     .replace(/([a-z])([A-Z])/g, '$1 $2')
     .replace(/[\s-_]+/g, ' ')
@@ -194,7 +194,7 @@ export function startCase(str: string): string {
  * deburr('déjà vu'); // 'deja vu'
  * deburr('niño'); // 'nino'
  */
-export function deburr(str: string): string {
+export function deburr (str: string): string {
   return purify(str);
 }
 
@@ -208,7 +208,7 @@ export function deburr(str: string): string {
  * endsWith('hello world', 'world'); // true
  * endsWith('hello world', 'hello', 5); // true
  */
-export function endsWith(str: string, target: string, position?: number): boolean {
+export function endsWith (str: string, target: string, position?: number): boolean {
   const end = position === undefined ? str.length : position;
   return str.slice(end - target.length, end) === target;
 }
@@ -221,7 +221,7 @@ export function endsWith(str: string, target: string, position?: number): boolea
  * escapeRegExp('hello.world?'); // 'hello\.world\?'
  * escapeRegExp('^hello$'); // '\^hello\$'
  */
-export function escapeRegExp(str: string): string {
+export function escapeRegExp (str: string): string {
   return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 }
 
@@ -235,14 +235,14 @@ export function escapeRegExp(str: string): string {
  * pad('hello', 10); // '  hello   '
  * pad('hello', 10, '-'); // '--hello----'
  */
-export function pad(str: string, length: number, chars: string = ' '): string {
+export function pad (str: string, length: number, chars: string = ' '): string {
   const strLen = str.length;
   if (strLen >= length) return str;
-  
+
   const padLength = length - strLen;
   const leftPad = Math.floor(padLength / 2);
   const rightPad = padLength - leftPad;
-  
+
   return padStart(padEnd(str, strLen + rightPad, chars), length, chars);
 }
 
@@ -256,10 +256,10 @@ export function pad(str: string, length: number, chars: string = ' '): string {
  * padStart('hello', 10); // '     hello'
  * padStart('hello', 10, '-'); // '-----hello'
  */
-export function padStart(str: string, length: number, chars: string = ' '): string {
+export function padStart (str: string, length: number, chars: string = ' '): string {
   const strLen = str.length;
   if (strLen >= length) return str;
-  
+
   const padLength = length - strLen;
   const padding = chars.repeat(Math.ceil(padLength / chars.length)).slice(0, padLength);
   return padding + str;
@@ -275,10 +275,10 @@ export function padStart(str: string, length: number, chars: string = ' '): stri
  * padEnd('hello', 10); // 'hello     '
  * padEnd('hello', 10, '-'); // 'hello-----'
  */
-export function padEnd(str: string, length: number, chars: string = ' '): string {
+export function padEnd (str: string, length: number, chars: string = ' '): string {
   const strLen = str.length;
   if (strLen >= length) return str;
-  
+
   const padLength = length - strLen;
   const padding = chars.repeat(Math.ceil(padLength / chars.length)).slice(0, padLength);
   return str + padding;
@@ -293,7 +293,7 @@ export function padEnd(str: string, length: number, chars: string = ' '): string
  * repeat('hello', 3); // 'hellohellohello'
  * repeat('abc', 2); // 'abcabc'
  */
-export function repeat(str: string, n: number): string {
+export function repeat (str: string, n: number): string {
   return str.repeat(n);
 }
 
@@ -307,7 +307,7 @@ export function repeat(str: string, n: number): string {
  * replace('hello world', 'world', 'there'); // 'hello there'
  * replace('hello 123', /\d+/, '456'); // 'hello 456'
  */
-export function replace(str: string, pattern: string | RegExp, replacement: string): string {
+export function replace (str: string, pattern: string | RegExp, replacement: string): string {
   return str.replace(pattern, replacement);
 }
 
@@ -321,7 +321,7 @@ export function replace(str: string, pattern: string | RegExp, replacement: stri
  * split('hello,world', ','); // ['hello', 'world']
  * split('hello world', /\s+/); // ['hello', 'world']
  */
-export function split(str: string, separator?: string | RegExp, limit?: number): string[] {
+export function split (str: string, separator?: string | RegExp, limit?: number): string[] {
   return separator === undefined ? str.split('') : str.split(separator, limit);
 }
 
@@ -335,7 +335,7 @@ export function split(str: string, separator?: string | RegExp, limit?: number):
  * startsWith('hello world', 'hello'); // true
  * startsWith('hello world', 'world', 6); // true
  */
-export function startsWith(str: string, target: string, position: number = 0): boolean {
+export function startsWith (str: string, target: string, position: number = 0): boolean {
   return str.slice(position, position + target.length) === target;
 }
 
@@ -347,7 +347,7 @@ export function startsWith(str: string, target: string, position: number = 0): b
  * toArray('hello'); // ['h', 'e', 'l', 'l', 'o']
  * toArray('abc'); // ['a', 'b', 'c']
  */
-export function toArray(str: string): string[] {
+export function toArray (str: string): string[] {
   return Array.from(str);
 }
 
@@ -359,7 +359,7 @@ export function toArray(str: string): string[] {
  * toLowerCase('HELLO'); // 'hello'
  * toLowerCase('HeLLo'); // 'hello'
  */
-export function toLowerCase(str: string): string {
+export function toLowerCase (str: string): string {
   return str.toLowerCase();
 }
 
@@ -371,7 +371,7 @@ export function toLowerCase(str: string): string {
  * toUpperCase('hello'); // 'HELLO'
  * toUpperCase('HeLLo'); // 'HELLO'
  */
-export function toUpperCase(str: string): string {
+export function toUpperCase (str: string): string {
   return str.toUpperCase();
 }
 
@@ -387,20 +387,20 @@ export function toUpperCase(str: string): string {
  * truncate('hello world', { length: 10 }); // 'hello worl...'
  * truncate('hello world', { length: 10, separator: ' ' }); // 'hello...'
  */
-export function truncate(str: string, options: { length?: number; omission?: string; separator?: string | RegExp } = {}): string {
+export function truncate (str: string, options: { length?: number; omission?: string; separator?: string | RegExp } = {}): string {
   const { length = 30, omission = '...', separator } = options;
-  
+
   if (str.length <= length) return str;
-  
+
   let truncated = str.slice(0, length - omission.length);
-  
+
   if (separator !== undefined) {
     const lastIndex = truncated.lastIndexOf(separator as string);
     if (lastIndex > 0) {
       truncated = truncated.slice(0, lastIndex);
     }
   }
-  
+
   return truncated + omission;
 }
 
@@ -413,7 +413,7 @@ export function truncate(str: string, options: { length?: number; omission?: str
  * words('  hello world  '); // ['hello', 'world']
  * words('---hello---world---', /-/); // ['hello', 'world']
  */
-export function words(str: string, pattern?: RegExp): string[] {
+export function words (str: string, pattern?: RegExp): string[] {
   const defaultPattern = /[^\x00-\x2f\x3a-\x40\x5b-\x60\x7b-\x7f]+/g;
   return str.match(pattern || defaultPattern) || [];
 }
@@ -426,7 +426,7 @@ export function words(str: string, pattern?: RegExp): string[] {
  * removeBreakLines('hello\nworld'); // 'hello world'
  * removeBreakLines('line1\r\nline2'); // 'line1 line2'
  */
-export function removeBreakLines(str: string): string {
+export function removeBreakLines (str: string): string {
   return str
     .replace(/[\r\n]+/g, " ")
     .replace(/ {2,}/g, " ")
@@ -448,10 +448,10 @@ export function removeBreakLines(str: string): string {
  * const compiled = template('number: <%= number %>', { interpolate: /<%=([\s\S]+?)%>/g });
  * compiled({ number: 42 }); // 'number: 42'
  */
-export function template(string: string, options: { interpolate?: RegExp; evaluate?: RegExp; escape?: RegExp } = {}): (data: any) => string {
+export function template (string: string, options: { interpolate?: RegExp; evaluate?: RegExp; escape?: RegExp } = {}): (data: any) => string {
   const { interpolate = /<%=([\s\S]+?)%>/g, evaluate = /<%([\s\S]+?)%>/g, escape = /<%-([\s\S]+?)%>/g } = options;
-  
-  return function(data: any = {}) {
+
+  return function (data: any = {}) {
     return string
       .replace(escape, (match, code) => {
         const result = new Function('obj', `with(obj) { return ${code}; }`)(data);
@@ -485,7 +485,7 @@ export function template(string: string, options: { interpolate?: RegExp; evalua
  * unescape('&lt;div&gt;hello&lt;/div&gt;'); // '<div>hello</div>'
  * unescape('&amp;copy; 2023'); // '© 2023'
  */
-export function unescape(str: string): string {
+export function unescape (str: string): string {
   const htmlUnescapes: Record<string, string> = {
     '&amp;': '&',
     '&lt;': '<',
@@ -493,7 +493,7 @@ export function unescape(str: string): string {
     '&quot;': '"',
     '&#39;': "'"
   };
-  
+
   return str.replace(/&(?:amp|lt|gt|quot|#39);/g, match => htmlUnescapes[match]);
 }
 
@@ -505,7 +505,7 @@ export function unescape(str: string): string {
  * escape('hello & world'); // 'hello &amp; world'
  * escape('<div>hello</div>'); // '&lt;div&gt;hello&lt;/div&gt;'
  */
-export function escape(str: string): string {
+export function escape (str: string): string {
   const htmlEscapes: Record<string, string> = {
     '&': '&amp;',
     '<': '&lt;',
@@ -513,7 +513,7 @@ export function escape(str: string): string {
     '"': '&quot;',
     "'": '&#39;'
   };
-  
+
   return str.replace(/[&<>"']/g, match => htmlEscapes[match]);
 }
 
@@ -525,7 +525,7 @@ export function escape(str: string): string {
  * upperFirst('hello'); // 'Hello'
  * upperFirst('javaScript'); // 'JavaScript'
  */
-export function upperFirst(str: string): string {
+export function upperFirst (str: string): string {
   return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
@@ -537,7 +537,7 @@ export function upperFirst(str: string): string {
  * lowerFirst('Hello'); // 'hello'
  * lowerFirst('JavaScript'); // 'javaScript'
  */
-export function lowerFirst(str: string): string {
+export function lowerFirst (str: string): string {
   return str.charAt(0).toLowerCase() + str.slice(1);
 }
 
@@ -550,6 +550,6 @@ export function lowerFirst(str: string): string {
  * parseInt('10'); // 10
  * parseInt('10', 2); // 2
  */
-export function parseInt(str: string, radix: number = 10): number {
+export function parseInt (str: string, radix: number = 10): number {
   return Number.parseInt(str, radix);
 }

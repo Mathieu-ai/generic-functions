@@ -17,7 +17,7 @@ export interface FlatOptions {
  * flat({ a: 1, b: { c: 2 } }) // '1, 2'
  * flat({ a: 1, b: { c: 2 } }, { props: ['a'] }) // '1'
  */
-export function flat(data: any, options: FlatOptions = {}): string {
+export function flat (data: any, options: FlatOptions = {}): string {
   const { props = [] } = options;
   const result: string[] = [];
 
@@ -49,7 +49,7 @@ export function flat(data: any, options: FlatOptions = {}): string {
  * @example
  * getObjectKeysByType({ a: 1, b: 'hello', c: true }, 'string') // ['b']
  */
-export function getObjectKeysByType(obj: object, type: string): string[] {
+export function getObjectKeysByType (obj: object, type: string): string[] {
   return Object.entries(obj)
     .filter(([_, value]) => typeof value === type)
     .map(([key, _]) => key);
@@ -64,7 +64,7 @@ export function getObjectKeysByType(obj: object, type: string): string[] {
  * getObjectValueByPath({ a: { b: { c: 42 } } }, ['a', 'b', 'c']) // 42
  * getObjectValueByPath({ items: [{ name: 'John' }, { name: 'Jane' }] }, ['items', 'name']) // ['John', 'Jane']
  */
-export function getObjectValueByPath<T>(obj: any, path: string[]): T | null {
+export function getObjectValueByPath<T> (obj: any, path: string[]): T | null {
   return path.reduce((o, key) => {
     if (o && Array.isArray(o)) {
       return o.map((item) => getObjectValueByPath<T>(item, [key])).flat();
@@ -85,7 +85,7 @@ export function getObjectValueByPath<T>(obj: any, path: string[]): T | null {
  * isEmpty({}) // true
  * isEmpty({ a: '' }, { props: true }) // true
  */
-export function isEmpty(
+export function isEmpty (
   value: string | object | any[],
   options: { props?: boolean } = { props: false }
 ): boolean {
@@ -117,7 +117,7 @@ export function isEmpty(
  * getValueType(42) // 'number'
  * getValueType({}) // 'object'
  */
-export function getValueType(value: any): string {
+export function getValueType (value: any): string {
   return typeof value;
 }
 
@@ -130,7 +130,7 @@ export function getValueType(value: any): string {
  * mapValues({ a: 1, b: 2 }, x => x * 2) // { a: 2, b: 4 }
  * mapValues({ a: 'hello', b: 'world' }, (value, key) => `${key}: ${value}`) // { a: 'a: hello', b: 'b: world' }
  */
-export function mapValues<T, R>(obj: Record<string, T>, iteratee: (value: T, key: string) => R): Record<string, R> {
+export function mapValues<T, R> (obj: Record<string, T>, iteratee: (value: T, key: string) => R): Record<string, R> {
   const result: Record<string, R> = {};
   for (const [key, value] of Object.entries(obj)) {
     result[key] = iteratee(value, key);
@@ -146,7 +146,7 @@ export function mapValues<T, R>(obj: Record<string, T>, iteratee: (value: T, key
  * @example
  * mapKeys({ a: 1, b: 2 }, (value, key) => key.toUpperCase()) // { A: 1, B: 2 }
  */
-export function mapKeys<T>(obj: Record<string, T>, iteratee: (value: T, key: string) => string): Record<string, T> {
+export function mapKeys<T> (obj: Record<string, T>, iteratee: (value: T, key: string) => string): Record<string, T> {
   const result: Record<string, T> = {};
   for (const [key, value] of Object.entries(obj)) {
     const newKey = iteratee(value, key);
@@ -164,7 +164,7 @@ export function mapKeys<T>(obj: Record<string, T>, iteratee: (value: T, key: str
  * const proto = { greet: () => 'hello' }
  * const obj = create(proto, { name: 'John' }) // obj.greet() works and obj.name === 'John'
  */
-export function create<T extends object>(prototype: T | null, properties?: Record<string, any>): T {
+export function create<T extends object> (prototype: T | null, properties?: Record<string, any>): T {
   const result = Object.create(prototype);
   if (properties) {
     Object.assign(result, properties);
@@ -180,7 +180,7 @@ export function create<T extends object>(prototype: T | null, properties?: Recor
  * @example
  * assign({ a: 1 }, { b: 2 }, { c: 3 }) // { a: 1, b: 2, c: 3 }
  */
-export function assign<T extends Record<string, any>>(target: T, ...sources: Partial<T>[]): T {
+export function assign<T extends Record<string, any>> (target: T, ...sources: Partial<T>[]): T {
   return Object.assign(target, ...sources);
 }
 
@@ -192,11 +192,11 @@ export function assign<T extends Record<string, any>>(target: T, ...sources: Par
  * @example
  * merge({ a: { x: 1 } }, { a: { y: 2 }, b: 3 }) // { a: { x: 1, y: 2 }, b: 3 }
  */
-export function merge<T extends Record<string, any>>(target: T, ...sources: any[]): T {
-  function isObject(obj: any): obj is Record<string, any> {
+export function merge<T extends Record<string, any>> (target: T, ...sources: any[]): T {
+  function isObject (obj: any): obj is Record<string, any> {
     return obj && typeof obj === 'object' && !Array.isArray(obj);
   }
-  
+
   for (const source of sources) {
     if (isObject(source)) {
       for (const key in source) {
@@ -220,16 +220,16 @@ export function merge<T extends Record<string, any>>(target: T, ...sources: any[
  * @example
  * mergeWith({ a: [1] }, { a: [2] }, (obj, src) => Array.isArray(obj) ? obj.concat(src) : undefined) // { a: [1, 2] }
  */
-export function mergeWith<T>(target: T, source: any, customizer: (objValue: any, srcValue: any, key: string) => any): T {
-  function isObject(obj: any): obj is object {
+export function mergeWith<T> (target: T, source: any, customizer: (objValue: any, srcValue: any, key: string) => any): T {
+  function isObject (obj: any): obj is object {
     return obj && typeof obj === 'object' && !Array.isArray(obj);
   }
-  
+
   for (const key in source) {
     const objValue = (target as any)[key];
     const srcValue = source[key];
     const result = customizer(objValue, srcValue, key);
-    
+
     if (result !== undefined) {
       (target as any)[key] = result;
     } else if (isObject(objValue) && isObject(srcValue)) {
@@ -249,7 +249,7 @@ export function mergeWith<T>(target: T, source: any, customizer: (objValue: any,
  * @example
  * pick({ a: 1, b: 2, c: 3 }, 'a', 'c') // { a: 1, c: 3 }
  */
-export function pick<T extends object, K extends keyof T>(obj: T, ...keys: K[]): Pick<T, K> {
+export function pick<T extends object, K extends keyof T> (obj: T, ...keys: K[]): Pick<T, K> {
   const result = {} as Pick<T, K>;
   for (const key of keys) {
     if (key in obj) {
@@ -267,7 +267,7 @@ export function pick<T extends object, K extends keyof T>(obj: T, ...keys: K[]):
  * @example
  * pickBy({ a: 1, b: 2, c: 3 }, value => value > 1) // { b: 2, c: 3 }
  */
-export function pickBy<T>(obj: Record<string, T>, predicate: (value: T, key: string) => boolean): Partial<Record<string, T>> {
+export function pickBy<T> (obj: Record<string, T>, predicate: (value: T, key: string) => boolean): Partial<Record<string, T>> {
   const result: Partial<Record<string, T>> = {};
   for (const [key, value] of Object.entries(obj)) {
     if (predicate(value, key)) {
@@ -285,7 +285,7 @@ export function pickBy<T>(obj: Record<string, T>, predicate: (value: T, key: str
  * @example
  * omit({ a: 1, b: 2, c: 3 }, 'a', 'c') // { b: 2 }
  */
-export function omit<T, K extends keyof T>(obj: T, ...keys: K[]): Omit<T, K> {
+export function omit<T, K extends keyof T> (obj: T, ...keys: K[]): Omit<T, K> {
   const result = { ...obj } as any;
   for (const key of keys) {
     delete result[key];
@@ -301,7 +301,7 @@ export function omit<T, K extends keyof T>(obj: T, ...keys: K[]): Omit<T, K> {
  * @example
  * omitBy({ a: 1, b: 2, c: 3 }, value => value > 1) // { a: 1 }
  */
-export function omitBy<T>(obj: Record<string, T>, predicate: (value: T, key: string) => boolean): Partial<Record<string, T>> {
+export function omitBy<T> (obj: Record<string, T>, predicate: (value: T, key: string) => boolean): Partial<Record<string, T>> {
   const result: Partial<Record<string, T>> = {};
   for (const [key, value] of Object.entries(obj)) {
     if (!predicate(value, key)) {
@@ -322,15 +322,15 @@ export function omitBy<T>(obj: Record<string, T>, predicate: (value: T, key: str
  * get({ a: { b: { c: 3 } } }, ['a', 'b', 'c']) // 3
  * get({}, 'a.b.c', 'default') // 'default'
  */
-export function get<T>(obj: any, path: string | string[], defaultValue?: T): T {
+export function get<T> (obj: any, path: string | string[], defaultValue?: T): T {
   const keys = Array.isArray(path) ? path : path.split('.');
   let result = obj;
-  
+
   for (const key of keys) {
     if (result == null) break;
     result = result[key];
   }
-  
+
   return result === undefined ? defaultValue as T : result;
 }
 
@@ -344,10 +344,10 @@ export function get<T>(obj: any, path: string | string[], defaultValue?: T): T {
  * set({}, 'a.b.c', 3) // { a: { b: { c: 3 } } }
  * set({}, ['a', 'b', 'c'], 3) // { a: { b: { c: 3 } } }
  */
-export function set<T>(obj: any, path: string | string[], value: T): any {
+export function set<T> (obj: any, path: string | string[], value: T): any {
   const keys = Array.isArray(path) ? path : path.split('.');
   let current = obj;
-  
+
   for (let i = 0; i < keys.length - 1; i++) {
     const key = keys[i];
     if (!(key in current) || typeof current[key] !== 'object') {
@@ -355,7 +355,7 @@ export function set<T>(obj: any, path: string | string[], value: T): any {
     }
     current = current[key];
   }
-  
+
   current[keys[keys.length - 1]] = value;
   return obj;
 }
@@ -369,17 +369,17 @@ export function set<T>(obj: any, path: string | string[], value: T): any {
  * has({ a: { b: { c: 3 } } }, 'a.b.c') // true
  * has({ a: { b: { c: 3 } } }, 'a.b.d') // false
  */
-export function has(obj: any, path: string | string[]): boolean {
+export function has (obj: any, path: string | string[]): boolean {
   const keys = Array.isArray(path) ? path : path.split('.');
   let current = obj;
-  
+
   for (const key of keys) {
     if (current == null || !(key in current)) {
       return false;
     }
     current = current[key];
   }
-  
+
   return true;
 }
 
@@ -391,17 +391,17 @@ export function has(obj: any, path: string | string[]): boolean {
  * @example
  * hasIn({ a: { b: 2 } }, 'a.b') // true
  */
-export function hasIn(obj: any, path: string | string[]): boolean {
+export function hasIn (obj: any, path: string | string[]): boolean {
   const keys = Array.isArray(path) ? path : path.split('.');
   let current = obj;
-  
+
   for (const key of keys) {
     if (current == null || !Object.prototype.hasOwnProperty.call(current, key)) {
       return false;
     }
     current = current[key];
   }
-  
+
   return true;
 }
 
@@ -414,10 +414,10 @@ export function hasIn(obj: any, path: string | string[]): boolean {
  * const obj = { a: { b: { c: 3 } } }
  * unset(obj, 'a.b.c') // true, obj becomes { a: { b: {} } }
  */
-export function unset(obj: any, path: string | string[]): boolean {
+export function unset (obj: any, path: string | string[]): boolean {
   const keys = Array.isArray(path) ? path : path.split('.');
   if (keys.length === 0) return true;
-  
+
   let current = obj;
   for (let i = 0; i < keys.length - 1; i++) {
     if (current == null || typeof current !== 'object') {
@@ -425,12 +425,12 @@ export function unset(obj: any, path: string | string[]): boolean {
     }
     current = current[keys[i]];
   }
-  
+
   if (current != null && typeof current === 'object') {
     delete current[keys[keys.length - 1]];
     return true;
   }
-  
+
   return false;
 }
 
@@ -441,7 +441,7 @@ export function unset(obj: any, path: string | string[]): boolean {
  * @example
  * keys({ a: 1, b: 2, c: 3 }) // ['a', 'b', 'c']
  */
-export function keys<T>(obj: Record<string, T>): string[] {
+export function keys<T> (obj: Record<string, T>): string[] {
   return Object.keys(obj);
 }
 
@@ -452,7 +452,7 @@ export function keys<T>(obj: Record<string, T>): string[] {
  * @example
  * values({ a: 1, b: 2, c: 3 }) // [1, 2, 3]
  */
-export function values<T>(obj: Record<string, T>): T[] {
+export function values<T> (obj: Record<string, T>): T[] {
   return Object.values(obj);
 }
 
@@ -463,7 +463,7 @@ export function values<T>(obj: Record<string, T>): T[] {
  * @example
  * entries({ a: 1, b: 2 }) // [['a', 1], ['b', 2]]
  */
-export function entries<T>(obj: Record<string, T>): [string, T][] {
+export function entries<T> (obj: Record<string, T>): [string, T][] {
   return Object.entries(obj);
 }
 
@@ -476,7 +476,7 @@ export function entries<T>(obj: Record<string, T>): [string, T][] {
  * obj.own = 'property'
  * entriesIn(obj) // [['own', 'property'], ['inherited', 'value']]
  */
-export function entriesIn<T>(obj: Record<string, T>): [string, T][] {
+export function entriesIn<T> (obj: Record<string, T>): [string, T][] {
   const result: [string, T][] = [];
   for (const key in obj) {
     result.push([key, obj[key]]);
@@ -491,7 +491,7 @@ export function entriesIn<T>(obj: Record<string, T>): [string, T][] {
  * @example
  * fromPairs([['a', 1], ['b', 2]]) // { a: 1, b: 2 }
  */
-export function fromPairs<T>(pairs: [string, T][]): Record<string, T> {
+export function fromPairs<T> (pairs: [string, T][]): Record<string, T> {
   const result: Record<string, T> = {};
   for (const [key, value] of pairs) {
     result[key] = value;
@@ -506,7 +506,7 @@ export function fromPairs<T>(pairs: [string, T][]): Record<string, T> {
  * @example
  * functions({ a: 1, b: () => {}, c: 'string', d: function() {} }) // ['b', 'd']
  */
-export function functions(obj: any): string[] {
+export function functions (obj: any): string[] {
   return Object.keys(obj).filter(key => typeof obj[key] === 'function');
 }
 
@@ -519,7 +519,7 @@ export function functions(obj: any): string[] {
  * obj.ownFn = () => {}
  * functionsIn(obj) // ['ownFn', 'inheritedFn']
  */
-export function functionsIn(obj: any): string[] {
+export function functionsIn (obj: any): string[] {
   const result: string[] = [];
   for (const key in obj) {
     if (typeof obj[key] === 'function') {
@@ -536,7 +536,7 @@ export function functionsIn(obj: any): string[] {
  * @example
  * invert({ a: 1, b: 2, c: 1 }) // { '1': 'c', '2': 'b' }
  */
-export function invert<T extends Record<string, string | number>>(obj: T): Record<string, string> {
+export function invert<T extends Record<string, string | number>> (obj: T): Record<string, string> {
   const result: Record<string, string> = {};
   for (const [key, value] of Object.entries(obj)) {
     result[String(value)] = key;
@@ -552,7 +552,7 @@ export function invert<T extends Record<string, string | number>>(obj: T): Recor
  * @example
  * invertBy({ a: 1, b: 2, c: 1 }, value => `group${value}`) // { group1: ['a', 'c'], group2: ['b'] }
  */
-export function invertBy<T>(obj: Record<string, T>, iteratee: (value: T) => string): Record<string, string[]> {
+export function invertBy<T> (obj: Record<string, T>, iteratee: (value: T) => string): Record<string, string[]> {
   const result: Record<string, string[]> = {};
   for (const [key, value] of Object.entries(obj)) {
     const invertedKey = iteratee(value);
@@ -573,7 +573,7 @@ export function invertBy<T>(obj: Record<string, T>, iteratee: (value: T) => stri
  * @example
  * transform({ a: 1, b: 2 }, (result, value, key) => { result[key] = value * 2 }, {}) // { a: 2, b: 4 }
  */
-export function transform<T, R>(obj: Record<string, T>, transform: (result: R, value: T, key: string) => void, accumulator: R): R {
+export function transform<T, R> (obj: Record<string, T>, transform: (result: R, value: T, key: string) => void, accumulator: R): R {
   const result = accumulator;
   for (const [key, value] of Object.entries(obj)) {
     transform(result, value, key);
@@ -589,7 +589,7 @@ export function transform<T, R>(obj: Record<string, T>, transform: (result: R, v
  * const obj = { a: 1, b: { c: 2 } }
  * const cloned = clone(obj) // cloned.b === obj.b (same reference)
  */
-export function clone<T>(obj: T): T {
+export function clone<T> (obj: T): T {
   if (obj === null || typeof obj !== 'object') return obj;
   if (obj instanceof Date) return new Date(obj.getTime()) as any;
   if (Array.isArray(obj)) return obj.slice() as any;
@@ -604,11 +604,11 @@ export function clone<T>(obj: T): T {
  * const obj = { a: 1, b: { c: 2 } }
  * const cloned = cloneDeep(obj) // cloned.b !== obj.b (different reference)
  */
-export function cloneDeep<T>(obj: T): T {
+export function cloneDeep<T> (obj: T): T {
   if (obj === null || typeof obj !== 'object') return obj;
   if (obj instanceof Date) return new Date(obj.getTime()) as any;
   if (Array.isArray(obj)) return obj.map(item => cloneDeep(item)) as any;
-  
+
   const cloned = {} as any;
   for (const key in obj) {
     if (Object.prototype.hasOwnProperty.call(obj, key)) {
@@ -628,26 +628,26 @@ export function cloneDeep<T>(obj: T): T {
  * isEqual({ a: 1 }, { a: 1 }) // true
  * isEqual({ a: 1 }, { a: 2 }) // false
  */
-export function isEqual(a: any, b: any): boolean {
+export function isEqual (a: any, b: any): boolean {
   if (a === b) return true;
   if (a == null || b == null) return a === b;
   if (typeof a !== typeof b) return false;
-  
+
   if (typeof a === 'object') {
     if (Array.isArray(a) !== Array.isArray(b)) return false;
-    
+
     if (Array.isArray(a)) {
       if (a.length !== b.length) return false;
       return a.every((item, index) => isEqual(item, b[index]));
     }
-    
+
     const keysA = Object.keys(a);
     const keysB = Object.keys(b);
     if (keysA.length !== keysB.length) return false;
-    
+
     return keysA.every(key => isEqual(a[key], b[key]));
   }
-  
+
   return false;
 }
 
@@ -659,7 +659,7 @@ export function isEqual(a: any, b: any): boolean {
  * @example
  * conformsTo({ a: 1, b: 2 }, { a: n => n > 0, b: n => n < 5 }) // true
  */
-export function conformsTo<T>(obj: T, source: Partial<Record<keyof T, (value: any) => boolean>>): boolean {
+export function conformsTo<T> (obj: T, source: Partial<Record<keyof T, (value: any) => boolean>>): boolean {
   for (const key in source) {
     const predicate = source[key];
     if (predicate && !predicate((obj as any)[key])) {
@@ -678,8 +678,8 @@ export function conformsTo<T>(obj: T, source: Partial<Record<keyof T, (value: an
  * const fn = method('toUpperCase')
  * fn('hello') // 'HELLO'
  */
-export function method(path: string | string[], ...args: any[]): (obj: any) => any {
-  return function(obj: any) {
+export function method (path: string | string[], ...args: any[]): (obj: any) => any {
+  return function (obj: any) {
     const method = get(obj, path);
     return typeof method === 'function' ? method.apply(obj, args) : undefined;
   };
@@ -694,8 +694,8 @@ export function method(path: string | string[], ...args: any[]): (obj: any) => a
  * const fn = methodOf('hello world')
  * fn('split') // ['hello', 'world']
  */
-export function methodOf(obj: any, ...args: any[]): (path: string | string[]) => any {
-  return function(path: string | string[]) {
+export function methodOf (obj: any, ...args: any[]): (path: string | string[]) => any {
+  return function (path: string | string[]) {
     const method = get(obj, path);
     return typeof method === 'function' ? method.apply(obj, args) : undefined;
   };
@@ -709,7 +709,7 @@ export function methodOf(obj: any, ...args: any[]): (path: string | string[]) =>
  * @example
  * defaults({ a: 1 }, { a: 3, b: 2 }, { c: 3 }) // { a: 1, b: 2, c: 3 }
  */
-export function defaults<T extends object>(obj: T, ...sources: Partial<T>[]): T {
+export function defaults<T extends object> (obj: T, ...sources: Partial<T>[]): T {
   const result = { ...obj };
   for (const source of sources) {
     for (const key in source) {
@@ -729,15 +729,15 @@ export function defaults<T extends object>(obj: T, ...sources: Partial<T>[]): T 
  * @example
  * defaultsDeep({ a: { x: 1 } }, { a: { y: 2, x: 3 }, b: 4 }) // { a: { x: 1, y: 2 }, b: 4 }
  */
-export function defaultsDeep<T extends object>(obj: T, ...sources: any[]): T {
-  function isObject(value: any): value is object {
+export function defaultsDeep<T extends object> (obj: T, ...sources: any[]): T {
+  function isObject (value: any): value is object {
     return value != null && typeof value === 'object' && !Array.isArray(value);
   }
-  
+
   const result = cloneDeep(obj);
-  
+
   for (const source of sources) {
-    function assignDefaults(target: any, src: any) {
+    function assignDefaults (target: any, src: any) {
       for (const key in src) {
         if (target[key] === undefined) {
           target[key] = isObject(src[key]) ? assignDefaults({}, src[key]) : src[key];
@@ -749,7 +749,7 @@ export function defaultsDeep<T extends object>(obj: T, ...sources: any[]): T {
     }
     assignDefaults(result, source);
   }
-  
+
   return result;
 }
 
@@ -761,7 +761,7 @@ export function defaultsDeep<T extends object>(obj: T, ...sources: any[]): T {
  * @example
  * at({ a: 1, b: { c: 2 } }, 'a', 'b.c', 'missing') // [1, 2, undefined]
  */
-export function at<T>(obj: any, ...paths: (string | string[])[]): (T | undefined)[] {
+export function at<T> (obj: any, ...paths: (string | string[])[]): (T | undefined)[] {
   return paths.map(path => get<T>(obj, path));
 }
 
@@ -775,7 +775,7 @@ export function at<T>(obj: any, ...paths: (string | string[])[]): (T | undefined
  * result({ a: () => 42 }, 'a') // 42
  * result({ a: 5 }, 'a') // 5
  */
-export function result<T>(obj: any, path: string | string[], defaultValue?: T): T {
+export function result<T> (obj: any, path: string | string[], defaultValue?: T): T {
   const value = get(obj, path, defaultValue);
   return typeof value === 'function' ? value.call(obj) : value;
 }
@@ -789,7 +789,7 @@ export function result<T>(obj: any, path: string | string[], defaultValue?: T): 
  * @example
  * invoke({ a: { b: Math.max } }, 'a.b', 1, 2, 3) // 3
  */
-export function invoke(obj: any, path: string | string[], ...args: any[]): any {
+export function invoke (obj: any, path: string | string[], ...args: any[]): any {
   const method = get(obj, path);
   return typeof method === 'function' ? method.apply(obj, args) : undefined;
 }
@@ -803,7 +803,7 @@ export function invoke(obj: any, path: string | string[], ...args: any[]): any {
  * @example
  * update({ a: 1 }, 'a', n => n * 2) // { a: 2 }
  */
-export function update<T>(obj: any, path: string | string[], updater: (value: any) => T): any {
+export function update<T> (obj: any, path: string | string[], updater: (value: any) => T): any {
   const currentValue = get(obj, path);
   const newValue = updater(currentValue);
   return set(obj, path, newValue);
@@ -819,24 +819,24 @@ export function update<T>(obj: any, path: string | string[], updater: (value: an
  * @example
  * updateWith({}, 'a.b', () => 'value', () => ({})) // { a: { b: 'value' } }
  */
-export function updateWith<T>(obj: any, path: string | string[], updater: (value: any) => T, customizer: (value: any, key: string, object: any) => any): any {
+export function updateWith<T> (obj: any, path: string | string[], updater: (value: any) => T, customizer: (value: any, key: string, object: any) => any): any {
   const keys = Array.isArray(path) ? path : path.split('.');
   let current = obj;
-  
+
   for (let i = 0; i < keys.length - 1; i++) {
     const key = keys[i];
     const nextKey = keys[i + 1];
-    
+
     if (!(key in current) || typeof current[key] !== 'object') {
       current[key] = customizer(undefined, nextKey, current) || {};
     }
     current = current[key];
   }
-  
+
   const lastKey = keys[keys.length - 1];
   const currentValue = current[lastKey];
   current[lastKey] = updater(currentValue);
-  
+
   return obj;
 }
 
@@ -850,20 +850,20 @@ export function updateWith<T>(obj: any, path: string | string[], updater: (value
  * @example
  * setWith({}, 'a[0].b.c', 4, Object) // { a: { '0': { b: { c: 4 } } } }
  */
-export function setWith<T>(obj: any, path: string | string[], value: T, customizer: (value: any, key: string, object: any) => any): any {
+export function setWith<T> (obj: any, path: string | string[], value: T, customizer: (value: any, key: string, object: any) => any): any {
   const keys = Array.isArray(path) ? path : path.split('.');
   let current = obj;
-  
+
   for (let i = 0; i < keys.length - 1; i++) {
     const key = keys[i];
     const nextKey = keys[i + 1];
-    
+
     if (!(key in current) || typeof current[key] !== 'object') {
       current[key] = customizer(undefined, nextKey, current) || {};
     }
     current = current[key];
   }
-  
+
   current[keys[keys.length - 1]] = value;
   return obj;
 }
@@ -876,7 +876,7 @@ export function setWith<T>(obj: any, path: string | string[], value: T, customiz
  * @example
  * findLastKey({ a: 1, b: 2, c: 3 }, n => n > 1) // 'c'
  */
-export function findLastKey<T>(collection: Record<string, T>, predicate: (value: T, key: string, collection: Record<string, T>) => boolean): string | undefined {
+export function findLastKey<T> (collection: Record<string, T>, predicate: (value: T, key: string, collection: Record<string, T>) => boolean): string | undefined {
   const keys = Object.keys(collection).reverse();
   for (const key of keys) {
     if (predicate(collection[key], key, collection)) {
@@ -894,7 +894,7 @@ export function findLastKey<T>(collection: Record<string, T>, predicate: (value:
  * @example
  * forIn({ a: 1, b: 2 }, (value, key) => console.log(key, value))
  */
-export function forIn<T>(obj: Record<string, T>, iteratee: (value: T, key: string) => void): Record<string, T> {
+export function forIn<T> (obj: Record<string, T>, iteratee: (value: T, key: string) => void): Record<string, T> {
   for (const key in obj) {
     iteratee(obj[key], key);
   }
@@ -909,7 +909,7 @@ export function forIn<T>(obj: Record<string, T>, iteratee: (value: T, key: strin
  * @example
  * forInRight({ a: 1, b: 2 }, (value, key) => console.log(key, value)) // logs 'b 2' then 'a 1'
  */
-export function forInRight<T>(obj: Record<string, T>, iteratee: (value: T, key: string) => void): Record<string, T> {
+export function forInRight<T> (obj: Record<string, T>, iteratee: (value: T, key: string) => void): Record<string, T> {
   const keys: string[] = [];
   for (const key in obj) {
     keys.push(key);
@@ -929,7 +929,7 @@ export function forInRight<T>(obj: Record<string, T>, iteratee: (value: T, key: 
  * @example
  * forOwn({ a: 1, b: 2 }, (value, key) => console.log(key, value))
  */
-export function forOwn<T>(obj: Record<string, T>, iteratee: (value: T, key: string) => void): Record<string, T> {
+export function forOwn<T> (obj: Record<string, T>, iteratee: (value: T, key: string) => void): Record<string, T> {
   for (const [key, value] of Object.entries(obj)) {
     iteratee(value, key);
   }
@@ -944,7 +944,7 @@ export function forOwn<T>(obj: Record<string, T>, iteratee: (value: T, key: stri
  * @example
  * forOwnRight({ a: 1, b: 2 }, (value, key) => console.log(key, value)) // logs 'b 2' then 'a 1'
  */
-export function forOwnRight<T>(obj: Record<string, T>, iteratee: (value: T, key: string) => void): Record<string, T> {
+export function forOwnRight<T> (obj: Record<string, T>, iteratee: (value: T, key: string) => void): Record<string, T> {
   const entries = Object.entries(obj).reverse();
   for (const [key, value] of entries) {
     iteratee(value, key);
@@ -959,7 +959,7 @@ export function forOwnRight<T>(obj: Record<string, T>, iteratee: (value: T, key:
  * @example
  * toPairs({ a: 1, b: 2 }) // [['a', 1], ['b', 2]]
  */
-export function toPairs<T>(obj: Record<string, T>): [string, T][] {
+export function toPairs<T> (obj: Record<string, T>): [string, T][] {
   return entries(obj);
 }
 
@@ -972,6 +972,6 @@ export function toPairs<T>(obj: Record<string, T>): [string, T][] {
  * obj.own = 'property'
  * toPairsIn(obj) // [['own', 'property'], ['inherited', 'value']]
  */
-export function toPairsIn<T>(obj: Record<string, T>): [string, T][] {
+export function toPairsIn<T> (obj: Record<string, T>): [string, T][] {
   return entriesIn(obj);
 }

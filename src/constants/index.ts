@@ -9,31 +9,31 @@
 export const REGEX = {
   /** Match HTML tags */
   htmlTag: /.*?>([^<]*)/,
-  
+
   /** Match content in brackets */
   inBrackets: /\[[^\[\]]*\]/,
-  
+
   /** Match content in strings */
   inStrings: /.*?"([^"]*)/,
-  
+
   /** Match HTML tags or arrays */
   tagRegex: /<([a-z][a-z0-9]*)[^>]*>([^<]*)<\/\1>|(\[(.*?)\])/i,
-  
+
   /** Match opening parentheses */
   openParentheses: /^(.*?)\(/,
-  
+
   /** Match all non-whitespace sequences */
   allSpaces: /\S+/g,
-  
+
   /** Match datetime strings */
   datetime: /^((?:(\d{4}-\d{2}-\d{2})T(\d{2}:\d{2}:\d{2}(?:\.\d+)?))(Z|[\+-]\d{2}:\d{2})?)$/,
-  
+
   /** Match email addresses */
   email: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-  
+
   /** Match URLs */
   url: /^https?:\/\/.+/,
-  
+
   /** Match numbers */
   number: /^-?\d+(\.\d+)?$/
 } as const;

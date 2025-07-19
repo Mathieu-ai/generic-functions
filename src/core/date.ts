@@ -19,12 +19,12 @@ export type CodeISO = "AD" | "AT" | "BE" | "BG" | "CH" | "CY" | "CZ" | "DE" | "D
  * formatDate('invalid', 'DD/MM/YYYY') // ''
  * ```
  */
-export function formatDate(date: string | Date, format: string): string {
+export function formatDate (date: string | Date, format: string): string {
   const d = new Date(date);
   if (isNaN(d.getTime())) return "";
-  
+
   const pad = (n: number) => n.toString().padStart(2, '0');
-  
+
   const replacements: Record<string, string> = {
     'YYYY': d.getFullYear().toString(),
     'MM': pad(d.getMonth() + 1),
@@ -33,12 +33,12 @@ export function formatDate(date: string | Date, format: string): string {
     'mm': pad(d.getMinutes()),
     'ss': pad(d.getSeconds())
   };
-  
+
   let result = format;
   for (const [key, value] of Object.entries(replacements)) {
     result = result.replace(new RegExp(key, 'g'), value);
   }
-  
+
   return result;
 }
 
@@ -53,7 +53,7 @@ export function formatDate(date: string | Date, format: string): string {
  * isDate(new Date('invalid')) // false (invalid date)
  * ```
  */
-export function isDate(date: any): boolean {
+export function isDate (date: any): boolean {
   return date instanceof Date && !isNaN(date.getTime());
 }
 
@@ -67,7 +67,7 @@ export function isDate(date: any): boolean {
  * now('DD/MM/YYYY HH:mm') // '25/12/2023 14:30'
  * ```
  */
-export function now(format?: string): string | Date {
+export function now (format?: string): string | Date {
   const currentDate = new Date();
   return format ? formatDate(currentDate, format) : currentDate;
 }
@@ -81,12 +81,12 @@ export function now(format?: string): string | Date {
  * secondsToTomorrow() // 1800 (30 minutes = 1800 seconds)
  * ```
  */
-export function secondsToTomorrow(): number {
+export function secondsToTomorrow (): number {
   const now = new Date();
   const tomorrow = new Date(now);
   tomorrow.setDate(tomorrow.getDate() + 1);
   tomorrow.setHours(0, 0, 0, 0);
-  
+
   return Math.floor((tomorrow.getTime() - now.getTime()) / 1000);
 }
 
@@ -103,9 +103,9 @@ export function secondsToTomorrow(): number {
  * isDateDifferent(2023, 'year') // false (current year is 2023)
  * ```
  */
-export function isDateDifferent(nb: number, unit: TimeUnit): boolean {
+export function isDateDifferent (nb: number, unit: TimeUnit): boolean {
   const now = new Date();
-  
+
   switch (unit) {
     case 'hour':
       return nb !== now.getHours();
@@ -137,7 +137,7 @@ export function isDateDifferent(nb: number, unit: TimeUnit): boolean {
  * getFormat('DATE_TIME', 'DE') // 'DD.MM.YYYY, HH:mm:ss'
  * ```
  */
-export function getFormat(format: FormatType, iso: CodeISO): string | null {
+export function getFormat (format: FormatType, iso: CodeISO): string | null {
   const dateFormats: Record<CodeISO, string> = {
     AD: "DD/MM/YYYY", AT: "DD.MM.YYYY", BE: "DD/MM/YYYY", BG: "DD.MM.YYYY",
     CH: "DD.MM.YYYY", CY: "DD/MM/YYYY", CZ: "DD.MM.YYYY", DE: "DD.MM.YYYY",
@@ -150,9 +150,9 @@ export function getFormat(format: FormatType, iso: CodeISO): string | null {
     SI: "DD.MM.YYYY", SK: "DD.MM.YYYY", SM: "DD/MM/YYYY", TR: "DD.MM.YYYY",
     US: "MM/DD/YYYY", CA: "MM/DD/YYYY", JP: "YYYY年MM月DD日", CN: "YYYY年MM月DD日", KR: "YYYY-MM-DD"
   };
-  
+
   const dateFormat = dateFormats[iso];
-  
+
   switch (format) {
     case "DATE":
       return dateFormat;
@@ -178,11 +178,11 @@ export function getFormat(format: FormatType, iso: CodeISO): string | null {
  * isBetween('2023-12-01', '2023-12-01', '2023-12-31') // true (inclusive)
  * ```
  */
-export function isBetween(date: Date | string, start: Date | string, end: Date | string): boolean {
+export function isBetween (date: Date | string, start: Date | string, end: Date | string): boolean {
   const d = new Date(date);
   const s = new Date(start);
   const e = new Date(end);
-  
+
   return d >= s && d <= e;
 }
 
@@ -200,9 +200,9 @@ export function isBetween(date: Date | string, start: Date | string, end: Date |
  * addTime('2023-01-31', 1, 'month') // 2023-02-28 (handles month overflow)
  * ```
  */
-export function addTime(date: Date | string, amount: number, unit: TimeUnit): Date {
+export function addTime (date: Date | string, amount: number, unit: TimeUnit): Date {
   const d = new Date(date);
-  
+
   switch (unit) {
     case 'millisecond':
       d.setMilliseconds(d.getMilliseconds() + amount);
@@ -226,6 +226,6 @@ export function addTime(date: Date | string, amount: number, unit: TimeUnit): Da
       d.setFullYear(d.getFullYear() + amount);
       break;
   }
-  
+
   return d;
 }

@@ -40,9 +40,9 @@ export interface RequestOptions {
  *   body: { name: 'John' }
  * });
  */
-export async function api<T = unknown>(url: string, options: RequestOptions = {}): Promise<T | { ok: false; message: string }> {
+export async function api<T = unknown> (url: string, options: RequestOptions = {}): Promise<T | { ok: false; message: string }> {
   const { method = 'GET', headers = {}, body } = options;
-  
+
   try {
     const fetchOptions: RequestInit = {
       method,
@@ -51,22 +51,22 @@ export async function api<T = unknown>(url: string, options: RequestOptions = {}
         ...headers
       }
     };
-    
+
     if (body && method !== 'GET') {
       fetchOptions.body = typeof body === 'string' ? body : JSON.stringify(body);
     }
-    
+
     const response = await fetch(url, fetchOptions);
-    
+
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
-    
+
     return await response.json() as T;
   } catch (error) {
-    return { 
-      ok: false, 
-      message: error instanceof Error ? error.message : 'Unknown error' 
+    return {
+      ok: false,
+      message: error instanceof Error ? error.message : 'Unknown error'
     };
   }
 }
@@ -83,18 +83,18 @@ export async function api<T = unknown>(url: string, options: RequestOptions = {}
  * const country = getCountry({ cc: 'US' }, countries);
  * const country2 = getCountry({ cn: 'France' }, countries);
  */
-export function getCountry(
+export function getCountry (
   { cc, cn, cf }: { cc?: string; cn?: string; cf?: string },
   countries: Country[]
 ): Partial<Country> {
   if (!countries || countries.length === 0) return {};
-  
+
   const normalizedCn = cn?.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-  
+
   const searchInAltNames = (altNames: string) => {
     return new RegExp(`\\b${normalizedCn}\\b`, "i").test(altNames);
   };
-  
+
   const country = countries
     .sort((a, b) => (a.cca2 || '').localeCompare(b.cca2 || ''))
     .find(({ name, altNames, cca2, flag }) => {
@@ -106,7 +106,7 @@ export function getCountry(
       }
       return false;
     });
-  
+
   return country || {};
 }
 
@@ -121,14 +121,14 @@ export function getCountry(
  * extractFromString('Active: true', /Active: (\w+)/, 'boolean'); // true
  * extractFromString('Date: 2023-12-25', /Date: (.+)/, 'date'); // Date object
  */
-export function extractFromString<T extends 'string' | 'number' | 'boolean' | 'array' | 'date'>(
+export function extractFromString<T extends 'string' | 'number' | 'boolean' | 'array' | 'date'> (
   str: string,
   regex: RegExp,
   type: T
 ): T extends 'string' ? string : T extends 'number' ? number : T extends 'boolean' ? boolean : T extends 'array' ? unknown[] : T extends 'date' ? Date : unknown {
   const match = str?.match?.(regex);
   if (!match) return str as never;
-  
+
   switch (type) {
     case 'string':
       return (match[2] || match[1] || match[0]) as never;
@@ -159,7 +159,7 @@ export function extractFromString<T extends 'string' | 'number' | 'boolean' | 'a
  * simpleHash('hello'); // "1k4xd"
  * simpleHash({ a: 1, b: 2 }); // "1x3k2d"
  */
-export function simpleHash(obj: unknown): string {
+export function simpleHash (obj: unknown): string {
   const str = typeof obj === 'string' ? obj : JSON.stringify(obj);
   let hash = 0;
   for (let i = 0; i < str.length; i++) {

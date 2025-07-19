@@ -11,7 +11,7 @@
  * identity(42); // 42
  * identity('hello'); // 'hello'
  */
-export function identity<T>(value: T): T {
+export function identity<T> (value: T): T {
   return value;
 }
 
@@ -23,8 +23,8 @@ export function identity<T>(value: T): T {
  * const getAnswer = constant(42);
  * getAnswer(); // 42
  */
-export function constant<T>(value: T): () => T {
-  return function() {
+export function constant<T> (value: T): () => T {
+  return function () {
     return value;
   };
 }
@@ -35,7 +35,7 @@ export function constant<T>(value: T): () => T {
  * @example
  * noop(); // undefined
  */
-export function noop(): undefined {
+export function noop (): undefined {
   return undefined;
 }
 
@@ -50,8 +50,8 @@ export function noop(): undefined {
  * const getDeep = property(['user', 'profile', 'name']);
  * getDeep({ user: { profile: { name: 'Jane' } } }); // 'Jane'
  */
-export function property<T = unknown>(path: string | string[]): (obj: Record<string, unknown>) => T | undefined {
-  return function(obj: Record<string, unknown>) {
+export function property<T = unknown> (path: string | string[]): (obj: Record<string, unknown>) => T | undefined {
+  return function (obj: Record<string, unknown>) {
     const keys = Array.isArray(path) ? path : path.split('.');
     let result: unknown = obj;
     for (const key of keys) {
@@ -72,8 +72,8 @@ export function property<T = unknown>(path: string | string[]): (obj: Record<str
  * at('a.b'); // 2
  * at(['a', 'b']); // 2
  */
-export function propertyOf(obj: Record<string, unknown>): (path: string | string[]) => unknown {
-  return function(path: string | string[]) {
+export function propertyOf (obj: Record<string, unknown>): (path: string | string[]) => unknown {
+  return function (path: string | string[]) {
     const keys = Array.isArray(path) ? path : path.split('.');
     let result: unknown = obj;
     for (const key of keys) {
@@ -92,8 +92,8 @@ export function propertyOf(obj: Record<string, unknown>): (path: string | string
  * const isActive = matches({ active: true });
  * isActive({ active: true, name: 'John' }); // true
  */
-export function matches<T extends Record<string, unknown>>(source: Partial<T>): (obj: T) => boolean {
-  return function(obj: T) {
+export function matches<T extends Record<string, unknown>> (source: Partial<T>): (obj: T) => boolean {
+  return function (obj: T) {
     return isMatch(obj, source);
   };
 }
@@ -107,8 +107,8 @@ export function matches<T extends Record<string, unknown>>(source: Partial<T>): 
  * const isJohn = matchesProperty('name', 'John');
  * isJohn({ name: 'John', age: 25 }); // true
  */
-export function matchesProperty<T extends Record<string, unknown>>(path: string | string[], srcValue: unknown): (obj: T) => boolean {
-  return function(obj: T) {
+export function matchesProperty<T extends Record<string, unknown>> (path: string | string[], srcValue: unknown): (obj: T) => boolean {
+  return function (obj: T) {
     const keys = Array.isArray(path) ? path : path.split('.');
     let current: unknown = obj;
     for (const key of keys) {
@@ -127,7 +127,7 @@ export function matchesProperty<T extends Record<string, unknown>>(path: string 
  * iteratee('name')({ name: 'John' }); // 'John'
  * iteratee(['age', 25])({ age: 25 }); // true
  */
-export function iteratee<T, R = unknown>(func?: ((value: T) => R) | Record<string, unknown> | string | [string, unknown] | null): (value: T) => R {
+export function iteratee<T, R = unknown> (func?: ((value: T) => R) | Record<string, unknown> | string | [string, unknown] | null): (value: T) => R {
   if (func == null) {
     return identity as (value: T) => R;
   }
@@ -135,7 +135,7 @@ export function iteratee<T, R = unknown>(func?: ((value: T) => R) | Record<strin
     return func;
   }
   if (typeof func === 'object') {
-    return Array.isArray(func) 
+    return Array.isArray(func)
       ? matchesProperty<T extends Record<string, unknown> ? T : Record<string, unknown>>(func[0], func[1]) as (value: T) => R
       : matches<T extends Record<string, unknown> ? T : Record<string, unknown>>(func as Partial<T extends Record<string, unknown> ? T : Record<string, unknown>>) as (value: T) => R;
   }
@@ -150,7 +150,7 @@ export function iteratee<T, R = unknown>(func?: ((value: T) => R) | Record<strin
  * uniqueId(); // '8h3k2d'
  * uniqueId('user_'); // 'user_8h3k2d'
  */
-export function uniqueId(prefix: string = ''): string {
+export function uniqueId (prefix: string = ''): string {
   const id = Math.random().toString(36).substr(2, 9);
   return prefix + id;
 }
@@ -164,7 +164,7 @@ export function uniqueId(prefix: string = ''): string {
  * times(3, i => i * 2); // [0, 2, 4]
  * times(4, () => 'a'); // ['a', 'a', 'a', 'a']
  */
-export function times<T>(n: number, iteratee: (index: number) => T): T[] {
+export function times<T> (n: number, iteratee: (index: number) => T): T[] {
   const result: T[] = [];
   for (let i = 0; i < n; i++) {
     result.push(iteratee(i));
@@ -183,12 +183,12 @@ export function times<T>(n: number, iteratee: (index: number) => T): T[] {
  * range(1, 5); // [1, 2, 3, 4]
  * range(0, 20, 5); // [0, 5, 10, 15]
  */
-export function range(start: number, end?: number, step: number = 1): number[] {
+export function range (start: number, end?: number, step: number = 1): number[] {
   if (end === undefined) {
     end = start;
     start = 0;
   }
-  
+
   const result: number[] = [];
   if (step > 0) {
     for (let i = start; i < end; i += step) {
@@ -212,7 +212,7 @@ export function range(start: number, end?: number, step: number = 1): number[] {
  * rangeRight(4); // [3, 2, 1, 0]
  * rangeRight(1, 5); // [4, 3, 2, 1]
  */
-export function rangeRight(start: number, end?: number, step: number = 1): number[] {
+export function rangeRight (start: number, end?: number, step: number = 1): number[] {
   return range(start, end, step).reverse();
 }
 
@@ -222,7 +222,7 @@ export function rangeRight(start: number, end?: number, step: number = 1): numbe
  * @example
  * stubArray(); // []
  */
-export function stubArray(): any[] {
+export function stubArray (): any[] {
   return [];
 }
 
@@ -232,7 +232,7 @@ export function stubArray(): any[] {
  * @example
  * stubFalse(); // false
  */
-export function stubFalse(): false {
+export function stubFalse (): false {
   return false;
 }
 
@@ -242,7 +242,7 @@ export function stubFalse(): false {
  * @example
  * stubObject(); // {}
  */
-export function stubObject(): object {
+export function stubObject (): object {
   return {};
 }
 
@@ -252,7 +252,7 @@ export function stubObject(): object {
  * @example
  * stubString(); // ''
  */
-export function stubString(): string {
+export function stubString (): string {
   return '';
 }
 
@@ -262,7 +262,7 @@ export function stubString(): string {
  * @example
  * stubTrue(); // true
  */
-export function stubTrue(): true {
+export function stubTrue (): true {
   return true;
 }
 
@@ -272,7 +272,7 @@ export function stubTrue(): true {
  * @param {Partial<T>} source - The object of property values to match
  * @returns {boolean} Returns true if object is a match, else false
  */
-function isMatch<T extends Record<string, unknown>>(obj: T, source: Partial<T>): boolean {
+function isMatch<T extends Record<string, unknown>> (obj: T, source: Partial<T>): boolean {
   for (const key in source) {
     if (source[key] !== obj[key]) {
       return false;
@@ -287,25 +287,25 @@ function isMatch<T extends Record<string, unknown>>(obj: T, source: Partial<T>):
  * @param {unknown} b - The other value to compare
  * @returns {boolean} Returns true if the values are equivalent, else false
  */
-function isEqual(a: unknown, b: unknown): boolean {
+function isEqual (a: unknown, b: unknown): boolean {
   if (a === b) return true;
   if (a == null || b == null) return a === b;
   if (typeof a !== typeof b) return false;
-  
+
   if (typeof a === 'object') {
     if (Array.isArray(a) !== Array.isArray(b)) return false;
-    
+
     if (Array.isArray(a) && Array.isArray(b)) {
       if (a.length !== b.length) return false;
       return a.every((item, index) => isEqual(item, b[index]));
     }
-    
+
     const keysA = Object.keys(a as Record<string, unknown>);
     const keysB = Object.keys(b as Record<string, unknown>);
     if (keysA.length !== keysB.length) return false;
-    
+
     return keysA.every(key => isEqual((a as Record<string, unknown>)[key], (b as Record<string, unknown>)[key]));
   }
-  
+
   return false;
 }

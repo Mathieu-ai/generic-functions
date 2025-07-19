@@ -16,7 +16,7 @@ import { isEqual } from "./object";
  * isArguments([1, 2, 3])
  * // => false
  */
-export function isArguments(value: unknown): value is IArguments {
+export function isArguments (value: unknown): value is IArguments {
   return Object.prototype.toString.call(value) === '[object Arguments]';
 }
 
@@ -31,7 +31,7 @@ export function isArguments(value: unknown): value is IArguments {
  * isArrayBuffer(new Array(2))
  * // => false
  */
-export function isArrayBuffer(value: unknown): value is ArrayBuffer {
+export function isArrayBuffer (value: unknown): value is ArrayBuffer {
   return value instanceof ArrayBuffer;
 }
 
@@ -49,7 +49,7 @@ export function isArrayBuffer(value: unknown): value is ArrayBuffer {
  * isArrayLike(Function)
  * // => false
  */
-export function isArrayLike(value: unknown): value is { length: number } {
+export function isArrayLike (value: unknown): value is { length: number } {
   return value != null && typeof value !== 'function' && isLength((value as { length?: unknown }).length);
 }
 
@@ -67,7 +67,7 @@ export function isArrayLike(value: unknown): value is { length: number } {
  * isArrayLikeObject(Function)
  * // => false
  */
-export function isArrayLikeObject(value: unknown): value is object & { length: number } {
+export function isArrayLikeObject (value: unknown): value is object & { length: number } {
   return isObjectLike(value) && isArrayLike(value);
 }
 
@@ -82,7 +82,7 @@ export function isArrayLikeObject(value: unknown): value is object & { length: n
  * isBoolean(null)
  * // => false
  */
-export function isBoolean(value: unknown): value is boolean {
+export function isBoolean (value: unknown): value is boolean {
   return value === true || value === false || (isObjectLike(value) && Object.prototype.toString.call(value) === '[object Boolean]');
 }
 
@@ -97,10 +97,10 @@ export function isBoolean(value: unknown): value is boolean {
  * isBuffer(new Uint8Array(2))
  * // => false
  */
-export function isBuffer(value: unknown): boolean {
-  return value != null && typeof (value as { constructor?: unknown }).constructor === 'function' && 
-         typeof ((value as { constructor: { isBuffer?: unknown } }).constructor.isBuffer) === 'function' && 
-         ((value as { constructor: { isBuffer: (val: unknown) => boolean } }).constructor.isBuffer)(value);
+export function isBuffer (value: unknown): boolean {
+  return value != null && typeof (value as { constructor?: unknown }).constructor === 'function' &&
+    typeof ((value as { constructor: { isBuffer?: unknown } }).constructor.isBuffer) === 'function' &&
+    ((value as { constructor: { isBuffer: (val: unknown) => boolean } }).constructor.isBuffer)(value);
 }
 
 /**
@@ -114,7 +114,7 @@ export function isBuffer(value: unknown): boolean {
  * isElement('<body>')
  * // => false
  */
-export function isElement(value: unknown): value is Element {
+export function isElement (value: unknown): value is Element {
   return isObjectLike(value) && (value as Element).nodeType === 1 && typeof (value as Element).nodeName === 'string';
 }
 
@@ -140,7 +140,7 @@ export function isElement(value: unknown): value is Element {
  * isEqualWith(['hello'], ['hi'], customizer)
  * // => true
  */
-export function isEqualWith(a: unknown, b: unknown, customizer: (objValue: unknown, othValue: unknown, key?: string) => boolean | undefined): boolean {
+export function isEqualWith (a: unknown, b: unknown, customizer: (objValue: unknown, othValue: unknown, key?: string) => boolean | undefined): boolean {
   const result = customizer(a, b);
   return result === undefined ? isEqual(a, b) : result;
 }
@@ -156,7 +156,7 @@ export function isEqualWith(a: unknown, b: unknown, customizer: (objValue: unkno
  * isError(Error)
  * // => false
  */
-export function isError(value: unknown): value is Error {
+export function isError (value: unknown): value is Error {
   return value instanceof Error || (isObjectLike(value) && Object.prototype.toString.call(value) === '[object Error]');
 }
 
@@ -178,7 +178,7 @@ export function isError(value: unknown): value is Error {
  * isFinite('3')
  * // => false
  */
-export function isFinite(value: unknown): value is number {
+export function isFinite (value: unknown): value is number {
   return typeof value === 'number' && Number.isFinite(value);
 }
 
@@ -193,7 +193,7 @@ export function isFinite(value: unknown): value is number {
  * isFunction(/abc/)
  * // => false
  */
-export function isFunction(value: unknown): value is Function {
+export function isFunction (value: unknown): value is Function {
   return typeof value === 'function';
 }
 
@@ -215,7 +215,7 @@ export function isFunction(value: unknown): value is Function {
  * isInteger('3')
  * // => false
  */
-export function isInteger(value: unknown): value is number {
+export function isInteger (value: unknown): value is number {
   return typeof value === 'number' && Number.isInteger(value);
 }
 
@@ -237,7 +237,7 @@ export function isInteger(value: unknown): value is number {
  * isLength('3')
  * // => false
  */
-export function isLength(value: unknown): boolean {
+export function isLength (value: unknown): boolean {
   return typeof value === 'number' && value >= 0 && value <= Number.MAX_SAFE_INTEGER && Math.floor(value) === value;
 }
 
@@ -252,7 +252,7 @@ export function isLength(value: unknown): boolean {
  * isMap(new WeakMap)
  * // => false
  */
-export function isMap(value: unknown): value is Map<unknown, unknown> {
+export function isMap (value: unknown): value is Map<unknown, unknown> {
   return value instanceof Map;
 }
 
@@ -271,12 +271,12 @@ export function isMap(value: unknown): value is Map<unknown, unknown> {
  * isMatch(object, { 'b': 1 })
  * // => false
  */
-export function isMatch(object: unknown, source: unknown): boolean {
+export function isMatch (object: unknown, source: unknown): boolean {
   if (!isObjectLike(object) || !isObjectLike(source)) return false;
-  
+
   const sourceObj = source as Record<string, unknown>;
   const objectObj = object as Record<string, unknown>;
-  
+
   for (const key in sourceObj) {
     if (!(key in objectObj) || !isEqual(objectObj[key], sourceObj[key])) {
       return false;
@@ -310,12 +310,12 @@ export function isMatch(object: unknown, source: unknown): boolean {
  * isMatchWith(object, source, customizer)
  * // => true
  */
-export function isMatchWith(object: unknown, source: unknown, customizer: (objValue: unknown, srcValue: unknown, key: string) => boolean | undefined): boolean {
+export function isMatchWith (object: unknown, source: unknown, customizer: (objValue: unknown, srcValue: unknown, key: string) => boolean | undefined): boolean {
   if (!isObjectLike(object) || !isObjectLike(source)) return false;
-  
+
   const sourceObj = source as Record<string, unknown>;
   const objectObj = object as Record<string, unknown>;
-  
+
   for (const key in sourceObj) {
     const result = customizer(objectObj[key], sourceObj[key], key);
     if (result === undefined) {
@@ -344,7 +344,7 @@ export function isMatchWith(object: unknown, source: unknown, customizer: (objVa
  * isNaN(undefined)
  * // => false
  */
-export function isNaN(value: unknown): boolean {
+export function isNaN (value: unknown): boolean {
   return isNumber(value) && value !== value;
 }
 
@@ -360,7 +360,7 @@ export function isNaN(value: unknown): boolean {
  * isNative(() => {})
  * // => false
  */
-export function isNative(value: unknown): boolean {
+export function isNative (value: unknown): boolean {
   return isFunction(value) && /\[native code\]/.test(value.toString());
 }
 
@@ -378,7 +378,7 @@ export function isNative(value: unknown): boolean {
  * isNil(NaN)
  * // => false
  */
-export function isNil(value: unknown): value is null | undefined {
+export function isNil (value: unknown): value is null | undefined {
   return value == null;
 }
 
@@ -393,7 +393,7 @@ export function isNil(value: unknown): value is null | undefined {
  * isNull(void 0)
  * // => false
  */
-export function isNull(value: unknown): value is null {
+export function isNull (value: unknown): value is null {
   return value === null;
 }
 
@@ -415,7 +415,7 @@ export function isNull(value: unknown): value is null {
  * isNumber('3')
  * // => false
  */
-export function isNumber(value: unknown): value is number {
+export function isNumber (value: unknown): value is number {
   return typeof value === 'number' || (isObjectLike(value) && Object.prototype.toString.call(value) === '[object Number]');
 }
 
@@ -437,7 +437,7 @@ export function isNumber(value: unknown): value is number {
  * isObject(null)
  * // => false
  */
-export function isObject(value: unknown): value is object {
+export function isObject (value: unknown): value is object {
   const type = typeof value;
   return value != null && (type === 'object' || type === 'function');
 }
@@ -459,7 +459,7 @@ export function isObject(value: unknown): value is object {
  * isObjectLike(null)
  * // => false
  */
-export function isObjectLike(value: unknown): value is object {
+export function isObjectLike (value: unknown): value is object {
   return value != null && typeof value === 'object';
 }
 
@@ -484,7 +484,7 @@ export function isObjectLike(value: unknown): value is object {
  * isPlainObject(Object.create(null))
  * // => true
  */
-export function isPlainObject(value: unknown): boolean {
+export function isPlainObject (value: unknown): boolean {
   if (!isObjectLike(value) || Object.prototype.toString.call(value) !== '[object Object]') {
     return false;
   }
@@ -509,7 +509,7 @@ export function isPlainObject(value: unknown): boolean {
  * isRegExp('/abc/')
  * // => false
  */
-export function isRegExp(value: unknown): value is RegExp {
+export function isRegExp (value: unknown): value is RegExp {
   return value instanceof RegExp;
 }
 
@@ -531,7 +531,7 @@ export function isRegExp(value: unknown): value is RegExp {
  * isSafeInteger('3')
  * // => false
  */
-export function isSafeInteger(value: unknown): value is number {
+export function isSafeInteger (value: unknown): value is number {
   return isInteger(value) && Math.abs(value) <= Number.MAX_SAFE_INTEGER;
 }
 
@@ -546,7 +546,7 @@ export function isSafeInteger(value: unknown): value is number {
  * isSet(new WeakSet)
  * // => false
  */
-export function isSet(value: unknown): value is Set<unknown> {
+export function isSet (value: unknown): value is Set<unknown> {
   return value instanceof Set;
 }
 
@@ -561,7 +561,7 @@ export function isSet(value: unknown): value is Set<unknown> {
  * isString(1)
  * // => false
  */
-export function isString(value: unknown): value is string {
+export function isString (value: unknown): value is string {
   return typeof value === 'string' || (isObjectLike(value) && Object.prototype.toString.call(value) === '[object String]');
 }
 
@@ -576,7 +576,7 @@ export function isString(value: unknown): value is string {
  * isSymbol('abc')
  * // => false
  */
-export function isSymbol(value: unknown): value is symbol {
+export function isSymbol (value: unknown): value is symbol {
   return typeof value === 'symbol' || (isObjectLike(value) && Object.prototype.toString.call(value) === '[object Symbol]');
 }
 
@@ -591,7 +591,7 @@ export function isSymbol(value: unknown): value is symbol {
  * isTypedArray([])
  * // => false
  */
-export function isTypedArray(value: unknown): boolean {
+export function isTypedArray (value: unknown): boolean {
   return isObjectLike(value) && /^\[object (Int8|Uint8|Uint8Clamped|Int16|Uint16|Int32|Uint32|Float32|Float64)Array\]$/.test(Object.prototype.toString.call(value));
 }
 
@@ -606,7 +606,7 @@ export function isTypedArray(value: unknown): boolean {
  * isUndefined(null)
  * // => false
  */
-export function isUndefined(value: unknown): value is undefined {
+export function isUndefined (value: unknown): value is undefined {
   return value === undefined;
 }
 
@@ -621,7 +621,7 @@ export function isUndefined(value: unknown): value is undefined {
  * isWeakMap(new Map)
  * // => false
  */
-export function isWeakMap(value: unknown): value is WeakMap<object, unknown> {
+export function isWeakMap (value: unknown): value is WeakMap<object, unknown> {
   return value instanceof WeakMap;
 }
 
@@ -636,6 +636,6 @@ export function isWeakMap(value: unknown): value is WeakMap<object, unknown> {
  * isWeakSet(new Set)
  * // => false
  */
-export function isWeakSet(value: unknown): value is WeakSet<object> {
+export function isWeakSet (value: unknown): value is WeakSet<object> {
   return value instanceof WeakSet;
 }

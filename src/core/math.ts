@@ -14,7 +14,7 @@
  * add(-1, 1) // => 0
  * ```
  */
-export function add(a: number, b: number): number {
+export function add (a: number, b: number): number {
   return a + b;
 }
 
@@ -29,7 +29,7 @@ export function add(a: number, b: number): number {
  * sum([-1, 1]) // => 0
  * ```
  */
-export function sum(array: number[]): number {
+export function sum (array: number[]): number {
   return array.reduce((sum, value) => sum + value, 0);
 }
 
@@ -47,7 +47,7 @@ export function sum(array: number[]): number {
  * sumBy(strings, s => s.length) // => 6
  * ```
  */
-export function sumBy<T>(array: T[], iteratee: (value: T) => number): number {
+export function sumBy<T> (array: T[], iteratee: (value: T) => number): number {
   return array.reduce((sum, value) => sum + iteratee(value), 0);
 }
 
@@ -62,7 +62,7 @@ export function sumBy<T>(array: T[], iteratee: (value: T) => number): number {
  * mean([]) // => 0
  * ```
  */
-export function mean(array: number[]): number {
+export function mean (array: number[]): number {
   return array.length ? sum(array) / array.length : 0;
 }
 
@@ -80,7 +80,7 @@ export function mean(array: number[]): number {
  * meanBy(people, p => p.age) // => 30
  * ```
  */
-export function meanBy<T>(array: T[], iteratee: (value: T) => number): number {
+export function meanBy<T> (array: T[], iteratee: (value: T) => number): number {
   return array.length ? sumBy(array, iteratee) / array.length : 0;
 }
 
@@ -95,7 +95,7 @@ export function meanBy<T>(array: T[], iteratee: (value: T) => number): number {
  * max([]) // => undefined
  * ```
  */
-export function max(array: number[]): number | undefined {
+export function max (array: number[]): number | undefined {
   return array.length ? Math.max(...array) : undefined;
 }
 
@@ -113,12 +113,12 @@ export function max(array: number[]): number | undefined {
  * maxBy(people, p => p.age) // => { name: 'Jane', age: 30 }
  * ```
  */
-export function maxBy<T>(array: T[], iteratee: (value: T) => number): T | undefined {
+export function maxBy<T> (array: T[], iteratee: (value: T) => number): T | undefined {
   if (!array.length) return undefined;
-  
+
   let maxItem = array[0];
   let maxValue = iteratee(maxItem);
-  
+
   for (let i = 1; i < array.length; i++) {
     const value = iteratee(array[i]);
     if (value > maxValue) {
@@ -126,7 +126,7 @@ export function maxBy<T>(array: T[], iteratee: (value: T) => number): T | undefi
       maxItem = array[i];
     }
   }
-  
+
   return maxItem;
 }
 
@@ -141,7 +141,7 @@ export function maxBy<T>(array: T[], iteratee: (value: T) => number): T | undefi
  * min([]) // => undefined
  * ```
  */
-export function min(array: number[]): number | undefined {
+export function min (array: number[]): number | undefined {
   return array.length ? Math.min(...array) : undefined;
 }
 
@@ -159,12 +159,12 @@ export function min(array: number[]): number | undefined {
  * minBy(people, p => p.age) // => { name: 'John', age: 25 }
  * ```
  */
-export function minBy<T>(array: T[], iteratee: (value: T) => number): T | undefined {
+export function minBy<T> (array: T[], iteratee: (value: T) => number): T | undefined {
   if (!array.length) return undefined;
-  
+
   let minItem = array[0];
   let minValue = iteratee(minItem);
-  
+
   for (let i = 1; i < array.length; i++) {
     const value = iteratee(array[i]);
     if (value < minValue) {
@@ -172,7 +172,7 @@ export function minBy<T>(array: T[], iteratee: (value: T) => number): T | undefi
       minItem = array[i];
     }
   }
-  
+
   return minItem;
 }
 
@@ -188,7 +188,7 @@ export function minBy<T>(array: T[], iteratee: (value: T) => number): T | undefi
  * subtract(0, 0) // => 0
  * ```
  */
-export function subtract(a: number, b: number): number {
+export function subtract (a: number, b: number): number {
   return a - b;
 }
 
@@ -204,7 +204,7 @@ export function subtract(a: number, b: number): number {
  * multiply(0, 100) // => 0
  * ```
  */
-export function multiply(a: number, b: number): number {
+export function multiply (a: number, b: number): number {
   return a * b;
 }
 
@@ -220,7 +220,7 @@ export function multiply(a: number, b: number): number {
  * divide(1, 0) // => Infinity
  * ```
  */
-export function divide(a: number, b: number): number {
+export function divide (a: number, b: number): number {
   return a / b;
 }
 
@@ -237,7 +237,7 @@ export function divide(a: number, b: number): number {
  * round(1.2345, 3) // => 1.235
  * ```
  */
-export function round(number: number, precision: number = 0): number {
+export function round (number: number, precision: number = 0): number {
   const factor = Math.pow(10, precision);
   return Math.round(number * factor) / factor;
 }
@@ -255,7 +255,7 @@ export function round(number: number, precision: number = 0): number {
  * ceil(1.2345, 3) // => 1.235
  * ```
  */
-export function ceil(number: number, precision: number = 0): number {
+export function ceil (number: number, precision: number = 0): number {
   const factor = Math.pow(10, precision);
   return Math.ceil(number * factor) / factor;
 }
@@ -273,7 +273,7 @@ export function ceil(number: number, precision: number = 0): number {
  * floor(1.2345, 3) // => 1.234
  * ```
  */
-export function floor(number: number, precision: number = 0): number {
+export function floor (number: number, precision: number = 0): number {
   const factor = Math.pow(10, precision);
   return Math.floor(number * factor) / factor;
 }
@@ -294,7 +294,7 @@ export function floor(number: number, precision: number = 0): number {
  * inRange(1.2, 2, 1) // => true (start and end are swapped automatically)
  * ```
  */
-export function inRange(n: number, start: number, end?: number): boolean {
+export function inRange (n: number, start: number, end?: number): boolean {
   if (end === undefined) {
     end = start;
     start = 0;
@@ -316,7 +316,7 @@ export function inRange(n: number, start: number, end?: number): boolean {
  * std([]) // => 0
  * ```
  */
-export function std(array: number[]): number {
+export function std (array: number[]): number {
   if (array.length === 0) return 0;
   const avg = mean(array);
   const squareDiffs = array.map(value => Math.pow(value - avg, 2));
@@ -334,7 +334,7 @@ export function std(array: number[]): number {
  * variance([]) // => 0
  * ```
  */
-export function variance(array: number[]): number {
+export function variance (array: number[]): number {
   if (array.length === 0) return 0;
   const avg = mean(array);
   const squareDiffs = array.map(value => Math.pow(value - avg, 2));

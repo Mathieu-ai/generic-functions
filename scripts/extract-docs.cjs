@@ -162,8 +162,8 @@ function processFile(filePath) {
   );
 
   const functions = [];
-  const category = path.basename(path.dirname(filePath)) === 'utils' 
-    ? 'utility' 
+  const category = path.basename(path.dirname(filePath)) === 'utils'
+    ? 'utility'
     : path.basename(filePath, path.extname(filePath));
 
   function visit(node) {
@@ -175,7 +175,7 @@ function processFile(filePath) {
 
       if (hasExportModifier) {
         const functionName = node.name.getText(sourceFile);
-        
+
         // Skip ignored functions
         if (CONFIG.ignoredFunctions.includes(functionName)) {
           return;
@@ -228,12 +228,12 @@ function processFile(filePath) {
 
       if (hasExportModifier) {
         node.declarationList.declarations.forEach(declaration => {
-          if (declaration.initializer && 
-              (ts.isArrowFunction(declaration.initializer) || 
-               ts.isFunctionExpression(declaration.initializer))) {
-            
+          if (declaration.initializer &&
+            (ts.isArrowFunction(declaration.initializer) ||
+              ts.isFunctionExpression(declaration.initializer))) {
+
             const functionName = declaration.name.getText(sourceFile);
-            
+
             // Skip ignored functions
             if (CONFIG.ignoredFunctions.includes(functionName)) {
               return;
@@ -316,7 +316,7 @@ function processConstants(filePath) {
         node.declarationList.declarations.forEach(declaration => {
           if (declaration.initializer) {
             const constantName = declaration.name.getText(sourceFile);
-            
+
             // Get JSDoc comment
             const jsDocNodes = ts.getJSDocCommentsAndTags(declaration);
             let jsDocText = '';
@@ -327,14 +327,14 @@ function processConstants(filePath) {
             }
 
             const jsDoc = parseJSDoc(jsDocText);
-            
+
             // Try to get the actual value structure
             let value = 'Object';
             let preview = '';
-            
+
             try {
               const valueText = declaration.initializer.getText(sourceFile);
-              
+
               // Simple preview generation
               if (valueText.includes('{') && valueText.includes('}')) {
                 const keys = valueText.match(/(\w+):/g);
@@ -373,14 +373,14 @@ function processConstants(filePath) {
 // Process all files in a directory
 function processDirectory(dirPath) {
   const functions = [];
-  
+
   if (!fs.existsSync(dirPath)) {
     console.warn(`Directory not found: ${dirPath}`);
     return functions;
   }
 
   const files = fs.readdirSync(dirPath);
-  
+
   files.forEach(file => {
     if (CONFIG.ignoredFiles.includes(file)) {
       return;
@@ -388,7 +388,7 @@ function processDirectory(dirPath) {
 
     const filePath = path.join(dirPath, file);
     const stat = fs.statSync(filePath);
-    
+
     if (stat.isFile() && (file.endsWith('.ts') || file.endsWith('.js'))) {
       console.log(`Processing ${filePath}...`);
       try {
@@ -406,7 +406,7 @@ function processDirectory(dirPath) {
 // Main function
 function main() {
   console.log('Extracting function documentation...\n');
-  
+
   let allFunctions = [];
   let allConstants = [];
 
@@ -454,7 +454,7 @@ const packageInfo = ${JSON.stringify({
     repository: packageJson.repository,
     homepage: packageJson.homepage,
     bugs: packageJson.bugs
-}, null, 2)};
+  }, null, 2)};
 
 // Export for use in documentation
 if (typeof module !== 'undefined' && module.exports) {
@@ -469,16 +469,16 @@ if (typeof module !== 'undefined' && module.exports) {
 
   // Write output file
   fs.writeFileSync(CONFIG.outputFile, output, 'utf-8');
-  
+
   console.log(`\n✅ Generated documentation for ${allFunctions.length} functions and ${allConstants.length} constants`);
   console.log(`📁 Output written to ${CONFIG.outputFile}`);
-  
+
   // Summary by category
   const categoryCounts = {};
   allFunctions.forEach(func => {
     categoryCounts[func.category] = (categoryCounts[func.category] || 0) + 1;
   });
-  
+
   console.log('\nFunctions by category:');
   Object.entries(categoryCounts)
     .sort(([a], [b]) => a.localeCompare(b))

@@ -21,7 +21,7 @@ export type NumberInput = string | number | boolean | object | any[];
  * number(['1', '2', 'abc']) // [1, 2, 'abc']
  * number({ a: '123', b: 'abc' }, { deep: true }) // { a: 123, b: 'abc' }
  */
-export function number(data: NumberInput, options: NumberOptions = { deep: false }): NumberInput | number {
+export function number (data: NumberInput, options: NumberOptions = { deep: false }): NumberInput | number {
   const { deep } = options;
 
   if (Array.isArray(data)) {
@@ -50,10 +50,10 @@ export function number(data: NumberInput, options: NumberOptions = { deep: false
  * parseFloat('3.14159', 2) // 3.14
  * parseFloat('abc') // 'abc'
  */
-export function parseFloat(data: string | number, precision?: number): number | string | number {
+export function parseFloat (data: string | number, precision?: number): number | string | number {
   const parsed = Number.parseFloat(String(data));
   if (isNaN(parsed)) return data;
-  
+
   return precision !== undefined ? Number(parsed.toFixed(precision)) : parsed;
 }
 
@@ -68,7 +68,7 @@ export function parseFloat(data: string | number, precision?: number): number | 
  * clamp(-5, 0, 10) // 0
  * clamp(15, 0, 10) // 10
  */
-export function clamp(value: number, min: number, max: number): number {
+export function clamp (value: number, min: number, max: number): number {
   return Math.min(Math.max(value, min), max);
 }
 
@@ -81,7 +81,7 @@ export function clamp(value: number, min: number, max: number): number {
  * random() // Random number between 0 and 1
  * random(5, 10) // Random number between 5 and 10
  */
-export function random(min: number = 0, max: number = 1): number {
+export function random (min: number = 0, max: number = 1): number {
   return Math.random() * (max - min) + min;
 }
 
@@ -94,6 +94,6 @@ export function random(min: number = 0, max: number = 1): number {
  * randomInt() // Random integer between 0 and 100
  * randomInt(1, 6) // Random integer between 1 and 6 (like a dice roll)
  */
-export function randomInt(min: number = 0, max: number = 100): number {
+export function randomInt (min: number = 0, max: number = 100): number {
   return Math.floor(random(min, max + 1));
 }

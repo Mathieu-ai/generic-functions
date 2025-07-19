@@ -15,9 +15,9 @@
  * every([2, 4, 6], x => x % 2 === 0) // => true
  * every({a: 2, b: 4, c: 5}, x => x % 2 === 0) // => false
  */
-export function every<T>(collection: T[], predicate: (value: T, index: number, collection: T[]) => boolean): boolean;
-export function every<T>(collection: Record<string, T>, predicate: (value: T, key: string, collection: Record<string, T>) => boolean): boolean;
-export function every<T>(collection: T[] | Record<string, T>, predicate: any): boolean {
+export function every<T> (collection: T[], predicate: (value: T, index: number, collection: T[]) => boolean): boolean;
+export function every<T> (collection: Record<string, T>, predicate: (value: T, key: string, collection: Record<string, T>) => boolean): boolean;
+export function every<T> (collection: T[] | Record<string, T>, predicate: any): boolean {
   if (Array.isArray(collection)) {
     return collection.every(predicate);
   }
@@ -36,9 +36,9 @@ export function every<T>(collection: T[] | Record<string, T>, predicate: any): b
  * forEach([1, 2], value => console.log(value))
  * forEach({a: 1, b: 2}, (value, key) => console.log(key, value))
  */
-export function forEach<T>(collection: T[], iteratee: (value: T, index: number, collection: T[]) => void): T[];
-export function forEach<T>(collection: Record<string, T>, iteratee: (value: T, key: string, collection: Record<string, T>) => void): Record<string, T>;
-export function forEach<T>(collection: T[] | Record<string, T>, iteratee: any): T[] | Record<string, T> {
+export function forEach<T> (collection: T[], iteratee: (value: T, index: number, collection: T[]) => void): T[];
+export function forEach<T> (collection: Record<string, T>, iteratee: (value: T, key: string, collection: Record<string, T>) => void): Record<string, T>;
+export function forEach<T> (collection: T[] | Record<string, T>, iteratee: any): T[] | Record<string, T> {
   if (Array.isArray(collection)) {
     collection.forEach(iteratee);
     return collection;
@@ -59,9 +59,9 @@ export function forEach<T>(collection: T[] | Record<string, T>, iteratee: any): 
  * map([1, 2, 3], x => x * 2) // => [2, 4, 6]
  * map({a: 1, b: 2}, x => x * 2) // => [2, 4]
  */
-export function map<T, R>(collection: T[], iteratee: (value: T, index: number, collection: T[]) => R): R[];
-export function map<T, R>(collection: Record<string, T>, iteratee: (value: T, key: string, collection: Record<string, T>) => R): R[];
-export function map<T, R>(collection: T[] | Record<string, T>, iteratee: any): R[] {
+export function map<T, R> (collection: T[], iteratee: (value: T, index: number, collection: T[]) => R): R[];
+export function map<T, R> (collection: Record<string, T>, iteratee: (value: T, key: string, collection: Record<string, T>) => R): R[];
+export function map<T, R> (collection: T[] | Record<string, T>, iteratee: any): R[] {
   if (Array.isArray(collection)) {
     return collection.map(iteratee);
   }
@@ -80,9 +80,9 @@ export function map<T, R>(collection: T[] | Record<string, T>, iteratee: any): R
  * filter([1, 2, 3, 4], x => x % 2 === 0) // => [2, 4]
  * filter({a: 1, b: 2, c: 3}, x => x > 1) // => [2, 3]
  */
-export function filter<T>(collection: T[], predicate: (value: T, index: number, collection: T[]) => boolean): T[];
-export function filter<T>(collection: Record<string, T>, predicate: (value: T, key: string, collection: Record<string, T>) => boolean): T[];
-export function filter<T>(collection: T[] | Record<string, T>, predicate: any): T[] {
+export function filter<T> (collection: T[], predicate: (value: T, index: number, collection: T[]) => boolean): T[];
+export function filter<T> (collection: Record<string, T>, predicate: (value: T, key: string, collection: Record<string, T>) => boolean): T[];
+export function filter<T> (collection: T[] | Record<string, T>, predicate: any): T[] {
   if (Array.isArray(collection)) {
     return collection.filter(predicate);
   }
@@ -103,9 +103,9 @@ export function filter<T>(collection: T[] | Record<string, T>, predicate: any): 
  * find([1, 2, 3, 4], x => x > 2) // => 3
  * find({a: 1, b: 2, c: 3}, x => x > 2) // => 3
  */
-export function find<T>(collection: T[], predicate: (value: T, index: number, collection: T[]) => boolean): T | undefined;
-export function find<T>(collection: Record<string, T>, predicate: (value: T, key: string, collection: Record<string, T>) => boolean): T | undefined;
-export function find<T>(collection: T[] | Record<string, T>, predicate: any): T | undefined {
+export function find<T> (collection: T[], predicate: (value: T, index: number, collection: T[]) => boolean): T | undefined;
+export function find<T> (collection: Record<string, T>, predicate: (value: T, key: string, collection: Record<string, T>) => boolean): T | undefined;
+export function find<T> (collection: T[] | Record<string, T>, predicate: any): T | undefined {
   if (Array.isArray(collection)) {
     return collection.find(predicate);
   }
@@ -128,7 +128,7 @@ export function find<T>(collection: T[] | Record<string, T>, predicate: any): T 
  * @example
  * findKey({a: 1, b: 2, c: 3}, x => x > 2) // => 'c'
  */
-export function findKey<T>(collection: Record<string, T>, predicate: (value: T, key: string, collection: Record<string, T>) => boolean): string | undefined {
+export function findKey<T> (collection: Record<string, T>, predicate: (value: T, key: string, collection: Record<string, T>) => boolean): string | undefined {
   for (const [key, value] of Object.entries(collection)) {
     if (predicate(value, key, collection)) {
       return key;
@@ -147,9 +147,9 @@ export function findKey<T>(collection: Record<string, T>, predicate: (value: T, 
  * @example
  * findLast([1, 2, 3, 4], x => x % 2 === 1) // => 3
  */
-export function findLast<T>(collection: T[], predicate: (value: T, index: number, collection: T[]) => boolean): T | undefined;
-export function findLast<T>(collection: Record<string, T>, predicate: (value: T, key: string, collection: Record<string, T>) => boolean): T | undefined;
-export function findLast<T>(collection: T[] | Record<string, T>, predicate: any): T | undefined {
+export function findLast<T> (collection: T[], predicate: (value: T, index: number, collection: T[]) => boolean): T | undefined;
+export function findLast<T> (collection: Record<string, T>, predicate: (value: T, key: string, collection: Record<string, T>) => boolean): T | undefined;
+export function findLast<T> (collection: T[] | Record<string, T>, predicate: any): T | undefined {
   if (Array.isArray(collection)) {
     for (let i = collection.length - 1; i >= 0; i--) {
       if (predicate(collection[i], i, collection)) {
@@ -179,9 +179,9 @@ export function findLast<T>(collection: T[] | Record<string, T>, predicate: any)
  * @example
  * flatMap([1, 2], x => [x, x]) // => [1, 1, 2, 2]
  */
-export function flatMap<T, R>(collection: T[], iteratee: (value: T, index: number, collection: T[]) => R | R[]): R[];
-export function flatMap<T, R>(collection: Record<string, T>, iteratee: (value: T, key: string, collection: Record<string, T>) => R | R[]): R[];
-export function flatMap<T, R>(collection: T[] | Record<string, T>, iteratee: any): R[] {
+export function flatMap<T, R> (collection: T[], iteratee: (value: T, index: number, collection: T[]) => R | R[]): R[];
+export function flatMap<T, R> (collection: Record<string, T>, iteratee: (value: T, key: string, collection: Record<string, T>) => R | R[]): R[];
+export function flatMap<T, R> (collection: T[] | Record<string, T>, iteratee: any): R[] {
   if (Array.isArray(collection)) {
     return map<T, R | R[]>(collection, iteratee).flat() as R[];
   } else {
@@ -199,9 +199,9 @@ export function flatMap<T, R>(collection: T[] | Record<string, T>, iteratee: any
  * @example
  * flatMapDeep([1, 2], x => [x, [x]]) // => [1, 1, 2, 2]
  */
-export function flatMapDeep<T, R>(collection: T[], iteratee: (value: T, index: number, collection: T[]) => any): R[];
-export function flatMapDeep<T, R>(collection: Record<string, T>, iteratee: (value: T, key: string, collection: Record<string, T>) => any): R[];
-export function flatMapDeep<T, R>(collection: T[] | Record<string, T>, iteratee: any): R[] {
+export function flatMapDeep<T, R> (collection: T[], iteratee: (value: T, index: number, collection: T[]) => any): R[];
+export function flatMapDeep<T, R> (collection: Record<string, T>, iteratee: (value: T, key: string, collection: Record<string, T>) => any): R[];
+export function flatMapDeep<T, R> (collection: T[] | Record<string, T>, iteratee: any): R[] {
   if (Array.isArray(collection)) {
     return map<T, any>(collection, iteratee).flat(Infinity) as R[];
   } else {
@@ -221,12 +221,12 @@ export function flatMapDeep<T, R>(collection: T[] | Record<string, T>, iteratee:
  * @example
  * groupBy(['one', 'two', 'three'], x => x.length) // => {3: ['one', 'two'], 5: ['three']}
  */
-export function groupBy<T>(collection: T[], iteratee: (value: T) => string): Record<string, T[]>;
-export function groupBy<T>(collection: Record<string, T>, iteratee: (value: T) => string): Record<string, T[]>;
-export function groupBy<T>(collection: T[] | Record<string, T>, iteratee: (value: T) => string): Record<string, T[]> {
+export function groupBy<T> (collection: T[], iteratee: (value: T) => string): Record<string, T[]>;
+export function groupBy<T> (collection: Record<string, T>, iteratee: (value: T) => string): Record<string, T[]>;
+export function groupBy<T> (collection: T[] | Record<string, T>, iteratee: (value: T) => string): Record<string, T[]> {
   const result: Record<string, T[]> = {};
   const values = Array.isArray(collection) ? collection : Object.values(collection);
-  
+
   for (const item of values) {
     const key = iteratee(item);
     if (!result[key]) {
@@ -234,7 +234,7 @@ export function groupBy<T>(collection: T[] | Record<string, T>, iteratee: (value
     }
     result[key].push(item);
   }
-  
+
   return result;
 }
 
@@ -252,7 +252,7 @@ export function groupBy<T>(collection: T[] | Record<string, T>, iteratee: (value
  * includes({a: 1, b: 2}, 1) // => true
  * includes('hello', 'ell') // => true
  */
-export function includes<T>(collection: T[] | Record<string, T> | string, value: T, fromIndex: number = 0): boolean {
+export function includes<T> (collection: T[] | Record<string, T> | string, value: T, fromIndex: number = 0): boolean {
   if (typeof collection === 'string') {
     return collection.indexOf(value as any, fromIndex) !== -1;
   }
@@ -274,7 +274,7 @@ export function includes<T>(collection: T[] | Record<string, T> | string, value:
  * @example
  * invokeMap([[5, 1, 7], [3, 2, 1]], 'sort') // => [[1, 5, 7], [1, 2, 3]]
  */
-export function invokeMap<T>(collection: T[], path: string, ...args: any[]): any[] {
+export function invokeMap<T> (collection: T[], path: string, ...args: any[]): any[] {
   return collection.map(item => {
     const method = (item as any)[path];
     return typeof method === 'function' ? method.apply(item, args) : undefined;
@@ -294,17 +294,17 @@ export function invokeMap<T>(collection: T[], path: string, ...args: any[]): any
  * keyBy([{id: 'a', dir: 'left'}, {id: 'b', dir: 'right'}], x => x.id) 
  * // => {a: {id: 'a', dir: 'left'}, b: {id: 'b', dir: 'right'}}
  */
-export function keyBy<T>(collection: T[], iteratee: (value: T) => string): Record<string, T>;
-export function keyBy<T>(collection: Record<string, T>, iteratee: (value: T) => string): Record<string, T>;
-export function keyBy<T>(collection: T[] | Record<string, T>, iteratee: (value: T) => string): Record<string, T> {
+export function keyBy<T> (collection: T[], iteratee: (value: T) => string): Record<string, T>;
+export function keyBy<T> (collection: Record<string, T>, iteratee: (value: T) => string): Record<string, T>;
+export function keyBy<T> (collection: T[] | Record<string, T>, iteratee: (value: T) => string): Record<string, T> {
   const result: Record<string, T> = {};
   const values = Array.isArray(collection) ? collection : Object.values(collection);
-  
+
   for (const item of values) {
     const key = iteratee(item);
     result[key] = item;
   }
-  
+
   return result;
 }
 
@@ -322,15 +322,15 @@ export function keyBy<T>(collection: T[] | Record<string, T>, iteratee: (value: 
  *         [x => x.user], ['desc']) 
  * // => [{user: 'fred', age: 48}, {user: 'barney', age: 36}]
  */
-export function orderBy<T>(collection: T[], iteratees: ((item: T) => any)[], orders: ('asc' | 'desc')[] = []): T[] {
+export function orderBy<T> (collection: T[], iteratees: ((item: T) => any)[], orders: ('asc' | 'desc')[] = []): T[] {
   return [...collection].sort((a, b) => {
     for (let i = 0; i < iteratees.length; i++) {
       const iteratee = iteratees[i];
       const order = orders[i] || 'asc';
-      
+
       const aVal = iteratee(a);
       const bVal = iteratee(b);
-      
+
       if (aVal < bVal) {
         return order === 'asc' ? -1 : 1;
       }
@@ -353,10 +353,10 @@ export function orderBy<T>(collection: T[], iteratees: ((item: T) => any)[], ord
  * @example
  * partition([1, 2, 3, 4], x => x % 2) // => [[1, 3], [2, 4]]
  */
-export function partition<T>(collection: T[], predicate: (value: T) => boolean): [T[], T[]] {
+export function partition<T> (collection: T[], predicate: (value: T) => boolean): [T[], T[]] {
   const truthy: T[] = [];
   const falsy: T[] = [];
-  
+
   for (const item of collection) {
     if (predicate(item)) {
       truthy.push(item);
@@ -364,7 +364,7 @@ export function partition<T>(collection: T[], predicate: (value: T) => boolean):
       falsy.push(item);
     }
   }
-  
+
   return [truthy, falsy];
 }
 
@@ -382,9 +382,9 @@ export function partition<T>(collection: T[], predicate: (value: T) => boolean):
  * reduce([1, 2], (sum, n) => sum + n, 0) // => 3
  * reduce({a: 1, b: 2, c: 1}, (result, value, key) => { ... }, {})
  */
-export function reduce<T, R>(collection: T[], iteratee: (accumulator: R, value: T, index: number, collection: T[]) => R, accumulator: R): R;
-export function reduce<T, R>(collection: Record<string, T>, iteratee: (accumulator: R, value: T, key: string, collection: Record<string, T>) => R, accumulator: R): R;
-export function reduce<T, R>(collection: T[] | Record<string, T>, iteratee: any, accumulator: R): R {
+export function reduce<T, R> (collection: T[], iteratee: (accumulator: R, value: T, index: number, collection: T[]) => R, accumulator: R): R;
+export function reduce<T, R> (collection: Record<string, T>, iteratee: (accumulator: R, value: T, key: string, collection: Record<string, T>) => R, accumulator: R): R;
+export function reduce<T, R> (collection: T[] | Record<string, T>, iteratee: any, accumulator: R): R {
   if (Array.isArray(collection)) {
     return collection.reduce(iteratee, accumulator);
   }
@@ -406,7 +406,7 @@ export function reduce<T, R>(collection: T[] | Record<string, T>, iteratee: any,
  * @example
  * reduceRight([1, 2, 3], (acc, n) => acc.concat(n), []) // => [3, 2, 1]
  */
-export function reduceRight<T, R>(collection: T[], iteratee: (accumulator: R, value: T, index: number, collection: T[]) => R, accumulator: R): R {
+export function reduceRight<T, R> (collection: T[], iteratee: (accumulator: R, value: T, index: number, collection: T[]) => R, accumulator: R): R {
   return collection.reduceRight(iteratee, accumulator);
 }
 
@@ -421,9 +421,9 @@ export function reduceRight<T, R>(collection: T[], iteratee: (accumulator: R, va
  * @example
  * reject([1, 2, 3, 4], x => x % 2 === 0) // => [1, 3]
  */
-export function reject<T>(collection: T[], predicate: (value: T, index: number, collection: T[]) => boolean): T[];
-export function reject<T>(collection: Record<string, T>, predicate: (value: T, key: string, collection: Record<string, T>) => boolean): T[];
-export function reject<T>(collection: T[] | Record<string, T>, predicate: any): T[] {
+export function reject<T> (collection: T[], predicate: (value: T, index: number, collection: T[]) => boolean): T[];
+export function reject<T> (collection: Record<string, T>, predicate: (value: T, key: string, collection: Record<string, T>) => boolean): T[];
+export function reject<T> (collection: T[] | Record<string, T>, predicate: any): T[] {
   if (Array.isArray(collection)) {
     return collection.filter((value, index, collection) => !predicate(value, index, collection));
   }
@@ -442,7 +442,7 @@ export function reject<T>(collection: T[] | Record<string, T>, predicate: any): 
  * sample([1, 2, 3, 4]) // => 2
  * sample({a: 1, b: 2, c: 3}) // => 2
  */
-export function sample<T>(collection: T[] | Record<string, T>): T | undefined {
+export function sample<T> (collection: T[] | Record<string, T>): T | undefined {
   if (Array.isArray(collection)) {
     return collection[Math.floor(Math.random() * collection.length)];
   }
@@ -461,11 +461,11 @@ export function sample<T>(collection: T[] | Record<string, T>): T | undefined {
  * sampleSize([1, 2, 3], 2) // => [3, 1]
  * sampleSize([1, 2, 3], 4) // => [2, 3, 1]
  */
-export function sampleSize<T>(collection: T[] | Record<string, T>, n: number): T[] {
+export function sampleSize<T> (collection: T[] | Record<string, T>, n: number): T[] {
   const values = Array.isArray(collection) ? collection : Object.values(collection);
   const result: T[] = [];
   const indices = new Set<number>();
-  
+
   while (result.length < n && result.length < values.length) {
     const randomIndex = Math.floor(Math.random() * values.length);
     if (!indices.has(randomIndex)) {
@@ -473,7 +473,7 @@ export function sampleSize<T>(collection: T[] | Record<string, T>, n: number): T
       result.push(values[randomIndex]);
     }
   }
-  
+
   return result;
 }
 
@@ -486,7 +486,7 @@ export function sampleSize<T>(collection: T[] | Record<string, T>, n: number): T
  * @example
  * shuffle([1, 2, 3, 4]) // => [4, 1, 3, 2]
  */
-export function shuffle<T>(collection: T[] | Record<string, T>): T[] {
+export function shuffle<T> (collection: T[] | Record<string, T>): T[] {
   const values = Array.isArray(collection) ? [...collection] : Object.values(collection);
   for (let i = values.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -507,7 +507,7 @@ export function shuffle<T>(collection: T[] | Record<string, T>): T[] {
  * size({a: 1, b: 2}) // => 2
  * size('pebbles') // => 7
  */
-export function size<T>(collection: T[] | Record<string, T> | string): number {
+export function size<T> (collection: T[] | Record<string, T> | string): number {
   if (typeof collection === 'string' || Array.isArray(collection)) {
     return collection.length;
   }
@@ -526,9 +526,9 @@ export function size<T>(collection: T[] | Record<string, T> | string): number {
  * some([null, 0, 'yes', false], Boolean) // => true
  * some({a: null, b: 0, c: 'yes'}, Boolean) // => true
  */
-export function some<T>(collection: T[], predicate: (value: T, index: number, collection: T[]) => boolean): boolean;
-export function some<T>(collection: Record<string, T>, predicate: (value: T, key: string, collection: Record<string, T>) => boolean): boolean;
-export function some<T>(collection: T[] | Record<string, T>, predicate: any): boolean {
+export function some<T> (collection: T[], predicate: (value: T, index: number, collection: T[]) => boolean): boolean;
+export function some<T> (collection: Record<string, T>, predicate: (value: T, key: string, collection: Record<string, T>) => boolean): boolean;
+export function some<T> (collection: T[] | Record<string, T>, predicate: any): boolean {
   if (Array.isArray(collection)) {
     return collection.some(predicate);
   }
@@ -547,12 +547,12 @@ export function some<T>(collection: T[] | Record<string, T>, predicate: any): bo
  * sortBy([{user: 'fred', age: 48}, {user: 'barney', age: 36}], x => x.age)
  * // => [{user: 'barney', age: 36}, {user: 'fred', age: 48}]
  */
-export function sortBy<T>(collection: T[], ...iteratees: ((item: T) => any)[]): T[] {
+export function sortBy<T> (collection: T[], ...iteratees: ((item: T) => any)[]): T[] {
   return [...collection].sort((a, b) => {
     for (const iteratee of iteratees) {
       const aVal = iteratee(a);
       const bVal = iteratee(b);
-      
+
       if (aVal < bVal) return -1;
       if (aVal > bVal) return 1;
     }
@@ -573,17 +573,17 @@ export function sortBy<T>(collection: T[], ...iteratees: ((item: T) => any)[]): 
  * countBy([6.1, 4.2, 6.3], Math.floor) // => {4: 1, 6: 2}
  * countBy(['one', 'two', 'three'], x => x.length) // => {3: 2, 5: 1}
  */
-export function countBy<T>(collection: T[], iteratee: (value: T) => string): Record<string, number>;
-export function countBy<T>(collection: Record<string, T>, iteratee: (value: T) => string): Record<string, number>;
-export function countBy<T>(collection: T[] | Record<string, T>, iteratee: (value: T) => string): Record<string, number> {
+export function countBy<T> (collection: T[], iteratee: (value: T) => string): Record<string, number>;
+export function countBy<T> (collection: Record<string, T>, iteratee: (value: T) => string): Record<string, number>;
+export function countBy<T> (collection: T[] | Record<string, T>, iteratee: (value: T) => string): Record<string, number> {
   const result: Record<string, number> = {};
   const values = Array.isArray(collection) ? collection : Object.values(collection);
-  
+
   for (const item of values) {
     const key = iteratee(item);
     result[key] = (result[key] || 0) + 1;
   }
-  
+
   return result;
 }
 
@@ -597,7 +597,7 @@ export function countBy<T>(collection: T[] | Record<string, T>, iteratee: (value
  * @example
  * eachRight([1, 2], value => console.log(value)) // => logs `2` then `1`
  */
-export function eachRight<T>(collection: T[], iteratee: (value: T, index: number, collection: T[]) => void): T[] {
+export function eachRight<T> (collection: T[], iteratee: (value: T, index: number, collection: T[]) => void): T[] {
   for (let i = collection.length - 1; i >= 0; i--) {
     iteratee(collection[i], i, collection);
   }
@@ -615,6 +615,6 @@ export function eachRight<T>(collection: T[], iteratee: (value: T, index: number
  * @example
  * forEachRight([1, 2], value => console.log(value)) // => logs `2` then `1`
  */
-export function forEachRight<T>(collection: T[], iteratee: (value: T, index: number, collection: T[]) => void): T[] {
+export function forEachRight<T> (collection: T[], iteratee: (value: T, index: number, collection: T[]) => void): T[] {
   return eachRight(collection, iteratee);
 }

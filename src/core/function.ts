@@ -17,8 +17,8 @@
  * const bound = bind(greet, object, 'hi');
  * bound('!'); // => 'hi fred!'
  */
-export function bind<T extends (...args: any[]) => any>(func: T, thisArg: any, ...partials: any[]): T {
-  return function(this: any, ...args: any[]) {
+export function bind<T extends (...args: any[]) => any> (func: T, thisArg: any, ...partials: any[]): T {
+  return function (this: any, ...args: any[]) {
     return func.apply(thisArg, [...partials, ...args]);
   } as T;
 }
@@ -40,8 +40,8 @@ export function bind<T extends (...args: any[]) => any>(func: T, thisArg: any, .
  * const bound = bindKey(object, 'greet', 'hi');
  * bound('!'); // => 'hi fred!'
  */
-export function bindKey<T>(object: T, key: keyof T, ...partials: any[]): (...args: any[]) => any {
-  return function(...args: any[]) {
+export function bindKey<T> (object: T, key: keyof T, ...partials: any[]): (...args: any[]) => any {
+  return function (...args: any[]) {
     const method = object[key];
     if (typeof method === 'function') {
       return (method as any).apply(object, [...partials, ...args]);
@@ -58,8 +58,8 @@ export function bindKey<T>(object: T, key: keyof T, ...partials: any[]): (...arg
  * @example
  * ['6', '8', '10'].map(ary(parseInt, 1)); // => [6, 8, 10]
  */
-export function ary<T extends (...args: any[]) => any>(func: T, n: number = func.length): (...args: any[]) => ReturnType<T> {
-  return function(...args: any[]) {
+export function ary<T extends (...args: any[]) => any> (func: T, n: number = func.length): (...args: any[]) => ReturnType<T> {
+  return function (...args: any[]) {
     return func(...args.slice(0, n));
   };
 }
@@ -74,8 +74,8 @@ export function ary<T extends (...args: any[]) => any>(func: T, n: number = func
  * });
  * flipped('a', 'b', 'c'); // => ['c', 'b', 'a']
  */
-export function flip<T extends (...args: any[]) => any>(func: T): (...args: Parameters<T>) => ReturnType<T> {
-  return function(...args: Parameters<T>) {
+export function flip<T extends (...args: any[]) => any> (func: T): (...args: Parameters<T>) => ReturnType<T> {
+  return function (...args: Parameters<T>) {
     return func(...args.reverse());
   };
 }
@@ -92,21 +92,21 @@ export function flip<T extends (...args: any[]) => any>(func: T): (...args: Para
  * values(object); // => [1, 2]
  * values(other); // => [3, 4]
  */
-export function memoize<T extends (...args: any[]) => any>(func: T, resolver?: (...args: Parameters<T>) => any): T {
+export function memoize<T extends (...args: any[]) => any> (func: T, resolver?: (...args: Parameters<T>) => any): T {
   const cache = new Map();
-  
-  const memoized = function(...args: Parameters<T>): ReturnType<T> {
+
+  const memoized = function (...args: Parameters<T>): ReturnType<T> {
     const key = resolver ? resolver(...args) : JSON.stringify(args);
-    
+
     if (cache.has(key)) {
       return cache.get(key);
     }
-    
+
     const result = func(...args);
     cache.set(key, result);
     return result;
   } as T;
-  
+
   (memoized as any).cache = cache;
   return memoized;
 }
@@ -122,8 +122,8 @@ export function memoize<T extends (...args: any[]) => any>(func: T, resolver?: (
  * const isOdd = negate(isEven);
  * isOdd(3); // => true
  */
-export function negate<T extends (...args: any[]) => boolean>(predicate: T): (...args: Parameters<T>) => boolean {
-  return function(...args: Parameters<T>) {
+export function negate<T extends (...args: any[]) => boolean> (predicate: T): (...args: Parameters<T>) => boolean {
+  return function (...args: Parameters<T>) {
     return !predicate(...args);
   };
 }
@@ -137,11 +137,11 @@ export function negate<T extends (...args: any[]) => boolean>(predicate: T): (..
  * initialize(); // creates the application
  * initialize(); // returns the cached result
  */
-export function once<T extends (...args: any[]) => any>(func: T): T {
+export function once<T extends (...args: any[]) => any> (func: T): T {
   let called = false;
   let result: ReturnType<T>;
-  
-  return function(...args: Parameters<T>): ReturnType<T> {
+
+  return function (...args: Parameters<T>): ReturnType<T> {
     if (!called) {
       called = true;
       result = func(...args);
@@ -167,8 +167,8 @@ export function once<T extends (...args: any[]) => any>(func: T): T {
  * }, square, doubled);
  * func(9, 3); // => [81, 6]
  */
-export function overArgs<T extends (...args: any[]) => any>(func: T, ...transforms: ((...args: any[]) => any)[]): (...args: any[]) => ReturnType<T> {
-  return function(...args: any[]) {
+export function overArgs<T extends (...args: any[]) => any> (func: T, ...transforms: ((...args: any[]) => any)[]): (...args: any[]) => ReturnType<T> {
+  return function (...args: any[]) {
     const transformedArgs = args.map((arg, index) => {
       const transform = transforms[index];
       return transform ? transform(arg) : arg;
@@ -189,8 +189,8 @@ export function overArgs<T extends (...args: any[]) => any>(func: T, ...transfor
  * const sayHelloTo = partial(greet, 'hello');
  * sayHelloTo('fred'); // => 'hello fred'
  */
-export function partial<T extends (...args: any[]) => any>(func: T, ...partials: any[]): (...args: any[]) => ReturnType<T> {
-  return function(...args: any[]) {
+export function partial<T extends (...args: any[]) => any> (func: T, ...partials: any[]): (...args: any[]) => ReturnType<T> {
+  return function (...args: any[]) {
     return func(...partials, ...args);
   };
 }
@@ -207,8 +207,8 @@ export function partial<T extends (...args: any[]) => any>(func: T, ...partials:
  * const greetFred = partialRight(greet, 'fred');
  * greetFred('hi'); // => 'hi fred'
  */
-export function partialRight<T extends (...args: any[]) => any>(func: T, ...partials: any[]): (...args: any[]) => ReturnType<T> {
-  return function(...args: any[]) {
+export function partialRight<T extends (...args: any[]) => any> (func: T, ...partials: any[]): (...args: any[]) => ReturnType<T> {
+  return function (...args: any[]) {
     return func(...args, ...partials);
   };
 }
@@ -224,8 +224,8 @@ export function partialRight<T extends (...args: any[]) => any>(func: T, ...part
  * }, 2, 0, 1);
  * rearged('b', 'c', 'a'); // => ['a', 'b', 'c']
  */
-export function rearg<T extends (...args: any[]) => any>(func: T, ...indexes: number[]): (...args: any[]) => ReturnType<T> {
-  return function(...args: any[]) {
+export function rearg<T extends (...args: any[]) => any> (func: T, ...indexes: number[]): (...args: any[]) => ReturnType<T> {
+  return function (...args: any[]) {
     const reorderedArgs = indexes.map(index => args[index]);
     return func(...reorderedArgs);
   };
@@ -241,8 +241,8 @@ export function rearg<T extends (...args: any[]) => any>(func: T, ...indexes: nu
  * });
  * say(['fred', 'hello']); // => 'fred says hello'
  */
-export function spread<T extends (args: any[]) => any>(func: T): (...args: any[]) => ReturnType<T> {
-  return function(...args: any[]) {
+export function spread<T extends (args: any[]) => any> (func: T): (...args: any[]) => ReturnType<T> {
+  return function (...args: any[]) {
     return func(args);
   };
 }
@@ -260,31 +260,31 @@ export function spread<T extends (args: any[]) => any>(func: T): (...args: any[]
  * const throttled = throttle(updatePosition, 100);
  * window.addEventListener('scroll', throttled);
  */
-export function throttle<T extends (...args: any[]) => any>(func: T, wait: number, options: { leading?: boolean; trailing?: boolean } = {}): T & { cancel(): void; flush(): ReturnType<T> | undefined } {
+export function throttle<T extends (...args: any[]) => any> (func: T, wait: number, options: { leading?: boolean; trailing?: boolean } = {}): T & { cancel (): void; flush (): ReturnType<T> | undefined } {
   let timeout: NodeJS.Timeout | null = null;
   let lastCallTime = 0;
   let lastArgs: Parameters<T> | null = null;
   let result: ReturnType<T>;
-  
+
   const { leading = true, trailing = true } = options;
-  
-  function invokeFunc() {
+
+  function invokeFunc () {
     if (lastArgs) {
       result = func(...lastArgs);
       lastArgs = null;
     }
     return result;
   }
-  
-  function leadingEdge() {
+
+  function leadingEdge () {
     lastCallTime = Date.now();
     if (leading) {
       return invokeFunc();
     }
     return result;
   }
-  
-  function trailingEdge() {
+
+  function trailingEdge () {
     timeout = null;
     if (trailing && lastArgs) {
       return invokeFunc();
@@ -292,17 +292,17 @@ export function throttle<T extends (...args: any[]) => any>(func: T, wait: numbe
     lastArgs = null;
     return result;
   }
-  
-  const throttled = function(...args: Parameters<T>): ReturnType<T> {
+
+  const throttled = function (...args: Parameters<T>): ReturnType<T> {
     const now = Date.now();
-    
+
     if (!lastCallTime && !leading) {
       lastCallTime = now;
     }
-    
+
     const remaining = wait - (now - lastCallTime);
     lastArgs = args;
-    
+
     if (remaining <= 0 || remaining > wait) {
       if (timeout) {
         clearTimeout(timeout);
@@ -313,11 +313,11 @@ export function throttle<T extends (...args: any[]) => any>(func: T, wait: numbe
     } else if (!timeout && trailing) {
       timeout = setTimeout(trailingEdge, remaining);
     }
-    
+
     return result;
-  } as T & { cancel(): void; flush(): ReturnType<T> | undefined };
-  
-  throttled.cancel = function() {
+  } as T & { cancel (): void; flush (): ReturnType<T> | undefined };
+
+  throttled.cancel = function () {
     if (timeout) {
       clearTimeout(timeout);
       timeout = null;
@@ -325,11 +325,11 @@ export function throttle<T extends (...args: any[]) => any>(func: T, wait: numbe
     lastCallTime = 0;
     lastArgs = null;
   };
-  
-  throttled.flush = function() {
+
+  throttled.flush = function () {
     return timeout ? trailingEdge() : result;
   };
-  
+
   return throttled;
 }
 
@@ -347,17 +347,17 @@ export function throttle<T extends (...args: any[]) => any>(func: T, wait: numbe
  * const debounced = debounce(calculateLayout, 150);
  * window.addEventListener('resize', debounced);
  */
-export function debounce<T extends (...args: any[]) => any>(func: T, wait: number, options: { leading?: boolean; trailing?: boolean; maxWait?: number } = {}): T & { cancel(): void; flush(): ReturnType<T> | undefined; pending(): boolean } {
+export function debounce<T extends (...args: any[]) => any> (func: T, wait: number, options: { leading?: boolean; trailing?: boolean; maxWait?: number } = {}): T & { cancel (): void; flush (): ReturnType<T> | undefined; pending (): boolean } {
   let timeout: NodeJS.Timeout | null = null;
   let maxTimeout: NodeJS.Timeout | null = null;
   let lastCallTime = 0;
   let lastInvokeTime = 0;
   let lastArgs: Parameters<T> | null = null;
   let result: ReturnType<T>;
-  
+
   const { leading = false, trailing = true, maxWait } = options;
-  
-  function invokeFunc() {
+
+  function invokeFunc () {
     if (lastArgs) {
       const args = lastArgs;
       lastArgs = null;
@@ -366,16 +366,16 @@ export function debounce<T extends (...args: any[]) => any>(func: T, wait: numbe
     }
     return result;
   }
-  
-  function leadingEdge() {
+
+  function leadingEdge () {
     lastInvokeTime = Date.now();
     if (leading) {
       return invokeFunc();
     }
     return result;
   }
-  
-  function trailingEdge() {
+
+  function trailingEdge () {
     timeout = null;
     if (trailing && lastArgs) {
       return invokeFunc();
@@ -383,8 +383,8 @@ export function debounce<T extends (...args: any[]) => any>(func: T, wait: numbe
     lastArgs = null;
     return result;
   }
-  
-  function timerExpired() {
+
+  function timerExpired () {
     const time = Date.now();
     if (shouldInvoke(time)) {
       return trailingEdge();
@@ -392,11 +392,11 @@ export function debounce<T extends (...args: any[]) => any>(func: T, wait: numbe
     timeout = setTimeout(timerExpired, remainingWait(time));
     return result;
   }
-  
-  function shouldInvoke(time: number) {
+
+  function shouldInvoke (time: number) {
     const timeSinceLastCall = time - lastCallTime;
     const timeSinceLastInvoke = time - lastInvokeTime;
-    
+
     return (
       !lastCallTime ||
       timeSinceLastCall >= wait ||
@@ -404,18 +404,18 @@ export function debounce<T extends (...args: any[]) => any>(func: T, wait: numbe
       (maxWait !== undefined && timeSinceLastInvoke >= maxWait)
     );
   }
-  
-  function remainingWait(time: number) {
+
+  function remainingWait (time: number) {
     const timeSinceLastCall = time - lastCallTime;
     const timeSinceLastInvoke = time - lastInvokeTime;
     const timeWaiting = wait - timeSinceLastCall;
-    
+
     return maxWait !== undefined
       ? Math.min(timeWaiting, maxWait - timeSinceLastInvoke)
       : timeWaiting;
   }
-  
-  function cancel() {
+
+  function cancel () {
     if (timeout) {
       clearTimeout(timeout);
       timeout = null;
@@ -428,22 +428,22 @@ export function debounce<T extends (...args: any[]) => any>(func: T, wait: numbe
     lastInvokeTime = 0;
     lastArgs = null;
   }
-  
-  function flush() {
+
+  function flush () {
     return timeout ? trailingEdge() : result;
   }
-  
-  function pending() {
+
+  function pending () {
     return timeout !== null;
   }
-  
-  const debounced = function(...args: Parameters<T>): ReturnType<T> {
+
+  const debounced = function (...args: Parameters<T>): ReturnType<T> {
     const time = Date.now();
     const isInvoking = shouldInvoke(time);
-    
+
     lastArgs = args;
     lastCallTime = time;
-    
+
     if (isInvoking) {
       if (!timeout) {
         return leadingEdge();
@@ -453,18 +453,18 @@ export function debounce<T extends (...args: any[]) => any>(func: T, wait: numbe
         return invokeFunc();
       }
     }
-    
+
     if (!timeout) {
       timeout = setTimeout(timerExpired, wait);
     }
-    
+
     return result;
-  } as T & { cancel(): void; flush(): ReturnType<T> | undefined; pending(): boolean };
-  
+  } as T & { cancel (): void; flush (): ReturnType<T> | undefined; pending (): boolean };
+
   debounced.cancel = cancel;
   debounced.flush = flush;
   debounced.pending = pending;
-  
+
   return debounced;
 }
 
@@ -475,8 +475,8 @@ export function debounce<T extends (...args: any[]) => any>(func: T, wait: numbe
  * @example
  * ['6', '8', '10'].map(unary(parseInt)); // => [6, 8, 10]
  */
-export function unary<T extends (...args: any[]) => any>(func: T): (arg: Parameters<T>[0]) => ReturnType<T> {
-  return function(arg: Parameters<T>[0]) {
+export function unary<T extends (...args: any[]) => any> (func: T): (arg: Parameters<T>[0]) => ReturnType<T> {
+  return function (arg: Parameters<T>[0]) {
     return func(arg);
   };
 }
@@ -492,8 +492,8 @@ export function unary<T extends (...args: any[]) => any>(func: T): (arg: Paramet
  * });
  * p('world'); // => 'hello world'
  */
-export function wrap<T, R>(value: T, wrapper: (value: T, ...args: any[]) => R): (...args: any[]) => R {
-  return function(...args: any[]) {
+export function wrap<T, R> (value: T, wrapper: (value: T, ...args: any[]) => R): (...args: any[]) => R {
+  return function (...args: any[]) {
     return wrapper(value, ...args);
   };
 }
@@ -514,12 +514,12 @@ export function wrap<T, R>(value: T, wrapper: (value: T, ...args: any[]) => R): 
  * curried(1, 2)(3); // => [1, 2, 3]
  * curried(1, 2, 3); // => [1, 2, 3]
  */
-export function curry<T extends (...args: any[]) => any>(func: T, arity: number = func.length): any {
-  return function curried(this: any, ...args: any[]): any {
+export function curry<T extends (...args: any[]) => any> (func: T, arity: number = func.length): any {
+  return function curried (this: any, ...args: any[]): any {
     if (args.length >= arity) {
       return func.apply(this, args);
     } else {
-      return function(this: any, ...args2: any[]) {
+      return function (this: any, ...args2: any[]) {
         return curried.apply(this, args.concat(args2));
       };
     }
@@ -540,12 +540,12 @@ export function curry<T extends (...args: any[]) => any>(func: T, arity: number 
  * curried(2, 3)(1); // => [1, 2, 3]
  * curried(1, 2, 3); // => [1, 2, 3]
  */
-export function curryRight<T extends (...args: any[]) => any>(func: T, arity: number = func.length): any {
-  return function curried(this: any, ...args: any[]): any {
+export function curryRight<T extends (...args: any[]) => any> (func: T, arity: number = func.length): any {
+  return function curried (this: any, ...args: any[]): any {
     if (args.length >= arity) {
       return func.apply(this, args);
     } else {
-      return function(this: any, ...args2: any[]) {
+      return function (this: any, ...args2: any[]) {
         return curried.apply(this, args2.concat(args));
       };
     }
@@ -564,8 +564,8 @@ export function curryRight<T extends (...args: any[]) => any>(func: T, arity: nu
  * });
  * say('hello', 'fred', 'barney', 'pebbles'); // => 'hello fred, barney, pebbles'
  */
-export function rest<T extends (...args: any[]) => any>(func: T, start: number = func.length - 1): (...args: any[]) => ReturnType<T> {
-  return function(...args: any[]) {
+export function rest<T extends (...args: any[]) => any> (func: T, start: number = func.length - 1): (...args: any[]) => ReturnType<T> {
+  return function (...args: any[]) {
     const restArgs = args.slice(start);
     const normalArgs = args.slice(0, start);
     return func(...normalArgs, restArgs);
