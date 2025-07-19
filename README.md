@@ -1,8 +1,12 @@
-# generic-functions
+<p align="center">
+  <img src="docs/gf.png" alt="generic-functions logo" width="160" />
+<br />
+<h1 align="center">generic-functions</h1>
+</p>
 
 [![npm version][npm-badge]][npm-url] [![Open issues][issues-badge]][issues-url] [![TypeScript][typescript-badge]][typescript-url] [![License: MIT][license-badge]][license-url]
 
-> A comprehensive, lightweight utility library for modern JavaScript/TypeScript development
+> A comprehensive, lightweight utility library
 
 ## 🚀 Features
 

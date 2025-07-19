@@ -1,27 +1,34 @@
 {
     "compilerOptions": {
+        "target": "ES2020",
+        "module": "ESNext",
+        "moduleResolution": "node",
+        "lib": [
+            "ES2020",
+            "DOM"
+        ],
         "outDir": "./dist",
         "rootDir": "./src",
-        "module": "CommonJS",
-        "target": "ES2018",
-        "moduleResolution": "node",
+        "strict": true,
+        "esModuleInterop": true,
+        "skipLibCheck": true,
+        "forceConsistentCasingInFileNames": true,
         "declaration": true,
         "declarationMap": true,
-        "esModuleInterop": true,
-        "allowSyntheticDefaultImports": true,
         "sourceMap": true,
-        "inlineSources": false,
-        "forceConsistentCasingInFileNames": true,
-        "strict": true,
-        "skipLibCheck": true,
-        "removeComments": true
+        "removeComments": false,
+        "resolveJsonModule": true,
+        "allowSyntheticDefaultImports": true,
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true
     },
     "include": [
-        "src/**/*.ts"
+        "src/**/*"
     ],
     "exclude": [
         "node_modules",
-        "**/*.spec.ts",
-        "dist"
+        "dist",
+        "**/*.test.ts",
+        "**/*.spec.ts"
     ]
 }
