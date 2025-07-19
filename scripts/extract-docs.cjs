@@ -7,7 +7,16 @@
 
 const fs = require('fs');
 const path = require('path');
-const ts = require('typescript');
+
+// Check if TypeScript is available
+let ts;
+try {
+  ts = require('typescript');
+} catch (error) {
+  console.error('TypeScript is required for documentation extraction. Please install it:');
+  console.error('npm install --save-dev typescript');
+  process.exit(1);
+}
 
 // Read package.json
 const packageJsonPath = path.join(__dirname, '..', 'package.json');

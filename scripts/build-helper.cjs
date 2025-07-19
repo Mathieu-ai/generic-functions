@@ -104,40 +104,47 @@ async function buildLibrary() {
 // Get command from arguments
 const command = process.argv[2];
 
-switch (command) {
-  case 'clean':
-    removeDirectory('dist');
-    break;
-    
-  case 'copy-files':
-    // Ensure dist directory exists
-    if (!fs.existsSync('dist')) {
-      fs.mkdirSync('dist', { recursive: true });
+async function main() {
+    switch (command) {
+      case 'clean':
+        removeDirectory('dist');
+        break;
+        
+      case 'copy-files':
+        // Ensure dist directory exists
+        if (!fs.existsSync('dist')) {
+          fs.mkdirSync('dist', { recursive: true });
+        }
+        
+        // Copy files
+        copyFile('README.md', 'dist/README.md');
+        copyFile('LICENSE', 'dist/LICENSE');
+        
+        // Run the package.json creation script
+        require('./create-dist-package.cjs');
+        break;
+        
+      case 'build-docs':
+        buildDocs();
+        break;
+        
+      case 'all':
+        removeDirectory('dist');
+        await buildLibrary();
+        copyFile('README.md', 'dist/README.md'); 
+        copyFile('LICENSE', 'dist/LICENSE');
+        require('./create-dist-package.cjs');
+        buildDocs();
+        break;
+        
+      default:
+        console.error('Usage: node build-helper.cjs [clean|copy-files|build-docs|all]');
+        process.exit(1);
     }
-    
-    // Copy files
-    copyFile('README.md', 'dist/README.md');
-    copyFile('LICENSE', 'dist/LICENSE');
-    
-    // Run the package.json creation script
-    require('./create-dist-package.cjs');
-    break;
-    
-  case 'build-docs':
-    buildDocs();
-    break;
-    
-  case 'all':
-    cleanDist();
-    copyFile('package.json', 'dist/package.json');
-    copyFile('README.md', 'dist/README.md'); 
-    copyFile('LICENSE', 'dist/LICENSE');
-    buildDocs();
-    break;
-    
-  default:
-    console.error('Usage: node build-helper.cjs [clean|copy-files|build-docs|all]');
-    process.exit(1);
 }
 
-buildLibrary();
+// Run main function
+main().catch(error => {
+    console.error('Script failed:', error);
+    process.exit(1);
+});
