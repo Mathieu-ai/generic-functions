@@ -583,18 +583,83 @@ class FunctionsDocs {
         const sidebarOverlay = document.getElementById('sidebarOverlay');
 
         if (mobileMenuBtn && sidebar && sidebarOverlay) {
-            mobileMenuBtn.addEventListener('click', () => {
-                sidebar.classList.toggle('-translate-x-full');
-                if (sidebar.classList.contains('-translate-x-full')) {
-                    sidebarOverlay.classList.add('opacity-0', 'pointer-events-none');
-                } else {
+            // Debug logging
+            // console.log('Mobile menu elements found:', { mobileMenuBtn, sidebar, sidebarOverlay });
+
+            mobileMenuBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                // console.log('Mobile menu button clicked');
+                
+                // Toggle sidebar visibility
+                const isHidden = sidebar.classList.contains('-translate-x-full');
+                // console.log('Sidebar is currently hidden:', isHidden);
+                
+                if (isHidden) {
+                    // Show sidebar
+                    // console.log('Showing sidebar');
+                    sidebar.classList.remove('-translate-x-full');
                     sidebarOverlay.classList.remove('opacity-0', 'pointer-events-none');
+                    document.body.style.overflow = 'hidden'; // Prevent body scroll
+                } else {
+                    // Hide sidebar
+                    // console.log('Hiding sidebar');
+                    sidebar.classList.add('-translate-x-full');
+                    sidebarOverlay.classList.add('opacity-0', 'pointer-events-none');
+                    document.body.style.overflow = ''; // Restore body scroll
                 }
             });
 
-            sidebarOverlay.addEventListener('click', () => {
+            // Close sidebar when clicking overlay
+            sidebarOverlay.addEventListener('click', (e) => {
+                // console.log('Overlay clicked, hiding sidebar');
                 sidebar.classList.add('-translate-x-full');
                 sidebarOverlay.classList.add('opacity-0', 'pointer-events-none');
+                document.body.style.overflow = '';
+            });
+
+            // Close sidebar when clicking on sidebar links (mobile only)
+            sidebar.addEventListener('click', (e) => {
+                if (e.target.matches('.function-link, .category-name-btn, [data-category="all"], .tab-btn')) {
+                    // Only close on mobile
+                    if (window.innerWidth < 768) {
+                        // console.log('Sidebar link clicked on mobile, hiding sidebar');
+                        sidebar.classList.add('-translate-x-full');
+                        sidebarOverlay.classList.add('opacity-0', 'pointer-events-none');
+                        document.body.style.overflow = '';
+                    }
+                }
+            });
+
+            // Handle window resize - reset mobile menu state
+            window.addEventListener('resize', () => {
+                if (window.innerWidth >= 768) {
+                    // Desktop mode - reset mobile states
+                    // console.log('Switched to desktop mode, resetting sidebar');
+                    sidebar.classList.remove('-translate-x-full');
+                    sidebarOverlay.classList.add('opacity-0', 'pointer-events-none');
+                    document.body.style.overflow = '';
+                }
+            });
+
+            // Add visual feedback to mobile menu button
+            mobileMenuBtn.addEventListener('mousedown', () => {
+                mobileMenuBtn.style.transform = 'scale(0.95)';
+            });
+
+            mobileMenuBtn.addEventListener('mouseup', () => {
+                mobileMenuBtn.style.transform = 'scale(1)';
+            });
+
+            mobileMenuBtn.addEventListener('mouseleave', () => {
+                mobileMenuBtn.style.transform = 'scale(1)';
+            });
+        } else {
+            console.error('Mobile menu elements not found:', {
+                mobileMenuBtn: !!mobileMenuBtn,
+                sidebar: !!sidebar,
+                sidebarOverlay: !!sidebarOverlay
             });
         }
 

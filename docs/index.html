@@ -104,6 +104,36 @@
             @media (max-width: 767px) {
                 #sidebar {
                     margin-top: 0 !important;
+                    height: 100vh !important;
+                    max-height: 100vh !important;
+                    border-radius: 0 !important;
+                    width: 280px !important;
+                    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+                }
+                
+                /* Ensure sidebar stays above other content */
+                #sidebar.show-mobile {
+                    transform: translateX(0) !important;
+                }
+                
+                /* Ensure main content has proper spacing on mobile when sidebar is open */
+                body.sidebar-open {
+                    overflow: hidden;
+                }
+            }
+
+            /* ANCHOR: Mobile Sidebar Animation Improvements */
+            @media (max-width: 767px) {
+                #sidebarOverlay {
+                    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+                }
+                
+                #sidebarOverlay.pointer-events-none {
+                    visibility: hidden;
+                }
+                
+                #sidebarOverlay:not(.pointer-events-none) {
+                    visibility: visible;
                 }
             }
 
@@ -280,10 +310,10 @@
             <!-- SECTION: Sidebar Navigation -->
             <!-- NOTE: Sticky sidebar with search and categorized function navigation -->
             <aside id="sidebar"
-                class="sticky top-0 z-10 w-72 min-w-[16rem] max-h-[calc(100vh-2rem)] h-[calc(100vh-2rem)] 
-           bg-white/80 dark:bg-gray-900/80 border-r border-gray-200 dark:border-gray-800 
-           shadow-xl rounded-2xl mt-10 mr-4 hidden md:flex flex-col transition-all
-           backdrop-blur-md overflow-hidden">
+                class="fixed md:sticky top-0 left-0 z-30 w-72 min-w-[16rem] h-screen md:max-h-[calc(100vh-2rem)] md:h-[calc(100vh-2rem)]
+           bg-white/95 dark:bg-gray-900/95 border-r border-gray-200 dark:border-gray-800 
+           shadow-xl md:rounded-2xl md:mt-10 md:mr-4 flex flex-col transition-transform duration-300 ease-in-out
+           backdrop-blur-md overflow-hidden -translate-x-full md:translate-x-0">
                 
                 <!-- ANCHOR: Search Input with Yellow Accent -->
                 <div class="px-4 pt-6 pb-2">
@@ -304,12 +334,12 @@
             
             <!-- ANCHOR: Mobile Sidebar Overlay -->
             <div id="sidebarOverlay"
-                class="fixed inset-0 bg-black bg-opacity-40 z-30 opacity-0 pointer-events-none transition-opacity md:hidden">
+                class="fixed inset-0 bg-black/50 z-20 opacity-0 pointer-events-none transition-opacity duration-300 md:hidden">
             </div>
             
             <!-- ANCHOR: Mobile Menu Button -->
             <button id="mobileMenuBtn"
-                class="fixed top-4 left-4 z-40 md:hidden bg-yellow-400 hover:bg-yellow-500 text-gray-900 p-2 rounded-full shadow-lg focus:outline-none">
+                class="fixed top-4 left-4 z-40 md:hidden bg-yellow-400 hover:bg-yellow-500 text-gray-900 p-3 rounded-full shadow-lg focus:outline-none transition-all duration-200 hover:scale-105">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16">
                     </path>
@@ -318,7 +348,7 @@
 
             <!-- SECTION: Main Content Area -->
             <!-- NOTE: Grid layout for function documentation cards -->
-            <main class="flex-1 min-w-0 pt-6 pb-12">
+            <main class="flex-1 min-w-0 pt-6 pb-12 md:ml-0">
                 <!-- ANCHOR: Functions Grid -->
                 <!-- NOTE: Responsive grid populated by JavaScript with function cards -->
                 <div id="functionsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>

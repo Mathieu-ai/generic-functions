@@ -1,6 +1,6 @@
 // Auto-generated documentation data
-// Generated on 2025-07-19T16:27:56.062Z
-// Package: generic-functions v0.9.2
+// Generated on 2025-07-19T18:02:30.327Z
+// Package: generic-functions.mlai v0.9.6
 // Repository: https://github.com/Mathieu-ai/generic-functions.git
 // License: MIT
 // Author: Mathieu-ai
@@ -36,7 +36,7 @@ const functionsData = [
       "description": "The array or fallback based on size"
     },
     "example": "checkLength()",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "chunk",
@@ -62,7 +62,7 @@ const functionsData = [
       "description": "Returns the new array of chunks"
     },
     "example": "chunk([1, 2, 3, 4], 2); // [[1, 2], [3, 4]]\nchunk([1, 2, 3, 4, 5], 3); // [[1, 2, 3], [4, 5]]",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "compact",
@@ -82,7 +82,7 @@ const functionsData = [
       "description": "Returns the new array of filtered values"
     },
     "example": "compact([0, 1, false, 2, '', 3]); // [1, 2, 3]",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "concat",
@@ -108,7 +108,7 @@ const functionsData = [
       "description": "Returns the new concatenated array"
     },
     "example": "concat([1], 2, [3], [[4]]); // [1, 2, 3, [4]]",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "difference",
@@ -134,7 +134,7 @@ const functionsData = [
       "description": "Returns the new array of filtered values"
     },
     "example": "difference([2, 1], [2, 3]); // [1]",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "differenceBy",
@@ -166,7 +166,7 @@ const functionsData = [
       "description": "Returns the new array of filtered values"
     },
     "example": "differenceBy([2.1, 1.2], [2.3, 3.4], Math.floor); // [1.2]",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "differenceWith",
@@ -198,7 +198,7 @@ const functionsData = [
       "description": "Returns the new array of filtered values"
     },
     "example": "differenceWith([{ 'x': 1 }, { 'x': 2 }], [{ 'x': 1 }], (a, b) => a.x === b.x); // [{ 'x': 2 }]",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "drop",
@@ -224,7 +224,7 @@ const functionsData = [
       "description": "Returns the slice of array"
     },
     "example": "drop([1, 2, 3]); // [2, 3]\ndrop([1, 2, 3], 2); // [3]",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "dropRight",
@@ -250,7 +250,7 @@ const functionsData = [
       "description": "Returns the slice of array"
     },
     "example": "dropRight([1, 2, 3]); // [1, 2]\ndropRight([1, 2, 3], 2); // [1]",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "dropRightWhile",
@@ -276,7 +276,7 @@ const functionsData = [
       "description": "Returns the slice of array"
     },
     "example": "dropRightWhile([1, 2, 3, 4], n => n > 2); // [1, 2]",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "dropWhile",
@@ -302,7 +302,7 @@ const functionsData = [
       "description": "Returns the slice of array"
     },
     "example": "dropWhile([1, 2, 3, 4], n => n < 3); // [3, 4]",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "fill",
@@ -340,7 +340,7 @@ const functionsData = [
       "description": "Returns the filled array"
     },
     "example": "fill([1, 2, 3], 'a'); // ['a', 'a', 'a']\nfill([4, 6, 8, 10], '*', 1, 3); // [4, '*', '*', 10]",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "findIndex",
@@ -372,7 +372,7 @@ const functionsData = [
       "description": "Returns the index of the found element, else -1"
     },
     "example": "findIndex([1, 2, 3, 4], n => n % 2 === 0); // 1",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "findLastIndex",
@@ -404,7 +404,7 @@ const functionsData = [
       "description": "Returns the index of the found element, else -1"
     },
     "example": "findLastIndex([1, 2, 3, 4], n => n % 2 === 1); // 2",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "flatten",
@@ -424,7 +424,7 @@ const functionsData = [
       "description": "Returns the new flattened array"
     },
     "example": "flatten([1, [2, [3, [4]], 5]]); // [1, 2, [3, [4]], 5]",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "flattenDeep",
@@ -444,7 +444,7 @@ const functionsData = [
       "description": "Returns the new flattened array"
     },
     "example": "flattenDeep([1, [2, [3, [4]], 5]]); // [1, 2, 3, 4, 5]",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "flattenDepth",
@@ -470,7 +470,7 @@ const functionsData = [
       "description": "Returns the new flattened array"
     },
     "example": "flattenDepth([1, [2, [3, [4]], 5]], 1); // [1, 2, [3, [4]], 5]\nflattenDepth([1, [2, [3, [4]], 5]], 2); // [1, 2, 3, [4], 5]",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "getLastElement",
@@ -490,7 +490,7 @@ const functionsData = [
       "description": "The last element(s)"
     },
     "example": "getLastElement()",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "getUnique",
@@ -516,7 +516,7 @@ const functionsData = [
       "description": "Returns array of unique values"
     },
     "example": "getUnique([1, 2, 2, 3]); // [1, 2, 3]\ngetUnique([{id: 1}, {id: 2}, {id: 1}], 'id'); // [{id: 1}, {id: 2}]",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "head",
@@ -536,7 +536,7 @@ const functionsData = [
       "description": "Returns the first element of array"
     },
     "example": "head([1, 2, 3]); // 1\nhead([]); // undefined",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "indexOf",
@@ -568,7 +568,7 @@ const functionsData = [
       "description": "Returns the index of the matched value, else -1"
     },
     "example": "indexOf([1, 2, 1, 2], 2); // 1\nindexOf([1, 2, 1, 2], 2, 2); // 3",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "initial",
@@ -588,7 +588,7 @@ const functionsData = [
       "description": "Returns the slice of array"
     },
     "example": "initial([1, 2, 3]); // [1, 2]",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "intersection",
@@ -608,7 +608,7 @@ const functionsData = [
       "description": "Returns the new array of intersecting values"
     },
     "example": "intersection([2, 1], [2, 3]); // [2]",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "intersectionBy",
@@ -634,7 +634,7 @@ const functionsData = [
       "description": "Returns the new array of intersecting values"
     },
     "example": "intersectionBy([[2.1, 1.2], [2.3, 3.4]], Math.floor); // [2.1]",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "intersectionWith",
@@ -660,7 +660,7 @@ const functionsData = [
       "description": "Returns the new array of intersecting values"
     },
     "example": "intersectionWith([[{ 'x': 1 }], [{ 'x': 2 }, { 'x': 1 }]], (a, b) => a.x === b.x); // [{ 'x': 1 }]",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "join",
@@ -686,7 +686,7 @@ const functionsData = [
       "description": "Returns the joined string"
     },
     "example": "join(['a', 'b', 'c'], '~'); // 'a~b~c'",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "last",
@@ -706,7 +706,7 @@ const functionsData = [
       "description": "Returns the last element of array"
     },
     "example": "last([1, 2, 3]); // 3\nlast([]); // undefined",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "lastIndexOf",
@@ -738,7 +738,7 @@ const functionsData = [
       "description": "Returns the index of the matched value, else -1"
     },
     "example": "lastIndexOf([1, 2, 1, 2], 2); // 3\nlastIndexOf([1, 2, 1, 2], 2, 2); // 1",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "nth",
@@ -764,7 +764,7 @@ const functionsData = [
       "description": "Returns the nth element of array"
     },
     "example": "nth(['a', 'b', 'c', 'd'], 1); // 'b'\nnth(['a', 'b', 'c', 'd'], -2); // 'c'",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "pull",
@@ -790,7 +790,7 @@ const functionsData = [
       "description": "Returns the new array with values removed"
     },
     "example": "pull([1, 2, 3, 1, 2, 3], 2, 3); // [1, 1]",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "pullAll",
@@ -816,7 +816,7 @@ const functionsData = [
       "description": "Returns the new array with values removed"
     },
     "example": "pullAll([1, 2, 3, 1, 2, 3], [2, 3]); // [1, 1]",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "pullAllBy",
@@ -848,7 +848,7 @@ const functionsData = [
       "description": "Returns the new array with values removed"
     },
     "example": "pullAllBy([{ 'x': 1 }, { 'x': 2 }, { 'x': 3 }, { 'x': 1 }], [{ 'x': 1 }, { 'x': 3 }], 'x'); // [{ 'x': 2 }]",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "pullAllWith",
@@ -880,7 +880,7 @@ const functionsData = [
       "description": "Returns the new array with values removed"
     },
     "example": "pullAllWith([{ 'x': 1, 'y': 2 }, { 'x': 3, 'y': 4 }, { 'x': 5, 'y': 6 }], [{ 'x': 3, 'y': 4 }], (a, b) => a.x === b.x); // [{ 'x': 1, 'y': 2 }, { 'x': 5, 'y': 6 }]",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "pullAt",
@@ -906,7 +906,7 @@ const functionsData = [
       "description": "Returns the new array with elements removed"
     },
     "example": "pullAt(['a', 'b', 'c', 'd'], 1, 3); // ['a', 'c']",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "randomString",
@@ -926,7 +926,7 @@ const functionsData = [
       "description": "Random string from the array"
     },
     "example": "randomString()",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "remove",
@@ -952,7 +952,7 @@ const functionsData = [
       "description": "Returns an array of removed elements"
     },
     "example": "const array = [1, 2, 3, 4];\nconst evens = remove(array, n => n % 2 === 0); // evens: [2, 4], array: [1, 3]",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "reverse",
@@ -972,7 +972,7 @@ const functionsData = [
       "description": "Returns the new reversed array"
     },
     "example": "reverse([1, 2, 3]); // [3, 2, 1]",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "slice",
@@ -1004,7 +1004,7 @@ const functionsData = [
       "description": "Returns the slice of array"
     },
     "example": "slice([1, 2, 3, 4], 2); // [3, 4]\nslice([1, 2, 3, 4], 1, 3); // [2, 3]",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "sort",
@@ -1024,7 +1024,7 @@ const functionsData = [
       "description": "Returns the sorted array"
     },
     "example": "sort({ arr: [{name: 'Bob'}, {name: 'Alice'}], prop: 'name' })\n// [{name: 'Alice'}, {name: 'Bob'}]",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "sortedIndex",
@@ -1050,7 +1050,7 @@ const functionsData = [
       "description": "Returns the index at which value should be inserted into array"
     },
     "example": "sortedIndex([30, 50], 40); // 1",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "sortedIndexBy",
@@ -1082,7 +1082,7 @@ const functionsData = [
       "description": "Returns the index at which value should be inserted into array"
     },
     "example": "sortedIndexBy([{ 'x': 4 }, { 'x': 5 }], { 'x': 4 }, o => o.x); // 0",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "sortedIndexOf",
@@ -1108,7 +1108,7 @@ const functionsData = [
       "description": "Returns the index of the matched value, else -1"
     },
     "example": "sortedIndexOf([4, 5, 5, 5, 6], 5); // 1",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "sortedLastIndex",
@@ -1134,7 +1134,7 @@ const functionsData = [
       "description": "Returns the index at which value should be inserted into array"
     },
     "example": "sortedLastIndex([4, 5, 5, 5, 6], 5); // 4",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "sortedLastIndexBy",
@@ -1166,7 +1166,7 @@ const functionsData = [
       "description": "Returns the index at which value should be inserted into array"
     },
     "example": "sortedLastIndexBy([{ 'x': 4 }, { 'x': 5 }], { 'x': 4 }, o => o.x); // 1",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "sortedLastIndexOf",
@@ -1192,7 +1192,7 @@ const functionsData = [
       "description": "Returns the index of the matched value, else -1"
     },
     "example": "sortedLastIndexOf([4, 5, 5, 5, 6], 5); // 3",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "tail",
@@ -1212,7 +1212,7 @@ const functionsData = [
       "description": "Returns the slice of array"
     },
     "example": "tail([1, 2, 3]); // [2, 3]",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "take",
@@ -1238,7 +1238,7 @@ const functionsData = [
       "description": "Returns the slice of array"
     },
     "example": "take([1, 2, 3]); // [1]\ntake([1, 2, 3], 2); // [1, 2]",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "takeRight",
@@ -1264,7 +1264,7 @@ const functionsData = [
       "description": "Returns the slice of array"
     },
     "example": "takeRight([1, 2, 3]); // [3]\ntakeRight([1, 2, 3], 2); // [2, 3]",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "takeRightWhile",
@@ -1290,7 +1290,7 @@ const functionsData = [
       "description": "Returns the slice of array"
     },
     "example": "takeRightWhile([1, 2, 3], n => n > 1); // [2, 3]",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "takeWhile",
@@ -1316,7 +1316,7 @@ const functionsData = [
       "description": "Returns the slice of array"
     },
     "example": "takeWhile([1, 2, 3], n => n < 3); // [1, 2]",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "union",
@@ -1336,7 +1336,7 @@ const functionsData = [
       "description": "Returns the new array of combined values"
     },
     "example": "union([2], [1, 2]); // [2, 1]",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "unionBy",
@@ -1362,7 +1362,7 @@ const functionsData = [
       "description": "Returns the new array of combined values"
     },
     "example": "unionBy([[2.1], [1.2, 2.3]], Math.floor); // [2.1, 1.2]",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "unionWith",
@@ -1388,7 +1388,7 @@ const functionsData = [
       "description": "Returns the new array of combined values"
     },
     "example": "unionWith([[{ 'x': 1 }], [{ 'x': 2 }, { 'x': 1 }]], (a, b) => a.x === b.x); // [{ 'x': 1 }, { 'x': 2 }]",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "uniq",
@@ -1408,7 +1408,7 @@ const functionsData = [
       "description": "Returns the new duplicate free array"
     },
     "example": "uniq([2, 1, 2]); // [2, 1]",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "uniqBy",
@@ -1434,7 +1434,7 @@ const functionsData = [
       "description": "Returns the new duplicate free array"
     },
     "example": "uniqBy([2.1, 1.2, 2.3], Math.floor); // [2.1, 1.2]",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "uniqWith",
@@ -1460,7 +1460,7 @@ const functionsData = [
       "description": "Returns the new duplicate free array"
     },
     "example": "uniqWith([{ 'x': 1, 'y': 2 }, { 'x': 2, 'y': 1 }, { 'x': 1, 'y': 2 }], (a, b) => a.x === b.x); // [{ 'x': 1, 'y': 2 }, { 'x': 2, 'y': 1 }]",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "unzip",
@@ -1480,7 +1480,7 @@ const functionsData = [
       "description": "Returns the new array of regrouped elements"
     },
     "example": "unzip([['a', 1, true], ['b', 2, false]]); // [['a', 'b'], [1, 2], [true, false]]",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "unzipWith",
@@ -1506,7 +1506,7 @@ const functionsData = [
       "description": "Returns the new array of regrouped elements"
     },
     "example": "unzipWith([['1', '2'], ['3', '4'], ['5', '6']], (...group) => group.join('')); // ['135', '246']",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "without",
@@ -1532,7 +1532,7 @@ const functionsData = [
       "description": "Returns the new array of filtered values"
     },
     "example": "without([2, 1, 2, 3], 1, 2); // [3]",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "xor",
@@ -1552,7 +1552,7 @@ const functionsData = [
       "description": "Returns the new array of filtered values"
     },
     "example": "xor([2, 1], [2, 3]); // [1, 3]",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "xorBy",
@@ -1578,7 +1578,7 @@ const functionsData = [
       "description": "Returns the new array of filtered values"
     },
     "example": "xorBy([[2.1, 1.2], [2.3, 3.4]], Math.floor); // [1.2, 3.4]",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "xorWith",
@@ -1604,7 +1604,7 @@ const functionsData = [
       "description": "Returns the new array of filtered values"
     },
     "example": "xorWith([[{ 'x': 1 }], [{ 'x': 2 }, { 'x': 1 }]], (a, b) => a.x === b.x); // [{ 'x': 2 }]",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "zip",
@@ -1624,7 +1624,7 @@ const functionsData = [
       "description": "Returns the new array of grouped elements"
     },
     "example": "zip(['a', 'b'], [1, 2], [true, false]); // [['a', 1, true], ['b', 2, false]]",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "zipObject",
@@ -1650,7 +1650,7 @@ const functionsData = [
       "description": "Returns the new object"
     },
     "example": "zipObject(['a', 'b'], [1, 2]); // { 'a': 1, 'b': 2 }",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "zipObjectDeep",
@@ -1676,7 +1676,7 @@ const functionsData = [
       "description": "Returns the new object"
     },
     "example": "zipObjectDeep(['a.b[0].c', 'a.b[1].d'], [1, 2]); // { 'a': { 'b': [{ 'c': 1 }, { 'd': 2 }] } }",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "zipWith",
@@ -1696,7 +1696,7 @@ const functionsData = [
       "description": "Returns the new array of grouped elements"
     },
     "example": "zipWith([1, 2], [10, 20], [100, 200], (a, b, c) => a + b + c); // [111, 222]",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "addTime",
@@ -1728,7 +1728,7 @@ const functionsData = [
       "description": "A new Date object with the added time"
     },
     "example": "addTime(new Date('2023-12-25'), 5, 'day') // 2023-12-30\naddTime('2023-12-25T10:00:00', 2, 'hour') // 2023-12-25T12:00:00\naddTime(new Date(), -1, 'month') // One month ago\naddTime('2023-01-31', 1, 'month') // 2023-02-28 (handles month overflow)",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "formatDate",
@@ -1754,7 +1754,7 @@ const functionsData = [
       "description": "Formatted date string, or empty string if date is invalid"
     },
     "example": "formatDate(new Date(), 'DD/MM/YYYY') // '25/12/2023'\nformatDate('2023-12-25', 'HH:mm:ss') // '00:00:00'\nformatDate('invalid', 'DD/MM/YYYY') // ''",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "getFormat",
@@ -1780,7 +1780,7 @@ const functionsData = [
       "description": "The format string for the specified country and type, or null if not found"
     },
     "example": "getFormat('DATE', 'US') // 'MM/DD/YYYY'\ngetFormat('DATE', 'FR') // 'DD/MM/YYYY'\ngetFormat('TIME', 'US') // 'HH:mm:ss'\ngetFormat('DATE_TIME', 'DE') // 'DD.MM.YYYY, HH:mm:ss'",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "isBetween",
@@ -1812,7 +1812,7 @@ const functionsData = [
       "description": "True if the date is between start and end dates (inclusive)"
     },
     "example": "isBetween('2023-12-25', '2023-12-01', '2023-12-31') // true\nisBetween(new Date('2023-11-30'), '2023-12-01', '2023-12-31') // false\nisBetween('2023-12-01', '2023-12-01', '2023-12-31') // true (inclusive)",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "isDate",
@@ -1832,7 +1832,7 @@ const functionsData = [
       "description": "True if the value is a valid Date object, false otherwise"
     },
     "example": "isDate(new Date()) // true\nisDate('2023-12-25') // false (string, not Date object)\nisDate(new Date('invalid')) // false (invalid date)",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "isDateDifferent",
@@ -1858,7 +1858,7 @@ const functionsData = [
       "description": "True if the number differs from the current time's unit value"
     },
     "example": "// If current time is 14:30:45 on 25th December 2023\nisDateDifferent(15, 'hour') // true (current hour is 14)\nisDateDifferent(30, 'minute') // false (current minute is 30)\nisDateDifferent(2023, 'year') // false (current year is 2023)",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "now",
@@ -1878,7 +1878,7 @@ const functionsData = [
       "description": "Current date as Date object, or formatted string if format is provided"
     },
     "example": "now() // Date object for current time\nnow('DD/MM/YYYY HH:mm') // '25/12/2023 14:30'",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "secondsToTomorrow",
@@ -1891,7 +1891,7 @@ const functionsData = [
       "description": "Number of seconds until the next day begins"
     },
     "example": "// If current time is 23:30:00\nsecondsToTomorrow() // 1800 (30 minutes = 1800 seconds)",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "ary",
@@ -1917,7 +1917,7 @@ const functionsData = [
       "description": "Returns the new capped function"
     },
     "example": "['6', '8', '10'].map(ary(parseInt, 1)); // => [6, 8, 10]",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "bind",
@@ -1949,7 +1949,7 @@ const functionsData = [
       "description": "Returns the new bound function"
     },
     "example": "function greet(greeting, punctuation) {\n  return greeting + ' ' + this.user + punctuation;\n}\nconst object = { 'user': 'fred' };\nconst bound = bind(greet, object, 'hi');\nbound('!'); // => 'hi fred!'",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "bindKey",
@@ -1981,7 +1981,7 @@ const functionsData = [
       "description": "Returns the new bound function"
     },
     "example": "const object = {\n  'user': 'fred',\n  'greet': function(greeting, punctuation) {\n    return greeting + ' ' + this.user + punctuation;\n  }\n};\nconst bound = bindKey(object, 'greet', 'hi');\nbound('!'); // => 'hi fred!'",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "curry",
@@ -2007,7 +2007,7 @@ const functionsData = [
       "description": "Returns the new curried function"
     },
     "example": "const abc = function(a, b, c) {\n  return [a, b, c];\n};\nconst curried = curry(abc);\ncurried(1)(2)(3); // => [1, 2, 3]\ncurried(1, 2)(3); // => [1, 2, 3]\ncurried(1, 2, 3); // => [1, 2, 3]",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "curryRight",
@@ -2033,13 +2033,13 @@ const functionsData = [
       "description": "Returns the new curried function"
     },
     "example": "const abc = function(a, b, c) {\n  return [a, b, c];\n};\nconst curried = curryRight(abc);\ncurried(3)(2)(1); // => [1, 2, 3]\ncurried(2, 3)(1); // => [1, 2, 3]\ncurried(1, 2, 3); // => [1, 2, 3]",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "debounce",
     "category": "function",
     "description": "Creates a debounced function that delays invoking func until after wait milliseconds have elapsed",
-    "syntax": "debounce(func: T, wait: number, options?: { leading?: boolean; trailing?: boolean; maxWait?: number }): T & { cancel(): void; flush(): ReturnType<T> | undefined; pending(): boolean }",
+    "syntax": "debounce(func: T, wait: number, options?: { leading?: boolean; trailing?: boolean; maxWait?: number }): T & { cancel (): void; flush (): ReturnType<T> | undefined; pending (): boolean }",
     "params": [
       {
         "name": "func",
@@ -2065,7 +2065,7 @@ const functionsData = [
       "description": "Returns the new debounced function"
     },
     "example": "// Avoid costly calculations while the window size is in flux.\nconst debounced = debounce(calculateLayout, 150);\nwindow.addEventListener('resize', debounced);",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "flip",
@@ -2085,7 +2085,7 @@ const functionsData = [
       "description": "Returns the new flipped function"
     },
     "example": "const flipped = flip(function(a, b, c) {\n  return [a, b, c];\n});\nflipped('a', 'b', 'c'); // => ['c', 'b', 'a']",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "memoize",
@@ -2111,7 +2111,7 @@ const functionsData = [
       "description": "Returns the new memoized function"
     },
     "example": "const object = { 'a': 1, 'b': 2 };\nconst other = { 'c': 3, 'd': 4 };\nconst values = memoize(function(obj) { return Object.values(obj); });\nvalues(object); // => [1, 2]\nvalues(other); // => [3, 4]",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "negate",
@@ -2131,7 +2131,7 @@ const functionsData = [
       "description": "Returns the new negated function"
     },
     "example": "function isEven(n) {\n  return n % 2 == 0;\n}\nconst isOdd = negate(isEven);\nisOdd(3); // => true",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "once",
@@ -2151,7 +2151,7 @@ const functionsData = [
       "description": "Returns the new restricted function"
     },
     "example": "const initialize = once(createApplication);\ninitialize(); // creates the application\ninitialize(); // returns the cached result",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "overArgs",
@@ -2177,7 +2177,7 @@ const functionsData = [
       "description": "Returns the new function"
     },
     "example": "function doubled(n) {\n  return n * 2;\n}\nfunction square(n) {\n  return n * n;\n}\nconst func = overArgs(function(x, y) {\n  return [x, y];\n}, square, doubled);\nfunc(9, 3); // => [81, 6]",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "partial",
@@ -2203,7 +2203,7 @@ const functionsData = [
       "description": "Returns the new partially applied function"
     },
     "example": "function greet(greeting, name) {\n  return greeting + ' ' + name;\n}\nconst sayHelloTo = partial(greet, 'hello');\nsayHelloTo('fred'); // => 'hello fred'",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "partialRight",
@@ -2229,7 +2229,7 @@ const functionsData = [
       "description": "Returns the new partially applied function"
     },
     "example": "function greet(greeting, name) {\n  return greeting + ' ' + name;\n}\nconst greetFred = partialRight(greet, 'fred');\ngreetFred('hi'); // => 'hi fred'",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "rearg",
@@ -2255,7 +2255,7 @@ const functionsData = [
       "description": "Returns the new function"
     },
     "example": "const rearged = rearg(function(a, b, c) {\n  return [a, b, c];\n}, 2, 0, 1);\nrearged('b', 'c', 'a'); // => ['a', 'b', 'c']",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "rest",
@@ -2281,7 +2281,7 @@ const functionsData = [
       "description": "Returns the new function"
     },
     "example": "const say = rest(function(what, names) {\n  return what + ' ' + names.join(', ');\n});\nsay('hello', 'fred', 'barney', 'pebbles'); // => 'hello fred, barney, pebbles'",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "spread",
@@ -2301,13 +2301,13 @@ const functionsData = [
       "description": "Returns the new function"
     },
     "example": "const say = spread(function(who, what) {\n  return who + ' says ' + what;\n});\nsay(['fred', 'hello']); // => 'fred says hello'",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "throttle",
     "category": "function",
     "description": "Creates a throttled function that only invokes func at most once per every wait milliseconds",
-    "syntax": "throttle(func: T, wait: number, options?: { leading?: boolean; trailing?: boolean }): T & { cancel(): void; flush(): ReturnType<T> | undefined }",
+    "syntax": "throttle(func: T, wait: number, options?: { leading?: boolean; trailing?: boolean }): T & { cancel (): void; flush (): ReturnType<T> | undefined }",
     "params": [
       {
         "name": "func",
@@ -2333,7 +2333,7 @@ const functionsData = [
       "description": "Returns the new throttled function"
     },
     "example": "// Avoid excessively updating the position while scrolling.\nconst throttled = throttle(updatePosition, 100);\nwindow.addEventListener('scroll', throttled);",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "unary",
@@ -2353,7 +2353,7 @@ const functionsData = [
       "description": "Returns the new capped function"
     },
     "example": "['6', '8', '10'].map(unary(parseInt)); // => [6, 8, 10]",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "wrap",
@@ -2379,7 +2379,7 @@ const functionsData = [
       "description": "Returns the new function"
     },
     "example": "const p = wrap('hello', function(greeting, name) {\n  return greeting + ' ' + name;\n});\np('world'); // => 'hello world'",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "add",
@@ -2405,7 +2405,7 @@ const functionsData = [
       "description": "The sum of a and b"
     },
     "example": "add(2, 3) // => 5\nadd(-1, 1) // => 0",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "ceil",
@@ -2431,7 +2431,7 @@ const functionsData = [
       "description": "The rounded up number"
     },
     "example": "ceil(4.006) // => 5\nceil(4.006, 2) // => 4.01\nceil(4040, -2) // => 4100\nceil(1.2345, 3) // => 1.235",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "divide",
@@ -2457,7 +2457,7 @@ const functionsData = [
       "description": "The quotient of a divided by b"
     },
     "example": "divide(10, 2) // => 5\ndivide(7, 3) // => 2.333...\ndivide(1, 0) // => Infinity",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "floor",
@@ -2483,7 +2483,7 @@ const functionsData = [
       "description": "The rounded down number"
     },
     "example": "floor(4.006) // => 4\nfloor(4.006, 2) // => 4.00\nfloor(4090, -2) // => 4000\nfloor(1.2345, 3) // => 1.234",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "inRange",
@@ -2515,7 +2515,7 @@ const functionsData = [
       "description": "True if the number is within the range, false otherwise"
     },
     "example": "inRange(3, 2, 4) // => true\ninRange(4, 8) // => true (equivalent to inRange(4, 0, 8))\ninRange(4, 2) // => false\ninRange(2, 2, 4) // => true (start is inclusive)\ninRange(4, 2, 4) // => false (end is exclusive)\ninRange(1.2, 2, 1) // => true (start and end are swapped automatically)",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "max",
@@ -2535,7 +2535,7 @@ const functionsData = [
       "description": "The maximum value in the array, or undefined if array is empty"
     },
     "example": "max([1, 5, 3, 9, 2]) // => 9\nmax([-1, -5, -3]) // => -1\nmax([]) // => undefined",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "maxBy",
@@ -2561,7 +2561,7 @@ const functionsData = [
       "description": "The element that produces the maximum value, or undefined if array is empty"
     },
     "example": "const objects = [{ n: 1 }, { n: 9 }, { n: 3 }];\nmaxBy(objects, o => o.n) // => { n: 9 }\nconst people = [{ name: 'John', age: 25 }, { name: 'Jane', age: 30 }];\nmaxBy(people, p => p.age) // => { name: 'Jane', age: 30 }",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "mean",
@@ -2581,7 +2581,7 @@ const functionsData = [
       "description": "The arithmetic mean of the array, or 0 if array is empty"
     },
     "example": "mean([1, 2, 3, 4, 5]) // => 3\nmean([10, 20]) // => 15\nmean([]) // => 0",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "meanBy",
@@ -2607,7 +2607,7 @@ const functionsData = [
       "description": "The arithmetic mean after applying the iteratee to each element, or 0 if array is empty"
     },
     "example": "const objects = [{ n: 4 }, { n: 2 }, { n: 8 }];\nmeanBy(objects, o => o.n) // => 4.666...\nconst people = [{ age: 25 }, { age: 30 }, { age: 35 }];\nmeanBy(people, p => p.age) // => 30",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "min",
@@ -2627,7 +2627,7 @@ const functionsData = [
       "description": "The minimum value in the array, or undefined if array is empty"
     },
     "example": "min([1, 5, 3, 9, 2]) // => 1\nmin([-1, -5, -3]) // => -5\nmin([]) // => undefined",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "minBy",
@@ -2653,7 +2653,7 @@ const functionsData = [
       "description": "The element that produces the minimum value, or undefined if array is empty"
     },
     "example": "const objects = [{ n: 1 }, { n: 9 }, { n: 3 }];\nminBy(objects, o => o.n) // => { n: 1 }\nconst people = [{ name: 'John', age: 25 }, { name: 'Jane', age: 30 }];\nminBy(people, p => p.age) // => { name: 'John', age: 25 }",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "multiply",
@@ -2679,7 +2679,7 @@ const functionsData = [
       "description": "The product of a and b"
     },
     "example": "multiply(3, 4) // => 12\nmultiply(-2, 5) // => -10\nmultiply(0, 100) // => 0",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "round",
@@ -2705,7 +2705,7 @@ const functionsData = [
       "description": "The rounded number"
     },
     "example": "round(4.006) // => 4\nround(4.006, 2) // => 4.01\nround(4060, -2) // => 4100\nround(1.2345, 3) // => 1.235",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "std",
@@ -2725,7 +2725,7 @@ const functionsData = [
       "description": "The standard deviation of the array, or 0 if array is empty"
     },
     "example": "std([2, 4, 4, 4, 5, 5, 7, 9]) // => 2.138...\nstd([1, 1, 1, 1]) // => 0\nstd([]) // => 0",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "subtract",
@@ -2751,7 +2751,7 @@ const functionsData = [
       "description": "The difference of a minus b"
     },
     "example": "subtract(5, 3) // => 2\nsubtract(1, 4) // => -3\nsubtract(0, 0) // => 0",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "sum",
@@ -2771,7 +2771,7 @@ const functionsData = [
       "description": "The total sum of all numbers in the array, or 0 if array is empty"
     },
     "example": "sum([1, 2, 3, 4]) // => 10\nsum([]) // => 0\nsum([-1, 1]) // => 0",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "sumBy",
@@ -2797,7 +2797,7 @@ const functionsData = [
       "description": "The total sum after applying the iteratee to each element"
     },
     "example": "const objects = [{ n: 4 }, { n: 2 }, { n: 8 }];\nsumBy(objects, o => o.n) // => 14\nconst strings = ['a', 'bb', 'ccc'];\nsumBy(strings, s => s.length) // => 6",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "variance",
@@ -2817,7 +2817,7 @@ const functionsData = [
       "description": "The variance of the array, or 0 if array is empty"
     },
     "example": "variance([2, 4, 4, 4, 5, 5, 7, 9]) // => 4.571...\nvariance([1, 1, 1, 1]) // => 0\nvariance([]) // => 0",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "clamp",
@@ -2849,7 +2849,7 @@ const functionsData = [
       "description": "The clamped value between min and max"
     },
     "example": "clamp(5, 0, 10) // 5\nclamp(-5, 0, 10) // 0\nclamp(15, 0, 10) // 10",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "number",
@@ -2875,7 +2875,7 @@ const functionsData = [
       "description": "Parsed number or original value if parsing fails"
     },
     "example": "number('123') // 123\nnumber('abc') // 'abc'\nnumber(['1', '2', 'abc']) // [1, 2, 'abc']\nnumber({ a: '123', b: 'abc' }, { deep: true }) // { a: 123, b: 'abc' }",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "parseFloat",
@@ -2901,7 +2901,7 @@ const functionsData = [
       "description": "Parsed float rounded to specified precision, or original value if parsing fails"
     },
     "example": "parseFloat('3.14159') // 3.14159\nparseFloat('3.14159', 2) // 3.14\nparseFloat('abc') // 'abc'",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "random",
@@ -2927,7 +2927,7 @@ const functionsData = [
       "description": "Random floating point number in the specified range"
     },
     "example": "random() // Random number between 0 and 1\nrandom(5, 10) // Random number between 5 and 10",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "randomInt",
@@ -2953,7 +2953,7 @@ const functionsData = [
       "description": "Random integer in the specified range"
     },
     "example": "randomInt() // Random integer between 0 and 100\nrandomInt(1, 6) // Random integer between 1 and 6 (like a dice roll)",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "assign",
@@ -2979,7 +2979,7 @@ const functionsData = [
       "description": "The target object with assigned properties"
     },
     "example": "assign({ a: 1 }, { b: 2 }, { c: 3 }) // { a: 1, b: 2, c: 3 }",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "at",
@@ -3005,7 +3005,7 @@ const functionsData = [
       "description": "An array of resolved values"
     },
     "example": "at({ a: 1, b: { c: 2 } }, 'a', 'b.c', 'missing') // [1, 2, undefined]",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "clone",
@@ -3025,7 +3025,7 @@ const functionsData = [
       "description": "A shallow clone of the object"
     },
     "example": "const obj = { a: 1, b: { c: 2 } }\nconst cloned = clone(obj) // cloned.b === obj.b (same reference)",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "cloneDeep",
@@ -3045,7 +3045,7 @@ const functionsData = [
       "description": "A deep clone of the object"
     },
     "example": "const obj = { a: 1, b: { c: 2 } }\nconst cloned = cloneDeep(obj) // cloned.b !== obj.b (different reference)",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "conformsTo",
@@ -3071,7 +3071,7 @@ const functionsData = [
       "description": "True if the object conforms, false otherwise"
     },
     "example": "conformsTo({ a: 1, b: 2 }, { a: n => n > 0, b: n => n < 5 }) // true",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "create",
@@ -3097,7 +3097,7 @@ const functionsData = [
       "description": "A new object inheriting from the prototype"
     },
     "example": "const proto = { greet: () => 'hello' }\nconst obj = create(proto, { name: 'John' }) // obj.greet() works and obj.name === 'John'",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "defaults",
@@ -3123,7 +3123,7 @@ const functionsData = [
       "description": "The destination object with default values assigned"
     },
     "example": "defaults({ a: 1 }, { a: 3, b: 2 }, { c: 3 }) // { a: 1, b: 2, c: 3 }",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "defaultsDeep",
@@ -3149,7 +3149,7 @@ const functionsData = [
       "description": "The destination object with deep default values assigned"
     },
     "example": "defaultsDeep({ a: { x: 1 } }, { a: { y: 2, x: 3 }, b: 4 }) // { a: { x: 1, y: 2 }, b: 4 }",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "entries",
@@ -3169,7 +3169,7 @@ const functionsData = [
       "description": "An array of key-value pairs"
     },
     "example": "entries({ a: 1, b: 2 }) // [['a', 1], ['b', 2]]",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "entriesIn",
@@ -3189,7 +3189,7 @@ const functionsData = [
       "description": "An array of key-value pairs including inherited properties"
     },
     "example": "const obj = Object.create({ inherited: 'value' })\nobj.own = 'property'\nentriesIn(obj) // [['own', 'property'], ['inherited', 'value']]",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "findLastKey",
@@ -3215,7 +3215,7 @@ const functionsData = [
       "description": "The key of the matched element, else undefined"
     },
     "example": "findLastKey({ a: 1, b: 2, c: 3 }, n => n > 1) // 'c'",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "flat",
@@ -3241,7 +3241,7 @@ const functionsData = [
       "description": "Flattened string of values joined by commas"
     },
     "example": "flat({ a: 1, b: { c: 2 } }) // '1, 2'\nflat({ a: 1, b: { c: 2 } }, { props: ['a'] }) // '1'",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "forIn",
@@ -3267,7 +3267,7 @@ const functionsData = [
       "description": "The original object"
     },
     "example": "forIn({ a: 1, b: 2 }, (value, key) => console.log(key, value))",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "forInRight",
@@ -3293,7 +3293,7 @@ const functionsData = [
       "description": "The original object"
     },
     "example": "forInRight({ a: 1, b: 2 }, (value, key) => console.log(key, value)) // logs 'b 2' then 'a 1'",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "forOwn",
@@ -3319,7 +3319,7 @@ const functionsData = [
       "description": "The original object"
     },
     "example": "forOwn({ a: 1, b: 2 }, (value, key) => console.log(key, value))",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "forOwnRight",
@@ -3345,7 +3345,7 @@ const functionsData = [
       "description": "The original object"
     },
     "example": "forOwnRight({ a: 1, b: 2 }, (value, key) => console.log(key, value)) // logs 'b 2' then 'a 1'",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "fromPairs",
@@ -3365,7 +3365,7 @@ const functionsData = [
       "description": "The new object"
     },
     "example": "fromPairs([['a', 1], ['b', 2]]) // { a: 1, b: 2 }",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "functions",
@@ -3385,7 +3385,7 @@ const functionsData = [
       "description": "An array of function property names"
     },
     "example": "functions({ a: 1, b: () => {}, c: 'string', d: function() {} }) // ['b', 'd']",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "functionsIn",
@@ -3405,7 +3405,7 @@ const functionsData = [
       "description": "An array of function property names including inherited ones"
     },
     "example": "const obj = Object.create({ inheritedFn: () => {} })\nobj.ownFn = () => {}\nfunctionsIn(obj) // ['ownFn', 'inheritedFn']",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "get",
@@ -3437,7 +3437,7 @@ const functionsData = [
       "description": "The resolved value or default value"
     },
     "example": "get({ a: { b: { c: 3 } } }, 'a.b.c') // 3\nget({ a: { b: { c: 3 } } }, ['a', 'b', 'c']) // 3\nget({}, 'a.b.c', 'default') // 'default'",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "getValueType",
@@ -3457,7 +3457,7 @@ const functionsData = [
       "description": "The type as a string ('string', 'number', 'object', etc.)"
     },
     "example": "getValueType('hello') // 'string'\ngetValueType(42) // 'number'\ngetValueType({}) // 'object'",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "has",
@@ -3483,7 +3483,7 @@ const functionsData = [
       "description": "True if path exists, false otherwise"
     },
     "example": "has({ a: { b: { c: 3 } } }, 'a.b.c') // true\nhas({ a: { b: { c: 3 } } }, 'a.b.d') // false",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "hasIn",
@@ -3509,7 +3509,7 @@ const functionsData = [
       "description": "True if path exists as own property, false otherwise"
     },
     "example": "hasIn({ a: { b: 2 } }, 'a.b') // true",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "invert",
@@ -3529,7 +3529,7 @@ const functionsData = [
       "description": "The inverted object"
     },
     "example": "invert({ a: 1, b: 2, c: 1 }) // { '1': 'c', '2': 'b' }",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "invertBy",
@@ -3555,7 +3555,7 @@ const functionsData = [
       "description": "The inverted object with arrays of original keys"
     },
     "example": "invertBy({ a: 1, b: 2, c: 1 }, value => `group${value}`) // { group1: ['a', 'c'], group2: ['b'] }",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "invoke",
@@ -3587,7 +3587,7 @@ const functionsData = [
       "description": "The result of the invoked method"
     },
     "example": "invoke({ a: { b: Math.max } }, 'a.b', 1, 2, 3) // 3",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "isEmpty",
@@ -3613,7 +3613,7 @@ const functionsData = [
       "description": "True if the value is considered empty, false otherwise"
     },
     "example": "isEmpty('') // true\nisEmpty([]) // true\nisEmpty({}) // true\nisEmpty({ a: '' }, { props: true }) // true",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "isEqual",
@@ -3639,7 +3639,7 @@ const functionsData = [
       "description": "True if the values are equivalent, false otherwise"
     },
     "example": "isEqual([1, 2, 3], [1, 2, 3]) // true\nisEqual({ a: 1 }, { a: 1 }) // true\nisEqual({ a: 1 }, { a: 2 }) // false",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "keys",
@@ -3659,7 +3659,7 @@ const functionsData = [
       "description": "An array of property names"
     },
     "example": "keys({ a: 1, b: 2, c: 3 }) // ['a', 'b', 'c']",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "mapKeys",
@@ -3685,7 +3685,7 @@ const functionsData = [
       "description": "A new object with transformed keys"
     },
     "example": "mapKeys({ a: 1, b: 2 }, (value, key) => key.toUpperCase()) // { A: 1, B: 2 }",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "mapValues",
@@ -3711,7 +3711,7 @@ const functionsData = [
       "description": "A new object with transformed values"
     },
     "example": "mapValues({ a: 1, b: 2 }, x => x * 2) // { a: 2, b: 4 }\nmapValues({ a: 'hello', b: 'world' }, (value, key) => `${key}: ${value}`) // { a: 'a: hello', b: 'b: world' }",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "merge",
@@ -3737,7 +3737,7 @@ const functionsData = [
       "description": "The target object with merged properties"
     },
     "example": "merge({ a: { x: 1 } }, { a: { y: 2 }, b: 3 }) // { a: { x: 1, y: 2 }, b: 3 }",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "mergeWith",
@@ -3769,7 +3769,7 @@ const functionsData = [
       "description": "The target object with custom merged properties"
     },
     "example": "mergeWith({ a: [1] }, { a: [2] }, (obj, src) => Array.isArray(obj) ? obj.concat(src) : undefined) // { a: [1, 2] }",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "method",
@@ -3795,7 +3795,7 @@ const functionsData = [
       "description": "A function that takes an object and invokes the method"
     },
     "example": "const fn = method('toUpperCase')\nfn('hello') // 'HELLO'",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "methodOf",
@@ -3821,7 +3821,7 @@ const functionsData = [
       "description": "A function that takes a path and invokes the method"
     },
     "example": "const fn = methodOf('hello world')\nfn('split') // ['hello', 'world']",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "omit",
@@ -3847,7 +3847,7 @@ const functionsData = [
       "description": "A new object without the specified properties"
     },
     "example": "omit({ a: 1, b: 2, c: 3 }, 'a', 'c') // { b: 2 }",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "omitBy",
@@ -3873,7 +3873,7 @@ const functionsData = [
       "description": "A new object with properties that fail the predicate test"
     },
     "example": "omitBy({ a: 1, b: 2, c: 3 }, value => value > 1) // { a: 1 }",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "pick",
@@ -3899,7 +3899,7 @@ const functionsData = [
       "description": "A new object with only the specified properties"
     },
     "example": "pick({ a: 1, b: 2, c: 3 }, 'a', 'c') // { a: 1, c: 3 }",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "pickBy",
@@ -3925,7 +3925,7 @@ const functionsData = [
       "description": "A new object with properties that pass the predicate test"
     },
     "example": "pickBy({ a: 1, b: 2, c: 3 }, value => value > 1) // { b: 2, c: 3 }",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "result",
@@ -3957,7 +3957,7 @@ const functionsData = [
       "description": "The resolved value, function result, or default value"
     },
     "example": "result({ a: () => 42 }, 'a') // 42\nresult({ a: 5 }, 'a') // 5",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "set",
@@ -3989,7 +3989,7 @@ const functionsData = [
       "description": "The modified object"
     },
     "example": "set({}, 'a.b.c', 3) // { a: { b: { c: 3 } } }\nset({}, ['a', 'b', 'c'], 3) // { a: { b: { c: 3 } } }",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "setWith",
@@ -4027,7 +4027,7 @@ const functionsData = [
       "description": "The modified object"
     },
     "example": "setWith({}, 'a[0].b.c', 4, Object) // { a: { '0': { b: { c: 4 } } } }",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "toPairs",
@@ -4047,7 +4047,7 @@ const functionsData = [
       "description": "An array of key-value pairs"
     },
     "example": "toPairs({ a: 1, b: 2 }) // [['a', 1], ['b', 2]]",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "toPairsIn",
@@ -4067,7 +4067,7 @@ const functionsData = [
       "description": "An array of key-value pairs including inherited properties"
     },
     "example": "const obj = Object.create({ inherited: 'value' })\nobj.own = 'property'\ntoPairsIn(obj) // [['own', 'property'], ['inherited', 'value']]",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "transform",
@@ -4099,7 +4099,7 @@ const functionsData = [
       "description": "The accumulated result"
     },
     "example": "transform({ a: 1, b: 2 }, (result, value, key) => { result[key] = value * 2 }, {}) // { a: 2, b: 4 }",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "unset",
@@ -4125,7 +4125,7 @@ const functionsData = [
       "description": "True if the property is deleted, false otherwise"
     },
     "example": "const obj = { a: { b: { c: 3 } } }\nunset(obj, 'a.b.c') // true, obj becomes { a: { b: {} } }",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "update",
@@ -4157,7 +4157,7 @@ const functionsData = [
       "description": "The modified object"
     },
     "example": "update({ a: 1 }, 'a', n => n * 2) // { a: 2 }",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "updateWith",
@@ -4195,7 +4195,7 @@ const functionsData = [
       "description": "The modified object"
     },
     "example": "updateWith({}, 'a.b', () => 'value', () => ({})) // { a: { b: 'value' } }",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "values",
@@ -4215,7 +4215,7 @@ const functionsData = [
       "description": "An array of property values"
     },
     "example": "values({ a: 1, b: 2, c: 3 }) // [1, 2, 3]",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "camelCase",
@@ -4235,7 +4235,7 @@ const functionsData = [
       "description": "Returns the camel cased string"
     },
     "example": "camelCase('hello world'); // 'helloWorld'\ncamelCase('hello-world'); // 'helloWorld'",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "capitalize",
@@ -4255,7 +4255,7 @@ const functionsData = [
       "description": "Returns the capitalized string"
     },
     "example": "capitalize('hello'); // 'Hello'\ncapitalize('WORLD'); // 'WORLD'",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "deburr",
@@ -4275,7 +4275,7 @@ const functionsData = [
       "description": "Returns the deburred string"
     },
     "example": "deburr('déjà vu'); // 'deja vu'\ndeburr('niño'); // 'nino'",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "endsWith",
@@ -4307,7 +4307,7 @@ const functionsData = [
       "description": "Returns true if the string ends with the target"
     },
     "example": "endsWith('hello world', 'world'); // true\nendsWith('hello world', 'hello', 5); // true",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "escape",
@@ -4327,7 +4327,7 @@ const functionsData = [
       "description": "Returns the escaped string"
     },
     "example": "escape('hello & world'); // 'hello &amp; world'\nescape('<div>hello</div>'); // '&lt;div&gt;hello&lt;/div&gt;'",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "escapeRegExp",
@@ -4347,7 +4347,7 @@ const functionsData = [
       "description": "Returns the escaped string"
     },
     "example": "escapeRegExp('hello.world?'); // 'hello\\.world\\?'\nescapeRegExp('^hello$'); // '\\^hello\\$'",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "kebabCase",
@@ -4367,7 +4367,7 @@ const functionsData = [
       "description": "Returns the kebab cased string"
     },
     "example": "kebabCase('hello world'); // 'hello-world'\nkebabCase('HelloWorld'); // 'hello-world'",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "lowerCase",
@@ -4387,7 +4387,7 @@ const functionsData = [
       "description": "Returns the lower cased string"
     },
     "example": "lowerCase('HELLO WORLD'); // 'hello world'\nlowerCase('Hello-World'); // 'hello world'",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "lowerFirst",
@@ -4407,7 +4407,7 @@ const functionsData = [
       "description": "Returns the string with the first character lowercased"
     },
     "example": "lowerFirst('Hello'); // 'hello'\nlowerFirst('JavaScript'); // 'javaScript'",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "pad",
@@ -4439,7 +4439,7 @@ const functionsData = [
       "description": "Returns the padded string"
     },
     "example": "pad('hello', 10); // '  hello   '\npad('hello', 10, '-'); // '--hello----'",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "padEnd",
@@ -4471,7 +4471,7 @@ const functionsData = [
       "description": "Returns the padded string"
     },
     "example": "padEnd('hello', 10); // 'hello     '\npadEnd('hello', 10, '-'); // 'hello-----'",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "padStart",
@@ -4503,7 +4503,7 @@ const functionsData = [
       "description": "Returns the padded string"
     },
     "example": "padStart('hello', 10); // '     hello'\npadStart('hello', 10, '-'); // '-----hello'",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "parseInt",
@@ -4529,7 +4529,7 @@ const functionsData = [
       "description": "Returns the converted integer"
     },
     "example": "parseInt('10'); // 10\nparseInt('10', 2); // 2",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "pascalCase",
@@ -4549,7 +4549,7 @@ const functionsData = [
       "description": "Returns the Pascal cased string"
     },
     "example": "pascalCase('hello world'); // 'HelloWorld'\npascalCase('hello-world'); // 'HelloWorld'",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "purify",
@@ -4569,7 +4569,7 @@ const functionsData = [
       "description": "Returns the string without accents"
     },
     "example": "purify('café'); // 'cafe'\npurify('naïve'); // 'naive'",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "removeBreakLines",
@@ -4589,7 +4589,7 @@ const functionsData = [
       "description": "Returns the string without breaklines"
     },
     "example": "removeBreakLines('hello\\nworld'); // 'hello world'\nremoveBreakLines('line1\\r\\nline2'); // 'line1 line2'",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "repeat",
@@ -4615,7 +4615,7 @@ const functionsData = [
       "description": "Returns the repeated string"
     },
     "example": "repeat('hello', 3); // 'hellohellohello'\nrepeat('abc', 2); // 'abcabc'",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "replace",
@@ -4647,7 +4647,7 @@ const functionsData = [
       "description": "Returns the string with replacements"
     },
     "example": "replace('hello world', 'world', 'there'); // 'hello there'\nreplace('hello 123', /\\d+/, '456'); // 'hello 456'",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "snakeCase",
@@ -4667,7 +4667,7 @@ const functionsData = [
       "description": "Returns the snake cased string"
     },
     "example": "snakeCase('hello world'); // 'hello_world'\nsnakeCase('HelloWorld'); // 'hello_world'",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "split",
@@ -4699,7 +4699,7 @@ const functionsData = [
       "description": "Returns the array of split strings"
     },
     "example": "split('hello,world', ','); // ['hello', 'world']\nsplit('hello world', /\\s+/); // ['hello', 'world']",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "startCase",
@@ -4719,7 +4719,7 @@ const functionsData = [
       "description": "Returns the start cased string"
     },
     "example": "startCase('hello world'); // 'Hello world'\nstartCase('hELLO wORLD'); // 'Hello world'",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "startsWith",
@@ -4751,7 +4751,7 @@ const functionsData = [
       "description": "Returns true if the string starts with the target"
     },
     "example": "startsWith('hello world', 'hello'); // true\nstartsWith('hello world', 'world', 6); // true",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "template",
@@ -4777,7 +4777,7 @@ const functionsData = [
       "description": "Returns the template function"
     },
     "example": "const compiled = template('hello <%= name %>!');\ncompiled({ name: 'world' }); // 'hello world!'\nconst compiled = template('number: <%= number %>', { interpolate: /<%=([\\s\\S]+?)%>/g });\ncompiled({ number: 42 }); // 'number: 42'",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "toArray",
@@ -4797,7 +4797,7 @@ const functionsData = [
       "description": "Returns the array of characters"
     },
     "example": "toArray('hello'); // ['h', 'e', 'l', 'l', 'o']\ntoArray('abc'); // ['a', 'b', 'c']",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "toLowerCase",
@@ -4817,7 +4817,7 @@ const functionsData = [
       "description": "Returns the lower cased string"
     },
     "example": "toLowerCase('HELLO'); // 'hello'\ntoLowerCase('HeLLo'); // 'hello'",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "toUpperCase",
@@ -4837,7 +4837,7 @@ const functionsData = [
       "description": "Returns the upper cased string"
     },
     "example": "toUpperCase('hello'); // 'HELLO'\ntoUpperCase('HeLLo'); // 'HELLO'",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "trim",
@@ -4863,7 +4863,7 @@ const functionsData = [
       "description": "Returns the trimmed string"
     },
     "example": "trim('  hello  '); // 'hello'\ntrim('---hello---', '-'); // 'hello'",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "trimEnd",
@@ -4889,7 +4889,7 @@ const functionsData = [
       "description": "Returns the trimmed string"
     },
     "example": "trimEnd('  hello  '); // '  hello'\ntrimEnd('---hello---', '-'); // '---hello'",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "trimStart",
@@ -4915,7 +4915,7 @@ const functionsData = [
       "description": "Returns the trimmed string"
     },
     "example": "trimStart('  hello  '); // 'hello  '\ntrimStart('---hello---', '-'); // 'hello---'",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "truncate",
@@ -4941,7 +4941,7 @@ const functionsData = [
       "description": "Returns the truncated string"
     },
     "example": "truncate('hello world', { length: 10 }); // 'hello worl...'\ntruncate('hello world', { length: 10, separator: ' ' }); // 'hello...'",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "unescape",
@@ -4961,7 +4961,7 @@ const functionsData = [
       "description": "Returns the unescaped string"
     },
     "example": "unescape('&lt;div&gt;hello&lt;/div&gt;'); // '<div>hello</div>'\nunescape('&amp;copy; 2023'); // '© 2023'",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "upperCase",
@@ -4981,7 +4981,7 @@ const functionsData = [
       "description": "Returns the upper cased string"
     },
     "example": "upperCase('hello world'); // 'HELLO WORLD'\nupperCase('hello-world'); // 'HELLO WORLD'",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "upperFirst",
@@ -5001,7 +5001,7 @@ const functionsData = [
       "description": "Returns the string with the first character uppercased"
     },
     "example": "upperFirst('hello'); // 'Hello'\nupperFirst('javaScript'); // 'JavaScript'",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "words",
@@ -5027,7 +5027,7 @@ const functionsData = [
       "description": "Returns the array of words"
     },
     "example": "words('  hello world  '); // ['hello', 'world']\nwords('---hello---world---', /-/); // ['hello', 'world']",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "isArguments",
@@ -5047,7 +5047,7 @@ const functionsData = [
       "description": "Returns true if value is an arguments object, else false"
     },
     "example": "isArguments(function() { return arguments; }())\n// => true\nisArguments([1, 2, 3])\n// => false",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "isArrayBuffer",
@@ -5067,7 +5067,7 @@ const functionsData = [
       "description": "Returns true if value is an ArrayBuffer, else false"
     },
     "example": "isArrayBuffer(new ArrayBuffer(2))\n// => true\nisArrayBuffer(new Array(2))\n// => false",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "isArrayLike",
@@ -5087,7 +5087,7 @@ const functionsData = [
       "description": "Returns true if value is array-like, else false"
     },
     "example": "isArrayLike([1, 2, 3])\n// => true\nisArrayLike('abc')\n// => true\nisArrayLike(Function)\n// => false",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "isArrayLikeObject",
@@ -5107,7 +5107,7 @@ const functionsData = [
       "description": "Returns true if value is an array-like object, else false"
     },
     "example": "isArrayLikeObject([1, 2, 3])\n// => true\nisArrayLikeObject('abc')\n// => true\nisArrayLikeObject(Function)\n// => false",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "isBoolean",
@@ -5127,7 +5127,7 @@ const functionsData = [
       "description": "Returns true if value is a boolean, else false"
     },
     "example": "isBoolean(false)\n// => true\nisBoolean(null)\n// => false",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "isBuffer",
@@ -5147,7 +5147,7 @@ const functionsData = [
       "description": "Returns true if value is a buffer, else false"
     },
     "example": "isBuffer(Buffer.alloc(2))\n// => true\nisBuffer(new Uint8Array(2))\n// => false",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "isElement",
@@ -5167,7 +5167,7 @@ const functionsData = [
       "description": "Returns true if value is a DOM element, else false"
     },
     "example": "isElement(document.body)\n// => true\nisElement('<body>')\n// => false",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "isEqualWith",
@@ -5199,7 +5199,7 @@ const functionsData = [
       "description": "Returns true if the values are equivalent, else false"
     },
     "example": "function isGreeting(value) {\n  return /^h(?:i|ello)$/.test(value);\n}\nfunction customizer(objValue, othValue) {\n  if (isGreeting(objValue) && isGreeting(othValue)) {\n    return true;\n  }\n}\nisEqualWith(['hello'], ['hi'], customizer)\n// => true",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "isError",
@@ -5219,7 +5219,7 @@ const functionsData = [
       "description": "Returns true if value is an error object, else false"
     },
     "example": "isError(new Error)\n// => true\nisError(Error)\n// => false",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "isFinite",
@@ -5239,7 +5239,7 @@ const functionsData = [
       "description": "Returns true if value is a finite number, else false"
     },
     "example": "isFinite(3)\n// => true\nisFinite(Number.MIN_VALUE)\n// => true\nisFinite(Infinity)\n// => false\nisFinite('3')\n// => false",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "isFunction",
@@ -5259,7 +5259,7 @@ const functionsData = [
       "description": "Returns true if value is a function, else false"
     },
     "example": "isFunction(() => {})\n// => true\nisFunction(/abc/)\n// => false",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "isInteger",
@@ -5279,7 +5279,7 @@ const functionsData = [
       "description": "Returns true if value is an integer, else false"
     },
     "example": "isInteger(3)\n// => true\nisInteger(Number.MIN_VALUE)\n// => false\nisInteger(Infinity)\n// => false\nisInteger('3')\n// => false",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "isLength",
@@ -5299,7 +5299,7 @@ const functionsData = [
       "description": "Returns true if value is a valid length, else false"
     },
     "example": "isLength(3)\n// => true\nisLength(Number.MIN_VALUE)\n// => false\nisLength(Infinity)\n// => false\nisLength('3')\n// => false",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "isMap",
@@ -5319,7 +5319,7 @@ const functionsData = [
       "description": "Returns true if value is a map, else false"
     },
     "example": "isMap(new Map)\n// => true\nisMap(new WeakMap)\n// => false",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "isMatch",
@@ -5345,7 +5345,7 @@ const functionsData = [
       "description": "Returns true if object is a match, else false"
     },
     "example": "const object = { 'a': 1, 'b': 2 };\nisMatch(object, { 'b': 2 })\n// => true\nisMatch(object, { 'b': 1 })\n// => false",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "isMatchWith",
@@ -5377,7 +5377,7 @@ const functionsData = [
       "description": "Returns true if object is a match, else false"
     },
     "example": "function isGreeting(value) {\n  return /^h(?:i|ello)$/.test(value);\n}\nfunction customizer(objValue, srcValue) {\n  if (isGreeting(objValue) && isGreeting(srcValue)) {\n    return true;\n  }\n}\nconst object = { 'greeting': 'hello' };\nconst source = { 'greeting': 'hi' };\nisMatchWith(object, source, customizer)\n// => true",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "isNaN",
@@ -5397,7 +5397,7 @@ const functionsData = [
       "description": "Returns true if value is NaN, else false"
     },
     "example": "isNaN(NaN)\n// => true\nisNaN(new Number(NaN))\n// => true\nisNaN(undefined)\n// => false",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "isNative",
@@ -5417,7 +5417,7 @@ const functionsData = [
       "description": "Returns true if value is a native function, else false"
     },
     "example": "isNative(Array.prototype.push)\n// => true\nisNative(() => {})\n// => false",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "isNil",
@@ -5437,7 +5437,7 @@ const functionsData = [
       "description": "Returns true if value is nullish, else false"
     },
     "example": "isNil(null)\n// => true\nisNil(void 0)\n// => true\nisNil(NaN)\n// => false",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "isNull",
@@ -5457,7 +5457,7 @@ const functionsData = [
       "description": "Returns true if value is null, else false"
     },
     "example": "isNull(null)\n// => true\nisNull(void 0)\n// => false",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "isNumber",
@@ -5477,7 +5477,7 @@ const functionsData = [
       "description": "Returns true if value is a number, else false"
     },
     "example": "isNumber(3)\n// => true\nisNumber(Number.MIN_VALUE)\n// => true\nisNumber(Infinity)\n// => true\nisNumber('3')\n// => false",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "isObject",
@@ -5497,7 +5497,7 @@ const functionsData = [
       "description": "Returns true if value is an object, else false"
     },
     "example": "isObject({})\n// => true\nisObject([1, 2, 3])\n// => true\nisObject(() => {})\n// => true\nisObject(null)\n// => false",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "isObjectLike",
@@ -5517,7 +5517,7 @@ const functionsData = [
       "description": "Returns true if value is object-like, else false"
     },
     "example": "isObjectLike({})\n// => true\nisObjectLike([1, 2, 3])\n// => true\nisObjectLike(() => {})\n// => false\nisObjectLike(null)\n// => false",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "isPlainObject",
@@ -5537,7 +5537,7 @@ const functionsData = [
       "description": "Returns true if value is a plain object, else false"
     },
     "example": "function Foo() {\n  this.a = 1;\n}\nisPlainObject(new Foo)\n// => false\nisPlainObject([1, 2, 3])\n// => false\nisPlainObject({ 'x': 0, 'y': 0 })\n// => true\nisPlainObject(Object.create(null))\n// => true",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "isRegExp",
@@ -5557,7 +5557,7 @@ const functionsData = [
       "description": "Returns true if value is a regexp, else false"
     },
     "example": "isRegExp(/abc/)\n// => true\nisRegExp('/abc/')\n// => false",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "isSafeInteger",
@@ -5577,7 +5577,7 @@ const functionsData = [
       "description": "Returns true if value is a safe integer, else false"
     },
     "example": "isSafeInteger(3)\n// => true\nisSafeInteger(Number.MIN_VALUE)\n// => false\nisSafeInteger(Infinity)\n// => false\nisSafeInteger('3')\n// => false",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "isSet",
@@ -5597,7 +5597,7 @@ const functionsData = [
       "description": "Returns true if value is a set, else false"
     },
     "example": "isSet(new Set)\n// => true\nisSet(new WeakSet)\n// => false",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "isString",
@@ -5617,7 +5617,7 @@ const functionsData = [
       "description": "Returns true if value is a string, else false"
     },
     "example": "isString('abc')\n// => true\nisString(1)\n// => false",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "isSymbol",
@@ -5637,7 +5637,7 @@ const functionsData = [
       "description": "Returns true if value is a symbol, else false"
     },
     "example": "isSymbol(Symbol.iterator)\n// => true\nisSymbol('abc')\n// => false",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "isTypedArray",
@@ -5657,7 +5657,7 @@ const functionsData = [
       "description": "Returns true if value is a typed array, else false"
     },
     "example": "isTypedArray(new Uint8Array)\n// => true\nisTypedArray([])\n// => false",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "isUndefined",
@@ -5677,7 +5677,7 @@ const functionsData = [
       "description": "Returns true if value is undefined, else false"
     },
     "example": "isUndefined(void 0)\n// => true\nisUndefined(null)\n// => false",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "isWeakMap",
@@ -5697,7 +5697,7 @@ const functionsData = [
       "description": "Returns true if value is a weak map, else false"
     },
     "example": "isWeakMap(new WeakMap)\n// => true\nisWeakMap(new Map)\n// => false",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "isWeakSet",
@@ -5717,7 +5717,7 @@ const functionsData = [
       "description": "Returns true if value is a weak set, else false"
     },
     "example": "isWeakSet(new WeakSet)\n// => true\nisWeakSet(new Set)\n// => false",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "constant",
@@ -5737,7 +5737,7 @@ const functionsData = [
       "description": "Returns the new constant function"
     },
     "example": "const getAnswer = constant(42);\ngetAnswer(); // 42",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "identity",
@@ -5757,7 +5757,7 @@ const functionsData = [
       "description": "Returns value"
     },
     "example": "identity(42); // 42\nidentity('hello'); // 'hello'",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "iteratee",
@@ -5777,7 +5777,7 @@ const functionsData = [
       "description": "Returns the callback"
     },
     "example": "iteratee('name')({ name: 'John' }); // 'John'\niteratee(['age', 25])({ age: 25 }); // true",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "matches",
@@ -5797,7 +5797,7 @@ const functionsData = [
       "description": "Returns the new spec function"
     },
     "example": "const isActive = matches({ active: true });\nisActive({ active: true, name: 'John' }); // true",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "matchesProperty",
@@ -5823,7 +5823,7 @@ const functionsData = [
       "description": "Returns the new spec function"
     },
     "example": "const isJohn = matchesProperty('name', 'John');\nisJohn({ name: 'John', age: 25 }); // true",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "noop",
@@ -5836,7 +5836,7 @@ const functionsData = [
       "description": "Returns undefined"
     },
     "example": "noop(); // undefined",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "property",
@@ -5856,7 +5856,7 @@ const functionsData = [
       "description": "Returns the new accessor function"
     },
     "example": "const getName = property('name');\ngetName({ name: 'John' }); // 'John'\nconst getDeep = property(['user', 'profile', 'name']);\ngetDeep({ user: { profile: { name: 'Jane' } } }); // 'Jane'",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "propertyOf",
@@ -5876,7 +5876,7 @@ const functionsData = [
       "description": "Returns the new accessor function"
     },
     "example": "const object = { a: { b: 2 } };\nconst at = propertyOf(object);\nat('a.b'); // 2\nat(['a', 'b']); // 2",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "range",
@@ -5908,7 +5908,7 @@ const functionsData = [
       "description": "Returns the range of numbers"
     },
     "example": "range(4); // [0, 1, 2, 3]\nrange(1, 5); // [1, 2, 3, 4]\nrange(0, 20, 5); // [0, 5, 10, 15]",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "rangeRight",
@@ -5940,7 +5940,7 @@ const functionsData = [
       "description": "Returns the range of numbers"
     },
     "example": "rangeRight(4); // [3, 2, 1, 0]\nrangeRight(1, 5); // [4, 3, 2, 1]",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "stubArray",
@@ -5953,7 +5953,7 @@ const functionsData = [
       "description": "Returns a new empty array"
     },
     "example": "stubArray(); // []",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "stubFalse",
@@ -5966,7 +5966,7 @@ const functionsData = [
       "description": "Returns false"
     },
     "example": "stubFalse(); // false",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "stubObject",
@@ -5979,7 +5979,7 @@ const functionsData = [
       "description": "Returns a new empty object"
     },
     "example": "stubObject(); // {}",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "stubString",
@@ -5992,7 +5992,7 @@ const functionsData = [
       "description": "Returns an empty string"
     },
     "example": "stubString(); // ''",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "stubTrue",
@@ -6005,7 +6005,7 @@ const functionsData = [
       "description": "Returns true"
     },
     "example": "stubTrue(); // true",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "times",
@@ -6031,7 +6031,7 @@ const functionsData = [
       "description": "Returns the array of results"
     },
     "example": "times(3, i => i * 2); // [0, 2, 4]\ntimes(4, () => 'a'); // ['a', 'a', 'a', 'a']",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "uniqueId",
@@ -6051,7 +6051,7 @@ const functionsData = [
       "description": "Returns the unique ID"
     },
     "example": "uniqueId(); // '8h3k2d'\nuniqueId('user_'); // 'user_8h3k2d'",
-    "since": "0.9.2"
+    "since": "0.9.6"
   }
 ];
 
@@ -6063,7 +6063,7 @@ const constantsData = [
     "value": "Object",
     "preview": "{ AD, AT, BE, ... }",
     "category": "constants",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "DATE_FORMATS",
@@ -6072,7 +6072,7 @@ const constantsData = [
     "value": "Object",
     "preview": "{ DATE, TIME, HH, ... }",
     "category": "constants",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "REGEX",
@@ -6081,7 +6081,7 @@ const constantsData = [
     "value": "Object",
     "preview": "{ htmlTag, inBrackets, inStrings, ... }",
     "category": "constants",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "RESPONSE_CODES",
@@ -6090,7 +6090,7 @@ const constantsData = [
     "value": "Object",
     "preview": "{ NOT_INIT, IS_INIT, NOT_FOUND_INIT, ... }",
     "category": "constants",
-    "since": "0.9.2"
+    "since": "0.9.6"
   },
   {
     "name": "STATUS_COLORS",
@@ -6099,14 +6099,14 @@ const constantsData = [
     "value": "Object",
     "preview": "{ ACTIVE, INACTIVE, PENDING, ... }",
     "category": "constants",
-    "since": "0.9.2"
+    "since": "0.9.6"
   }
 ];
 
 // Package information
 const packageInfo = {
-  "name": "generic-functions",
-  "version": "0.9.2",
+  "name": "generic-functions.mlai",
+  "version": "0.9.6",
   "description": "A comprehensive, lightweight utility library",
   "author": {
     "name": "Mathieu-ai",
