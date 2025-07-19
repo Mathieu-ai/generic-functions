@@ -14,20 +14,8 @@ function createDistPackage() {
         version: packageJson.version,
         description: packageJson.description,
         main: 'index.js',
-        module: 'index.esm.js',
         types: 'index.d.ts',
-        exports: {
-            ".": {
-                "import": "./index.esm.js",
-                "require": "./index.js",
-                "types": "./index.d.ts"
-            },
-            "./constants": {
-                "import": "./constants/index.esm.js",
-                "require": "./constants/index.js",
-                "types": "./constants/index.d.ts"
-            }
-        },
+        exports: packageJson.exports,
         files: [
             "*",
             "**/*"
@@ -91,3 +79,10 @@ Thumbs.db
         ? distPackage.repository.url
         : 'N/A'}`);
 }
+
+// Execute if called directly
+if (require.main === module) {
+    createDistPackage();
+}
+
+module.exports = createDistPackage;

@@ -4,7 +4,7 @@
         "type": "git",
         "url": "https://github.com/Mathieu-ai/generic-functions.git"
     },
-    "version": "0.9.3",
+    "version": "0.9.4",
     "description": "A comprehensive, lightweight utility library",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
@@ -84,7 +84,7 @@
         "build": "tsc",
         "clean": "rimraf dist",
         "copy-files": "node scripts/build-helper.cjs copy-files",
-        "prepare-dist": "npm run build && npm run copy-files",
+        "prepare-dist": "npm run clean && npm run build && npm run copy-files",
         "prebuild": "npm run clean",
         "prepare": "npm run prepare-dist",
         "prepack": "npm run prepare-dist",
