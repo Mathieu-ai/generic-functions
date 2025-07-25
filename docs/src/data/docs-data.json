@@ -5705,7 +5705,7 @@
   ],
   "packageInfo": {
     "name": "generic-functions.mlai",
-    "version": "0.9.8",
+    "version": "0.9.9",
     "description": "A comprehensive, lightweight utility library",
     "author": {
       "name": "Mathieu-ai",

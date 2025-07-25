@@ -1,7 +1,21 @@
 import { writeFileSync } from 'fs';
+import path from 'path';
 
-// Use relative path for better compatibility in CI
-import { generateDocsData } from '../src/lib/generate-docs';
+import { DocsParser } from '../src/lib/docs-parser';
+
+async function generateDocsData() {
+  // Project root is one level up from docs folder
+  const projectRoot = path.resolve(process.cwd(), '..');
+  const parser = new DocsParser(projectRoot);
+  
+  try {
+    const docsData = await parser.parseAll();
+    return docsData;
+  } catch (error) {
+    console.error('Error generating documentation data:', error);
+    throw error;
+  }
+}
 
 async function main() {
   try {
