@@ -1,19 +1,36 @@
 import { writeFileSync } from 'fs';
 import path from 'path';
-
-import { DocsParser } from '../src/lib/docs-parser';
+import { fileURLToPath, pathToFileURL } from 'url';
 
 async function generateDocsData() {
-  // Project root is one level up from docs folder
-  const projectRoot = path.resolve(process.cwd(), '..');
-  const parser = new DocsParser(projectRoot);
-  
   try {
+    // Try dynamic import first
+    const { DocsParser } = await import('../src/lib/docs-parser');
+    
+    // Project root is one level up from docs folder
+    const projectRoot = path.resolve(process.cwd(), '..');
+    const parser = new DocsParser(projectRoot);
+    
     const docsData = await parser.parseAll();
     return docsData;
-  } catch (error) {
-    console.error('Error generating documentation data:', error);
-    throw error;
+  } catch (importError: unknown) {
+    const errorMessage = importError instanceof Error ? importError.message : 'Unknown error';
+    console.warn('Dynamic import failed, trying alternative approach:', errorMessage);
+    
+    // Fallback: try with file URL
+    const __filename = fileURLToPath(import.meta.url);
+    const __dirname = path.dirname(__filename);
+    const docsParserPath = path.resolve(__dirname, '..', 'src', 'lib', 'docs-parser.js');
+    const docsParserUrl = pathToFileURL(docsParserPath);
+    
+    const { DocsParser } = await import(docsParserUrl.href);
+    
+    // Project root is one level up from docs folder
+    const projectRoot = path.resolve(process.cwd(), '..');
+    const parser = new DocsParser(projectRoot);
+    
+    const docsData = await parser.parseAll();
+    return docsData;
   }
 }
 
