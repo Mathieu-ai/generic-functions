@@ -1,5 +1,6 @@
 import { writeFileSync } from 'fs';
 
+// Use relative path for better compatibility in CI
 import { generateDocsData } from '../src/lib/generate-docs';
 
 async function main() {

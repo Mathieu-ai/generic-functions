@@ -13,13 +13,34 @@ const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf8'));
 function createDistPackage() {
     // SECTION - Distribution Package Configuration
     // NOTE - Create a clean package.json for distribution with only necessary fields
+    
+    // Fix exports to remove dist/ prefix since we're publishing from dist folder
+    const fixedExports = {};
+    if (packageJson.exports) {
+        for (const [key, value] of Object.entries(packageJson.exports)) {
+            if (typeof value === 'object') {
+                const fixedValue = {};
+                for (const [subKey, subValue] of Object.entries(value)) {
+                    if (typeof subValue === 'string' && subValue.startsWith('./dist/')) {
+                        fixedValue[subKey] = subValue.replace('./dist/', './');
+                    } else {
+                        fixedValue[subKey] = subValue;
+                    }
+                }
+                fixedExports[key] = fixedValue;
+            } else {
+                fixedExports[key] = value;
+            }
+        }
+    }
+    
     const distPackage = {
         name: packageJson.name,
         version: packageJson.version,
         description: packageJson.description,
         main: 'index.js',
         types: 'index.d.ts',
-        exports: packageJson.exports,
+        exports: fixedExports,
         files: [
             "*",
             "**/*"
