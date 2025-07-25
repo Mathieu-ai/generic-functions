@@ -1,6 +1,7 @@
 /**
  * Collection utility functions (arrays and objects)
  * No external dependencies - includes lodash-inspired methods
+ * @since 0.9.0
  */
 
 /**
@@ -10,6 +11,7 @@
  * @param collection - The collection to iterate over (array or object)
  * @param predicate - The function invoked per iteration
  * @returns Returns true if all elements pass the predicate check, else false
+ * @since 0.9.0
  * 
  * @example
  * every([2, 4, 6], x => x % 2 === 0) // => true
@@ -31,6 +33,7 @@ export function every<T> (collection: T[] | Record<string, T>, predicate: any): 
  * @param collection - The collection to iterate over (array or object)
  * @param iteratee - The function invoked per iteration
  * @returns Returns the original collection
+ * @since 0.9.0
  * 
  * @example
  * forEach([1, 2], value => console.log(value))
@@ -54,6 +57,7 @@ export function forEach<T> (collection: T[] | Record<string, T>, iteratee: any):
  * @param collection - The collection to iterate over (array or object)
  * @param iteratee - The function invoked per iteration
  * @returns Returns the new mapped array
+ * @since 0.9.0
  * 
  * @example
  * map([1, 2, 3], x => x * 2) // => [2, 4, 6]
@@ -75,6 +79,7 @@ export function map<T, R> (collection: T[] | Record<string, T>, iteratee: any): 
  * @param collection - The collection to iterate over (array or object)
  * @param predicate - The function invoked per iteration
  * @returns Returns the new filtered array
+ * @since 0.9.0
  * 
  * @example
  * filter([1, 2, 3, 4], x => x % 2 === 0) // => [2, 4]
@@ -98,6 +103,7 @@ export function filter<T> (collection: T[] | Record<string, T>, predicate: any):
  * @param collection - The collection to inspect (array or object)
  * @param predicate - The function invoked per iteration
  * @returns Returns the matched element, else undefined
+ * @since 0.9.0
  * 
  * @example
  * find([1, 2, 3, 4], x => x > 2) // => 3
@@ -124,6 +130,7 @@ export function find<T> (collection: T[] | Record<string, T>, predicate: any): T
  * @param collection - The collection to inspect
  * @param predicate - The function invoked per iteration
  * @returns Returns the key of the matched element, else undefined
+ * @since 0.9.0
  * 
  * @example
  * findKey({a: 1, b: 2, c: 3}, x => x > 2) // => 'c'
@@ -143,6 +150,7 @@ export function findKey<T> (collection: Record<string, T>, predicate: (value: T,
  * @param collection - The collection to inspect (array or object)
  * @param predicate - The function invoked per iteration
  * @returns Returns the matched element, else undefined
+ * @since 0.9.0
  * 
  * @example
  * findLast([1, 2, 3, 4], x => x % 2 === 1) // => 3
@@ -175,6 +183,7 @@ export function findLast<T> (collection: T[] | Record<string, T>, predicate: any
  * @param collection - The collection to iterate over (array or object)
  * @param iteratee - The function invoked per iteration
  * @returns Returns the new flattened array
+ * @since 0.9.0
  * 
  * @example
  * flatMap([1, 2], x => [x, x]) // => [1, 1, 2, 2]
@@ -195,6 +204,7 @@ export function flatMap<T, R> (collection: T[] | Record<string, T>, iteratee: an
  * @param collection - The collection to iterate over (array or object)
  * @param iteratee - The function invoked per iteration
  * @returns Returns the new flattened array
+ * @since 0.9.0
  * 
  * @example
  * flatMapDeep([1, 2], x => [x, [x]]) // => [1, 1, 2, 2]
@@ -217,6 +227,7 @@ export function flatMapDeep<T, R> (collection: T[] | Record<string, T>, iteratee
  * @param collection - The collection to iterate over (array or object)
  * @param iteratee - The iteratee to transform keys
  * @returns Returns the composed aggregate object
+ * @since 0.9.0
  * 
  * @example
  * groupBy(['one', 'two', 'three'], x => x.length) // => {3: ['one', 'two'], 5: ['three']}
@@ -246,6 +257,7 @@ export function groupBy<T> (collection: T[] | Record<string, T>, iteratee: (valu
  * @param value - The value to search for
  * @param fromIndex - The index to search from
  * @returns Returns true if value is found, else false
+ * @since 0.9.0
  * 
  * @example
  * includes([1, 2, 3], 1) // => true
@@ -270,6 +282,7 @@ export function includes<T> (collection: T[] | Record<string, T> | string, value
  * @param path - The path of the method to invoke
  * @param args - The arguments to invoke each method with
  * @returns Returns the array of results
+ * @since 0.9.0
  * 
  * @example
  * invokeMap([[5, 1, 7], [3, 2, 1]], 'sort') // => [[1, 5, 7], [1, 2, 3]]
@@ -289,6 +302,7 @@ export function invokeMap<T> (collection: T[], path: string, ...args: any[]): an
  * @param collection - The collection to iterate over (array or object)
  * @param iteratee - The iteratee to transform keys
  * @returns Returns the composed aggregate object
+ * @since 0.9.0
  * 
  * @example
  * keyBy([{id: 'a', dir: 'left'}, {id: 'b', dir: 'right'}], x => x.id) 
@@ -316,6 +330,7 @@ export function keyBy<T> (collection: T[] | Record<string, T>, iteratee: (value:
  * @param iteratees - The iteratees to sort by
  * @param orders - The sort orders of iteratees
  * @returns Returns the new sorted array
+ * @since 0.9.0
  * 
  * @example
  * orderBy([{user: 'fred', age: 48}, {user: 'barney', age: 36}], 
@@ -349,6 +364,7 @@ export function orderBy<T> (collection: T[], iteratees: ((item: T) => any)[], or
  * @param collection - The collection to iterate over
  * @param predicate - The function invoked per iteration
  * @returns Returns the array of grouped elements
+ * @since 0.9.0
  * 
  * @example
  * partition([1, 2, 3, 4], x => x % 2) // => [[1, 3], [2, 4]]
@@ -377,6 +393,7 @@ export function partition<T> (collection: T[], predicate: (value: T) => boolean)
  * @param iteratee - The function invoked per iteration
  * @param accumulator - The initial value
  * @returns Returns the accumulated value
+ * @since 0.9.0
  * 
  * @example
  * reduce([1, 2], (sum, n) => sum + n, 0) // => 3
@@ -402,6 +419,7 @@ export function reduce<T, R> (collection: T[] | Record<string, T>, iteratee: any
  * @param iteratee - The function invoked per iteration
  * @param accumulator - The initial value
  * @returns Returns the accumulated value
+ * @since 0.9.0
  * 
  * @example
  * reduceRight([1, 2, 3], (acc, n) => acc.concat(n), []) // => [3, 2, 1]
@@ -417,6 +435,7 @@ export function reduceRight<T, R> (collection: T[], iteratee: (accumulator: R, v
  * @param collection - The collection to iterate over (array or object)
  * @param predicate - The function invoked per iteration
  * @returns Returns the new filtered array
+ * @since 0.9.0
  * 
  * @example
  * reject([1, 2, 3, 4], x => x % 2 === 0) // => [1, 3]
@@ -437,6 +456,7 @@ export function reject<T> (collection: T[] | Record<string, T>, predicate: any):
  * 
  * @param collection - The collection to sample
  * @returns Returns the random element
+ * @since 0.9.0
  * 
  * @example
  * sample([1, 2, 3, 4]) // => 2
@@ -456,6 +476,7 @@ export function sample<T> (collection: T[] | Record<string, T>): T | undefined {
  * @param collection - The collection to sample
  * @param n - The number of elements to sample
  * @returns Returns the random elements
+ * @since 0.9.0
  * 
  * @example
  * sampleSize([1, 2, 3], 2) // => [3, 1]
@@ -482,6 +503,7 @@ export function sampleSize<T> (collection: T[] | Record<string, T>, n: number): 
  * 
  * @param collection - The collection to shuffle
  * @returns Returns the new shuffled array
+ * @since 0.9.0
  * 
  * @example
  * shuffle([1, 2, 3, 4]) // => [4, 1, 3, 2]
@@ -501,6 +523,7 @@ export function shuffle<T> (collection: T[] | Record<string, T>): T[] {
  * 
  * @param collection - The collection to inspect
  * @returns Returns the collection size
+ * @since 0.9.0
  * 
  * @example
  * size([1, 2, 3]) // => 3
@@ -521,6 +544,7 @@ export function size<T> (collection: T[] | Record<string, T> | string): number {
  * @param collection - The collection to iterate over (array or object)
  * @param predicate - The function invoked per iteration
  * @returns Returns true if any element passes the predicate check, else false
+ * @since 0.9.0
  * 
  * @example
  * some([null, 0, 'yes', false], Boolean) // => true
@@ -542,6 +566,7 @@ export function some<T> (collection: T[] | Record<string, T>, predicate: any): b
  * @param collection - The collection to iterate over
  * @param iteratees - The iteratees to sort by
  * @returns Returns the new sorted array
+ * @since 0.9.0
  * 
  * @example
  * sortBy([{user: 'fred', age: 48}, {user: 'barney', age: 36}], x => x.age)
@@ -568,6 +593,7 @@ export function sortBy<T> (collection: T[], ...iteratees: ((item: T) => any)[]):
  * @param collection - The collection to iterate over (array or object)
  * @param iteratee - The iteratee to transform keys
  * @returns Returns the composed aggregate object
+ * @since 0.9.0
  * 
  * @example
  * countBy([6.1, 4.2, 6.3], Math.floor) // => {4: 1, 6: 2}
@@ -593,6 +619,7 @@ export function countBy<T> (collection: T[] | Record<string, T>, iteratee: (valu
  * @param collection - The collection to iterate over
  * @param iteratee - The function invoked per iteration
  * @returns Returns the collection
+ * @since 0.9.0
  * 
  * @example
  * eachRight([1, 2], value => console.log(value)) // => logs `2` then `1`
@@ -611,6 +638,7 @@ export function eachRight<T> (collection: T[], iteratee: (value: T, index: numbe
  * @param collection - The collection to iterate over
  * @param iteratee - The function invoked per iteration
  * @returns Returns the collection
+ * @since 0.9.0
  * 
  * @example
  * forEachRight([1, 2], value => console.log(value)) // => logs `2` then `1`

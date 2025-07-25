@@ -1,6 +1,7 @@
 /**
  * Lightweight object utility functions
  * No external dependencies
+ * @since 0.8.0
  */
 
 export interface FlatOptions {
@@ -13,6 +14,7 @@ export interface FlatOptions {
  * @param options - Flatten options
  * @param options.props - Array of property names to include (empty array includes all)
  * @returns Flattened string of values joined by commas
+ * @since 0.8.0
  * @example
  * flat({ a: 1, b: { c: 2 } }) // '1, 2'
  * flat({ a: 1, b: { c: 2 } }, { props: ['a'] }) // '1'

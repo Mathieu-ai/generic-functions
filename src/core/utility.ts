@@ -282,10 +282,15 @@ function isMatch<T extends Record<string, unknown>> (obj: T, source: Partial<T>)
 }
 
 /**
- * Helper function that performs a deep comparison between two values to determine if they are equivalent
- * @param {unknown} a - The value to compare
- * @param {unknown} b - The other value to compare
- * @returns {boolean} Returns true if the values are equivalent, else false
+ * Performs a deep comparison between two values to determine if they are equivalent
+ * @param {unknown} a - The first value to compare
+ * @param {unknown} b - The second value to compare
+ * @returns {boolean} True if the values are equivalent, false otherwise
+ * @since 0.8.0
+ * @example
+ * isEqual([1, 2, 3], [1, 2, 3]) // true
+ * isEqual({ a: 1 }, { a: 1 }) // true
+ * isEqual({ a: 1 }, { a: 2 }) // false
  */
 function isEqual (a: unknown, b: unknown): boolean {
   if (a === b) return true;

@@ -1,13 +1,17 @@
 #!/usr/bin/env node
 
+// SECTION - Dependencies and Imports
 const { rimraf } = require('rimraf');
 const fs = require('fs');
 const path = require('path');
 
+// ANCHOR - Package JSON Loader
 // Read package.json
 const packageJsonPath = path.join(__dirname, '..', 'package.json');
 const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf8'));
 
+// SECTION - File Operations
+// ANCHOR - Cross-platform File Copier
 // Cross-platform file operations
 function copyFile(src, dest) {
   try {
@@ -25,6 +29,7 @@ function copyFile(src, dest) {
   }
 }
 
+// ANCHOR - Directory Remover
 function removeDirectory(dir) {
   try {
     if (fs.existsSync(dir)) {
@@ -39,6 +44,8 @@ function removeDirectory(dir) {
   }
 }
 
+// SECTION - Build Operations
+// ANCHOR - Documentation Builder
 function buildDocs() {
   console.log('📚 Building documentation...');
 
@@ -48,16 +55,21 @@ function buildDocs() {
   console.log('✅ Documentation built successfully');
 }
 
+// SECTION - Command Processing
+// ANCHOR - Command Line Argument Parser
 // Get command from arguments
 const command = process.argv[2];
 
+// ANCHOR - Main Function
 async function main() {
   switch (command) {
     case 'clean':
+      // STUB - Clean operation - removes dist directory
       removeDirectory('dist');
       break;
 
     case 'copy-files':
+      // SECTION - File Copying Operation
       // Ensure dist directory exists
       if (!fs.existsSync('dist')) {
         fs.mkdirSync('dist', { recursive: true });
@@ -77,10 +89,13 @@ async function main() {
       break;
 
     case 'build-docs':
+      // STUB - Documentation build operation
       buildDocs();
       break;
 
     case 'all':
+      // SECTION - Complete Build Process
+      // NOTE - This runs the full build pipeline
       removeDirectory('dist');
       // TypeScript compilation happens through npm run build
       if (fs.existsSync('README.md')) {
@@ -95,11 +110,14 @@ async function main() {
       break;
 
     default:
+      // ANCHOR - Usage Error Handler
       console.error('Usage: node build-helper.cjs [clean|copy-files|build-docs|all]');
       process.exit(1);
   }
 }
 
+// SECTION - Script Entry Point
+// ANCHOR - Main Execution
 // Run main function
 main().catch(error => {
   console.error('Script failed:', error);

@@ -1,6 +1,7 @@
 /**
  * Type checking utility functions
  * No external dependencies - includes lodash-inspired methods
+ * @since 0.9.0
  */
 
 import { isEqual } from "./object";
@@ -9,6 +10,7 @@ import { isEqual } from "./object";
  * Checks if value is an arguments object
  * @param value - The value to check
  * @returns Returns true if value is an arguments object, else false
+ * @since 0.9.0
  * @example
  * isArguments(function() { return arguments; }())
  * // => true
@@ -24,6 +26,7 @@ export function isArguments (value: unknown): value is IArguments {
  * Checks if value is classified as an ArrayBuffer object
  * @param value - The value to check
  * @returns Returns true if value is an ArrayBuffer, else false
+ * @since 0.9.0
  * @example
  * isArrayBuffer(new ArrayBuffer(2))
  * // => true
@@ -39,6 +42,7 @@ export function isArrayBuffer (value: unknown): value is ArrayBuffer {
  * Checks if value is array-like. A value is considered array-like if it's not a function and has a valid length property
  * @param value - The value to check
  * @returns Returns true if value is array-like, else false
+ * @since 0.9.0
  * @example
  * isArrayLike([1, 2, 3])
  * // => true
@@ -57,6 +61,7 @@ export function isArrayLike (value: unknown): value is { length: number } {
  * Checks if value is array-like and not a function. This method is like isArrayLike except that it also checks if value is an object
  * @param value - The value to check
  * @returns Returns true if value is an array-like object, else false
+ * @since 0.9.0
  * @example
  * isArrayLikeObject([1, 2, 3])
  * // => true
@@ -75,6 +80,7 @@ export function isArrayLikeObject (value: unknown): value is object & { length: 
  * Checks if value is classified as a boolean primitive or object
  * @param value - The value to check
  * @returns Returns true if value is a boolean, else false
+ * @since 0.9.0
  * @example
  * isBoolean(false)
  * // => true
@@ -90,6 +96,7 @@ export function isBoolean (value: unknown): value is boolean {
  * Checks if value is a buffer
  * @param value - The value to check
  * @returns Returns true if value is a buffer, else false
+ * @since 0.9.0
  * @example
  * isBuffer(Buffer.alloc(2))
  * // => true
@@ -107,6 +114,7 @@ export function isBuffer (value: unknown): boolean {
  * Checks if value is likely a DOM element
  * @param value - The value to check
  * @returns Returns true if value is a DOM element, else false
+ * @since 0.9.0
  * @example
  * isElement(document.body)
  * // => true
@@ -126,6 +134,7 @@ export function isElement (value: unknown): value is Element {
  * @param b - The other value to compare
  * @param customizer - The function to customize comparisons
  * @returns Returns true if the values are equivalent, else false
+ * @since 0.9.0
  * @example
  * function isGreeting(value) {
  *   return /^h(?:i|ello)$/.test(value);
@@ -149,6 +158,7 @@ export function isEqualWith (a: unknown, b: unknown, customizer: (objValue: unkn
  * Checks if value is an Error, EvalError, RangeError, ReferenceError, SyntaxError, TypeError, or URIError object
  * @param value - The value to check
  * @returns Returns true if value is an error object, else false
+ * @since 0.9.0
  * @example
  * isError(new Error)
  * // => true
@@ -165,6 +175,7 @@ export function isError (value: unknown): value is Error {
  * Note: This method is based on Number.isFinite
  * @param value - The value to check
  * @returns Returns true if value is a finite number, else false
+ * @since 0.9.0
  * @example
  * isFinite(3)
  * // => true
@@ -186,6 +197,7 @@ export function isFinite (value: unknown): value is number {
  * Checks if value is classified as a Function object
  * @param value - The value to check
  * @returns Returns true if value is a function, else false
+ * @since 0.9.0
  * @example
  * isFunction(() => {})
  * // => true
@@ -202,6 +214,7 @@ export function isFunction (value: unknown): value is Function {
  * Note: This method is based on Number.isInteger
  * @param value - The value to check
  * @returns Returns true if value is an integer, else false
+ * @since 0.9.0
  * @example
  * isInteger(3)
  * // => true
@@ -224,6 +237,7 @@ export function isInteger (value: unknown): value is number {
  * Note: This method is loosely based on ToLength operation
  * @param value - The value to check
  * @returns Returns true if value is a valid length, else false
+ * @since 0.9.0
  * @example
  * isLength(3)
  * // => true
@@ -245,6 +259,7 @@ export function isLength (value: unknown): boolean {
  * Checks if value is classified as a Map object
  * @param value - The value to check
  * @returns Returns true if value is a map, else false
+ * @since 0.9.0
  * @example
  * isMap(new Map)
  * // => true
@@ -262,6 +277,7 @@ export function isMap (value: unknown): value is Map<unknown, unknown> {
  * @param object - The object to inspect
  * @param source - The object of property values to match
  * @returns Returns true if object is a match, else false
+ * @since 0.9.0
  * @example
  * const object = { 'a': 1, 'b': 2 };
  * 
@@ -293,6 +309,7 @@ export function isMatch (object: unknown, source: unknown): boolean {
  * @param source - The object of property values to match
  * @param customizer - The function to customize comparisons
  * @returns Returns true if object is a match, else false
+ * @since 0.9.0
  * @example
  * function isGreeting(value) {
  *   return /^h(?:i|ello)$/.test(value);
@@ -334,6 +351,7 @@ export function isMatchWith (object: unknown, source: unknown, customizer: (objV
  * Note: This method is based on Number.isNaN and not global isNaN which returns true for undefined and other non-number values
  * @param value - The value to check
  * @returns Returns true if value is NaN, else false
+ * @since 0.9.0
  * @example
  * isNaN(NaN)
  * // => true
@@ -353,6 +371,7 @@ export function isNaN (value: unknown): boolean {
  * Note: This method can't reliably detect native functions in the presence of the core-js package
  * @param value - The value to check
  * @returns Returns true if value is a native function, else false
+ * @since 0.9.0
  * @example
  * isNative(Array.prototype.push)
  * // => true
@@ -368,6 +387,7 @@ export function isNative (value: unknown): boolean {
  * Checks if value is null or undefined
  * @param value - The value to check
  * @returns Returns true if value is nullish, else false
+ * @since 0.9.0
  * @example
  * isNil(null)
  * // => true
@@ -386,6 +406,7 @@ export function isNil (value: unknown): value is null | undefined {
  * Checks if value is null
  * @param value - The value to check
  * @returns Returns true if value is null, else false
+ * @since 0.9.0
  * @example
  * isNull(null)
  * // => true
@@ -402,6 +423,7 @@ export function isNull (value: unknown): value is null {
  * Note: To exclude Infinity, -Infinity, and NaN, which are classified as numbers, use the isFinite method
  * @param value - The value to check
  * @returns Returns true if value is a number, else false
+ * @since 0.9.0
  * @example
  * isNumber(3)
  * // => true
@@ -424,6 +446,7 @@ export function isNumber (value: unknown): value is number {
  * (e.g. arrays, functions, objects, regexes, new Number(0), and new String(''))
  * @param value - The value to check
  * @returns Returns true if value is an object, else false
+ * @since 0.9.0
  * @example
  * isObject({})
  * // => true
@@ -446,6 +469,7 @@ export function isObject (value: unknown): value is object {
  * Checks if value is object-like. A value is object-like if it's not null and has a typeof result of "object"
  * @param value - The value to check
  * @returns Returns true if value is object-like, else false
+ * @since 0.9.0
  * @example
  * isObjectLike({})
  * // => true
@@ -467,6 +491,7 @@ export function isObjectLike (value: unknown): value is object {
  * Checks if value is a plain object, that is, an object created by the Object constructor or one with a [[Prototype]] of null
  * @param value - The value to check
  * @returns Returns true if value is a plain object, else false
+ * @since 0.9.0
  * @example
  * function Foo() {
  *   this.a = 1;
@@ -502,6 +527,7 @@ export function isPlainObject (value: unknown): boolean {
  * Checks if value is classified as a RegExp object
  * @param value - The value to check
  * @returns Returns true if value is a regexp, else false
+ * @since 0.9.0
  * @example
  * isRegExp(/abc/)
  * // => true
@@ -518,6 +544,7 @@ export function isRegExp (value: unknown): value is RegExp {
  * Note: This method is based on Number.isSafeInteger
  * @param value - The value to check
  * @returns Returns true if value is a safe integer, else false
+ * @since 0.9.0
  * @example
  * isSafeInteger(3)
  * // => true
@@ -539,6 +566,7 @@ export function isSafeInteger (value: unknown): value is number {
  * Checks if value is classified as a Set object
  * @param value - The value to check
  * @returns Returns true if value is a set, else false
+ * @since 0.9.0
  * @example
  * isSet(new Set)
  * // => true
@@ -554,6 +582,7 @@ export function isSet (value: unknown): value is Set<unknown> {
  * Checks if value is classified as a String primitive or object
  * @param value - The value to check
  * @returns Returns true if value is a string, else false
+ * @since 0.9.0
  * @example
  * isString('abc')
  * // => true
@@ -569,6 +598,7 @@ export function isString (value: unknown): value is string {
  * Checks if value is classified as a Symbol primitive or object
  * @param value - The value to check
  * @returns Returns true if value is a symbol, else false
+ * @since 0.9.0
  * @example
  * isSymbol(Symbol.iterator)
  * // => true
@@ -584,6 +614,7 @@ export function isSymbol (value: unknown): value is symbol {
  * Checks if value is classified as a typed array
  * @param value - The value to check
  * @returns Returns true if value is a typed array, else false
+ * @since 0.9.0
  * @example
  * isTypedArray(new Uint8Array)
  * // => true
@@ -599,6 +630,7 @@ export function isTypedArray (value: unknown): boolean {
  * Checks if value is undefined
  * @param value - The value to check
  * @returns Returns true if value is undefined, else false
+ * @since 0.9.0
  * @example
  * isUndefined(void 0)
  * // => true
@@ -614,6 +646,7 @@ export function isUndefined (value: unknown): value is undefined {
  * Checks if value is classified as a WeakMap object
  * @param value - The value to check
  * @returns Returns true if value is a weak map, else false
+ * @since 0.9.0
  * @example
  * isWeakMap(new WeakMap)
  * // => true
@@ -629,6 +662,7 @@ export function isWeakMap (value: unknown): value is WeakMap<object, unknown> {
  * Checks if value is classified as a WeakSet object
  * @param value - The value to check
  * @returns Returns true if value is a weak set, else false
+ * @since 0.9.0
  * @example
  * isWeakSet(new WeakSet)
  * // => true

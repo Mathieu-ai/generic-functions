@@ -4,7 +4,7 @@
         "type": "git",
         "url": "https://github.com/Mathieu-ai/generic-functions.git"
     },
-    "version": "0.9.6",
+    "version": "0.9.7",
     "description": "A comprehensive, lightweight utility library",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
@@ -90,7 +90,7 @@
         "prepack": "npm run prepare-dist",
         "test": "echo \"No tests specified\" && exit 0",
         "docs:extract": "node scripts/extract-docs.cjs",
-        "docs:serve": "cd docs && python -m http.server 8000 || python3 -m http.server 8000",
+        "docs:serve": "cd docs && python -m http.server 8080 || python3 -m http.server 8080",
         "docs:build": "npm run docs:extract",
         "docs": "npm run docs:build && npm run docs:serve"
     },

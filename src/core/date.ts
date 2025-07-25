@@ -1,6 +1,7 @@
 /**
  * Lightweight date utility functions
  * No external dependencies - uses native Date API
+ * @since 0.8.0
  */
 
 export type TimeUnit = "hour" | "minute" | "second" | "millisecond" | "day" | "month" | "year";
@@ -12,6 +13,7 @@ export type CodeISO = "AD" | "AT" | "BE" | "BG" | "CH" | "CY" | "CZ" | "DE" | "D
  * @param date - The date to format (Date object or date string)
  * @param format - The format string pattern (supports YYYY, MM, DD, HH, mm, ss)
  * @returns Formatted date string, or empty string if date is invalid
+ * @since 0.8.0
  * @example
  * ```typescript
  * formatDate(new Date(), 'DD/MM/YYYY') // '25/12/2023'

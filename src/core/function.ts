@@ -1,6 +1,7 @@
 /**
  * Function utility functions
  * No external dependencies - includes lodash-inspired methods
+ * @since 0.9.0
  */
 
 /**
@@ -9,6 +10,7 @@
  * @param thisArg - The this binding of func
  * @param partials - The arguments to be partially applied
  * @returns Returns the new bound function
+ * @since 0.9.0
  * @example
  * function greet(greeting, punctuation) {
  *   return greeting + ' ' + this.user + punctuation;
@@ -30,6 +32,7 @@ export function bind<T extends (...args: any[]) => any> (func: T, thisArg: any, 
  * @param partials - The arguments to be partially applied
  * @returns Returns the new bound function
  * @throws {TypeError} Throws if the method is not a function
+ * @since 0.9.0
  * @example
  * const object = {
  *   'user': 'fred',
@@ -55,6 +58,7 @@ export function bindKey<T> (object: T, key: keyof T, ...partials: any[]): (...ar
  * @param func - The function to cap arguments for
  * @param n - The arity cap (defaults to func.length)
  * @returns Returns the new capped function
+ * @since 0.9.0
  * @example
  * ['6', '8', '10'].map(ary(parseInt, 1)); // => [6, 8, 10]
  */
@@ -68,6 +72,7 @@ export function ary<T extends (...args: any[]) => any> (func: T, n: number = fun
  * Creates a function that invokes func with arguments reversed
  * @param func - The function to flip arguments for
  * @returns Returns the new flipped function
+ * @since 0.9.0
  * @example
  * const flipped = flip(function(a, b, c) {
  *   return [a, b, c];
@@ -85,6 +90,7 @@ export function flip<T extends (...args: any[]) => any> (func: T): (...args: Par
  * @param func - The function to have its output memoized
  * @param resolver - The function to resolve the cache key (optional)
  * @returns Returns the new memoized function
+ * @since 0.9.0
  * @example
  * const object = { 'a': 1, 'b': 2 };
  * const other = { 'c': 3, 'd': 4 };
@@ -115,6 +121,7 @@ export function memoize<T extends (...args: any[]) => any> (func: T, resolver?: 
  * Creates a function that negates the result of the predicate func
  * @param predicate - The predicate to negate
  * @returns Returns the new negated function
+ * @since 0.9.0
  * @example
  * function isEven(n) {
  *   return n % 2 == 0;
@@ -132,6 +139,7 @@ export function negate<T extends (...args: any[]) => boolean> (predicate: T): (.
  * Creates a function that is restricted to invoking func once
  * @param func - The function to restrict
  * @returns Returns the new restricted function
+ * @since 0.9.0
  * @example
  * const initialize = once(createApplication);
  * initialize(); // creates the application
@@ -155,6 +163,7 @@ export function once<T extends (...args: any[]) => any> (func: T): T {
  * @param func - The function to wrap
  * @param transforms - The argument transforms
  * @returns Returns the new function
+ * @since 0.9.0
  * @example
  * function doubled(n) {
  *   return n * 2;
@@ -182,6 +191,7 @@ export function overArgs<T extends (...args: any[]) => any> (func: T, ...transfo
  * @param func - The function to partially apply arguments to
  * @param partials - The arguments to be partially applied
  * @returns Returns the new partially applied function
+ * @since 0.9.0
  * @example
  * function greet(greeting, name) {
  *   return greeting + ' ' + name;
@@ -200,6 +210,7 @@ export function partial<T extends (...args: any[]) => any> (func: T, ...partials
  * @param func - The function to partially apply arguments to
  * @param partials - The arguments to be partially applied
  * @returns Returns the new partially applied function
+ * @since 0.9.0
  * @example
  * function greet(greeting, name) {
  *   return greeting + ' ' + name;
@@ -218,6 +229,7 @@ export function partialRight<T extends (...args: any[]) => any> (func: T, ...par
  * @param func - The function to rearrange arguments for
  * @param indexes - The arranged argument indexes
  * @returns Returns the new function
+ * @since 0.9.0
  * @example
  * const rearged = rearg(function(a, b, c) {
  *   return [a, b, c];
@@ -235,6 +247,7 @@ export function rearg<T extends (...args: any[]) => any> (func: T, ...indexes: n
  * Creates a function that invokes func with the this binding of the created function and an array of arguments
  * @param func - The function to spread arguments over
  * @returns Returns the new function
+ * @since 0.9.0
  * @example
  * const say = spread(function(who, what) {
  *   return who + ' says ' + what;
@@ -255,6 +268,7 @@ export function spread<T extends (args: any[]) => any> (func: T): (...args: any[
  * @param options.leading - Specify invoking on the leading edge of the timeout (default: true)
  * @param options.trailing - Specify invoking on the trailing edge of the timeout (default: true)
  * @returns Returns the new throttled function
+ * @since 0.9.0
  * @example
  * // Avoid excessively updating the position while scrolling.
  * const throttled = throttle(updatePosition, 100);
@@ -342,6 +356,7 @@ export function throttle<T extends (...args: any[]) => any> (func: T, wait: numb
  * @param options.trailing - Specify invoking on the trailing edge of the timeout (default: true)
  * @param options.maxWait - The maximum time func is allowed to be delayed before it's invoked
  * @returns Returns the new debounced function
+ * @since 0.9.0
  * @example
  * // Avoid costly calculations while the window size is in flux.
  * const debounced = debounce(calculateLayout, 150);
@@ -472,6 +487,7 @@ export function debounce<T extends (...args: any[]) => any> (func: T, wait: numb
  * Creates a function that accepts up to one argument, ignoring any additional arguments
  * @param func - The function to cap arguments for
  * @returns Returns the new capped function
+ * @since 0.9.0
  * @example
  * ['6', '8', '10'].map(unary(parseInt)); // => [6, 8, 10]
  */
@@ -486,6 +502,7 @@ export function unary<T extends (...args: any[]) => any> (func: T): (arg: Parame
  * @param value - The value to wrap
  * @param wrapper - The wrapper function
  * @returns Returns the new function
+ * @since 0.9.0
  * @example
  * const p = wrap('hello', function(greeting, name) {
  *   return greeting + ' ' + name;
@@ -505,6 +522,7 @@ export function wrap<T, R> (value: T, wrapper: (value: T, ...args: any[]) => R):
  * @param func - The function to curry
  * @param arity - The arity of func (defaults to func.length)
  * @returns Returns the new curried function
+ * @since 0.9.0
  * @example
  * const abc = function(a, b, c) {
  *   return [a, b, c];
@@ -531,6 +549,7 @@ export function curry<T extends (...args: any[]) => any> (func: T, arity: number
  * @param func - The function to curry
  * @param arity - The arity of func (defaults to func.length)
  * @returns Returns the new curried function
+ * @since 0.9.0
  * @example
  * const abc = function(a, b, c) {
  *   return [a, b, c];
@@ -558,6 +577,7 @@ export function curryRight<T extends (...args: any[]) => any> (func: T, arity: n
  * @param func - The function to change the argument order for
  * @param start - The start position of the rest parameter (defaults to func.length - 1)
  * @returns Returns the new function
+ * @since 0.9.0
  * @example
  * const say = rest(function(what, names) {
  *   return what + ' ' + names.join(', ');

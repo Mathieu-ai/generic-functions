@@ -1,45 +1,42 @@
 /**
- * Constants and regular expressions
- * Lightweight replacement for the heavy props module
- */
-
-/**
  * Common regular expressions
+ * @since 0.8.0
  */
 export const REGEX = {
-  /** Match HTML tags */
+  /** Match HTML tags @since 0.8.0 */
   htmlTag: /.*?>([^<]*)/,
 
-  /** Match content in brackets */
+  /** Match content in brackets @since 0.8.0 */
   inBrackets: /\[[^\[\]]*\]/,
 
-  /** Match content in strings */
+  /** Match content in strings @since 0.8.0 */
   inStrings: /.*?"([^"]*)/,
 
-  /** Match HTML tags or arrays */
+  /** Match HTML tags or arrays @since 0.8.0 */
   tagRegex: /<([a-z][a-z0-9]*)[^>]*>([^<]*)<\/\1>|(\[(.*?)\])/i,
 
-  /** Match opening parentheses */
+  /** Match opening parentheses @since 0.8.0 */
   openParentheses: /^(.*?)\(/,
 
-  /** Match all non-whitespace sequences */
+  /** Match all non-whitespace sequences @since 0.8.0 */
   allSpaces: /\S+/g,
 
-  /** Match datetime strings */
+  /** Match datetime strings @since 0.8.0 */
   datetime: /^((?:(\d{4}-\d{2}-\d{2})T(\d{2}:\d{2}:\d{2}(?:\.\d+)?))(Z|[\+-]\d{2}:\d{2})?)$/,
 
-  /** Match email addresses */
+  /** Match email addresses @since 0.8.0 */
   email: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
 
-  /** Match URLs */
+  /** Match URLs @since 0.8.0 */
   url: /^https?:\/\/.+/,
 
-  /** Match numbers */
+  /** Match numbers @since 0.9.0 */
   number: /^-?\d+(\.\d+)?$/
 } as const;
 
 /**
  * Date format constants
+ * @since 0.8.0
  */
 export const DATE_FORMATS = {
   DATE: "DD/MM/YYYY",
@@ -49,6 +46,7 @@ export const DATE_FORMATS = {
 
 /**
  * Country date formats by ISO code
+ * @since 0.8.0
  */
 export const COUNTRY_DATE_FORMATS = {
   AD: "DD/MM/YYYY", AT: "DD.MM.YYYY", BE: "DD/MM/YYYY", BG: "DD.MM.YYYY",
@@ -65,6 +63,7 @@ export const COUNTRY_DATE_FORMATS = {
 
 /**
  * Response codes
+ * @since 0.8.0
  */
 export const RESPONSE_CODES = {
   NOT_INIT: 0,
@@ -75,6 +74,7 @@ export const RESPONSE_CODES = {
 
 /**
  * Common colors for status indicators
+ * @since 0.9.0
  */
 export const STATUS_COLORS = {
   ACTIVE: "green",

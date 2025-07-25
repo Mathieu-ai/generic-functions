@@ -1,6 +1,7 @@
 /**
  * Math utility functions
  * No external dependencies - includes lodash-inspired methods
+ * @since 0.8.0
  */
 
 /**
@@ -8,6 +9,7 @@
  * @param a - The first number to add
  * @param b - The second number to add
  * @returns The sum of a and b
+ * @since 0.8.0
  * @example
  * ```typescript
  * add(2, 3) // => 5
@@ -22,6 +24,7 @@ export function add (a: number, b: number): number {
  * Computes the sum of all values in an array
  * @param array - The array of numbers to sum
  * @returns The total sum of all numbers in the array, or 0 if array is empty
+ * @since 0.8.0
  * @example
  * ```typescript
  * sum([1, 2, 3, 4]) // => 10
@@ -38,6 +41,7 @@ export function sum (array: number[]): number {
  * @param array - The array to iterate over
  * @param iteratee - The function invoked per iteration, should return a number
  * @returns The total sum after applying the iteratee to each element
+ * @since 0.8.0
  * @example
  * ```typescript
  * const objects = [{ n: 4 }, { n: 2 }, { n: 8 }];
@@ -55,6 +59,7 @@ export function sumBy<T> (array: T[], iteratee: (value: T) => number): number {
  * Computes the arithmetic mean (average) of all values in an array
  * @param array - The array of numbers to calculate the mean for
  * @returns The arithmetic mean of the array, or 0 if array is empty
+ * @since 0.8.0
  * @example
  * ```typescript
  * mean([1, 2, 3, 4, 5]) // => 3
@@ -71,6 +76,7 @@ export function mean (array: number[]): number {
  * @param array - The array to iterate over
  * @param iteratee - The function invoked per iteration, should return a number
  * @returns The arithmetic mean after applying the iteratee to each element, or 0 if array is empty
+ * @since 0.8.0
  * @example
  * ```typescript
  * const objects = [{ n: 4 }, { n: 2 }, { n: 8 }];
@@ -88,6 +94,7 @@ export function meanBy<T> (array: T[], iteratee: (value: T) => number): number {
  * Finds the maximum value in an array of numbers
  * @param array - The array of numbers to search
  * @returns The maximum value in the array, or undefined if array is empty
+ * @since 0.8.0
  * @example
  * ```typescript
  * max([1, 5, 3, 9, 2]) // => 9
@@ -104,6 +111,7 @@ export function max (array: number[]): number | undefined {
  * @param array - The array to iterate over
  * @param iteratee - The function invoked per iteration, should return a number for comparison
  * @returns The element that produces the maximum value, or undefined if array is empty
+ * @since 0.8.0
  * @example
  * ```typescript
  * const objects = [{ n: 1 }, { n: 9 }, { n: 3 }];
@@ -134,6 +142,7 @@ export function maxBy<T> (array: T[], iteratee: (value: T) => number): T | undef
  * Finds the minimum value in an array of numbers
  * @param array - The array of numbers to search
  * @returns The minimum value in the array, or undefined if array is empty
+ * @since 0.8.0
  * @example
  * ```typescript
  * min([1, 5, 3, 9, 2]) // => 1
@@ -150,6 +159,7 @@ export function min (array: number[]): number | undefined {
  * @param array - The array to iterate over
  * @param iteratee - The function invoked per iteration, should return a number for comparison
  * @returns The element that produces the minimum value, or undefined if array is empty
+ * @since 0.8.0
  * @example
  * ```typescript
  * const objects = [{ n: 1 }, { n: 9 }, { n: 3 }];
@@ -181,6 +191,7 @@ export function minBy<T> (array: T[], iteratee: (value: T) => number): T | undef
  * @param a - The number to subtract from (minuend)
  * @param b - The number to subtract (subtrahend)
  * @returns The difference of a minus b
+ * @since 0.8.0
  * @example
  * ```typescript
  * subtract(5, 3) // => 2
@@ -197,6 +208,7 @@ export function subtract (a: number, b: number): number {
  * @param a - The first number to multiply
  * @param b - The second number to multiply
  * @returns The product of a and b
+ * @since 0.8.0
  * @example
  * ```typescript
  * multiply(3, 4) // => 12
@@ -213,6 +225,7 @@ export function multiply (a: number, b: number): number {
  * @param a - The dividend (number to be divided)
  * @param b - The divisor (number to divide by)
  * @returns The quotient of a divided by b
+ * @since 0.8.0
  * @example
  * ```typescript
  * divide(10, 2) // => 5
@@ -229,6 +242,7 @@ export function divide (a: number, b: number): number {
  * @param number - The number to round
  * @param precision - The number of decimal places to round to (defaults to 0)
  * @returns The rounded number
+ * @since 0.8.0
  * @example
  * ```typescript
  * round(4.006) // => 4
@@ -247,6 +261,7 @@ export function round (number: number, precision: number = 0): number {
  * @param number - The number to round up
  * @param precision - The number of decimal places to round to (defaults to 0)
  * @returns The rounded up number
+ * @since 0.8.0
  * @example
  * ```typescript
  * ceil(4.006) // => 5
@@ -265,6 +280,7 @@ export function ceil (number: number, precision: number = 0): number {
  * @param number - The number to round down
  * @param precision - The number of decimal places to round to (defaults to 0)
  * @returns The rounded down number
+ * @since 0.8.0
  * @example
  * ```typescript
  * floor(4.006) // => 4
@@ -284,6 +300,7 @@ export function floor (number: number, precision: number = 0): number {
  * @param start - The start of the range (inclusive). If end is not specified, this becomes the end and start becomes 0
  * @param end - The end of the range (exclusive). Optional parameter
  * @returns True if the number is within the range, false otherwise
+ * @since 0.8.0
  * @example
  * ```typescript
  * inRange(3, 2, 4) // => true
@@ -309,6 +326,7 @@ export function inRange (n: number, start: number, end?: number): boolean {
  * Computes the standard deviation of an array of numbers
  * @param array - The array of numbers to calculate standard deviation for
  * @returns The standard deviation of the array, or 0 if array is empty
+ * @since 0.9.0
  * @example
  * ```typescript
  * std([2, 4, 4, 4, 5, 5, 7, 9]) // => 2.138...
@@ -327,6 +345,7 @@ export function std (array: number[]): number {
  * Computes the variance of an array of numbers
  * @param array - The array of numbers to calculate variance for
  * @returns The variance of the array, or 0 if array is empty
+ * @since 0.9.0
  * @example
  * ```typescript
  * variance([2, 4, 4, 4, 5, 5, 7, 9]) // => 4.571...

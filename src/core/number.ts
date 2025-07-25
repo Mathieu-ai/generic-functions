@@ -1,6 +1,7 @@
 /**
  * Lightweight number utility functions
  * No external dependencies
+ * @since 0.8.0
  */
 
 export interface NumberOptions {
@@ -15,6 +16,7 @@ export type NumberInput = string | number | boolean | object | any[];
  * @param {NumberOptions} [options={ deep: false }] - Parse options
  * @param {boolean} [options.deep=false] - Whether to recursively parse nested objects and arrays
  * @returns {NumberInput | number} Parsed number or original value if parsing fails
+ * @since 0.8.0
  * @example
  * number('123') // 123
  * number('abc') // 'abc'
@@ -45,6 +47,7 @@ export function number (data: NumberInput, options: NumberOptions = { deep: fals
  * @param {string | number} data - The data to parse as a floating point number
  * @param {number} [precision] - Number of decimal places to round to
  * @returns {number | string | number} Parsed float rounded to specified precision, or original value if parsing fails
+ * @since 0.8.0
  * @example
  * parseFloat('3.14159') // 3.14159
  * parseFloat('3.14159', 2) // 3.14
@@ -63,6 +66,7 @@ export function parseFloat (data: string | number, precision?: number): number |
  * @param {number} min - Minimum allowed value (inclusive)
  * @param {number} max - Maximum allowed value (inclusive)
  * @returns {number} The clamped value between min and max
+ * @since 0.8.0
  * @example
  * clamp(5, 0, 10) // 5
  * clamp(-5, 0, 10) // 0
@@ -77,6 +81,7 @@ export function clamp (value: number, min: number, max: number): number {
  * @param {number} [min=0] - Minimum value (inclusive)
  * @param {number} [max=1] - Maximum value (exclusive)
  * @returns {number} Random floating point number in the specified range
+ * @since 0.8.0
  * @example
  * random() // Random number between 0 and 1
  * random(5, 10) // Random number between 5 and 10
@@ -90,6 +95,7 @@ export function random (min: number = 0, max: number = 1): number {
  * @param {number} [min=0] - Minimum value (inclusive)
  * @param {number} [max=100] - Maximum value (inclusive)
  * @returns {number} Random integer in the specified range
+ * @since 0.8.0
  * @example
  * randomInt() // Random integer between 0 and 100
  * randomInt(1, 6) // Random integer between 1 and 6 (like a dice roll)

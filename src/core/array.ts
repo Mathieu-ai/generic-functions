@@ -1,6 +1,7 @@
 /**
  * Lightweight array utility functions
  * No external dependencies - includes lodash-inspired methods
+ * @since 0.8.0
  */
 
 export interface SortOptions<T> {
@@ -10,10 +11,36 @@ export interface SortOptions<T> {
 }
 
 /**
+ * Object with string keys and any values.
+ */
+export interface o {
+    [ key: string ]: any;
+}
+
+/** Selection object for filtering */
+export interface SelectionObject {
+    selection: string[];
+    property: string;
+}
+
+/**
+ * Filter data based on search term and selections
+ */
+export interface i_func_filterData {
+    sW: string;
+    tbRS: number[];
+    selections: SelectionObject[];
+    field_search?: string;
+    ddeb?: string;
+    regex?: RegExp;
+}
+
+/**
  * Removes all accents from a string (inline to avoid circular imports)
  * @private
  * @param {any} str - The string to purify
  * @returns {string} Returns the purified string
+ * @since 0.8.0
  */
 function purify (str: any): string {
   return typeof str === "string"
@@ -28,6 +55,7 @@ function purify (str: any): string {
  * @param {keyof T} options.prop - The property to sort by
  * @param {boolean} [options.ascending=true] - Sort in ascending order
  * @returns {T[]} Returns the sorted array
+ * @since 0.8.0
  * @example
  * sort({ arr: [{name: 'Bob'}, {name: 'Alice'}], prop: 'name' })
  * // [{name: 'Alice'}, {name: 'Bob'}]
@@ -56,6 +84,7 @@ export function sort<T extends Record<string, any>> (options: SortOptions<T>): T
  * @param {T[]} data - The array to filter
  * @param {string} [field] - Optional field to use for uniqueness in objects
  * @returns {T[]} Returns array of unique values
+ * @since 0.8.0
  * @example
  * getUnique([1, 2, 2, 3]); // [1, 2, 3]
  * getUnique([{id: 1}, {id: 2}, {id: 1}], 'id'); // [{id: 1}, {id: 2}]
@@ -81,6 +110,7 @@ export function getUnique<T> (data: T[], field?: string): T[] {
  * Get the last element(s) from an array or object
  * @param data - The data to get last element from
  * @returns The last element(s)
+ * @since 0.8.0
  */
 export function getLastElement<T> (data: T[] | Record<string, any>): T[] | Record<string, any> {
   if (Array.isArray(data)) {
@@ -98,6 +128,7 @@ export function getLastElement<T> (data: T[] | Record<string, any>): T[] | Recor
  * Get a random string from an array
  * @param arr - Array of strings
  * @returns Random string from the array
+ * @since 0.8.0
  */
 export function randomString (arr: string[]): string {
   return arr[Math.floor(Math.random() * arr.length)];
@@ -109,6 +140,7 @@ export function randomString (arr: string[]): string {
  * @param second - Fallback value
  * @param size - Size threshold
  * @returns The array or fallback based on size
+ * @since 0.8.0
  */
 export function checkLength<T> (first: T[], second: string, size: number): T[] | string {
   return first.length < size ? first : second;
@@ -119,6 +151,7 @@ export function checkLength<T> (first: T[], second: string, size: number): T[] |
  * @param {T[]} array - The array to process
  * @param {number} [size=1] - The length of each chunk
  * @returns {T[][]} Returns the new array of chunks
+ * @since 0.9.0
  * @example
  * chunk([1, 2, 3, 4], 2); // [[1, 2], [3, 4]]
  * chunk([1, 2, 3, 4, 5], 3); // [[1, 2, 3], [4, 5]]
@@ -135,6 +168,7 @@ export function chunk<T> (array: T[], size: number = 1): T[][] {
  * Creates an array with all falsy values removed
  * @param {(T | null | undefined | false | 0 | "")[]} array - The array to compact
  * @returns {T[]} Returns the new array of filtered values
+ * @since 0.9.0
  * @example
  * compact([0, 1, false, 2, '', 3]); // [1, 2, 3]
  */
@@ -147,6 +181,7 @@ export function compact<T> (array: (T | null | undefined | false | 0 | "")[]): T
  * @param {T[]} array - The array to concatenate
  * @param {...(T | T[])} values - The values to concatenate
  * @returns {T[]} Returns the new concatenated array
+ * @since 0.9.0
  * @example
  * concat([1], 2, [3], [[4]]); // [1, 2, 3, [4]]
  */
@@ -167,6 +202,7 @@ export function concat<T> (array: T[], ...values: (T | T[])[]): T[] {
  * @param {T[]} array - The array to inspect
  * @param {...T[][]} values - The values to exclude
  * @returns {T[]} Returns the new array of filtered values
+ * @since 0.9.0
  * @example
  * difference([2, 1], [2, 3]); // [1]
  */
@@ -181,6 +217,7 @@ export function difference<T> (array: T[], ...values: T[][]): T[] {
  * @param {T[]} values - The values to exclude
  * @param {(value: T) => any} iteratee - The iteratee invoked per element
  * @returns {T[]} Returns the new array of filtered values
+ * @since 0.9.0
  * @example
  * differenceBy([2.1, 1.2], [2.3, 3.4], Math.floor); // [1.2]
  */
@@ -195,6 +232,7 @@ export function differenceBy<T> (array: T[], values: T[], iteratee: (value: T) =
  * @param {T[]} values - The values to exclude
  * @param {(a: T, b: T) => boolean} comparator - The comparator invoked per element
  * @returns {T[]} Returns the new array of filtered values
+ * @since 0.9.0
  * @example
  * differenceWith([{ 'x': 1 }, { 'x': 2 }], [{ 'x': 1 }], (a, b) => a.x === b.x); // [{ 'x': 2 }]
  */
@@ -207,6 +245,7 @@ export function differenceWith<T> (array: T[], values: T[], comparator: (a: T, b
  * @param {T[]} array - The array to query
  * @param {number} [n=1] - The number of elements to drop
  * @returns {T[]} Returns the slice of array
+ * @since 0.9.0
  * @example
  * drop([1, 2, 3]); // [2, 3]
  * drop([1, 2, 3], 2); // [3]
@@ -220,6 +259,7 @@ export function drop<T> (array: T[], n: number = 1): T[] {
  * @param {T[]} array - The array to query
  * @param {number} [n=1] - The number of elements to drop
  * @returns {T[]} Returns the slice of array
+ * @since 0.9.0
  * @example
  * dropRight([1, 2, 3]); // [1, 2]
  * dropRight([1, 2, 3], 2); // [1]
@@ -233,6 +273,7 @@ export function dropRight<T> (array: T[], n: number = 1): T[] {
  * @param {T[]} array - The array to query
  * @param {(value: T) => boolean} predicate - The function invoked per iteration
  * @returns {T[]} Returns the slice of array
+ * @since 0.9.0
  * @example
  * dropWhile([1, 2, 3, 4], n => n < 3); // [3, 4]
  */
@@ -249,6 +290,7 @@ export function dropWhile<T> (array: T[], predicate: (value: T) => boolean): T[]
  * @param {T[]} array - The array to query
  * @param {(value: T) => boolean} predicate - The function invoked per iteration
  * @returns {T[]} Returns the slice of array
+ * @since 0.9.0
  * @example
  * dropRightWhile([1, 2, 3, 4], n => n > 2); // [1, 2]
  */
@@ -267,6 +309,7 @@ export function dropRightWhile<T> (array: T[], predicate: (value: T) => boolean)
  * @param {number} [start=0] - The start position
  * @param {number} [end=array.length] - The end position
  * @returns {T[]} Returns the filled array
+ * @since 0.9.0
  * @example
  * fill([1, 2, 3], 'a'); // ['a', 'a', 'a']
  * fill([4, 6, 8, 10], '*', 1, 3); // [4, '*', '*', 10]
@@ -285,6 +328,7 @@ export function fill<T> (array: T[], value: T, start: number = 0, end: number = 
  * @param {(value: T, index: number, array: T[]) => boolean} predicate - The function invoked per iteration
  * @param {number} [fromIndex=0] - The index to search from
  * @returns {number} Returns the index of the found element, else -1
+ * @since 0.9.0
  * @example
  * findIndex([1, 2, 3, 4], n => n % 2 === 0); // 1
  */
@@ -303,6 +347,7 @@ export function findIndex<T> (array: T[], predicate: (value: T, index: number, a
  * @param {(value: T, index: number, array: T[]) => boolean} predicate - The function invoked per iteration
  * @param {number} [fromIndex=array.length-1] - The index to search from
  * @returns {number} Returns the index of the found element, else -1
+ * @since 0.9.0
  * @example
  * findLastIndex([1, 2, 3, 4], n => n % 2 === 1); // 2
  */
@@ -319,6 +364,7 @@ export function findLastIndex<T> (array: T[], predicate: (value: T, index: numbe
  * Flattens array a single level deep
  * @param {(T | T[])[]} array - The array to flatten
  * @returns {T[]} Returns the new flattened array
+ * @since 0.9.0
  * @example
  * flatten([1, [2, [3, [4]], 5]]); // [1, 2, [3, [4]], 5]
  */
@@ -330,6 +376,7 @@ export function flatten<T> (array: (T | T[])[]): T[] {
  * Recursively flattens array
  * @param {any[]} array - The array to flatten
  * @returns {T[]} Returns the new flattened array
+ * @since 0.9.0
  * @example
  * flattenDeep([1, [2, [3, [4]], 5]]); // [1, 2, 3, 4, 5]
  */
@@ -342,6 +389,7 @@ export function flattenDeep<T> (array: any[]): T[] {
  * @param {any[]} array - The array to flatten
  * @param {number} [depth=1] - The maximum recursion depth
  * @returns {T[]} Returns the new flattened array
+ * @since 0.9.0
  * @example
  * flattenDepth([1, [2, [3, [4]], 5]], 1); // [1, 2, [3, [4]], 5]
  * flattenDepth([1, [2, [3, [4]], 5]], 2); // [1, 2, 3, [4], 5]
@@ -354,6 +402,7 @@ export function flattenDepth<T> (array: any[], depth: number = 1): T[] {
  * Reverses array so that the first element becomes the last
  * @param {T[]} array - The array to reverse
  * @returns {T[]} Returns the new reversed array
+ * @since 0.9.0
  * @example
  * reverse([1, 2, 3]); // [3, 2, 1]
  */
@@ -365,6 +414,7 @@ export function reverse<T> (array: T[]): T[] {
  * Creates an array of unique values from all given arrays
  * @param {...T[][]} arrays - The arrays to inspect
  * @returns {T[]} Returns the new array of combined values
+ * @since 0.9.0
  * @example
  * union([2], [1, 2]); // [2, 1]
  */
@@ -377,6 +427,7 @@ export function union<T> (...arrays: T[][]): T[] {
  * @param {T[][]} arrays - The arrays to inspect
  * @param {(value: T) => any} iteratee - The iteratee invoked per element
  * @returns {T[]} Returns the new array of combined values
+ * @since 0.9.0
  * @example
  * unionBy([[2.1], [1.2, 2.3]], Math.floor); // [2.1, 1.2]
  */
@@ -400,6 +451,7 @@ export function unionBy<T> (arrays: T[][], iteratee: (value: T) => any): T[] {
  * Creates an array of unique values that are included in all given arrays
  * @param {...T[][]} arrays - The arrays to inspect
  * @returns {T[]} Returns the new array of intersecting values
+ * @since 0.9.0
  * @example
  * intersection([2, 1], [2, 3]); // [2]
  */
@@ -416,6 +468,7 @@ export function intersection<T> (...arrays: T[][]): T[] {
  * @param {T[][]} arrays - The arrays to inspect
  * @param {(value: T) => any} iteratee - The iteratee invoked per element
  * @returns {T[]} Returns the new array of intersecting values
+ * @since 0.9.0
  * @example
  * intersectionBy([[2.1, 1.2], [2.3, 3.4]], Math.floor); // [2.1]
  */
@@ -435,6 +488,7 @@ export function intersectionBy<T> (arrays: T[][], iteratee: (value: T) => any): 
  * @param {T[]} array - The array to modify
  * @param {...T} values - The values to remove
  * @returns {T[]} Returns the new array with values removed
+ * @since 0.9.0
  * @example
  * pull([1, 2, 3, 1, 2, 3], 2, 3); // [1, 1]
  */
@@ -447,6 +501,7 @@ export function pull<T> (array: T[], ...values: T[]): T[] {
  * @param {T[]} array - The array to modify
  * @param {...number} indexes - The indexes of elements to remove
  * @returns {T[]} Returns the new array with elements removed
+ * @since 0.9.0
  * @example
  * pullAt(['a', 'b', 'c', 'd'], 1, 3); // ['a', 'c']
  */
@@ -460,6 +515,7 @@ export function pullAt<T> (array: T[], ...indexes: number[]): T[] {
  * @param {T[]} array - The array to modify
  * @param {(value: T, index: number, array: T[]) => boolean} predicate - The function invoked per iteration
  * @returns {T[]} Returns an array of removed elements
+ * @since 0.9.0
  * @example
  * const array = [1, 2, 3, 4];
  * const evens = remove(array, n => n % 2 === 0); // evens: [2, 4], array: [1, 3]
@@ -478,6 +534,7 @@ export function remove<T> (array: T[], predicate: (value: T, index: number, arra
  * Gets all but the first element of array
  * @param {T[]} array - The array to query
  * @returns {T[]} Returns the slice of array
+ * @since 0.9.0
  * @example
  * tail([1, 2, 3]); // [2, 3]
  */
@@ -490,6 +547,7 @@ export function tail<T> (array: T[]): T[] {
  * @param {T[]} array - The array to query
  * @param {number} [n=1] - The number of elements to take
  * @returns {T[]} Returns the slice of array
+ * @since 0.9.0
  * @example
  * take([1, 2, 3]); // [1]
  * take([1, 2, 3], 2); // [1, 2]
@@ -503,6 +561,7 @@ export function take<T> (array: T[], n: number = 1): T[] {
  * @param {T[]} array - The array to query
  * @param {number} [n=1] - The number of elements to take
  * @returns {T[]} Returns the slice of array
+ * @since 0.9.0
  * @example
  * takeRight([1, 2, 3]); // [3]
  * takeRight([1, 2, 3], 2); // [2, 3]
@@ -516,6 +575,7 @@ export function takeRight<T> (array: T[], n: number = 1): T[] {
  * @param {T[]} array - The array to query
  * @param {(value: T) => boolean} predicate - The function invoked per iteration
  * @returns {T[]} Returns the slice of array
+ * @since 0.9.0
  * @example
  * takeWhile([1, 2, 3], n => n < 3); // [1, 2]
  */
@@ -536,6 +596,7 @@ export function takeWhile<T> (array: T[], predicate: (value: T) => boolean): T[]
  * @param {T[]} array - The array to query
  * @param {(value: T) => boolean} predicate - The function invoked per iteration
  * @returns {T[]} Returns the slice of array
+ * @since 0.9.0
  * @example
  * takeRightWhile([1, 2, 3], n => n > 1); // [2, 3]
  */
@@ -556,6 +617,7 @@ export function takeRightWhile<T> (array: T[], predicate: (value: T) => boolean)
  * @param {T[]} array - The array to inspect
  * @param {...T} values - The values to exclude
  * @returns {T[]} Returns the new array of filtered values
+ * @since 0.9.0
  * @example
  * without([2, 1, 2, 3], 1, 2); // [3]
  */
@@ -567,6 +629,7 @@ export function without<T> (array: T[], ...values: T[]): T[] {
  * Creates an array of unique values that is the symmetric difference of the given arrays
  * @param {...T[][]} arrays - The arrays to inspect
  * @returns {T[]} Returns the new array of filtered values
+ * @since 0.9.0
  * @example
  * xor([2, 1], [2, 3]); // [1, 3]
  */
@@ -586,6 +649,7 @@ export function xor<T> (...arrays: T[][]): T[] {
  * Creates an array that is the zip of arrays
  * @param {...T[][]} arrays - The arrays to process
  * @returns {T[][]} Returns the new array of grouped elements
+ * @since 0.9.0
  * @example
  * zip(['a', 'b'], [1, 2], [true, false]); // [['a', 1, true], ['b', 2, false]]
  */
@@ -605,6 +669,7 @@ export function zip<T> (...arrays: T[][]): T[][] {
  * @param {string[]} keys - The property names
  * @param {T[]} values - The property values
  * @returns {Record<string, T>} Returns the new object
+ * @since 0.9.0
  * @example
  * zipObject(['a', 'b'], [1, 2]); // { 'a': 1, 'b': 2 }
  */
@@ -622,6 +687,7 @@ export function zipObject<T> (keys: string[], values: T[]): Record<string, T> {
  * Creates an array of grouped elements
  * @param {...[...T[][], ((...values: T[]) => R)]} arrays - The arrays to process and the function to combine grouped values
  * @returns {R[]} Returns the new array of grouped elements
+ * @since 0.9.0
  * @example
  * zipWith([1, 2], [10, 20], [100, 200], (a, b, c) => a + b + c); // [111, 222]
  */
@@ -644,6 +710,7 @@ export function zipWith<T, R> (...arrays: [...T[][], ((...values: T[]) => R)]): 
  * The opposite of zip; creates an array of arrays
  * @param {T[][]} array - The array of grouped elements to process
  * @returns {T[][]} Returns the new array of regrouped elements
+ * @since 0.9.0
  * @example
  * unzip([['a', 1, true], ['b', 2, false]]); // [['a', 'b'], [1, 2], [true, false]]
  */
@@ -714,6 +781,7 @@ export function initial<T> (array: T[]): T[] {
  * @param {T[][]} arrays - The arrays to inspect
  * @param {(a: T, b: T) => boolean} comparator - The comparator invoked per element
  * @returns {T[]} Returns the new array of combined values
+ * @since 0.9.0
  * @example
  * unionWith([[{ 'x': 1 }], [{ 'x': 2 }, { 'x': 1 }]], (a, b) => a.x === b.x); // [{ 'x': 1 }, { 'x': 2 }]
  */
@@ -734,6 +802,7 @@ export function unionWith<T> (arrays: T[][], comparator: (a: T, b: T) => boolean
  * @param {T[][]} arrays - The arrays to inspect
  * @param {(a: T, b: T) => boolean} comparator - The comparator invoked per element
  * @returns {T[]} Returns the new array of intersecting values
+ * @since 0.9.0
  * @example
  * intersectionWith([[{ 'x': 1 }], [{ 'x': 2 }, { 'x': 1 }]], (a, b) => a.x === b.x); // [{ 'x': 1 }]
  */
@@ -754,6 +823,7 @@ export function intersectionWith<T> (arrays: T[][], comparator: (a: T, b: T) => 
  * @param {T[][]} arrays - The arrays to inspect
  * @param {(a: T, b: T) => boolean} comparator - The comparator invoked per element
  * @returns {T[]} Returns the new array of filtered values
+ * @since 0.9.0
  * @example
  * xorWith([[{ 'x': 1 }], [{ 'x': 2 }, { 'x': 1 }]], (a, b) => a.x === b.x); // [{ 'x': 2 }]
  */
@@ -775,6 +845,7 @@ export function xorWith<T> (arrays: T[][], comparator: (a: T, b: T) => boolean):
  * @param {T[][]} arrays - The arrays to inspect
  * @param {(value: T) => any} iteratee - The iteratee invoked per element
  * @returns {T[]} Returns the new array of filtered values
+ * @since 0.9.0
  * @example
  * xorBy([[2.1, 1.2], [2.3, 3.4]], Math.floor); // [1.2, 3.4]
  */
@@ -839,7 +910,7 @@ export function pullAll<T> (array: T[], values: T[]): T[] {
 }
 
 /**
- * Like pullAll except that it accepts iteratee which is invoked for each element
+ * Like pullAll except that it accepts iteratee which is invoked per element
  * @param {T[]} array - The array to modify
  * @param {T[]} values - The values to remove
  * @param {(value: T) => any} iteratee - The iteratee invoked per element
@@ -941,6 +1012,7 @@ export function unzipWith<T, R> (array: T[][], iteratee: (...values: T[]) => R):
  * @param {T[]} array - The sorted array to inspect
  * @param {T} value - The value to evaluate
  * @returns {number} Returns the index at which value should be inserted into array
+ * @since 0.9.0
  * @example
  * sortedIndex([30, 50], 40); // 1
  */
@@ -966,6 +1038,7 @@ export function sortedIndex<T> (array: T[], value: T): number {
  * @param {T} value - The value to evaluate
  * @param {(value: T) => any} iteratee - The iteratee invoked per element
  * @returns {number} Returns the index at which value should be inserted into array
+ * @since 0.9.0
  * @example
  * sortedIndexBy([{ 'x': 4 }, { 'x': 5 }], { 'x': 4 }, o => o.x); // 0
  */
@@ -991,6 +1064,7 @@ export function sortedIndexBy<T> (array: T[], value: T, iteratee: (value: T) => 
  * @param {T[]} array - The sorted array to inspect
  * @param {T} value - The value to evaluate
  * @returns {number} Returns the index at which value should be inserted into array
+ * @since 0.9.0
  * @example
  * sortedLastIndex([4, 5, 5, 5, 6], 5); // 4
  */
@@ -1016,6 +1090,7 @@ export function sortedLastIndex<T> (array: T[], value: T): number {
  * @param {T} value - The value to evaluate
  * @param {(value: T) => any} iteratee - The iteratee invoked per element
  * @returns {number} Returns the index at which value should be inserted into array
+ * @since 0.9.0
  * @example
  * sortedLastIndexBy([{ 'x': 4 }, { 'x': 5 }], { 'x': 4 }, o => o.x); // 1
  */
@@ -1041,6 +1116,7 @@ export function sortedLastIndexBy<T> (array: T[], value: T, iteratee: (value: T)
  * @param {T[]} array - The sorted array to inspect
  * @param {T} value - The value to search for
  * @returns {number} Returns the index of the matched value, else -1
+ * @since 0.9.0
  * @example
  * sortedIndexOf([4, 5, 5, 5, 6], 5); // 1
  */
@@ -1054,6 +1130,7 @@ export function sortedIndexOf<T> (array: T[], value: T): number {
  * @param {T[]} array - The sorted array to inspect
  * @param {T} value - The value to search for
  * @returns {number} Returns the index of the matched value, else -1
+ * @since 0.9.0
  * @example
  * sortedLastIndexOf([4, 5, 5, 5, 6], 5); // 3
  */
@@ -1068,6 +1145,7 @@ export function sortedLastIndexOf<T> (array: T[], value: T): number {
  * @param {number} [start=0] - The start position
  * @param {number} [end=array.length] - The end position
  * @returns {T[]} Returns the slice of array
+ * @since 0.9.0
  * @example
  * slice([1, 2, 3, 4], 2); // [3, 4]
  * slice([1, 2, 3, 4], 1, 3); // [2, 3]
@@ -1081,6 +1159,7 @@ export function slice<T> (array: T[], start: number = 0, end: number = array.len
  * @param {T[]} array - The array to convert
  * @param {string} [separator=','] - The element separator
  * @returns {string} Returns the joined string
+ * @since 0.9.0
  * @example
  * join(['a', 'b', 'c'], '~'); // 'a~b~c'
  */
@@ -1094,6 +1173,7 @@ export function join<T> (array: T[], separator: string = ','): string {
  * @param {T} value - The value to search for
  * @param {number} [fromIndex=0] - The index to search from
  * @returns {number} Returns the index of the matched value, else -1
+ * @since 0.9.0
  * @example
  * indexOf([1, 2, 1, 2], 2); // 1
  * indexOf([1, 2, 1, 2], 2, 2); // 3
@@ -1108,10 +1188,99 @@ export function indexOf<T> (array: T[], value: T, fromIndex: number = 0): number
  * @param {T} value - The value to search for
  * @param {number} [fromIndex=array.length-1] - The index to search from
  * @returns {number} Returns the index of the matched value, else -1
+ * @since 0.9.7
  * @example
  * lastIndexOf([1, 2, 1, 2], 2); // 3
  * lastIndexOf([1, 2, 1, 2], 2, 2); // 1
  */
 export function lastIndexOf<T> (array: T[], value: T, fromIndex: number = array.length - 1): number {
   return array.lastIndexOf(value, fromIndex);
+}
+
+/**
+ * Filters an array of objects based on provided parameters
+ * @param {T[]} arr - The array of objects to be filtered
+ * @param {i_func_filterData} param - The filtering parameters
+ * @returns {T[]} Returns the filtered array containing objects of type T
+ * @since 0.9.7
+ * @example
+ * const data = [
+ *   { field_search: 'John Doe', state: [{ state: 'active' }], ddeb: '2023-01-15' },
+ *   { field_search: 'Jane Smith', state: [{ state: 'inactive' }], ddeb: '2024-02-20' }
+ * ];
+ * filterData(data, { 
+ *   sW: 'John', 
+ *   tbRS: [], 
+ *   selections: [{ selection: ['active'], property: 'state' }] 
+ * });
+ * // [{ field_search: 'John Doe', state: [{ state: 'active' }], ddeb: '2023-01-15' }]
+ */
+export function filterData<T extends o> (
+    arr: T[],
+    param: i_func_filterData,
+): T[] {
+    const {
+        sW,
+        tbRS,
+        field_search='field_search',
+        ddeb='ddeb',
+        regex='[A-Za-zÀ-ÖØ-öø-ÿ0-9]+',
+        selections=[],
+    }=param;
+
+    const tbExp=sW.match( new RegExp( regex, 'gi' ))||[];
+    
+    return arr.filter(( item: T ) => {
+        // Check word search
+        for( let i=0; i<tbExp.length; i++ ) {
+            const searchedWord=purify( tbExp[ i ].toUpperCase());
+            if( !new RegExp( searchedWord, 'gi' ).test( item[ field_search ])) {
+                return false;
+            }
+        }
+
+        // Check selections
+        function checkSelections ( selectedItems: string[], itemProperty: string ) {
+            if (!item[itemProperty] || !Array.isArray(item[itemProperty])) {
+                return false;
+            }
+            
+            for( const selected of selectedItems ) {
+                const itemArray = item[itemProperty];
+                let hasMatch = false;
+                
+                for( let j=0; j<itemArray.length; j++ ) {
+                    const itemState = itemArray[j];
+                    if( itemState && itemState.state && itemState.state.toString().includes(selected)) {
+                        hasMatch = true;
+                        break;
+                    }
+                }
+                
+                if (!hasMatch) {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        for( const { selection, property } of selections ) {
+            if( !checkSelections( selection, property )) {
+                return false;
+            }
+        }
+
+        // Check date range
+        if( tbRS.length === 2 && item[ddeb]) {
+            const itemDate = new Date(item[ddeb]);
+            const startDate = new Date(tbRS[0], 0, 1); // January 1st of start year
+            const endDate = new Date(tbRS[1], 11, 31); // December 31st of end year
+            
+            if (itemDate < startDate || itemDate > endDate) {
+                return false;
+            }
+        }
+        
+        return true;
+    } );
 }
