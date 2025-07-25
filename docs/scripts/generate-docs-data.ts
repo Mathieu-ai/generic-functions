@@ -1,4 +1,5 @@
 import { writeFileSync } from 'fs';
+
 import { generateDocsData } from '../src/lib/generate-docs';
 
 async function main() {
