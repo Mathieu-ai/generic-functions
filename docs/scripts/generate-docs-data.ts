@@ -1,8 +1,8 @@
 import { writeFileSync } from 'fs';
 import path from 'path';
 
-// Import DocsParser using path mapping for better compatibility
-import { DocsParser } from '@/lib/docs-parser';
+// Import DocsParser using direct relative path for CI compatibility
+import { DocsParser } from '../src/lib/docs-parser';
 
 async function generateDocsData() {
   // Project root is one level up from docs folder
