@@ -57,7 +57,7 @@ function purify (str: any): string {
  * @returns {T[]} Returns the sorted array
  * @since 0.8.0
  * @example
- * sort({ arr: [{name: 'Bob'}, {name: 'Alice'}], prop: 'name' })
+ * sort({ arr: [{name: 'Bob'}, {name: 'Alice'}], prop: 'name' });
  * // [{name: 'Alice'}, {name: 'Bob'}]
  */
 export function sort<T extends Record<string, any>> (options: SortOptions<T>): T[] {
@@ -111,6 +111,9 @@ export function getUnique<T> (data: T[], field?: string): T[] {
  * @param data - The data to get last element from
  * @returns The last element(s)
  * @since 0.8.0
+ * @example
+ * getLastElement([1, 2, 3]); // [3]
+ * getLastElement({a: 1, b: 2}); // {b: 2}
  */
 export function getLastElement<T> (data: T[] | Record<string, any>): T[] | Record<string, any> {
   if (Array.isArray(data)) {
@@ -129,6 +132,8 @@ export function getLastElement<T> (data: T[] | Record<string, any>): T[] | Recor
  * @param arr - Array of strings
  * @returns Random string from the array
  * @since 0.8.0
+ * @example
+ * randomString(['apple', 'banana', 'cherry']); // 'banana' (random)
  */
 export function randomString (arr: string[]): string {
   return arr[Math.floor(Math.random() * arr.length)];
@@ -141,6 +146,9 @@ export function randomString (arr: string[]): string {
  * @param size - Size threshold
  * @returns The array or fallback based on size
  * @since 0.8.0
+ * @example
+ * checkLength([1, 2], 'fallback', 5); // [1, 2]
+ * checkLength([1, 2, 3, 4, 5, 6], 'fallback', 5); // 'fallback'
  */
 export function checkLength<T> (first: T[], second: string, size: number): T[] | string {
   return first.length < size ? first : second;

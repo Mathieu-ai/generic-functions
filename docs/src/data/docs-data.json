@@ -1,0 +1,5730 @@
+{
+  "functions": [
+    {
+      "name": "sort",
+      "category": "array",
+      "description": "Sort an array of objects by a property",
+      "syntax": "",
+      "params": [
+        {
+          "name": "options",
+          "type": "SortOptions<T>",
+          "description": "The sort options",
+          "optional": false
+        },
+        {
+          "name": "options",
+          "type": "T[]",
+          "description": ".arr - The array to sort",
+          "optional": false
+        },
+        {
+          "name": "options",
+          "type": "keyof T",
+          "description": ".prop - The property to sort by",
+          "optional": false
+        },
+        {
+          "name": "options",
+          "type": "boolean",
+          "description": ".ascending=true] - Sort in ascending order",
+          "optional": false
+        }
+      ],
+      "returns": {
+        "type": "T[]",
+        "description": "Returns the sorted array"
+      },
+      "example": "sort({ arr: [{name: 'Bob'}, {name: 'Alice'}], prop: 'name' });\r\n// [{name: 'Alice'}, {name: 'Bob'}]",
+      "since": "0.8.0",
+      "sourceFile": "src/core/array.ts"
+    },
+    {
+      "name": "getUnique",
+      "category": "array",
+      "description": "Get unique values from an array",
+      "syntax": "",
+      "params": [
+        {
+          "name": "data",
+          "type": "T[]",
+          "description": "The array to filter",
+          "optional": false
+        },
+        {
+          "name": "field",
+          "type": "string",
+          "description": "Optional field to use for uniqueness in objects",
+          "optional": true
+        }
+      ],
+      "returns": {
+        "type": "T[]",
+        "description": "Returns array of unique values"
+      },
+      "example": "getUnique([1, 2, 2, 3]); // [1, 2, 3]\r\ngetUnique([{id: 1}, {id: 2}, {id: 1}], 'id'); // [{id: 1}, {id: 2}]",
+      "since": "0.8.0",
+      "sourceFile": "src/core/array.ts"
+    },
+    {
+      "name": "getLastElement",
+      "category": "array",
+      "description": "Get the last element(s) from an array or object",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "getLastElement([1, 2, 3]); // [3]\r\ngetLastElement({a: 1, b: 2}); // {b: 2}",
+      "since": "0.8.0",
+      "sourceFile": "src/core/array.ts"
+    },
+    {
+      "name": "randomString",
+      "category": "array",
+      "description": "Get a random string from an array",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "randomString(['apple', 'banana', 'cherry']); // 'banana' (random)",
+      "since": "0.8.0",
+      "sourceFile": "src/core/array.ts"
+    },
+    {
+      "name": "checkLength",
+      "category": "array",
+      "description": "Check if array length is less than size, return array or fallback",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "checkLength([1, 2], 'fallback', 5); // [1, 2]\r\ncheckLength([1, 2, 3, 4, 5, 6], 'fallback', 5); // 'fallback'",
+      "since": "0.8.0",
+      "sourceFile": "src/core/array.ts"
+    },
+    {
+      "name": "chunk",
+      "category": "array",
+      "description": "Creates an array of elements split into groups the length of size",
+      "syntax": "",
+      "params": [
+        {
+          "name": "array",
+          "type": "T[]",
+          "description": "The array to process",
+          "optional": false
+        },
+        {
+          "name": "size",
+          "type": "number",
+          "description": "=1] - The length of each chunk",
+          "optional": false
+        }
+      ],
+      "returns": {
+        "type": "T[][]",
+        "description": "Returns the new array of chunks"
+      },
+      "example": "chunk([1, 2, 3, 4], 2); // [[1, 2], [3, 4]]\r\nchunk([1, 2, 3, 4, 5], 3); // [[1, 2, 3], [4, 5]]",
+      "since": "0.9.0",
+      "sourceFile": "src/core/array.ts"
+    },
+    {
+      "name": "compact",
+      "category": "array",
+      "description": "Creates an array with all falsy values removed",
+      "syntax": "",
+      "params": [
+        {
+          "name": "array",
+          "type": "(T | null | undefined | false | 0 | \"\")[]",
+          "description": "The array to compact",
+          "optional": false
+        }
+      ],
+      "returns": {
+        "type": "T[]",
+        "description": "Returns the new array of filtered values"
+      },
+      "example": "compact([0, 1, false, 2, '', 3]); // [1, 2, 3]",
+      "since": "0.9.0",
+      "sourceFile": "src/core/array.ts"
+    },
+    {
+      "name": "concat",
+      "category": "array",
+      "description": "Creates a new array concatenating array with any additional arrays and/or values",
+      "syntax": "",
+      "params": [
+        {
+          "name": "array",
+          "type": "T[]",
+          "description": "The array to concatenate",
+          "optional": false
+        },
+        {
+          "name": "values",
+          "type": "...(T | T[])",
+          "description": "The values to concatenate",
+          "optional": false
+        }
+      ],
+      "returns": {
+        "type": "T[]",
+        "description": "Returns the new concatenated array"
+      },
+      "example": "concat([1], 2, [3], [[4]]); // [1, 2, 3, [4]]",
+      "since": "0.9.0",
+      "sourceFile": "src/core/array.ts"
+    },
+    {
+      "name": "difference",
+      "category": "array",
+      "description": "Creates an array of array values not included in the other given arrays",
+      "syntax": "",
+      "params": [
+        {
+          "name": "array",
+          "type": "T[]",
+          "description": "The array to inspect",
+          "optional": false
+        },
+        {
+          "name": "values",
+          "type": "...T[][]",
+          "description": "The values to exclude",
+          "optional": false
+        }
+      ],
+      "returns": {
+        "type": "T[]",
+        "description": "Returns the new array of filtered values"
+      },
+      "example": "difference([2, 1], [2, 3]); // [1]",
+      "since": "0.9.0",
+      "sourceFile": "src/core/array.ts"
+    },
+    {
+      "name": "differenceBy",
+      "category": "array",
+      "description": "Like difference except that it accepts iteratee which is invoked for each element",
+      "syntax": "",
+      "params": [
+        {
+          "name": "array",
+          "type": "T[]",
+          "description": "The array to inspect",
+          "optional": false
+        },
+        {
+          "name": "values",
+          "type": "T[]",
+          "description": "The values to exclude",
+          "optional": false
+        },
+        {
+          "name": "iteratee",
+          "type": "(value: T) => any",
+          "description": "The iteratee invoked per element",
+          "optional": false
+        }
+      ],
+      "returns": {
+        "type": "T[]",
+        "description": "Returns the new array of filtered values"
+      },
+      "example": "differenceBy([2.1, 1.2], [2.3, 3.4], Math.floor); // [1.2]",
+      "since": "0.9.0",
+      "sourceFile": "src/core/array.ts"
+    },
+    {
+      "name": "differenceWith",
+      "category": "array",
+      "description": "Like difference except that it accepts comparator which is invoked to compare elements",
+      "syntax": "",
+      "params": [
+        {
+          "name": "array",
+          "type": "T[]",
+          "description": "The array to inspect",
+          "optional": false
+        },
+        {
+          "name": "values",
+          "type": "T[]",
+          "description": "The values to exclude",
+          "optional": false
+        },
+        {
+          "name": "comparator",
+          "type": "(a: T, b: T) => boolean",
+          "description": "The comparator invoked per element",
+          "optional": false
+        }
+      ],
+      "returns": {
+        "type": "T[]",
+        "description": "Returns the new array of filtered values"
+      },
+      "example": "differenceWith([{ 'x': 1 }, { 'x': 2 }], [{ 'x': 1 }], (a, b) => a.x === b.x); // [{ 'x': 2 }]",
+      "since": "0.9.0",
+      "sourceFile": "src/core/array.ts"
+    },
+    {
+      "name": "drop",
+      "category": "array",
+      "description": "Creates a slice of array with n elements dropped from the beginning",
+      "syntax": "",
+      "params": [
+        {
+          "name": "array",
+          "type": "T[]",
+          "description": "The array to query",
+          "optional": false
+        },
+        {
+          "name": "n",
+          "type": "number",
+          "description": "=1] - The number of elements to drop",
+          "optional": false
+        }
+      ],
+      "returns": {
+        "type": "T[]",
+        "description": "Returns the slice of array"
+      },
+      "example": "drop([1, 2, 3]); // [2, 3]\r\ndrop([1, 2, 3], 2); // [3]",
+      "since": "0.9.0",
+      "sourceFile": "src/core/array.ts"
+    },
+    {
+      "name": "dropRight",
+      "category": "array",
+      "description": "Creates a slice of array with n elements dropped from the end",
+      "syntax": "",
+      "params": [
+        {
+          "name": "array",
+          "type": "T[]",
+          "description": "The array to query",
+          "optional": false
+        },
+        {
+          "name": "n",
+          "type": "number",
+          "description": "=1] - The number of elements to drop",
+          "optional": false
+        }
+      ],
+      "returns": {
+        "type": "T[]",
+        "description": "Returns the slice of array"
+      },
+      "example": "dropRight([1, 2, 3]); // [1, 2]\r\ndropRight([1, 2, 3], 2); // [1]",
+      "since": "0.9.0",
+      "sourceFile": "src/core/array.ts"
+    },
+    {
+      "name": "dropWhile",
+      "category": "array",
+      "description": "Creates a slice of array excluding elements dropped from the beginning",
+      "syntax": "",
+      "params": [
+        {
+          "name": "array",
+          "type": "T[]",
+          "description": "The array to query",
+          "optional": false
+        },
+        {
+          "name": "predicate",
+          "type": "(value: T) => boolean",
+          "description": "The function invoked per iteration",
+          "optional": false
+        }
+      ],
+      "returns": {
+        "type": "T[]",
+        "description": "Returns the slice of array"
+      },
+      "example": "dropWhile([1, 2, 3, 4], n => n < 3); // [3, 4]",
+      "since": "0.9.0",
+      "sourceFile": "src/core/array.ts"
+    },
+    {
+      "name": "dropRightWhile",
+      "category": "array",
+      "description": "Creates a slice of array excluding elements dropped from the end",
+      "syntax": "",
+      "params": [
+        {
+          "name": "array",
+          "type": "T[]",
+          "description": "The array to query",
+          "optional": false
+        },
+        {
+          "name": "predicate",
+          "type": "(value: T) => boolean",
+          "description": "The function invoked per iteration",
+          "optional": false
+        }
+      ],
+      "returns": {
+        "type": "T[]",
+        "description": "Returns the slice of array"
+      },
+      "example": "dropRightWhile([1, 2, 3, 4], n => n > 2); // [1, 2]",
+      "since": "0.9.0",
+      "sourceFile": "src/core/array.ts"
+    },
+    {
+      "name": "fill",
+      "category": "array",
+      "description": "Fills elements of array with value from start up to, but not including, end",
+      "syntax": "",
+      "params": [
+        {
+          "name": "array",
+          "type": "T[]",
+          "description": "The array to fill",
+          "optional": false
+        },
+        {
+          "name": "value",
+          "type": "T",
+          "description": "The value to fill array with",
+          "optional": false
+        },
+        {
+          "name": "start",
+          "type": "number",
+          "description": "=0] - The start position",
+          "optional": false
+        },
+        {
+          "name": "end",
+          "type": "number",
+          "description": "=array.length] - The end position",
+          "optional": false
+        }
+      ],
+      "returns": {
+        "type": "T[]",
+        "description": "Returns the filled array"
+      },
+      "example": "fill([1, 2, 3], 'a'); // ['a', 'a', 'a']\r\nfill([4, 6, 8, 10], '*', 1, 3); // [4, '*', '*', 10]",
+      "since": "0.9.0",
+      "sourceFile": "src/core/array.ts"
+    },
+    {
+      "name": "findIndex",
+      "category": "array",
+      "description": "Returns the first index at which a given element can be found",
+      "syntax": "",
+      "params": [
+        {
+          "name": "array",
+          "type": "T[]",
+          "description": "The array to inspect",
+          "optional": false
+        },
+        {
+          "name": "predicate",
+          "type": "(value: T, index: number, array: T[]) => boolean",
+          "description": "The function invoked per iteration",
+          "optional": false
+        },
+        {
+          "name": "fromIndex",
+          "type": "number",
+          "description": "=0] - The index to search from",
+          "optional": false
+        }
+      ],
+      "returns": {
+        "type": "number",
+        "description": "Returns the index of the found element, else -1"
+      },
+      "example": "findIndex([1, 2, 3, 4], n => n % 2 === 0); // 1",
+      "since": "0.9.0",
+      "sourceFile": "src/core/array.ts"
+    },
+    {
+      "name": "findLastIndex",
+      "category": "array",
+      "description": "Like findIndex except that it iterates over elements from right to left",
+      "syntax": "",
+      "params": [
+        {
+          "name": "array",
+          "type": "T[]",
+          "description": "The array to inspect",
+          "optional": false
+        },
+        {
+          "name": "predicate",
+          "type": "(value: T, index: number, array: T[]) => boolean",
+          "description": "The function invoked per iteration",
+          "optional": false
+        },
+        {
+          "name": "fromIndex",
+          "type": "number",
+          "description": "=array.length-1] - The index to search from",
+          "optional": false
+        }
+      ],
+      "returns": {
+        "type": "number",
+        "description": "Returns the index of the found element, else -1"
+      },
+      "example": "findLastIndex([1, 2, 3, 4], n => n % 2 === 1); // 2",
+      "since": "0.9.0",
+      "sourceFile": "src/core/array.ts"
+    },
+    {
+      "name": "flatten",
+      "category": "array",
+      "description": "Flattens array a single level deep",
+      "syntax": "",
+      "params": [
+        {
+          "name": "array",
+          "type": "(T | T[])[]",
+          "description": "The array to flatten",
+          "optional": false
+        }
+      ],
+      "returns": {
+        "type": "T[]",
+        "description": "Returns the new flattened array"
+      },
+      "example": "flatten([1, [2, [3, [4]], 5]]); // [1, 2, [3, [4]], 5]",
+      "since": "0.9.0",
+      "sourceFile": "src/core/array.ts"
+    },
+    {
+      "name": "flattenDeep",
+      "category": "array",
+      "description": "Recursively flattens array",
+      "syntax": "",
+      "params": [
+        {
+          "name": "array",
+          "type": "any[]",
+          "description": "The array to flatten",
+          "optional": false
+        }
+      ],
+      "returns": {
+        "type": "T[]",
+        "description": "Returns the new flattened array"
+      },
+      "example": "flattenDeep([1, [2, [3, [4]], 5]]); // [1, 2, 3, 4, 5]",
+      "since": "0.9.0",
+      "sourceFile": "src/core/array.ts"
+    },
+    {
+      "name": "flattenDepth",
+      "category": "array",
+      "description": "Recursively flatten array up to depth times",
+      "syntax": "",
+      "params": [
+        {
+          "name": "array",
+          "type": "any[]",
+          "description": "The array to flatten",
+          "optional": false
+        },
+        {
+          "name": "depth",
+          "type": "number",
+          "description": "=1] - The maximum recursion depth",
+          "optional": false
+        }
+      ],
+      "returns": {
+        "type": "T[]",
+        "description": "Returns the new flattened array"
+      },
+      "example": "flattenDepth([1, [2, [3, [4]], 5]], 1); // [1, 2, [3, [4]], 5]\r\nflattenDepth([1, [2, [3, [4]], 5]], 2); // [1, 2, 3, [4], 5]",
+      "since": "0.9.0",
+      "sourceFile": "src/core/array.ts"
+    },
+    {
+      "name": "reverse",
+      "category": "array",
+      "description": "Reverses array so that the first element becomes the last",
+      "syntax": "",
+      "params": [
+        {
+          "name": "array",
+          "type": "T[]",
+          "description": "The array to reverse",
+          "optional": false
+        }
+      ],
+      "returns": {
+        "type": "T[]",
+        "description": "Returns the new reversed array"
+      },
+      "example": "reverse([1, 2, 3]); // [3, 2, 1]",
+      "since": "0.9.0",
+      "sourceFile": "src/core/array.ts"
+    },
+    {
+      "name": "union",
+      "category": "array",
+      "description": "Creates an array of unique values from all given arrays",
+      "syntax": "",
+      "params": [
+        {
+          "name": "arrays",
+          "type": "...T[][]",
+          "description": "The arrays to inspect",
+          "optional": false
+        }
+      ],
+      "returns": {
+        "type": "T[]",
+        "description": "Returns the new array of combined values"
+      },
+      "example": "union([2], [1, 2]); // [2, 1]",
+      "since": "0.9.0",
+      "sourceFile": "src/core/array.ts"
+    },
+    {
+      "name": "unionBy",
+      "category": "array",
+      "description": "Like union except that it accepts iteratee",
+      "syntax": "",
+      "params": [
+        {
+          "name": "arrays",
+          "type": "T[][]",
+          "description": "The arrays to inspect",
+          "optional": false
+        },
+        {
+          "name": "iteratee",
+          "type": "(value: T) => any",
+          "description": "The iteratee invoked per element",
+          "optional": false
+        }
+      ],
+      "returns": {
+        "type": "T[]",
+        "description": "Returns the new array of combined values"
+      },
+      "example": "unionBy([[2.1], [1.2, 2.3]], Math.floor); // [2.1, 1.2]",
+      "since": "0.9.0",
+      "sourceFile": "src/core/array.ts"
+    },
+    {
+      "name": "intersection",
+      "category": "array",
+      "description": "Creates an array of unique values that are included in all given arrays",
+      "syntax": "",
+      "params": [
+        {
+          "name": "arrays",
+          "type": "...T[][]",
+          "description": "The arrays to inspect",
+          "optional": false
+        }
+      ],
+      "returns": {
+        "type": "T[]",
+        "description": "Returns the new array of intersecting values"
+      },
+      "example": "intersection([2, 1], [2, 3]); // [2]",
+      "since": "0.9.0",
+      "sourceFile": "src/core/array.ts"
+    },
+    {
+      "name": "intersectionBy",
+      "category": "array",
+      "description": "Like intersection except that it accepts iteratee",
+      "syntax": "",
+      "params": [
+        {
+          "name": "arrays",
+          "type": "T[][]",
+          "description": "The arrays to inspect",
+          "optional": false
+        },
+        {
+          "name": "iteratee",
+          "type": "(value: T) => any",
+          "description": "The iteratee invoked per element",
+          "optional": false
+        }
+      ],
+      "returns": {
+        "type": "T[]",
+        "description": "Returns the new array of intersecting values"
+      },
+      "example": "intersectionBy([[2.1, 1.2], [2.3, 3.4]], Math.floor); // [2.1]",
+      "since": "0.9.0",
+      "sourceFile": "src/core/array.ts"
+    },
+    {
+      "name": "pull",
+      "category": "array",
+      "description": "Removes all given values from array",
+      "syntax": "",
+      "params": [
+        {
+          "name": "array",
+          "type": "T[]",
+          "description": "The array to modify",
+          "optional": false
+        },
+        {
+          "name": "values",
+          "type": "...T",
+          "description": "The values to remove",
+          "optional": false
+        }
+      ],
+      "returns": {
+        "type": "T[]",
+        "description": "Returns the new array with values removed"
+      },
+      "example": "pull([1, 2, 3, 1, 2, 3], 2, 3); // [1, 1]",
+      "since": "0.9.0",
+      "sourceFile": "src/core/array.ts"
+    },
+    {
+      "name": "pullAt",
+      "category": "array",
+      "description": "Removes elements from array corresponding to indexes",
+      "syntax": "",
+      "params": [
+        {
+          "name": "array",
+          "type": "T[]",
+          "description": "The array to modify",
+          "optional": false
+        },
+        {
+          "name": "indexes",
+          "type": "...number",
+          "description": "The indexes of elements to remove",
+          "optional": false
+        }
+      ],
+      "returns": {
+        "type": "T[]",
+        "description": "Returns the new array with elements removed"
+      },
+      "example": "pullAt(['a', 'b', 'c', 'd'], 1, 3); // ['a', 'c']",
+      "since": "0.9.0",
+      "sourceFile": "src/core/array.ts"
+    },
+    {
+      "name": "remove",
+      "category": "array",
+      "description": "Removes all elements from array that predicate returns truthy for",
+      "syntax": "",
+      "params": [
+        {
+          "name": "array",
+          "type": "T[]",
+          "description": "The array to modify",
+          "optional": false
+        },
+        {
+          "name": "predicate",
+          "type": "(value: T, index: number, array: T[]) => boolean",
+          "description": "The function invoked per iteration",
+          "optional": false
+        }
+      ],
+      "returns": {
+        "type": "T[]",
+        "description": "Returns an array of removed elements"
+      },
+      "example": "const array = [1, 2, 3, 4];\r\nconst evens = remove(array, n => n % 2 === 0); // evens: [2, 4], array: [1, 3]",
+      "since": "0.9.0",
+      "sourceFile": "src/core/array.ts"
+    },
+    {
+      "name": "tail",
+      "category": "array",
+      "description": "Gets all but the first element of array",
+      "syntax": "",
+      "params": [
+        {
+          "name": "array",
+          "type": "T[]",
+          "description": "The array to query",
+          "optional": false
+        }
+      ],
+      "returns": {
+        "type": "T[]",
+        "description": "Returns the slice of array"
+      },
+      "example": "tail([1, 2, 3]); // [2, 3]",
+      "since": "0.9.0",
+      "sourceFile": "src/core/array.ts"
+    },
+    {
+      "name": "take",
+      "category": "array",
+      "description": "Creates a slice of array with n elements taken from the beginning",
+      "syntax": "",
+      "params": [
+        {
+          "name": "array",
+          "type": "T[]",
+          "description": "The array to query",
+          "optional": false
+        },
+        {
+          "name": "n",
+          "type": "number",
+          "description": "=1] - The number of elements to take",
+          "optional": false
+        }
+      ],
+      "returns": {
+        "type": "T[]",
+        "description": "Returns the slice of array"
+      },
+      "example": "take([1, 2, 3]); // [1]\r\ntake([1, 2, 3], 2); // [1, 2]",
+      "since": "0.9.0",
+      "sourceFile": "src/core/array.ts"
+    },
+    {
+      "name": "takeRight",
+      "category": "array",
+      "description": "Creates a slice of array with n elements taken from the end",
+      "syntax": "",
+      "params": [
+        {
+          "name": "array",
+          "type": "T[]",
+          "description": "The array to query",
+          "optional": false
+        },
+        {
+          "name": "n",
+          "type": "number",
+          "description": "=1] - The number of elements to take",
+          "optional": false
+        }
+      ],
+      "returns": {
+        "type": "T[]",
+        "description": "Returns the slice of array"
+      },
+      "example": "takeRight([1, 2, 3]); // [3]\r\ntakeRight([1, 2, 3], 2); // [2, 3]",
+      "since": "0.9.0",
+      "sourceFile": "src/core/array.ts"
+    },
+    {
+      "name": "takeWhile",
+      "category": "array",
+      "description": "Creates a slice of array with elements taken from the beginning",
+      "syntax": "",
+      "params": [
+        {
+          "name": "array",
+          "type": "T[]",
+          "description": "The array to query",
+          "optional": false
+        },
+        {
+          "name": "predicate",
+          "type": "(value: T) => boolean",
+          "description": "The function invoked per iteration",
+          "optional": false
+        }
+      ],
+      "returns": {
+        "type": "T[]",
+        "description": "Returns the slice of array"
+      },
+      "example": "takeWhile([1, 2, 3], n => n < 3); // [1, 2]",
+      "since": "0.9.0",
+      "sourceFile": "src/core/array.ts"
+    },
+    {
+      "name": "takeRightWhile",
+      "category": "array",
+      "description": "Creates a slice of array with elements taken from the end",
+      "syntax": "",
+      "params": [
+        {
+          "name": "array",
+          "type": "T[]",
+          "description": "The array to query",
+          "optional": false
+        },
+        {
+          "name": "predicate",
+          "type": "(value: T) => boolean",
+          "description": "The function invoked per iteration",
+          "optional": false
+        }
+      ],
+      "returns": {
+        "type": "T[]",
+        "description": "Returns the slice of array"
+      },
+      "example": "takeRightWhile([1, 2, 3], n => n > 1); // [2, 3]",
+      "since": "0.9.0",
+      "sourceFile": "src/core/array.ts"
+    },
+    {
+      "name": "without",
+      "category": "array",
+      "description": "Creates an array of unique values from the first array not included in the other given arrays",
+      "syntax": "",
+      "params": [
+        {
+          "name": "array",
+          "type": "T[]",
+          "description": "The array to inspect",
+          "optional": false
+        },
+        {
+          "name": "values",
+          "type": "...T",
+          "description": "The values to exclude",
+          "optional": false
+        }
+      ],
+      "returns": {
+        "type": "T[]",
+        "description": "Returns the new array of filtered values"
+      },
+      "example": "without([2, 1, 2, 3], 1, 2); // [3]",
+      "since": "0.9.0",
+      "sourceFile": "src/core/array.ts"
+    },
+    {
+      "name": "xor",
+      "category": "array",
+      "description": "Creates an array of unique values that is the symmetric difference of the given arrays",
+      "syntax": "",
+      "params": [
+        {
+          "name": "arrays",
+          "type": "...T[][]",
+          "description": "The arrays to inspect",
+          "optional": false
+        }
+      ],
+      "returns": {
+        "type": "T[]",
+        "description": "Returns the new array of filtered values"
+      },
+      "example": "xor([2, 1], [2, 3]); // [1, 3]",
+      "since": "0.9.0",
+      "sourceFile": "src/core/array.ts"
+    },
+    {
+      "name": "zip",
+      "category": "array",
+      "description": "Creates an array that is the zip of arrays",
+      "syntax": "",
+      "params": [
+        {
+          "name": "arrays",
+          "type": "...T[][]",
+          "description": "The arrays to process",
+          "optional": false
+        }
+      ],
+      "returns": {
+        "type": "T[][]",
+        "description": "Returns the new array of grouped elements"
+      },
+      "example": "zip(['a', 'b'], [1, 2], [true, false]); // [['a', 1, true], ['b', 2, false]]",
+      "since": "0.9.0",
+      "sourceFile": "src/core/array.ts"
+    },
+    {
+      "name": "zipObject",
+      "category": "array",
+      "description": "Creates an object composed from arrays of keys and values",
+      "syntax": "",
+      "params": [
+        {
+          "name": "keys",
+          "type": "string[]",
+          "description": "The property names",
+          "optional": false
+        },
+        {
+          "name": "values",
+          "type": "T[]",
+          "description": "The property values",
+          "optional": false
+        }
+      ],
+      "returns": {
+        "type": "Record<string, T>",
+        "description": "Returns the new object"
+      },
+      "example": "zipObject(['a', 'b'], [1, 2]); // { 'a': 1, 'b': 2 }",
+      "since": "0.9.0",
+      "sourceFile": "src/core/array.ts"
+    },
+    {
+      "name": "zipWith",
+      "category": "array",
+      "description": "Creates an array of grouped elements",
+      "syntax": "",
+      "params": [
+        {
+          "name": "arrays",
+          "type": "...[...T[][], ((...values: T[]) => R)]",
+          "description": "The arrays to process and the function to combine grouped values",
+          "optional": false
+        }
+      ],
+      "returns": {
+        "type": "R[]",
+        "description": "Returns the new array of grouped elements"
+      },
+      "example": "zipWith([1, 2], [10, 20], [100, 200], (a, b, c) => a + b + c); // [111, 222]",
+      "since": "0.9.0",
+      "sourceFile": "src/core/array.ts"
+    },
+    {
+      "name": "unzip",
+      "category": "array",
+      "description": "The opposite of zip; creates an array of arrays",
+      "syntax": "",
+      "params": [
+        {
+          "name": "array",
+          "type": "T[][]",
+          "description": "The array of grouped elements to process",
+          "optional": false
+        }
+      ],
+      "returns": {
+        "type": "T[][]",
+        "description": "Returns the new array of regrouped elements"
+      },
+      "example": "unzip([['a', 1, true], ['b', 2, false]]); // [['a', 'b'], [1, 2], [true, false]]",
+      "since": "0.9.0",
+      "sourceFile": "src/core/array.ts"
+    },
+    {
+      "name": "head",
+      "category": "array",
+      "description": "Gets the first element of array",
+      "syntax": "",
+      "params": [
+        {
+          "name": "array",
+          "type": "T[]",
+          "description": "The array to query",
+          "optional": false
+        }
+      ],
+      "returns": {
+        "type": "T | undefined",
+        "description": "Returns the first element of array"
+      },
+      "example": "head([1, 2, 3]); // 1\r\nhead([]); // undefined",
+      "since": "",
+      "sourceFile": "src/core/array.ts"
+    },
+    {
+      "name": "last",
+      "category": "array",
+      "description": "Gets the last element of array",
+      "syntax": "",
+      "params": [
+        {
+          "name": "array",
+          "type": "T[]",
+          "description": "The array to query",
+          "optional": false
+        }
+      ],
+      "returns": {
+        "type": "T | undefined",
+        "description": "Returns the last element of array"
+      },
+      "example": "last([1, 2, 3]); // 3\r\nlast([]); // undefined",
+      "since": "",
+      "sourceFile": "src/core/array.ts"
+    },
+    {
+      "name": "nth",
+      "category": "array",
+      "description": "Gets the element at index n of array",
+      "syntax": "",
+      "params": [
+        {
+          "name": "array",
+          "type": "T[]",
+          "description": "The array to query",
+          "optional": false
+        },
+        {
+          "name": "n",
+          "type": "number",
+          "description": "=0] - The index of the element to return",
+          "optional": false
+        }
+      ],
+      "returns": {
+        "type": "T | undefined",
+        "description": "Returns the nth element of array"
+      },
+      "example": "nth(['a', 'b', 'c', 'd'], 1); // 'b'\r\nnth(['a', 'b', 'c', 'd'], -2); // 'c'",
+      "since": "",
+      "sourceFile": "src/core/array.ts"
+    },
+    {
+      "name": "initial",
+      "category": "array",
+      "description": "Gets all but the last element of array",
+      "syntax": "",
+      "params": [
+        {
+          "name": "array",
+          "type": "T[]",
+          "description": "The array to query",
+          "optional": false
+        }
+      ],
+      "returns": {
+        "type": "T[]",
+        "description": "Returns the slice of array"
+      },
+      "example": "initial([1, 2, 3]); // [1, 2]",
+      "since": "",
+      "sourceFile": "src/core/array.ts"
+    },
+    {
+      "name": "unionWith",
+      "category": "array",
+      "description": "Creates an array of unique values from all given arrays using SameValueZero for equality comparisons",
+      "syntax": "",
+      "params": [
+        {
+          "name": "arrays",
+          "type": "T[][]",
+          "description": "The arrays to inspect",
+          "optional": false
+        },
+        {
+          "name": "comparator",
+          "type": "(a: T, b: T) => boolean",
+          "description": "The comparator invoked per element",
+          "optional": false
+        }
+      ],
+      "returns": {
+        "type": "T[]",
+        "description": "Returns the new array of combined values"
+      },
+      "example": "unionWith([[{ 'x': 1 }], [{ 'x': 2 }, { 'x': 1 }]], (a, b) => a.x === b.x); // [{ 'x': 1 }, { 'x': 2 }]",
+      "since": "0.9.0",
+      "sourceFile": "src/core/array.ts"
+    },
+    {
+      "name": "intersectionWith",
+      "category": "array",
+      "description": "Creates an array of unique values that are included in all given arrays using SameValueZero for equality comparisons",
+      "syntax": "",
+      "params": [
+        {
+          "name": "arrays",
+          "type": "T[][]",
+          "description": "The arrays to inspect",
+          "optional": false
+        },
+        {
+          "name": "comparator",
+          "type": "(a: T, b: T) => boolean",
+          "description": "The comparator invoked per element",
+          "optional": false
+        }
+      ],
+      "returns": {
+        "type": "T[]",
+        "description": "Returns the new array of intersecting values"
+      },
+      "example": "intersectionWith([[{ 'x': 1 }], [{ 'x': 2 }, { 'x': 1 }]], (a, b) => a.x === b.x); // [{ 'x': 1 }]",
+      "since": "0.9.0",
+      "sourceFile": "src/core/array.ts"
+    },
+    {
+      "name": "xorWith",
+      "category": "array",
+      "description": "Like xor except that it accepts comparator which is invoked to compare elements",
+      "syntax": "",
+      "params": [
+        {
+          "name": "arrays",
+          "type": "T[][]",
+          "description": "The arrays to inspect",
+          "optional": false
+        },
+        {
+          "name": "comparator",
+          "type": "(a: T, b: T) => boolean",
+          "description": "The comparator invoked per element",
+          "optional": false
+        }
+      ],
+      "returns": {
+        "type": "T[]",
+        "description": "Returns the new array of filtered values"
+      },
+      "example": "xorWith([[{ 'x': 1 }], [{ 'x': 2 }, { 'x': 1 }]], (a, b) => a.x === b.x); // [{ 'x': 2 }]",
+      "since": "0.9.0",
+      "sourceFile": "src/core/array.ts"
+    },
+    {
+      "name": "xorBy",
+      "category": "array",
+      "description": "Like xor except that it accepts iteratee which is invoked for each element",
+      "syntax": "",
+      "params": [
+        {
+          "name": "arrays",
+          "type": "T[][]",
+          "description": "The arrays to inspect",
+          "optional": false
+        },
+        {
+          "name": "iteratee",
+          "type": "(value: T) => any",
+          "description": "The iteratee invoked per element",
+          "optional": false
+        }
+      ],
+      "returns": {
+        "type": "T[]",
+        "description": "Returns the new array of filtered values"
+      },
+      "example": "xorBy([[2.1, 1.2], [2.3, 3.4]], Math.floor); // [1.2, 3.4]",
+      "since": "0.9.0",
+      "sourceFile": "src/core/array.ts"
+    },
+    {
+      "name": "zipObjectDeep",
+      "category": "array",
+      "description": "Like zipObject except that it supports property paths",
+      "syntax": "",
+      "params": [
+        {
+          "name": "paths",
+          "type": "string[]",
+          "description": "The property paths",
+          "optional": false
+        },
+        {
+          "name": "values",
+          "type": "T[]",
+          "description": "The property values",
+          "optional": false
+        }
+      ],
+      "returns": {
+        "type": "any",
+        "description": "Returns the new object"
+      },
+      "example": "zipObjectDeep(['a.b[0].c', 'a.b[1].d'], [1, 2]); // { 'a': { 'b': [{ 'c': 1 }, { 'd': 2 }] } }",
+      "since": "",
+      "sourceFile": "src/core/array.ts"
+    },
+    {
+      "name": "pullAll",
+      "category": "array",
+      "description": "Creates an array of elements corresponding to the given keys",
+      "syntax": "",
+      "params": [
+        {
+          "name": "array",
+          "type": "T[]",
+          "description": "The array to modify",
+          "optional": false
+        },
+        {
+          "name": "values",
+          "type": "T[]",
+          "description": "The values to remove",
+          "optional": false
+        }
+      ],
+      "returns": {
+        "type": "T[]",
+        "description": "Returns the new array with values removed"
+      },
+      "example": "pullAll([1, 2, 3, 1, 2, 3], [2, 3]); // [1, 1]",
+      "since": "",
+      "sourceFile": "src/core/array.ts"
+    },
+    {
+      "name": "pullAllBy",
+      "category": "array",
+      "description": "Like pullAll except that it accepts iteratee which is invoked per element",
+      "syntax": "",
+      "params": [
+        {
+          "name": "array",
+          "type": "T[]",
+          "description": "The array to modify",
+          "optional": false
+        },
+        {
+          "name": "values",
+          "type": "T[]",
+          "description": "The values to remove",
+          "optional": false
+        },
+        {
+          "name": "iteratee",
+          "type": "(value: T) => any",
+          "description": "The iteratee invoked per element",
+          "optional": false
+        }
+      ],
+      "returns": {
+        "type": "T[]",
+        "description": "Returns the new array with values removed"
+      },
+      "example": "pullAllBy([{ 'x': 1 }, { 'x': 2 }, { 'x': 3 }, { 'x': 1 }], [{ 'x': 1 }, { 'x': 3 }], 'x'); // [{ 'x': 2 }]",
+      "since": "",
+      "sourceFile": "src/core/array.ts"
+    },
+    {
+      "name": "pullAllWith",
+      "category": "array",
+      "description": "Like pullAll except that it accepts comparator which is invoked to compare elements",
+      "syntax": "",
+      "params": [
+        {
+          "name": "array",
+          "type": "T[]",
+          "description": "The array to modify",
+          "optional": false
+        },
+        {
+          "name": "values",
+          "type": "T[]",
+          "description": "The values to remove",
+          "optional": false
+        },
+        {
+          "name": "comparator",
+          "type": "(a: T, b: T) => boolean",
+          "description": "The comparator invoked per element",
+          "optional": false
+        }
+      ],
+      "returns": {
+        "type": "T[]",
+        "description": "Returns the new array with values removed"
+      },
+      "example": "pullAllWith([{ 'x': 1, 'y': 2 }, { 'x': 3, 'y': 4 }, { 'x': 5, 'y': 6 }], [{ 'x': 3, 'y': 4 }], (a, b) => a.x === b.x); // [{ 'x': 1, 'y': 2 }, { 'x': 5, 'y': 6 }]",
+      "since": "",
+      "sourceFile": "src/core/array.ts"
+    },
+    {
+      "name": "uniq",
+      "category": "array",
+      "description": "Creates a duplicate-free version of an array using SameValueZero for equality comparisons",
+      "syntax": "",
+      "params": [
+        {
+          "name": "array",
+          "type": "T[]",
+          "description": "The array to inspect",
+          "optional": false
+        }
+      ],
+      "returns": {
+        "type": "T[]",
+        "description": "Returns the new duplicate free array"
+      },
+      "example": "uniq([2, 1, 2]); // [2, 1]",
+      "since": "",
+      "sourceFile": "src/core/array.ts"
+    },
+    {
+      "name": "uniqBy",
+      "category": "array",
+      "description": "Like uniq except that it accepts iteratee which is invoked for each element",
+      "syntax": "",
+      "params": [
+        {
+          "name": "array",
+          "type": "T[]",
+          "description": "The array to inspect",
+          "optional": false
+        },
+        {
+          "name": "iteratee",
+          "type": "(value: T) => any",
+          "description": "The iteratee invoked per element",
+          "optional": false
+        }
+      ],
+      "returns": {
+        "type": "T[]",
+        "description": "Returns the new duplicate free array"
+      },
+      "example": "uniqBy([2.1, 1.2, 2.3], Math.floor); // [2.1, 1.2]",
+      "since": "",
+      "sourceFile": "src/core/array.ts"
+    },
+    {
+      "name": "uniqWith",
+      "category": "array",
+      "description": "Like uniq except that it accepts comparator which is invoked to compare elements",
+      "syntax": "",
+      "params": [
+        {
+          "name": "array",
+          "type": "T[]",
+          "description": "The array to inspect",
+          "optional": false
+        },
+        {
+          "name": "comparator",
+          "type": "(a: T, b: T) => boolean",
+          "description": "The comparator invoked per element",
+          "optional": false
+        }
+      ],
+      "returns": {
+        "type": "T[]",
+        "description": "Returns the new duplicate free array"
+      },
+      "example": "uniqWith([{ 'x': 1, 'y': 2 }, { 'x': 2, 'y': 1 }, { 'x': 1, 'y': 2 }], (a, b) => a.x === b.x); // [{ 'x': 1, 'y': 2 }, { 'x': 2, 'y': 1 }]",
+      "since": "",
+      "sourceFile": "src/core/array.ts"
+    },
+    {
+      "name": "unzipWith",
+      "category": "array",
+      "description": "Creates an array excluding all given values using SameValueZero for equality comparisons",
+      "syntax": "",
+      "params": [
+        {
+          "name": "array",
+          "type": "T[][]",
+          "description": "The array of grouped elements to process",
+          "optional": false
+        },
+        {
+          "name": "iteratee",
+          "type": "(...values: T[]) => R",
+          "description": "The function to combine regrouped values",
+          "optional": false
+        }
+      ],
+      "returns": {
+        "type": "R[]",
+        "description": "Returns the new array of regrouped elements"
+      },
+      "example": "unzipWith([['1', '2'], ['3', '4'], ['5', '6']], (...group) => group.join('')); // ['135', '246']",
+      "since": "",
+      "sourceFile": "src/core/array.ts"
+    },
+    {
+      "name": "sortedIndex",
+      "category": "array",
+      "description": "Creates an array of elements sorted in ascending order",
+      "syntax": "",
+      "params": [
+        {
+          "name": "array",
+          "type": "T[]",
+          "description": "The sorted array to inspect",
+          "optional": false
+        },
+        {
+          "name": "value",
+          "type": "T",
+          "description": "The value to evaluate",
+          "optional": false
+        }
+      ],
+      "returns": {
+        "type": "number",
+        "description": "Returns the index at which value should be inserted into array"
+      },
+      "example": "sortedIndex([30, 50], 40); // 1",
+      "since": "0.9.0",
+      "sourceFile": "src/core/array.ts"
+    },
+    {
+      "name": "sortedIndexBy",
+      "category": "array",
+      "description": "Like sortedIndex except that it accepts iteratee",
+      "syntax": "",
+      "params": [
+        {
+          "name": "array",
+          "type": "T[]",
+          "description": "The sorted array to inspect",
+          "optional": false
+        },
+        {
+          "name": "value",
+          "type": "T",
+          "description": "The value to evaluate",
+          "optional": false
+        },
+        {
+          "name": "iteratee",
+          "type": "(value: T) => any",
+          "description": "The iteratee invoked per element",
+          "optional": false
+        }
+      ],
+      "returns": {
+        "type": "number",
+        "description": "Returns the index at which value should be inserted into array"
+      },
+      "example": "sortedIndexBy([{ 'x': 4 }, { 'x': 5 }], { 'x': 4 }, o => o.x); // 0",
+      "since": "0.9.0",
+      "sourceFile": "src/core/array.ts"
+    },
+    {
+      "name": "sortedLastIndex",
+      "category": "array",
+      "description": "Uses a binary search to determine the highest index at which value should be inserted",
+      "syntax": "",
+      "params": [
+        {
+          "name": "array",
+          "type": "T[]",
+          "description": "The sorted array to inspect",
+          "optional": false
+        },
+        {
+          "name": "value",
+          "type": "T",
+          "description": "The value to evaluate",
+          "optional": false
+        }
+      ],
+      "returns": {
+        "type": "number",
+        "description": "Returns the index at which value should be inserted into array"
+      },
+      "example": "sortedLastIndex([4, 5, 5, 5, 6], 5); // 4",
+      "since": "0.9.0",
+      "sourceFile": "src/core/array.ts"
+    },
+    {
+      "name": "sortedLastIndexBy",
+      "category": "array",
+      "description": "Like sortedLastIndex except that it accepts iteratee",
+      "syntax": "",
+      "params": [
+        {
+          "name": "array",
+          "type": "T[]",
+          "description": "The sorted array to inspect",
+          "optional": false
+        },
+        {
+          "name": "value",
+          "type": "T",
+          "description": "The value to evaluate",
+          "optional": false
+        },
+        {
+          "name": "iteratee",
+          "type": "(value: T) => any",
+          "description": "The iteratee invoked per element",
+          "optional": false
+        }
+      ],
+      "returns": {
+        "type": "number",
+        "description": "Returns the index at which value should be inserted into array"
+      },
+      "example": "sortedLastIndexBy([{ 'x': 4 }, { 'x': 5 }], { 'x': 4 }, o => o.x); // 1",
+      "since": "0.9.0",
+      "sourceFile": "src/core/array.ts"
+    },
+    {
+      "name": "sortedIndexOf",
+      "category": "array",
+      "description": "Uses a binary search to find the index of the value in the sorted array",
+      "syntax": "",
+      "params": [
+        {
+          "name": "array",
+          "type": "T[]",
+          "description": "The sorted array to inspect",
+          "optional": false
+        },
+        {
+          "name": "value",
+          "type": "T",
+          "description": "The value to search for",
+          "optional": false
+        }
+      ],
+      "returns": {
+        "type": "number",
+        "description": "Returns the index of the matched value, else -1"
+      },
+      "example": "sortedIndexOf([4, 5, 5, 5, 6], 5); // 1",
+      "since": "0.9.0",
+      "sourceFile": "src/core/array.ts"
+    },
+    {
+      "name": "sortedLastIndexOf",
+      "category": "array",
+      "description": "Uses a binary search to find the last index of the value in the sorted array",
+      "syntax": "",
+      "params": [
+        {
+          "name": "array",
+          "type": "T[]",
+          "description": "The sorted array to inspect",
+          "optional": false
+        },
+        {
+          "name": "value",
+          "type": "T",
+          "description": "The value to search for",
+          "optional": false
+        }
+      ],
+      "returns": {
+        "type": "number",
+        "description": "Returns the index of the matched value, else -1"
+      },
+      "example": "sortedLastIndexOf([4, 5, 5, 5, 6], 5); // 3",
+      "since": "0.9.0",
+      "sourceFile": "src/core/array.ts"
+    },
+    {
+      "name": "slice",
+      "category": "array",
+      "description": "Creates a slice of array from start up to, but not including, end",
+      "syntax": "",
+      "params": [
+        {
+          "name": "array",
+          "type": "T[]",
+          "description": "The array to slice",
+          "optional": false
+        },
+        {
+          "name": "start",
+          "type": "number",
+          "description": "=0] - The start position",
+          "optional": false
+        },
+        {
+          "name": "end",
+          "type": "number",
+          "description": "=array.length] - The end position",
+          "optional": false
+        }
+      ],
+      "returns": {
+        "type": "T[]",
+        "description": "Returns the slice of array"
+      },
+      "example": "slice([1, 2, 3, 4], 2); // [3, 4]\r\nslice([1, 2, 3, 4], 1, 3); // [2, 3]",
+      "since": "0.9.0",
+      "sourceFile": "src/core/array.ts"
+    },
+    {
+      "name": "join",
+      "category": "array",
+      "description": "Joins a list of elements using a separator",
+      "syntax": "",
+      "params": [
+        {
+          "name": "array",
+          "type": "T[]",
+          "description": "The array to convert",
+          "optional": false
+        },
+        {
+          "name": "separator",
+          "type": "string",
+          "description": "=','] - The element separator",
+          "optional": false
+        }
+      ],
+      "returns": {
+        "type": "string",
+        "description": "Returns the joined string"
+      },
+      "example": "join(['a', 'b', 'c'], '~'); // 'a~b~c'",
+      "since": "0.9.0",
+      "sourceFile": "src/core/array.ts"
+    },
+    {
+      "name": "indexOf",
+      "category": "array",
+      "description": "Gets the index at which the first occurrence of value is found in array",
+      "syntax": "",
+      "params": [
+        {
+          "name": "array",
+          "type": "T[]",
+          "description": "The array to inspect",
+          "optional": false
+        },
+        {
+          "name": "value",
+          "type": "T",
+          "description": "The value to search for",
+          "optional": false
+        },
+        {
+          "name": "fromIndex",
+          "type": "number",
+          "description": "=0] - The index to search from",
+          "optional": false
+        }
+      ],
+      "returns": {
+        "type": "number",
+        "description": "Returns the index of the matched value, else -1"
+      },
+      "example": "indexOf([1, 2, 1, 2], 2); // 1\r\nindexOf([1, 2, 1, 2], 2, 2); // 3",
+      "since": "0.9.0",
+      "sourceFile": "src/core/array.ts"
+    },
+    {
+      "name": "lastIndexOf",
+      "category": "array",
+      "description": "Gets the index at which the last occurrence of value is found in array",
+      "syntax": "",
+      "params": [
+        {
+          "name": "array",
+          "type": "T[]",
+          "description": "The array to inspect",
+          "optional": false
+        },
+        {
+          "name": "value",
+          "type": "T",
+          "description": "The value to search for",
+          "optional": false
+        },
+        {
+          "name": "fromIndex",
+          "type": "number",
+          "description": "=array.length-1] - The index to search from",
+          "optional": false
+        }
+      ],
+      "returns": {
+        "type": "number",
+        "description": "Returns the index of the matched value, else -1"
+      },
+      "example": "lastIndexOf([1, 2, 1, 2], 2); // 3\r\nlastIndexOf([1, 2, 1, 2], 2, 2); // 1",
+      "since": "0.9.7",
+      "sourceFile": "src/core/array.ts"
+    },
+    {
+      "name": "filterData",
+      "category": "array",
+      "description": "Filters an array of objects based on provided parameters",
+      "syntax": "",
+      "params": [
+        {
+          "name": "arr",
+          "type": "T[]",
+          "description": "The array of objects to be filtered",
+          "optional": false
+        },
+        {
+          "name": "param",
+          "type": "i_func_filterData",
+          "description": "The filtering parameters",
+          "optional": false
+        }
+      ],
+      "returns": {
+        "type": "T[]",
+        "description": "Returns the filtered array containing objects of type T"
+      },
+      "example": "const data = [\r\n  { field_search: 'John Doe', state: [{ state: 'active' }], ddeb: '2023-01-15' },\r\n  { field_search: 'Jane Smith', state: [{ state: 'inactive' }], ddeb: '2024-02-20' }\r\n];\r\nfilterData(data, { \r\n  sW: 'John', \r\n  tbRS: [], \r\n  selections: [{ selection: ['active'], property: 'state' }] \r\n});\r\n// [{ field_search: 'John Doe', state: [{ state: 'active' }], ddeb: '2023-01-15' }]",
+      "since": "0.9.7",
+      "sourceFile": "src/core/array.ts"
+    },
+    {
+      "name": "every",
+      "category": "collection",
+      "description": "Checks if predicate returns truthy for all elements of collection.",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "every([2, 4, 6], x => x % 2 === 0) // => true\r\nevery({a: 2, b: 4, c: 5}, x => x % 2 === 0) // => false",
+      "since": "0.9.0",
+      "sourceFile": "src/core/collection.ts"
+    },
+    {
+      "name": "forEach",
+      "category": "collection",
+      "description": "Iterates over elements of collection and invokes iteratee for each element.",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "forEach([1, 2], value => console.log(value))\r\nforEach({a: 1, b: 2}, (value, key) => console.log(key, value))",
+      "since": "0.9.0",
+      "sourceFile": "src/core/collection.ts"
+    },
+    {
+      "name": "map",
+      "category": "collection",
+      "description": "Creates an array of values by running each element in collection through iteratee.",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "map([1, 2, 3], x => x * 2) // => [2, 4, 6]\r\nmap({a: 1, b: 2}, x => x * 2) // => [2, 4]",
+      "since": "0.9.0",
+      "sourceFile": "src/core/collection.ts"
+    },
+    {
+      "name": "filter",
+      "category": "collection",
+      "description": "Iterates over elements of collection, returning an array of all elements predicate returns truthy for.",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "filter([1, 2, 3, 4], x => x % 2 === 0) // => [2, 4]\r\nfilter({a: 1, b: 2, c: 3}, x => x > 1) // => [2, 3]",
+      "since": "0.9.0",
+      "sourceFile": "src/core/collection.ts"
+    },
+    {
+      "name": "find",
+      "category": "collection",
+      "description": "Iterates over elements of collection, returning the first element predicate returns truthy for.",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "find([1, 2, 3, 4], x => x > 2) // => 3\r\nfind({a: 1, b: 2, c: 3}, x => x > 2) // => 3",
+      "since": "0.9.0",
+      "sourceFile": "src/core/collection.ts"
+    },
+    {
+      "name": "findKey",
+      "category": "collection",
+      "description": "This method is like find except that it returns the key of the first element",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "findKey({a: 1, b: 2, c: 3}, x => x > 2) // => 'c'",
+      "since": "0.9.0",
+      "sourceFile": "src/core/collection.ts"
+    },
+    {
+      "name": "findLast",
+      "category": "collection",
+      "description": "This method is like find except that it iterates over elements of collection from right to left.",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "findLast([1, 2, 3, 4], x => x % 2 === 1) // => 3",
+      "since": "0.9.0",
+      "sourceFile": "src/core/collection.ts"
+    },
+    {
+      "name": "flatMap",
+      "category": "collection",
+      "description": "Creates a flattened array of values by running each element in collection through iteratee",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "flatMap([1, 2], x => [x, x]) // => [1, 1, 2, 2]",
+      "since": "0.9.0",
+      "sourceFile": "src/core/collection.ts"
+    },
+    {
+      "name": "flatMapDeep",
+      "category": "collection",
+      "description": "This method is like flatMap except that it recursively flattens the mapped results.",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "flatMapDeep([1, 2], x => [x, [x]]) // => [1, 1, 2, 2]",
+      "since": "0.9.0",
+      "sourceFile": "src/core/collection.ts"
+    },
+    {
+      "name": "groupBy",
+      "category": "collection",
+      "description": "Creates an object composed of keys generated from the results of running each element",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "groupBy(['one', 'two', 'three'], x => x.length) // => {3: ['one', 'two'], 5: ['three']}",
+      "since": "0.9.0",
+      "sourceFile": "src/core/collection.ts"
+    },
+    {
+      "name": "includes",
+      "category": "collection",
+      "description": "Checks if value is in collection. If collection is a string, it's checked for a substring of value,",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "includes([1, 2, 3], 1) // => true\r\nincludes({a: 1, b: 2}, 1) // => true\r\nincludes('hello', 'ell') // => true",
+      "since": "0.9.0",
+      "sourceFile": "src/core/collection.ts"
+    },
+    {
+      "name": "invokeMap",
+      "category": "collection",
+      "description": "Invokes the method at path of each element in collection, returning an array of the results",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "invokeMap([[5, 1, 7], [3, 2, 1]], 'sort') // => [[1, 5, 7], [1, 2, 3]]",
+      "since": "0.9.0",
+      "sourceFile": "src/core/collection.ts"
+    },
+    {
+      "name": "keyBy",
+      "category": "collection",
+      "description": "Creates an object composed of keys generated from the results of running each element",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "keyBy([{id: 'a', dir: 'left'}, {id: 'b', dir: 'right'}], x => x.id) \r\n// => {a: {id: 'a', dir: 'left'}, b: {id: 'b', dir: 'right'}}",
+      "since": "0.9.0",
+      "sourceFile": "src/core/collection.ts"
+    },
+    {
+      "name": "orderBy",
+      "category": "collection",
+      "description": "Creates an array of elements, sorted in ascending or descending order by the results",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "orderBy([{user: 'fred', age: 48}, {user: 'barney', age: 36}], \r\n        [x => x.user], ['desc']) \r\n// => [{user: 'fred', age: 48}, {user: 'barney', age: 36}]",
+      "since": "0.9.0",
+      "sourceFile": "src/core/collection.ts"
+    },
+    {
+      "name": "partition",
+      "category": "collection",
+      "description": "Creates an array of elements split into two groups, the first of which contains elements",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "partition([1, 2, 3, 4], x => x % 2) // => [[1, 3], [2, 4]]",
+      "since": "0.9.0",
+      "sourceFile": "src/core/collection.ts"
+    },
+    {
+      "name": "reduce",
+      "category": "collection",
+      "description": "Reduces collection to a value which is the accumulated result of running each element",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "reduce([1, 2], (sum, n) => sum + n, 0) // => 3\r\nreduce({a: 1, b: 2, c: 1}, (result, value, key) => { ... }, {})",
+      "since": "0.9.0",
+      "sourceFile": "src/core/collection.ts"
+    },
+    {
+      "name": "reduceRight",
+      "category": "collection",
+      "description": "This method is like reduce except that it iterates over elements of collection from right to left.",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "reduceRight([1, 2, 3], (acc, n) => acc.concat(n), []) // => [3, 2, 1]",
+      "since": "0.9.0",
+      "sourceFile": "src/core/collection.ts"
+    },
+    {
+      "name": "reject",
+      "category": "collection",
+      "description": "The opposite of filter; this method returns the elements of collection that predicate",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "reject([1, 2, 3, 4], x => x % 2 === 0) // => [1, 3]",
+      "since": "0.9.0",
+      "sourceFile": "src/core/collection.ts"
+    },
+    {
+      "name": "sample",
+      "category": "collection",
+      "description": "Gets a random element from collection.",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "sample([1, 2, 3, 4]) // => 2\r\nsample({a: 1, b: 2, c: 3}) // => 2",
+      "since": "0.9.0",
+      "sourceFile": "src/core/collection.ts"
+    },
+    {
+      "name": "sampleSize",
+      "category": "collection",
+      "description": "Gets n random elements at unique keys from collection up to the size of collection.",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "sampleSize([1, 2, 3], 2) // => [3, 1]\r\nsampleSize([1, 2, 3], 4) // => [2, 3, 1]",
+      "since": "0.9.0",
+      "sourceFile": "src/core/collection.ts"
+    },
+    {
+      "name": "shuffle",
+      "category": "collection",
+      "description": "Creates an array of shuffled values, using a version of the Fisher-Yates shuffle.",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "shuffle([1, 2, 3, 4]) // => [4, 1, 3, 2]",
+      "since": "0.9.0",
+      "sourceFile": "src/core/collection.ts"
+    },
+    {
+      "name": "size",
+      "category": "collection",
+      "description": "Gets the size of collection by returning its length for array-like values or the number",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "size([1, 2, 3]) // => 3\r\nsize({a: 1, b: 2}) // => 2\r\nsize('pebbles') // => 7",
+      "since": "0.9.0",
+      "sourceFile": "src/core/collection.ts"
+    },
+    {
+      "name": "some",
+      "category": "collection",
+      "description": "Checks if predicate returns truthy for any element of collection. Iteration is stopped",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "some([null, 0, 'yes', false], Boolean) // => true\r\nsome({a: null, b: 0, c: 'yes'}, Boolean) // => true",
+      "since": "0.9.0",
+      "sourceFile": "src/core/collection.ts"
+    },
+    {
+      "name": "sortBy",
+      "category": "collection",
+      "description": "Creates an array of elements, sorted in ascending order by the results of running",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "sortBy([{user: 'fred', age: 48}, {user: 'barney', age: 36}], x => x.age)\r\n// => [{user: 'barney', age: 36}, {user: 'fred', age: 48}]",
+      "since": "0.9.0",
+      "sourceFile": "src/core/collection.ts"
+    },
+    {
+      "name": "countBy",
+      "category": "collection",
+      "description": "Creates an object composed of keys generated from the results of running each element",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "countBy([6.1, 4.2, 6.3], Math.floor) // => {4: 1, 6: 2}\r\ncountBy(['one', 'two', 'three'], x => x.length) // => {3: 2, 5: 1}",
+      "since": "0.9.0",
+      "sourceFile": "src/core/collection.ts"
+    },
+    {
+      "name": "eachRight",
+      "category": "collection",
+      "description": "This method is like forEach except that it iterates over elements of collection from right to left.",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "eachRight([1, 2], value => console.log(value)) // => logs `2` then `1`",
+      "since": "0.9.0",
+      "sourceFile": "src/core/collection.ts"
+    },
+    {
+      "name": "forEachRight",
+      "category": "collection",
+      "description": "Alias for eachRight. This method is like forEach except that it iterates over elements",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "forEachRight([1, 2], value => console.log(value)) // => logs `2` then `1`",
+      "since": "0.9.0",
+      "sourceFile": "src/core/collection.ts"
+    },
+    {
+      "name": "formatDate",
+      "category": "date",
+      "description": "Format a date to string using a custom format pattern",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "```typescript\r\nformatDate(new Date(), 'DD/MM/YYYY') // '25/12/2023'\r\nformatDate('2023-12-25', 'HH:mm:ss') // '00:00:00'\r\nformatDate('invalid', 'DD/MM/YYYY') // ''\r\n```",
+      "since": "0.8.0",
+      "sourceFile": "src/core/date.ts"
+    },
+    {
+      "name": "isDate",
+      "category": "date",
+      "description": "Check if a value is a valid Date object",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "```typescript\r\nisDate(new Date()) // true\r\nisDate('2023-12-25') // false (string, not Date object)\r\nisDate(new Date('invalid')) // false (invalid date)\r\n```",
+      "since": "",
+      "sourceFile": "src/core/date.ts"
+    },
+    {
+      "name": "now",
+      "category": "date",
+      "description": "Get the current date and time, optionally formatted",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "```typescript\r\nnow() // Date object for current time\r\nnow('DD/MM/YYYY HH:mm') // '25/12/2023 14:30'\r\n```",
+      "since": "",
+      "sourceFile": "src/core/date.ts"
+    },
+    {
+      "name": "secondsToTomorrow",
+      "category": "date",
+      "description": "Calculate the number of seconds remaining until tomorrow (midnight)",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "```typescript\r\n// If current time is 23:30:00\r\nsecondsToTomorrow() // 1800 (30 minutes = 1800 seconds)\r\n```",
+      "since": "",
+      "sourceFile": "src/core/date.ts"
+    },
+    {
+      "name": "isDateDifferent",
+      "category": "date",
+      "description": "Check if a given number differs from the current time's corresponding unit",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "```typescript\r\n// If current time is 14:30:45 on 25th December 2023\r\nisDateDifferent(15, 'hour') // true (current hour is 14)\r\nisDateDifferent(30, 'minute') // false (current minute is 30)\r\nisDateDifferent(2023, 'year') // false (current year is 2023)\r\n```",
+      "since": "",
+      "sourceFile": "src/core/date.ts"
+    },
+    {
+      "name": "getFormat",
+      "category": "date",
+      "description": "Get the date/time format string for a specific country and format type",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "```typescript\r\ngetFormat('DATE', 'US') // 'MM/DD/YYYY'\r\ngetFormat('DATE', 'FR') // 'DD/MM/YYYY'\r\ngetFormat('TIME', 'US') // 'HH:mm:ss'\r\ngetFormat('DATE_TIME', 'DE') // 'DD.MM.YYYY, HH:mm:ss'\r\n```",
+      "since": "",
+      "sourceFile": "src/core/date.ts"
+    },
+    {
+      "name": "isBetween",
+      "category": "date",
+      "description": "Check if a date falls between two other dates (inclusive)",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "```typescript\r\nisBetween('2023-12-25', '2023-12-01', '2023-12-31') // true\r\nisBetween(new Date('2023-11-30'), '2023-12-01', '2023-12-31') // false\r\nisBetween('2023-12-01', '2023-12-01', '2023-12-31') // true (inclusive)\r\n```",
+      "since": "",
+      "sourceFile": "src/core/date.ts"
+    },
+    {
+      "name": "addTime",
+      "category": "date",
+      "description": "Add a specified amount of time to a date",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "```typescript\r\naddTime(new Date('2023-12-25'), 5, 'day') // 2023-12-30\r\naddTime('2023-12-25T10:00:00', 2, 'hour') // 2023-12-25T12:00:00\r\naddTime(new Date(), -1, 'month') // One month ago\r\naddTime('2023-01-31', 1, 'month') // 2023-02-28 (handles month overflow)\r\n```",
+      "since": "",
+      "sourceFile": "src/core/date.ts"
+    },
+    {
+      "name": "bind",
+      "category": "function",
+      "description": "Creates a function that invokes func with the this binding of thisArg and arguments of the created function",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "function greet(greeting, punctuation) {\r\n  return greeting + ' ' + this.user + punctuation;\r\n}\r\nconst object = { 'user': 'fred' };\r\nconst bound = bind(greet, object, 'hi');\r\nbound('!'); // => 'hi fred!'",
+      "since": "0.9.0",
+      "sourceFile": "src/core/function.ts"
+    },
+    {
+      "name": "bindKey",
+      "category": "function",
+      "description": "Creates a function that invokes the method at object[key] with arguments",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "const object = {\r\n  'user': 'fred',\r\n  'greet': function(greeting, punctuation) {\r\n    return greeting + ' ' + this.user + punctuation;\r\n  }\r\n};\r\nconst bound = bindKey(object, 'greet', 'hi');\r\nbound('!'); // => 'hi fred!'",
+      "since": "0.9.0",
+      "sourceFile": "src/core/function.ts"
+    },
+    {
+      "name": "ary",
+      "category": "function",
+      "description": "Creates a function that accepts up to n arguments, ignoring any additional arguments",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "['6', '8', '10'].map(ary(parseInt, 1)); // => [6, 8, 10]",
+      "since": "0.9.0",
+      "sourceFile": "src/core/function.ts"
+    },
+    {
+      "name": "flip",
+      "category": "function",
+      "description": "Creates a function that invokes func with arguments reversed",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "const flipped = flip(function(a, b, c) {\r\n  return [a, b, c];\r\n});\r\nflipped('a', 'b', 'c'); // => ['c', 'b', 'a']",
+      "since": "0.9.0",
+      "sourceFile": "src/core/function.ts"
+    },
+    {
+      "name": "memoize",
+      "category": "function",
+      "description": "Creates a function that memoizes the result of func",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "const object = { 'a': 1, 'b': 2 };\r\nconst other = { 'c': 3, 'd': 4 };\r\nconst values = memoize(function(obj) { return Object.values(obj); });\r\nvalues(object); // => [1, 2]\r\nvalues(other); // => [3, 4]",
+      "since": "0.9.0",
+      "sourceFile": "src/core/function.ts"
+    },
+    {
+      "name": "negate",
+      "category": "function",
+      "description": "Creates a function that negates the result of the predicate func",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "function isEven(n) {\r\n  return n % 2 == 0;\r\n}\r\nconst isOdd = negate(isEven);\r\nisOdd(3); // => true",
+      "since": "0.9.0",
+      "sourceFile": "src/core/function.ts"
+    },
+    {
+      "name": "once",
+      "category": "function",
+      "description": "Creates a function that is restricted to invoking func once",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "const initialize = once(createApplication);\r\ninitialize(); // creates the application\r\ninitialize(); // returns the cached result",
+      "since": "0.9.0",
+      "sourceFile": "src/core/function.ts"
+    },
+    {
+      "name": "overArgs",
+      "category": "function",
+      "description": "Creates a function that invokes func with its arguments transformed",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "function doubled(n) {\r\n  return n * 2;\r\n}\r\nfunction square(n) {\r\n  return n * n;\r\n}\r\nconst func = overArgs(function(x, y) {\r\n  return [x, y];\r\n}, square, doubled);\r\nfunc(9, 3); // => [81, 6]",
+      "since": "0.9.0",
+      "sourceFile": "src/core/function.ts"
+    },
+    {
+      "name": "partial",
+      "category": "function",
+      "description": "Creates a function that invokes func with partials prepended to the arguments it receives",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "function greet(greeting, name) {\r\n  return greeting + ' ' + name;\r\n}\r\nconst sayHelloTo = partial(greet, 'hello');\r\nsayHelloTo('fred'); // => 'hello fred'",
+      "since": "0.9.0",
+      "sourceFile": "src/core/function.ts"
+    },
+    {
+      "name": "partialRight",
+      "category": "function",
+      "description": "Like partial except that partially applied arguments are appended to the arguments it receives",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "function greet(greeting, name) {\r\n  return greeting + ' ' + name;\r\n}\r\nconst greetFred = partialRight(greet, 'fred');\r\ngreetFred('hi'); // => 'hi fred'",
+      "since": "0.9.0",
+      "sourceFile": "src/core/function.ts"
+    },
+    {
+      "name": "rearg",
+      "category": "function",
+      "description": "Creates a function that invokes func with arguments arranged according to the specified indexes",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "const rearged = rearg(function(a, b, c) {\r\n  return [a, b, c];\r\n}, 2, 0, 1);\r\nrearged('b', 'c', 'a'); // => ['a', 'b', 'c']",
+      "since": "0.9.0",
+      "sourceFile": "src/core/function.ts"
+    },
+    {
+      "name": "spread",
+      "category": "function",
+      "description": "Creates a function that invokes func with the this binding of the created function and an array of arguments",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "const say = spread(function(who, what) {\r\n  return who + ' says ' + what;\r\n});\r\nsay(['fred', 'hello']); // => 'fred says hello'",
+      "since": "0.9.0",
+      "sourceFile": "src/core/function.ts"
+    },
+    {
+      "name": "throttle",
+      "category": "function",
+      "description": "Creates a throttled function that only invokes func at most once per every wait milliseconds",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "// Avoid excessively updating the position while scrolling.\r\nconst throttled = throttle(updatePosition, 100);\r\nwindow.addEventListener('scroll', throttled);",
+      "since": "0.9.0",
+      "sourceFile": "src/core/function.ts"
+    },
+    {
+      "name": "debounce",
+      "category": "function",
+      "description": "Creates a debounced function that delays invoking func until after wait milliseconds have elapsed",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "// Avoid costly calculations while the window size is in flux.\r\nconst debounced = debounce(calculateLayout, 150);\r\nwindow.addEventListener('resize', debounced);",
+      "since": "0.9.0",
+      "sourceFile": "src/core/function.ts"
+    },
+    {
+      "name": "unary",
+      "category": "function",
+      "description": "Creates a function that accepts up to one argument, ignoring any additional arguments",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "['6', '8', '10'].map(unary(parseInt)); // => [6, 8, 10]",
+      "since": "0.9.0",
+      "sourceFile": "src/core/function.ts"
+    },
+    {
+      "name": "wrap",
+      "category": "function",
+      "description": "Creates a function that provides value to wrapper as its first argument",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "const p = wrap('hello', function(greeting, name) {\r\n  return greeting + ' ' + name;\r\n});\r\np('world'); // => 'hello world'",
+      "since": "0.9.0",
+      "sourceFile": "src/core/function.ts"
+    },
+    {
+      "name": "curry",
+      "category": "function",
+      "description": "Creates a function that accepts arguments of func and either invokes func returning its result,",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "const abc = function(a, b, c) {\r\n  return [a, b, c];\r\n};\r\nconst curried = curry(abc);\r\ncurried(1)(2)(3); // => [1, 2, 3]\r\ncurried(1, 2)(3); // => [1, 2, 3]\r\ncurried(1, 2, 3); // => [1, 2, 3]",
+      "since": "0.9.0",
+      "sourceFile": "src/core/function.ts"
+    },
+    {
+      "name": "curryRight",
+      "category": "function",
+      "description": "This method is like curry except that arguments are applied to func in the manner of partialRight instead of partial",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "const abc = function(a, b, c) {\r\n  return [a, b, c];\r\n};\r\nconst curried = curryRight(abc);\r\ncurried(3)(2)(1); // => [1, 2, 3]\r\ncurried(2, 3)(1); // => [1, 2, 3]\r\ncurried(1, 2, 3); // => [1, 2, 3]",
+      "since": "0.9.0",
+      "sourceFile": "src/core/function.ts"
+    },
+    {
+      "name": "rest",
+      "category": "function",
+      "description": "Creates a function that invokes func with arguments arranged according to the specified indexes",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "const say = rest(function(what, names) {\r\n  return what + ' ' + names.join(', ');\r\n});\r\nsay('hello', 'fred', 'barney', 'pebbles'); // => 'hello fred, barney, pebbles'",
+      "since": "0.9.0",
+      "sourceFile": "src/core/function.ts"
+    },
+    {
+      "name": "add",
+      "category": "math",
+      "description": "Adds two numbers together",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "```typescript\r\nadd(2, 3) // => 5\r\nadd(-1, 1) // => 0\r\n```",
+      "since": "0.8.0",
+      "sourceFile": "src/core/math.ts"
+    },
+    {
+      "name": "sum",
+      "category": "math",
+      "description": "Computes the sum of all values in an array",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "```typescript\r\nsum([1, 2, 3, 4]) // => 10\r\nsum([]) // => 0\r\nsum([-1, 1]) // => 0\r\n```",
+      "since": "0.8.0",
+      "sourceFile": "src/core/math.ts"
+    },
+    {
+      "name": "sumBy",
+      "category": "math",
+      "description": "Computes the sum of all values in an array after applying an iteratee function to each element",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "```typescript\r\nconst objects = [{ n: 4 }, { n: 2 }, { n: 8 }];\r\nsumBy(objects, o => o.n) // => 14\r\nconst strings = ['a', 'bb', 'ccc'];\r\nsumBy(strings, s => s.length) // => 6\r\n```",
+      "since": "0.8.0",
+      "sourceFile": "src/core/math.ts"
+    },
+    {
+      "name": "mean",
+      "category": "math",
+      "description": "Computes the arithmetic mean (average) of all values in an array",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "```typescript\r\nmean([1, 2, 3, 4, 5]) // => 3\r\nmean([10, 20]) // => 15\r\nmean([]) // => 0\r\n```",
+      "since": "0.8.0",
+      "sourceFile": "src/core/math.ts"
+    },
+    {
+      "name": "meanBy",
+      "category": "math",
+      "description": "Computes the arithmetic mean of all values in an array after applying an iteratee function",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "```typescript\r\nconst objects = [{ n: 4 }, { n: 2 }, { n: 8 }];\r\nmeanBy(objects, o => o.n) // => 4.666...\r\nconst people = [{ age: 25 }, { age: 30 }, { age: 35 }];\r\nmeanBy(people, p => p.age) // => 30\r\n```",
+      "since": "0.8.0",
+      "sourceFile": "src/core/math.ts"
+    },
+    {
+      "name": "max",
+      "category": "math",
+      "description": "Finds the maximum value in an array of numbers",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "```typescript\r\nmax([1, 5, 3, 9, 2]) // => 9\r\nmax([-1, -5, -3]) // => -1\r\nmax([]) // => undefined\r\n```",
+      "since": "0.8.0",
+      "sourceFile": "src/core/math.ts"
+    },
+    {
+      "name": "maxBy",
+      "category": "math",
+      "description": "Finds the element in an array that produces the maximum value when passed through an iteratee function",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "```typescript\r\nconst objects = [{ n: 1 }, { n: 9 }, { n: 3 }];\r\nmaxBy(objects, o => o.n) // => { n: 9 }\r\nconst people = [{ name: 'John', age: 25 }, { name: 'Jane', age: 30 }];\r\nmaxBy(people, p => p.age) // => { name: 'Jane', age: 30 }\r\n```",
+      "since": "0.8.0",
+      "sourceFile": "src/core/math.ts"
+    },
+    {
+      "name": "min",
+      "category": "math",
+      "description": "Finds the minimum value in an array of numbers",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "```typescript\r\nmin([1, 5, 3, 9, 2]) // => 1\r\nmin([-1, -5, -3]) // => -5\r\nmin([]) // => undefined\r\n```",
+      "since": "0.8.0",
+      "sourceFile": "src/core/math.ts"
+    },
+    {
+      "name": "minBy",
+      "category": "math",
+      "description": "Finds the element in an array that produces the minimum value when passed through an iteratee function",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "```typescript\r\nconst objects = [{ n: 1 }, { n: 9 }, { n: 3 }];\r\nminBy(objects, o => o.n) // => { n: 1 }\r\nconst people = [{ name: 'John', age: 25 }, { name: 'Jane', age: 30 }];\r\nminBy(people, p => p.age) // => { name: 'John', age: 25 }\r\n```",
+      "since": "0.8.0",
+      "sourceFile": "src/core/math.ts"
+    },
+    {
+      "name": "subtract",
+      "category": "math",
+      "description": "Subtracts the second number from the first number",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "```typescript\r\nsubtract(5, 3) // => 2\r\nsubtract(1, 4) // => -3\r\nsubtract(0, 0) // => 0\r\n```",
+      "since": "0.8.0",
+      "sourceFile": "src/core/math.ts"
+    },
+    {
+      "name": "multiply",
+      "category": "math",
+      "description": "Multiplies two numbers together",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "```typescript\r\nmultiply(3, 4) // => 12\r\nmultiply(-2, 5) // => -10\r\nmultiply(0, 100) // => 0\r\n```",
+      "since": "0.8.0",
+      "sourceFile": "src/core/math.ts"
+    },
+    {
+      "name": "divide",
+      "category": "math",
+      "description": "Divides the first number by the second number",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "```typescript\r\ndivide(10, 2) // => 5\r\ndivide(7, 3) // => 2.333...\r\ndivide(1, 0) // => Infinity\r\n```",
+      "since": "0.8.0",
+      "sourceFile": "src/core/math.ts"
+    },
+    {
+      "name": "round",
+      "category": "math",
+      "description": "Rounds a number to a specified precision",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "```typescript\r\nround(4.006) // => 4\r\nround(4.006, 2) // => 4.01\r\nround(4060, -2) // => 4100\r\nround(1.2345, 3) // => 1.235\r\n```",
+      "since": "0.8.0",
+      "sourceFile": "src/core/math.ts"
+    },
+    {
+      "name": "ceil",
+      "category": "math",
+      "description": "Rounds a number up to a specified precision",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "```typescript\r\nceil(4.006) // => 5\r\nceil(4.006, 2) // => 4.01\r\nceil(4040, -2) // => 4100\r\nceil(1.2345, 3) // => 1.235\r\n```",
+      "since": "0.8.0",
+      "sourceFile": "src/core/math.ts"
+    },
+    {
+      "name": "floor",
+      "category": "math",
+      "description": "Rounds a number down to a specified precision",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "```typescript\r\nfloor(4.006) // => 4\r\nfloor(4.006, 2) // => 4.00\r\nfloor(4090, -2) // => 4000\r\nfloor(1.2345, 3) // => 1.234\r\n```",
+      "since": "0.8.0",
+      "sourceFile": "src/core/math.ts"
+    },
+    {
+      "name": "inRange",
+      "category": "math",
+      "description": "Checks if a number is within a specified range (inclusive start, exclusive end)",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "```typescript\r\ninRange(3, 2, 4) // => true\r\ninRange(4, 8) // => true (equivalent to inRange(4, 0, 8))\r\ninRange(4, 2) // => false\r\ninRange(2, 2, 4) // => true (start is inclusive)\r\ninRange(4, 2, 4) // => false (end is exclusive)\r\ninRange(1.2, 2, 1) // => true (start and end are swapped automatically)\r\n```",
+      "since": "0.8.0",
+      "sourceFile": "src/core/math.ts"
+    },
+    {
+      "name": "std",
+      "category": "math",
+      "description": "Computes the standard deviation of an array of numbers",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "```typescript\r\nstd([2, 4, 4, 4, 5, 5, 7, 9]) // => 2.138...\r\nstd([1, 1, 1, 1]) // => 0\r\nstd([]) // => 0\r\n```",
+      "since": "0.9.0",
+      "sourceFile": "src/core/math.ts"
+    },
+    {
+      "name": "variance",
+      "category": "math",
+      "description": "Computes the variance of an array of numbers",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "```typescript\r\nvariance([2, 4, 4, 4, 5, 5, 7, 9]) // => 4.571...\r\nvariance([1, 1, 1, 1]) // => 0\r\nvariance([]) // => 0\r\n```",
+      "since": "0.9.0",
+      "sourceFile": "src/core/math.ts"
+    },
+    {
+      "name": "number",
+      "category": "number",
+      "description": "Parse string to number if possible",
+      "syntax": "",
+      "params": [
+        {
+          "name": "data",
+          "type": "NumberInput",
+          "description": "The data to parse",
+          "optional": false
+        },
+        {
+          "name": "options",
+          "type": "NumberOptions",
+          "description": "={ deep: false }] - Parse options",
+          "optional": false
+        },
+        {
+          "name": "options",
+          "type": "boolean",
+          "description": ".deep=false] - Whether to recursively parse nested objects and arrays",
+          "optional": false
+        }
+      ],
+      "returns": {
+        "type": "NumberInput | number",
+        "description": "Parsed number or original value if parsing fails"
+      },
+      "example": "number('123') // 123\r\nnumber('abc') // 'abc'\r\nnumber(['1', '2', 'abc']) // [1, 2, 'abc']\r\nnumber({ a: '123', b: 'abc' }, { deep: true }) // { a: 123, b: 'abc' }",
+      "since": "0.8.0",
+      "sourceFile": "src/core/number.ts"
+    },
+    {
+      "name": "parseFloat",
+      "category": "number",
+      "description": "Parse float with optional precision",
+      "syntax": "",
+      "params": [
+        {
+          "name": "data",
+          "type": "string | number",
+          "description": "The data to parse as a floating point number",
+          "optional": false
+        },
+        {
+          "name": "precision",
+          "type": "number",
+          "description": "Number of decimal places to round to",
+          "optional": true
+        }
+      ],
+      "returns": {
+        "type": "number | string | number",
+        "description": "Parsed float rounded to specified precision, or original value if parsing fails"
+      },
+      "example": "parseFloat('3.14159') // 3.14159\r\nparseFloat('3.14159', 2) // 3.14\r\nparseFloat('abc') // 'abc'",
+      "since": "0.8.0",
+      "sourceFile": "src/core/number.ts"
+    },
+    {
+      "name": "clamp",
+      "category": "number",
+      "description": "Clamp a number between min and max values",
+      "syntax": "",
+      "params": [
+        {
+          "name": "value",
+          "type": "number",
+          "description": "The value to clamp",
+          "optional": false
+        },
+        {
+          "name": "min",
+          "type": "number",
+          "description": "Minimum allowed value (inclusive)",
+          "optional": false
+        },
+        {
+          "name": "max",
+          "type": "number",
+          "description": "Maximum allowed value (inclusive)",
+          "optional": false
+        }
+      ],
+      "returns": {
+        "type": "number",
+        "description": "The clamped value between min and max"
+      },
+      "example": "clamp(5, 0, 10) // 5\r\nclamp(-5, 0, 10) // 0\r\nclamp(15, 0, 10) // 10",
+      "since": "0.8.0",
+      "sourceFile": "src/core/number.ts"
+    },
+    {
+      "name": "random",
+      "category": "number",
+      "description": "Generate random number between min and max",
+      "syntax": "",
+      "params": [
+        {
+          "name": "min",
+          "type": "number",
+          "description": "=0] - Minimum value (inclusive)",
+          "optional": false
+        },
+        {
+          "name": "max",
+          "type": "number",
+          "description": "=1] - Maximum value (exclusive)",
+          "optional": false
+        }
+      ],
+      "returns": {
+        "type": "number",
+        "description": "Random floating point number in the specified range"
+      },
+      "example": "random() // Random number between 0 and 1\r\nrandom(5, 10) // Random number between 5 and 10",
+      "since": "0.8.0",
+      "sourceFile": "src/core/number.ts"
+    },
+    {
+      "name": "randomInt",
+      "category": "number",
+      "description": "Generate random integer between min and max",
+      "syntax": "",
+      "params": [
+        {
+          "name": "min",
+          "type": "number",
+          "description": "=0] - Minimum value (inclusive)",
+          "optional": false
+        },
+        {
+          "name": "max",
+          "type": "number",
+          "description": "=100] - Maximum value (inclusive)",
+          "optional": false
+        }
+      ],
+      "returns": {
+        "type": "number",
+        "description": "Random integer in the specified range"
+      },
+      "example": "randomInt() // Random integer between 0 and 100\r\nrandomInt(1, 6) // Random integer between 1 and 6 (like a dice roll)",
+      "since": "0.8.0",
+      "sourceFile": "src/core/number.ts"
+    },
+    {
+      "name": "flat",
+      "category": "object",
+      "description": "Flatten an object and extract values",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "flat({ a: 1, b: { c: 2 } }) // '1, 2'\r\nflat({ a: 1, b: { c: 2 } }, { props: ['a'] }) // '1'",
+      "since": "0.8.0",
+      "sourceFile": "src/core/object.ts"
+    },
+    {
+      "name": "getObjectKeysByType",
+      "category": "object",
+      "description": "Get object keys by value type",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "getObjectKeysByType({ a: 1, b: 'hello', c: true }, 'string') // ['b']",
+      "since": "",
+      "sourceFile": "src/core/object.ts"
+    },
+    {
+      "name": "getObjectValueByPath",
+      "category": "object",
+      "description": "Get value from object by path",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "getObjectValueByPath({ a: { b: { c: 42 } } }, ['a', 'b', 'c']) // 42\r\ngetObjectValueByPath({ items: [{ name: 'John' }, { name: 'Jane' }] }, ['items', 'name']) // ['John', 'Jane']",
+      "since": "",
+      "sourceFile": "src/core/object.ts"
+    },
+    {
+      "name": "isEmpty",
+      "category": "object",
+      "description": "Check if a value is empty",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "isEmpty('') // true\r\nisEmpty([]) // true\r\nisEmpty({}) // true\r\nisEmpty({ a: '' }, { props: true }) // true",
+      "since": "",
+      "sourceFile": "src/core/object.ts"
+    },
+    {
+      "name": "getValueType",
+      "category": "object",
+      "description": "Gets the type of a value",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "getValueType('hello') // 'string'\r\ngetValueType(42) // 'number'\r\ngetValueType({}) // 'object'",
+      "since": "",
+      "sourceFile": "src/core/object.ts"
+    },
+    {
+      "name": "mapValues",
+      "category": "object",
+      "description": "Creates an object with the same keys as the input object and values generated by running each property through an iteratee function",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "mapValues({ a: 1, b: 2 }, x => x * 2) // { a: 2, b: 4 }\r\nmapValues({ a: 'hello', b: 'world' }, (value, key) => `${key}: ${value}`) // { a: 'a: hello', b: 'b: world' }",
+      "since": "",
+      "sourceFile": "src/core/object.ts"
+    },
+    {
+      "name": "mapKeys",
+      "category": "object",
+      "description": "Creates an object with the same values as the input object and keys generated by running each property through an iteratee function",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "mapKeys({ a: 1, b: 2 }, (value, key) => key.toUpperCase()) // { A: 1, B: 2 }",
+      "since": "",
+      "sourceFile": "src/core/object.ts"
+    },
+    {
+      "name": "create",
+      "category": "object",
+      "description": "Creates an object that inherits from the given prototype object",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "const proto = { greet: () => 'hello' }\r\nconst obj = create(proto, { name: 'John' }) // obj.greet() works and obj.name === 'John'",
+      "since": "",
+      "sourceFile": "src/core/object.ts"
+    },
+    {
+      "name": "assign",
+      "category": "object",
+      "description": "Assigns own enumerable string keyed properties of source objects to the destination object",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "assign({ a: 1 }, { b: 2 }, { c: 3 }) // { a: 1, b: 2, c: 3 }",
+      "since": "",
+      "sourceFile": "src/core/object.ts"
+    },
+    {
+      "name": "merge",
+      "category": "object",
+      "description": "Recursively merges own and inherited enumerable string keyed properties of source objects into the destination object",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "merge({ a: { x: 1 } }, { a: { y: 2 }, b: 3 }) // { a: { x: 1, y: 2 }, b: 3 }",
+      "since": "",
+      "sourceFile": "src/core/object.ts"
+    },
+    {
+      "name": "mergeWith",
+      "category": "object",
+      "description": "Like merge except that it accepts a customizer function which is invoked to produce the merged values",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "mergeWith({ a: [1] }, { a: [2] }, (obj, src) => Array.isArray(obj) ? obj.concat(src) : undefined) // { a: [1, 2] }",
+      "since": "",
+      "sourceFile": "src/core/object.ts"
+    },
+    {
+      "name": "pick",
+      "category": "object",
+      "description": "Creates an object composed of the picked object properties",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "pick({ a: 1, b: 2, c: 3 }, 'a', 'c') // { a: 1, c: 3 }",
+      "since": "",
+      "sourceFile": "src/core/object.ts"
+    },
+    {
+      "name": "pickBy",
+      "category": "object",
+      "description": "Creates an object composed of properties that satisfy the predicate function",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "pickBy({ a: 1, b: 2, c: 3 }, value => value > 1) // { b: 2, c: 3 }",
+      "since": "",
+      "sourceFile": "src/core/object.ts"
+    },
+    {
+      "name": "omit",
+      "category": "object",
+      "description": "Creates an object composed of all properties except the specified ones",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "omit({ a: 1, b: 2, c: 3 }, 'a', 'c') // { b: 2 }",
+      "since": "",
+      "sourceFile": "src/core/object.ts"
+    },
+    {
+      "name": "omitBy",
+      "category": "object",
+      "description": "Creates an object composed of properties that do not satisfy the predicate function",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "omitBy({ a: 1, b: 2, c: 3 }, value => value > 1) // { a: 1 }",
+      "since": "",
+      "sourceFile": "src/core/object.ts"
+    },
+    {
+      "name": "get",
+      "category": "object",
+      "description": "Gets the value at the specified path of an object",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "get({ a: { b: { c: 3 } } }, 'a.b.c') // 3\r\nget({ a: { b: { c: 3 } } }, ['a', 'b', 'c']) // 3\r\nget({}, 'a.b.c', 'default') // 'default'",
+      "since": "",
+      "sourceFile": "src/core/object.ts"
+    },
+    {
+      "name": "set",
+      "category": "object",
+      "description": "Sets the value at the specified path of an object",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "set({}, 'a.b.c', 3) // { a: { b: { c: 3 } } }\r\nset({}, ['a', 'b', 'c'], 3) // { a: { b: { c: 3 } } }",
+      "since": "",
+      "sourceFile": "src/core/object.ts"
+    },
+    {
+      "name": "has",
+      "category": "object",
+      "description": "Checks if the specified path exists as a direct property of the object",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "has({ a: { b: { c: 3 } } }, 'a.b.c') // true\r\nhas({ a: { b: { c: 3 } } }, 'a.b.d') // false",
+      "since": "",
+      "sourceFile": "src/core/object.ts"
+    },
+    {
+      "name": "hasIn",
+      "category": "object",
+      "description": "Checks if the specified path exists as an own property of the object",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "hasIn({ a: { b: 2 } }, 'a.b') // true",
+      "since": "",
+      "sourceFile": "src/core/object.ts"
+    },
+    {
+      "name": "unset",
+      "category": "object",
+      "description": "Removes the property at the specified path of an object",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "const obj = { a: { b: { c: 3 } } }\r\nunset(obj, 'a.b.c') // true, obj becomes { a: { b: {} } }",
+      "since": "",
+      "sourceFile": "src/core/object.ts"
+    },
+    {
+      "name": "keys",
+      "category": "object",
+      "description": "Creates an array of own enumerable property names of an object",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "keys({ a: 1, b: 2, c: 3 }) // ['a', 'b', 'c']",
+      "since": "",
+      "sourceFile": "src/core/object.ts"
+    },
+    {
+      "name": "values",
+      "category": "object",
+      "description": "Creates an array of own enumerable property values of an object",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "values({ a: 1, b: 2, c: 3 }) // [1, 2, 3]",
+      "since": "",
+      "sourceFile": "src/core/object.ts"
+    },
+    {
+      "name": "entries",
+      "category": "object",
+      "description": "Creates an array of own enumerable string keyed-value pairs for an object",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "entries({ a: 1, b: 2 }) // [['a', 1], ['b', 2]]",
+      "since": "",
+      "sourceFile": "src/core/object.ts"
+    },
+    {
+      "name": "entriesIn",
+      "category": "object",
+      "description": "Creates an array of own and inherited enumerable string keyed-value pairs for an object",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "const obj = Object.create({ inherited: 'value' })\r\nobj.own = 'property'\r\nentriesIn(obj) // [['own', 'property'], ['inherited', 'value']]",
+      "since": "",
+      "sourceFile": "src/core/object.ts"
+    },
+    {
+      "name": "fromPairs",
+      "category": "object",
+      "description": "Creates an object from an array of key-value pairs",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "fromPairs([['a', 1], ['b', 2]]) // { a: 1, b: 2 }",
+      "since": "",
+      "sourceFile": "src/core/object.ts"
+    },
+    {
+      "name": "functions",
+      "category": "object",
+      "description": "Creates an array of function property names from own enumerable properties of an object",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "functions({ a: 1, b: () => {}, c: 'string', d: function() {} }) // ['b', 'd']",
+      "since": "",
+      "sourceFile": "src/core/object.ts"
+    },
+    {
+      "name": "functionsIn",
+      "category": "object",
+      "description": "Creates an array of function property names from own and inherited enumerable properties of an object",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "const obj = Object.create({ inheritedFn: () => {} })\r\nobj.ownFn = () => {}\r\nfunctionsIn(obj) // ['ownFn', 'inheritedFn']",
+      "since": "",
+      "sourceFile": "src/core/object.ts"
+    },
+    {
+      "name": "invert",
+      "category": "object",
+      "description": "Creates an object that inverts the keys and values of the input object",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "invert({ a: 1, b: 2, c: 1 }) // { '1': 'c', '2': 'b' }",
+      "since": "",
+      "sourceFile": "src/core/object.ts"
+    },
+    {
+      "name": "invertBy",
+      "category": "object",
+      "description": "Creates an inverted object where the inverted keys are generated from running each element through an iteratee",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "invertBy({ a: 1, b: 2, c: 1 }, value => `group${value}`) // { group1: ['a', 'c'], group2: ['b'] }",
+      "since": "",
+      "sourceFile": "src/core/object.ts"
+    },
+    {
+      "name": "transform",
+      "category": "object",
+      "description": "Transforms an object by running each own enumerable string keyed property through a transform function",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "transform({ a: 1, b: 2 }, (result, value, key) => { result[key] = value * 2 }, {}) // { a: 2, b: 4 }",
+      "since": "",
+      "sourceFile": "src/core/object.ts"
+    },
+    {
+      "name": "clone",
+      "category": "object",
+      "description": "Creates a shallow clone of an object",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "const obj = { a: 1, b: { c: 2 } }\r\nconst cloned = clone(obj) // cloned.b === obj.b (same reference)",
+      "since": "",
+      "sourceFile": "src/core/object.ts"
+    },
+    {
+      "name": "cloneDeep",
+      "category": "object",
+      "description": "Creates a deep clone of an object",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "const obj = { a: 1, b: { c: 2 } }\r\nconst cloned = cloneDeep(obj) // cloned.b !== obj.b (different reference)",
+      "since": "",
+      "sourceFile": "src/core/object.ts"
+    },
+    {
+      "name": "isEqual",
+      "category": "object",
+      "description": "Performs a deep comparison between two values to determine if they are equivalent",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "isEqual([1, 2, 3], [1, 2, 3]) // true\r\nisEqual({ a: 1 }, { a: 1 }) // true\r\nisEqual({ a: 1 }, { a: 2 }) // false",
+      "since": "",
+      "sourceFile": "src/core/object.ts"
+    },
+    {
+      "name": "conformsTo",
+      "category": "object",
+      "description": "Checks if an object conforms to a source by invoking predicate properties with corresponding object values",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "conformsTo({ a: 1, b: 2 }, { a: n => n > 0, b: n => n < 5 }) // true",
+      "since": "",
+      "sourceFile": "src/core/object.ts"
+    },
+    {
+      "name": "method",
+      "category": "object",
+      "description": "Creates a function that invokes the method at a specified path of a given object",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "const fn = method('toUpperCase')\r\nfn('hello') // 'HELLO'",
+      "since": "",
+      "sourceFile": "src/core/object.ts"
+    },
+    {
+      "name": "methodOf",
+      "category": "object",
+      "description": "Creates a function that invokes the method at a given path of the specified object",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "const fn = methodOf('hello world')\r\nfn('split') // ['hello', 'world']",
+      "since": "",
+      "sourceFile": "src/core/object.ts"
+    },
+    {
+      "name": "defaults",
+      "category": "object",
+      "description": "Assigns properties of source objects to the destination object for all destination properties that resolve to undefined",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "defaults({ a: 1 }, { a: 3, b: 2 }, { c: 3 }) // { a: 1, b: 2, c: 3 }",
+      "since": "",
+      "sourceFile": "src/core/object.ts"
+    },
+    {
+      "name": "defaultsDeep",
+      "category": "object",
+      "description": "Recursively assigns default properties from source objects to the destination object",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "defaultsDeep({ a: { x: 1 } }, { a: { y: 2, x: 3 }, b: 4 }) // { a: { x: 1, y: 2 }, b: 4 }",
+      "since": "",
+      "sourceFile": "src/core/object.ts"
+    },
+    {
+      "name": "at",
+      "category": "object",
+      "description": "Gets the values at multiple paths of an object",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "at({ a: 1, b: { c: 2 } }, 'a', 'b.c', 'missing') // [1, 2, undefined]",
+      "since": "",
+      "sourceFile": "src/core/object.ts"
+    },
+    {
+      "name": "result",
+      "category": "object",
+      "description": "Gets the value at path of object. If the resolved value is a function, it's invoked and its result is returned",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "result({ a: () => 42 }, 'a') // 42\r\nresult({ a: 5 }, 'a') // 5",
+      "since": "",
+      "sourceFile": "src/core/object.ts"
+    },
+    {
+      "name": "invoke",
+      "category": "object",
+      "description": "Invokes the method at the specified path of an object",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "invoke({ a: { b: Math.max } }, 'a.b', 1, 2, 3) // 3",
+      "since": "",
+      "sourceFile": "src/core/object.ts"
+    },
+    {
+      "name": "update",
+      "category": "object",
+      "description": "Sets the value at path of object using an updater function",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "update({ a: 1 }, 'a', n => n * 2) // { a: 2 }",
+      "since": "",
+      "sourceFile": "src/core/object.ts"
+    },
+    {
+      "name": "updateWith",
+      "category": "object",
+      "description": "Like update except that it accepts a customizer which is invoked to produce the updated value",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "updateWith({}, 'a.b', () => 'value', () => ({})) // { a: { b: 'value' } }",
+      "since": "",
+      "sourceFile": "src/core/object.ts"
+    },
+    {
+      "name": "setWith",
+      "category": "object",
+      "description": "Like set except that it accepts a customizer which is invoked to produce the objects of path",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "setWith({}, 'a[0].b.c', 4, Object) // { a: { '0': { b: { c: 4 } } } }",
+      "since": "",
+      "sourceFile": "src/core/object.ts"
+    },
+    {
+      "name": "findLastKey",
+      "category": "object",
+      "description": "Finds the last key of an object where the predicate returns truthy",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "findLastKey({ a: 1, b: 2, c: 3 }, n => n > 1) // 'c'",
+      "since": "",
+      "sourceFile": "src/core/object.ts"
+    },
+    {
+      "name": "forIn",
+      "category": "object",
+      "description": "Iterates over own and inherited enumerable string keyed properties of an object",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "forIn({ a: 1, b: 2 }, (value, key) => console.log(key, value))",
+      "since": "",
+      "sourceFile": "src/core/object.ts"
+    },
+    {
+      "name": "forInRight",
+      "category": "object",
+      "description": "Like forIn except that it iterates over properties in the opposite order",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "forInRight({ a: 1, b: 2 }, (value, key) => console.log(key, value)) // logs 'b 2' then 'a 1'",
+      "since": "",
+      "sourceFile": "src/core/object.ts"
+    },
+    {
+      "name": "forOwn",
+      "category": "object",
+      "description": "Iterates over own enumerable string keyed properties of an object",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "forOwn({ a: 1, b: 2 }, (value, key) => console.log(key, value))",
+      "since": "",
+      "sourceFile": "src/core/object.ts"
+    },
+    {
+      "name": "forOwnRight",
+      "category": "object",
+      "description": "Like forOwn except that it iterates over properties in the opposite order",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "forOwnRight({ a: 1, b: 2 }, (value, key) => console.log(key, value)) // logs 'b 2' then 'a 1'",
+      "since": "",
+      "sourceFile": "src/core/object.ts"
+    },
+    {
+      "name": "toPairs",
+      "category": "object",
+      "description": "Creates an array of own enumerable string keyed-value pairs for an object (alias for entries)",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "toPairs({ a: 1, b: 2 }) // [['a', 1], ['b', 2]]",
+      "since": "",
+      "sourceFile": "src/core/object.ts"
+    },
+    {
+      "name": "toPairsIn",
+      "category": "object",
+      "description": "Creates an array of own and inherited enumerable string keyed-value pairs for an object (alias for entriesIn)",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "const obj = Object.create({ inherited: 'value' })\r\nobj.own = 'property'\r\ntoPairsIn(obj) // [['own', 'property'], ['inherited', 'value']]",
+      "since": "",
+      "sourceFile": "src/core/object.ts"
+    },
+    {
+      "name": "purify",
+      "category": "string",
+      "description": "Removes all accents from a string",
+      "syntax": "",
+      "params": [
+        {
+          "name": "str",
+          "type": "any",
+          "description": "The string to purify",
+          "optional": false
+        }
+      ],
+      "returns": {
+        "type": "string",
+        "description": "Returns the string without accents"
+      },
+      "example": "purify('café'); // 'cafe'\r\npurify('naïve'); // 'naive'",
+      "since": "0.8.0",
+      "sourceFile": "src/core/string.ts"
+    },
+    {
+      "name": "capitalize",
+      "category": "string",
+      "description": "Capitalizes the first character of a string",
+      "syntax": "",
+      "params": [
+        {
+          "name": "str",
+          "type": "string",
+          "description": "The string to capitalize",
+          "optional": false
+        }
+      ],
+      "returns": {
+        "type": "string",
+        "description": "Returns the capitalized string"
+      },
+      "example": "capitalize('hello'); // 'Hello'\r\ncapitalize('WORLD'); // 'WORLD'",
+      "since": "0.8.0",
+      "sourceFile": "src/core/string.ts"
+    },
+    {
+      "name": "trim",
+      "category": "string",
+      "description": "Removes leading and trailing whitespace",
+      "syntax": "",
+      "params": [
+        {
+          "name": "str",
+          "type": "string",
+          "description": "The string to trim",
+          "optional": false
+        },
+        {
+          "name": "chars",
+          "type": "string",
+          "description": "The characters to remove",
+          "optional": true
+        }
+      ],
+      "returns": {
+        "type": "string",
+        "description": "Returns the trimmed string"
+      },
+      "example": "trim('  hello  '); // 'hello'\r\ntrim('---hello---', '-'); // 'hello'",
+      "since": "0.8.0",
+      "sourceFile": "src/core/string.ts"
+    },
+    {
+      "name": "trimStart",
+      "category": "string",
+      "description": "Removes leading whitespace",
+      "syntax": "",
+      "params": [
+        {
+          "name": "str",
+          "type": "string",
+          "description": "The string to trim",
+          "optional": false
+        },
+        {
+          "name": "chars",
+          "type": "string",
+          "description": "The characters to remove",
+          "optional": true
+        }
+      ],
+      "returns": {
+        "type": "string",
+        "description": "Returns the trimmed string"
+      },
+      "example": "trimStart('  hello  '); // 'hello  '\r\ntrimStart('---hello---', '-'); // 'hello---'",
+      "since": "0.8.0",
+      "sourceFile": "src/core/string.ts"
+    },
+    {
+      "name": "trimEnd",
+      "category": "string",
+      "description": "Removes trailing whitespace",
+      "syntax": "",
+      "params": [
+        {
+          "name": "str",
+          "type": "string",
+          "description": "The string to trim",
+          "optional": false
+        },
+        {
+          "name": "chars",
+          "type": "string",
+          "description": "The characters to remove",
+          "optional": true
+        }
+      ],
+      "returns": {
+        "type": "string",
+        "description": "Returns the trimmed string"
+      },
+      "example": "trimEnd('  hello  '); // '  hello'\r\ntrimEnd('---hello---', '-'); // '---hello'",
+      "since": "0.8.0",
+      "sourceFile": "src/core/string.ts"
+    },
+    {
+      "name": "camelCase",
+      "category": "string",
+      "description": "Converts string to camelCase",
+      "syntax": "",
+      "params": [
+        {
+          "name": "str",
+          "type": "string",
+          "description": "The string to convert",
+          "optional": false
+        }
+      ],
+      "returns": {
+        "type": "string",
+        "description": "Returns the camel cased string"
+      },
+      "example": "camelCase('hello world'); // 'helloWorld'\r\ncamelCase('hello-world'); // 'helloWorld'",
+      "since": "0.9.0",
+      "sourceFile": "src/core/string.ts"
+    },
+    {
+      "name": "kebabCase",
+      "category": "string",
+      "description": "Converts string to kebab-case",
+      "syntax": "",
+      "params": [
+        {
+          "name": "str",
+          "type": "string",
+          "description": "The string to convert",
+          "optional": false
+        }
+      ],
+      "returns": {
+        "type": "string",
+        "description": "Returns the kebab cased string"
+      },
+      "example": "kebabCase('hello world'); // 'hello-world'\r\nkebabCase('HelloWorld'); // 'hello-world'",
+      "since": "0.9.0",
+      "sourceFile": "src/core/string.ts"
+    },
+    {
+      "name": "snakeCase",
+      "category": "string",
+      "description": "Converts string to snake_case",
+      "syntax": "",
+      "params": [
+        {
+          "name": "str",
+          "type": "string",
+          "description": "The string to convert",
+          "optional": false
+        }
+      ],
+      "returns": {
+        "type": "string",
+        "description": "Returns the snake cased string"
+      },
+      "example": "snakeCase('hello world'); // 'hello_world'\r\nsnakeCase('HelloWorld'); // 'hello_world'",
+      "since": "0.9.0",
+      "sourceFile": "src/core/string.ts"
+    },
+    {
+      "name": "pascalCase",
+      "category": "string",
+      "description": "Converts string to PascalCase",
+      "syntax": "",
+      "params": [
+        {
+          "name": "str",
+          "type": "string",
+          "description": "The string to convert",
+          "optional": false
+        }
+      ],
+      "returns": {
+        "type": "string",
+        "description": "Returns the Pascal cased string"
+      },
+      "example": "pascalCase('hello world'); // 'HelloWorld'\r\npascalCase('hello-world'); // 'HelloWorld'",
+      "since": "0.9.0",
+      "sourceFile": "src/core/string.ts"
+    },
+    {
+      "name": "upperCase",
+      "category": "string",
+      "description": "Converts string to UPPER_CASE",
+      "syntax": "",
+      "params": [
+        {
+          "name": "str",
+          "type": "string",
+          "description": "The string to convert",
+          "optional": false
+        }
+      ],
+      "returns": {
+        "type": "string",
+        "description": "Returns the upper cased string"
+      },
+      "example": "upperCase('hello world'); // 'HELLO WORLD'\r\nupperCase('hello-world'); // 'HELLO WORLD'",
+      "since": "0.8.0",
+      "sourceFile": "src/core/string.ts"
+    },
+    {
+      "name": "lowerCase",
+      "category": "string",
+      "description": "Converts string to lower case",
+      "syntax": "",
+      "params": [
+        {
+          "name": "str",
+          "type": "string",
+          "description": "The string to convert",
+          "optional": false
+        }
+      ],
+      "returns": {
+        "type": "string",
+        "description": "Returns the lower cased string"
+      },
+      "example": "lowerCase('HELLO WORLD'); // 'hello world'\r\nlowerCase('Hello-World'); // 'hello world'",
+      "since": "0.8.0",
+      "sourceFile": "src/core/string.ts"
+    },
+    {
+      "name": "startCase",
+      "category": "string",
+      "description": "Converts first character to uppercase and rest to lowercase",
+      "syntax": "",
+      "params": [
+        {
+          "name": "str",
+          "type": "string",
+          "description": "The string to convert",
+          "optional": false
+        }
+      ],
+      "returns": {
+        "type": "string",
+        "description": "Returns the start cased string"
+      },
+      "example": "startCase('hello world'); // 'Hello world'\r\nstartCase('hELLO wORLD'); // 'Hello world'",
+      "since": "0.9.0",
+      "sourceFile": "src/core/string.ts"
+    },
+    {
+      "name": "deburr",
+      "category": "string",
+      "description": "Deburrs string by converting Latin-1 Supplement and Latin Extended-A letters to basic Latin letters",
+      "syntax": "",
+      "params": [
+        {
+          "name": "str",
+          "type": "string",
+          "description": "The string to deburr",
+          "optional": false
+        }
+      ],
+      "returns": {
+        "type": "string",
+        "description": "Returns the deburred string"
+      },
+      "example": "deburr('déjà vu'); // 'deja vu'\r\ndeburr('niño'); // 'nino'",
+      "since": "0.8.0",
+      "sourceFile": "src/core/string.ts"
+    },
+    {
+      "name": "endsWith",
+      "category": "string",
+      "description": "Checks if string ends with target string",
+      "syntax": "",
+      "params": [
+        {
+          "name": "str",
+          "type": "string",
+          "description": "The string to check",
+          "optional": false
+        },
+        {
+          "name": "target",
+          "type": "string",
+          "description": "The target string",
+          "optional": false
+        },
+        {
+          "name": "position",
+          "type": "number",
+          "description": "The position to check from",
+          "optional": true
+        }
+      ],
+      "returns": {
+        "type": "boolean",
+        "description": "Returns true if the string ends with the target"
+      },
+      "example": "endsWith('hello world', 'world'); // true\r\nendsWith('hello world', 'hello', 5); // true",
+      "since": "0.8.0",
+      "sourceFile": "src/core/string.ts"
+    },
+    {
+      "name": "escapeRegExp",
+      "category": "string",
+      "description": "Escapes RegExp special characters",
+      "syntax": "",
+      "params": [
+        {
+          "name": "str",
+          "type": "string",
+          "description": "The string to escape",
+          "optional": false
+        }
+      ],
+      "returns": {
+        "type": "string",
+        "description": "Returns the escaped string"
+      },
+      "example": "escapeRegExp('hello.world?'); // 'hello\\.world\\?'\r\nescapeRegExp('^hello$'); // '\\^hello\\$'",
+      "since": "0.8.0",
+      "sourceFile": "src/core/string.ts"
+    },
+    {
+      "name": "pad",
+      "category": "string",
+      "description": "Pads string on the left and right sides",
+      "syntax": "",
+      "params": [
+        {
+          "name": "str",
+          "type": "string",
+          "description": "The string to pad",
+          "optional": false
+        },
+        {
+          "name": "length",
+          "type": "number",
+          "description": "The length of the resulting string",
+          "optional": false
+        },
+        {
+          "name": "chars",
+          "type": "string",
+          "description": "=' '] - The characters to pad with",
+          "optional": false
+        }
+      ],
+      "returns": {
+        "type": "string",
+        "description": "Returns the padded string"
+      },
+      "example": "pad('hello', 10); // '  hello   '\r\npad('hello', 10, '-'); // '--hello----'",
+      "since": "0.8.0",
+      "sourceFile": "src/core/string.ts"
+    },
+    {
+      "name": "padStart",
+      "category": "string",
+      "description": "Pads string on the left side",
+      "syntax": "",
+      "params": [
+        {
+          "name": "str",
+          "type": "string",
+          "description": "The string to pad",
+          "optional": false
+        },
+        {
+          "name": "length",
+          "type": "number",
+          "description": "The length of the resulting string",
+          "optional": false
+        },
+        {
+          "name": "chars",
+          "type": "string",
+          "description": "=' '] - The characters to pad with",
+          "optional": false
+        }
+      ],
+      "returns": {
+        "type": "string",
+        "description": "Returns the padded string"
+      },
+      "example": "padStart('hello', 10); // '     hello'\r\npadStart('hello', 10, '-'); // '-----hello'",
+      "since": "0.8.0",
+      "sourceFile": "src/core/string.ts"
+    },
+    {
+      "name": "padEnd",
+      "category": "string",
+      "description": "Pads string on the right side",
+      "syntax": "",
+      "params": [
+        {
+          "name": "str",
+          "type": "string",
+          "description": "The string to pad",
+          "optional": false
+        },
+        {
+          "name": "length",
+          "type": "number",
+          "description": "The length of the resulting string",
+          "optional": false
+        },
+        {
+          "name": "chars",
+          "type": "string",
+          "description": "=' '] - The characters to pad with",
+          "optional": false
+        }
+      ],
+      "returns": {
+        "type": "string",
+        "description": "Returns the padded string"
+      },
+      "example": "padEnd('hello', 10); // 'hello     '\r\npadEnd('hello', 10, '-'); // 'hello-----'",
+      "since": "0.8.0",
+      "sourceFile": "src/core/string.ts"
+    },
+    {
+      "name": "repeat",
+      "category": "string",
+      "description": "Repeats string n times",
+      "syntax": "",
+      "params": [
+        {
+          "name": "str",
+          "type": "string",
+          "description": "The string to repeat",
+          "optional": false
+        },
+        {
+          "name": "n",
+          "type": "number",
+          "description": "The number of times to repeat the string",
+          "optional": false
+        }
+      ],
+      "returns": {
+        "type": "string",
+        "description": "Returns the repeated string"
+      },
+      "example": "repeat('hello', 3); // 'hellohellohello'\r\nrepeat('abc', 2); // 'abcabc'",
+      "since": "0.8.0",
+      "sourceFile": "src/core/string.ts"
+    },
+    {
+      "name": "replace",
+      "category": "string",
+      "description": "Replaces matches for pattern in string with replacement",
+      "syntax": "",
+      "params": [
+        {
+          "name": "str",
+          "type": "string",
+          "description": "The string to search and replace in",
+          "optional": false
+        },
+        {
+          "name": "pattern",
+          "type": "string | RegExp",
+          "description": "The pattern to match",
+          "optional": false
+        },
+        {
+          "name": "replacement",
+          "type": "string",
+          "description": "The replacement string",
+          "optional": false
+        }
+      ],
+      "returns": {
+        "type": "string",
+        "description": "Returns the string with replacements"
+      },
+      "example": "replace('hello world', 'world', 'there'); // 'hello there'\r\nreplace('hello 123', /\\d+/, '456'); // 'hello 456'",
+      "since": "0.8.0",
+      "sourceFile": "src/core/string.ts"
+    },
+    {
+      "name": "split",
+      "category": "string",
+      "description": "Splits string by separator",
+      "syntax": "",
+      "params": [
+        {
+          "name": "str",
+          "type": "string",
+          "description": "The string to split",
+          "optional": false
+        },
+        {
+          "name": "separator",
+          "type": "string | RegExp",
+          "description": "The separator to split by",
+          "optional": true
+        },
+        {
+          "name": "limit",
+          "type": "number",
+          "description": "The maximum number of splits",
+          "optional": true
+        }
+      ],
+      "returns": {
+        "type": "string[]",
+        "description": "Returns the array of split strings"
+      },
+      "example": "split('hello,world', ','); // ['hello', 'world']\r\nsplit('hello world', /\\s+/); // ['hello', 'world']",
+      "since": "0.8.0",
+      "sourceFile": "src/core/string.ts"
+    },
+    {
+      "name": "startsWith",
+      "category": "string",
+      "description": "Checks if string starts with target string",
+      "syntax": "",
+      "params": [
+        {
+          "name": "str",
+          "type": "string",
+          "description": "The string to check",
+          "optional": false
+        },
+        {
+          "name": "target",
+          "type": "string",
+          "description": "The target string",
+          "optional": false
+        },
+        {
+          "name": "position",
+          "type": "number",
+          "description": "=0] - The position to check from",
+          "optional": false
+        }
+      ],
+      "returns": {
+        "type": "boolean",
+        "description": "Returns true if the string starts with the target"
+      },
+      "example": "startsWith('hello world', 'hello'); // true\r\nstartsWith('hello world', 'world', 6); // true",
+      "since": "0.8.0",
+      "sourceFile": "src/core/string.ts"
+    },
+    {
+      "name": "toArray",
+      "category": "string",
+      "description": "Converts string to an array of its characters",
+      "syntax": "",
+      "params": [
+        {
+          "name": "str",
+          "type": "string",
+          "description": "The string to convert",
+          "optional": false
+        }
+      ],
+      "returns": {
+        "type": "string[]",
+        "description": "Returns the array of characters"
+      },
+      "example": "toArray('hello'); // ['h', 'e', 'l', 'l', 'o']\r\ntoArray('abc'); // ['a', 'b', 'c']",
+      "since": "0.8.0",
+      "sourceFile": "src/core/string.ts"
+    },
+    {
+      "name": "toLowerCase",
+      "category": "string",
+      "description": "Converts string to lowercase",
+      "syntax": "",
+      "params": [
+        {
+          "name": "str",
+          "type": "string",
+          "description": "The string to convert",
+          "optional": false
+        }
+      ],
+      "returns": {
+        "type": "string",
+        "description": "Returns the lower cased string"
+      },
+      "example": "toLowerCase('HELLO'); // 'hello'\r\ntoLowerCase('HeLLo'); // 'hello'",
+      "since": "0.8.0",
+      "sourceFile": "src/core/string.ts"
+    },
+    {
+      "name": "toUpperCase",
+      "category": "string",
+      "description": "Converts string to uppercase",
+      "syntax": "",
+      "params": [
+        {
+          "name": "str",
+          "type": "string",
+          "description": "The string to convert",
+          "optional": false
+        }
+      ],
+      "returns": {
+        "type": "string",
+        "description": "Returns the upper cased string"
+      },
+      "example": "toUpperCase('hello'); // 'HELLO'\r\ntoUpperCase('HeLLo'); // 'HELLO'",
+      "since": "0.8.0",
+      "sourceFile": "src/core/string.ts"
+    },
+    {
+      "name": "truncate",
+      "category": "string",
+      "description": "Truncates string if it's longer than the given maximum string length",
+      "syntax": "",
+      "params": [
+        {
+          "name": "str",
+          "type": "string",
+          "description": "The string to truncate",
+          "optional": false
+        },
+        {
+          "name": "options",
+          "type": "Object",
+          "description": "The options for truncating",
+          "optional": true
+        },
+        {
+          "name": "options",
+          "type": "number",
+          "description": ".length=30] - The maximum length of the string",
+          "optional": false
+        },
+        {
+          "name": "options",
+          "type": "string",
+          "description": ".omission='...'] - The string to indicate omission",
+          "optional": false
+        },
+        {
+          "name": "options",
+          "type": "string | RegExp",
+          "description": ".separator] - The separator to truncate on",
+          "optional": false
+        }
+      ],
+      "returns": {
+        "type": "string",
+        "description": "Returns the truncated string"
+      },
+      "example": "truncate('hello world', { length: 10 }); // 'hello worl...'\r\ntruncate('hello world', { length: 10, separator: ' ' }); // 'hello...'",
+      "since": "0.8.0",
+      "sourceFile": "src/core/string.ts"
+    },
+    {
+      "name": "words",
+      "category": "string",
+      "description": "Removes leading and trailing whitespace or specified characters",
+      "syntax": "",
+      "params": [
+        {
+          "name": "str",
+          "type": "string",
+          "description": "The string to process",
+          "optional": false
+        },
+        {
+          "name": "pattern",
+          "type": "RegExp",
+          "description": "The pattern to match words",
+          "optional": true
+        }
+      ],
+      "returns": {
+        "type": "string[]",
+        "description": "Returns the array of words"
+      },
+      "example": "words('  hello world  '); // ['hello', 'world']\r\nwords('---hello---world---', /-/); // ['hello', 'world']",
+      "since": "0.8.0",
+      "sourceFile": "src/core/string.ts"
+    },
+    {
+      "name": "removeBreakLines",
+      "category": "string",
+      "description": "Remove breaklines from string",
+      "syntax": "",
+      "params": [
+        {
+          "name": "str",
+          "type": "string",
+          "description": "The string to process",
+          "optional": false
+        }
+      ],
+      "returns": {
+        "type": "string",
+        "description": "Returns the string without breaklines"
+      },
+      "example": "removeBreakLines('hello\\nworld'); // 'hello world'\r\nremoveBreakLines('line1\\r\\nline2'); // 'line1 line2'",
+      "since": "0.8.0",
+      "sourceFile": "src/core/string.ts"
+    },
+    {
+      "name": "template",
+      "category": "string",
+      "description": "Converts string to template string",
+      "syntax": "",
+      "params": [
+        {
+          "name": "string",
+          "type": "string",
+          "description": "The string to convert",
+          "optional": false
+        },
+        {
+          "name": "options",
+          "type": "Object",
+          "description": "The options for the template",
+          "optional": true
+        },
+        {
+          "name": "options",
+          "type": "RegExp",
+          "description": ".interpolate] - The pattern for interpolation",
+          "optional": false
+        },
+        {
+          "name": "options",
+          "type": "RegExp",
+          "description": ".evaluate] - The pattern for evaluation",
+          "optional": false
+        },
+        {
+          "name": "options",
+          "type": "RegExp",
+          "description": ".escape] - The pattern for escaping",
+          "optional": false
+        }
+      ],
+      "returns": {
+        "type": "Function",
+        "description": "Returns the template function"
+      },
+      "example": "const compiled = template('hello <%= name %>!');\r\ncompiled({ name: 'world' }); // 'hello world!'\r\nconst compiled = template('number: <%= number %>', { interpolate: /<%=([\\s\\S]+?)%>/g });\r\ncompiled({ number: 42 }); // 'number: 42'",
+      "since": "0.8.0",
+      "sourceFile": "src/core/string.ts"
+    },
+    {
+      "name": "unescape",
+      "category": "string",
+      "description": "Converts HTML entities to characters",
+      "syntax": "",
+      "params": [
+        {
+          "name": "str",
+          "type": "string",
+          "description": "The string to unescape",
+          "optional": false
+        }
+      ],
+      "returns": {
+        "type": "string",
+        "description": "Returns the unescaped string"
+      },
+      "example": "unescape('&lt;div&gt;hello&lt;/div&gt;'); // '<div>hello</div>'\r\nunescape('&amp;copy; 2023'); // '© 2023'",
+      "since": "0.8.0",
+      "sourceFile": "src/core/string.ts"
+    },
+    {
+      "name": "escape",
+      "category": "string",
+      "description": "Converts characters to HTML entities",
+      "syntax": "",
+      "params": [
+        {
+          "name": "str",
+          "type": "string",
+          "description": "The string to escape",
+          "optional": false
+        }
+      ],
+      "returns": {
+        "type": "string",
+        "description": "Returns the escaped string"
+      },
+      "example": "escape('hello & world'); // 'hello &amp; world'\r\nescape('<div>hello</div>'); // '&lt;div&gt;hello&lt;/div&gt;'",
+      "since": "0.8.0",
+      "sourceFile": "src/core/string.ts"
+    },
+    {
+      "name": "upperFirst",
+      "category": "string",
+      "description": "Converts the first character of string to upper case",
+      "syntax": "",
+      "params": [
+        {
+          "name": "str",
+          "type": "string",
+          "description": "The string to convert",
+          "optional": false
+        }
+      ],
+      "returns": {
+        "type": "string",
+        "description": "Returns the string with the first character uppercased"
+      },
+      "example": "upperFirst('hello'); // 'Hello'\r\nupperFirst('javaScript'); // 'JavaScript'",
+      "since": "0.8.0",
+      "sourceFile": "src/core/string.ts"
+    },
+    {
+      "name": "lowerFirst",
+      "category": "string",
+      "description": "Converts the first character of string to lower case",
+      "syntax": "",
+      "params": [
+        {
+          "name": "str",
+          "type": "string",
+          "description": "The string to convert",
+          "optional": false
+        }
+      ],
+      "returns": {
+        "type": "string",
+        "description": "Returns the string with the first character lowercased"
+      },
+      "example": "lowerFirst('Hello'); // 'hello'\r\nlowerFirst('JavaScript'); // 'javaScript'",
+      "since": "0.8.0",
+      "sourceFile": "src/core/string.ts"
+    },
+    {
+      "name": "parseInt",
+      "category": "string",
+      "description": "Converts string to an integer of the specified radix",
+      "syntax": "",
+      "params": [
+        {
+          "name": "str",
+          "type": "string",
+          "description": "The string to convert",
+          "optional": false
+        },
+        {
+          "name": "radix",
+          "type": "number",
+          "description": "=10] - The radix to use",
+          "optional": false
+        }
+      ],
+      "returns": {
+        "type": "number",
+        "description": "Returns the converted integer"
+      },
+      "example": "parseInt('10'); // 10\r\nparseInt('10', 2); // 2",
+      "since": "0.8.0",
+      "sourceFile": "src/core/string.ts"
+    },
+    {
+      "name": "isArguments",
+      "category": "type",
+      "description": "Checks if value is an arguments object",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "isArguments(function() { return arguments; }())\r\n// => true\r\nisArguments([1, 2, 3])\r\n// => false",
+      "since": "0.9.0",
+      "sourceFile": "src/core/type.ts"
+    },
+    {
+      "name": "isArrayBuffer",
+      "category": "type",
+      "description": "Checks if value is classified as an ArrayBuffer object",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "isArrayBuffer(new ArrayBuffer(2))\r\n// => true\r\nisArrayBuffer(new Array(2))\r\n// => false",
+      "since": "0.9.0",
+      "sourceFile": "src/core/type.ts"
+    },
+    {
+      "name": "isArrayLike",
+      "category": "type",
+      "description": "Checks if value is array-like. A value is considered array-like if it's not a function and has a valid length property",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "isArrayLike([1, 2, 3])\r\n// => true\r\nisArrayLike('abc')\r\n// => true\r\nisArrayLike(Function)\r\n// => false",
+      "since": "0.9.0",
+      "sourceFile": "src/core/type.ts"
+    },
+    {
+      "name": "isArrayLikeObject",
+      "category": "type",
+      "description": "Checks if value is array-like and not a function. This method is like isArrayLike except that it also checks if value is an object",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "isArrayLikeObject([1, 2, 3])\r\n// => true\r\nisArrayLikeObject('abc')\r\n// => true\r\nisArrayLikeObject(Function)\r\n// => false",
+      "since": "0.9.0",
+      "sourceFile": "src/core/type.ts"
+    },
+    {
+      "name": "isBoolean",
+      "category": "type",
+      "description": "Checks if value is classified as a boolean primitive or object",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "isBoolean(false)\r\n// => true\r\nisBoolean(null)\r\n// => false",
+      "since": "0.9.0",
+      "sourceFile": "src/core/type.ts"
+    },
+    {
+      "name": "isBuffer",
+      "category": "type",
+      "description": "Checks if value is a buffer",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "isBuffer(Buffer.alloc(2))\r\n// => true\r\nisBuffer(new Uint8Array(2))\r\n// => false",
+      "since": "0.9.0",
+      "sourceFile": "src/core/type.ts"
+    },
+    {
+      "name": "isElement",
+      "category": "type",
+      "description": "Checks if value is likely a DOM element",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "isElement(document.body)\r\n// => true\r\nisElement('<body>')\r\n// => false",
+      "since": "0.9.0",
+      "sourceFile": "src/core/type.ts"
+    },
+    {
+      "name": "isEqualWith",
+      "category": "type",
+      "description": "Like isEqual except that it accepts customizer which is invoked to compare values.",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "function isGreeting(value) {\r\n  return /^h(?:i|ello)$/.test(value);\r\n}\r\nfunction customizer(objValue, othValue) {\r\n  if (isGreeting(objValue) && isGreeting(othValue)) {\r\n    return true;\r\n  }\r\n}\r\nisEqualWith(['hello'], ['hi'], customizer)\r\n// => true",
+      "since": "0.9.0",
+      "sourceFile": "src/core/type.ts"
+    },
+    {
+      "name": "isError",
+      "category": "type",
+      "description": "Checks if value is an Error, EvalError, RangeError, ReferenceError, SyntaxError, TypeError, or URIError object",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "isError(new Error)\r\n// => true\r\nisError(Error)\r\n// => false",
+      "since": "0.9.0",
+      "sourceFile": "src/core/type.ts"
+    },
+    {
+      "name": "isFinite",
+      "category": "type",
+      "description": "Checks if value is a finite primitive number.",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "isFinite(3)\r\n// => true\r\nisFinite(Number.MIN_VALUE)\r\n// => true\r\nisFinite(Infinity)\r\n// => false\r\nisFinite('3')\r\n// => false",
+      "since": "0.9.0",
+      "sourceFile": "src/core/type.ts"
+    },
+    {
+      "name": "isFunction",
+      "category": "type",
+      "description": "Checks if value is classified as a Function object",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "isFunction(() => {})\r\n// => true\r\nisFunction(/abc/)\r\n// => false",
+      "since": "0.9.0",
+      "sourceFile": "src/core/type.ts"
+    },
+    {
+      "name": "isInteger",
+      "category": "type",
+      "description": "Checks if value is an integer.",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "isInteger(3)\r\n// => true\r\nisInteger(Number.MIN_VALUE)\r\n// => false\r\nisInteger(Infinity)\r\n// => false\r\nisInteger('3')\r\n// => false",
+      "since": "0.9.0",
+      "sourceFile": "src/core/type.ts"
+    },
+    {
+      "name": "isLength",
+      "category": "type",
+      "description": "Checks if value is a valid array-like length.",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "isLength(3)\r\n// => true\r\nisLength(Number.MIN_VALUE)\r\n// => false\r\nisLength(Infinity)\r\n// => false\r\nisLength('3')\r\n// => false",
+      "since": "0.9.0",
+      "sourceFile": "src/core/type.ts"
+    },
+    {
+      "name": "isMap",
+      "category": "type",
+      "description": "Checks if value is classified as a Map object",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "isMap(new Map)\r\n// => true\r\nisMap(new WeakMap)\r\n// => false",
+      "since": "0.9.0",
+      "sourceFile": "src/core/type.ts"
+    },
+    {
+      "name": "isMatch",
+      "category": "type",
+      "description": "Performs a partial deep comparison between object and source to determine if object contains equivalent property values.",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "const object = { 'a': 1, 'b': 2 };\r\nisMatch(object, { 'b': 2 })\r\n// => true\r\nisMatch(object, { 'b': 1 })\r\n// => false",
+      "since": "0.9.0",
+      "sourceFile": "src/core/type.ts"
+    },
+    {
+      "name": "isMatchWith",
+      "category": "type",
+      "description": "Like isMatch except that it accepts customizer which is invoked to compare values.",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "function isGreeting(value) {\r\n  return /^h(?:i|ello)$/.test(value);\r\n}\r\nfunction customizer(objValue, srcValue) {\r\n  if (isGreeting(objValue) && isGreeting(srcValue)) {\r\n    return true;\r\n  }\r\n}\r\nconst object = { 'greeting': 'hello' };\r\nconst source = { 'greeting': 'hi' };\r\nisMatchWith(object, source, customizer)\r\n// => true",
+      "since": "0.9.0",
+      "sourceFile": "src/core/type.ts"
+    },
+    {
+      "name": "isNaN",
+      "category": "type",
+      "description": "Checks if value is NaN.",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "isNaN(NaN)\r\n// => true\r\nisNaN(new Number(NaN))\r\n// => true\r\nisNaN(undefined)\r\n// => false",
+      "since": "0.9.0",
+      "sourceFile": "src/core/type.ts"
+    },
+    {
+      "name": "isNative",
+      "category": "type",
+      "description": "Checks if value is a pristine native function.",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "isNative(Array.prototype.push)\r\n// => true\r\nisNative(() => {})\r\n// => false",
+      "since": "0.9.0",
+      "sourceFile": "src/core/type.ts"
+    },
+    {
+      "name": "isNil",
+      "category": "type",
+      "description": "Checks if value is null or undefined",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "isNil(null)\r\n// => true\r\nisNil(void 0)\r\n// => true\r\nisNil(NaN)\r\n// => false",
+      "since": "0.9.0",
+      "sourceFile": "src/core/type.ts"
+    },
+    {
+      "name": "isNull",
+      "category": "type",
+      "description": "Checks if value is null",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "isNull(null)\r\n// => true\r\nisNull(void 0)\r\n// => false",
+      "since": "0.9.0",
+      "sourceFile": "src/core/type.ts"
+    },
+    {
+      "name": "isNumber",
+      "category": "type",
+      "description": "Checks if value is classified as a Number primitive or object.",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "isNumber(3)\r\n// => true\r\nisNumber(Number.MIN_VALUE)\r\n// => true\r\nisNumber(Infinity)\r\n// => true\r\nisNumber('3')\r\n// => false",
+      "since": "0.9.0",
+      "sourceFile": "src/core/type.ts"
+    },
+    {
+      "name": "isObject",
+      "category": "type",
+      "description": "Checks if value is the language type of Object.",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "isObject({})\r\n// => true\r\nisObject([1, 2, 3])\r\n// => true\r\nisObject(() => {})\r\n// => true\r\nisObject(null)\r\n// => false",
+      "since": "0.9.0",
+      "sourceFile": "src/core/type.ts"
+    },
+    {
+      "name": "isObjectLike",
+      "category": "type",
+      "description": "Checks if value is object-like. A value is object-like if it's not null and has a typeof result of \"object\"",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "isObjectLike({})\r\n// => true\r\nisObjectLike([1, 2, 3])\r\n// => true\r\nisObjectLike(() => {})\r\n// => false\r\nisObjectLike(null)\r\n// => false",
+      "since": "0.9.0",
+      "sourceFile": "src/core/type.ts"
+    },
+    {
+      "name": "isPlainObject",
+      "category": "type",
+      "description": "Checks if value is a plain object, that is, an object created by the Object constructor or one with a [[Prototype]] of null",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "function Foo() {\r\n  this.a = 1;\r\n}\r\nisPlainObject(new Foo)\r\n// => false\r\nisPlainObject([1, 2, 3])\r\n// => false\r\nisPlainObject({ 'x': 0, 'y': 0 })\r\n// => true\r\nisPlainObject(Object.create(null))\r\n// => true",
+      "since": "0.9.0",
+      "sourceFile": "src/core/type.ts"
+    },
+    {
+      "name": "isRegExp",
+      "category": "type",
+      "description": "Checks if value is classified as a RegExp object",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "isRegExp(/abc/)\r\n// => true\r\nisRegExp('/abc/')\r\n// => false",
+      "since": "0.9.0",
+      "sourceFile": "src/core/type.ts"
+    },
+    {
+      "name": "isSafeInteger",
+      "category": "type",
+      "description": "Checks if value is a safe integer. An integer is safe if it's an IEEE-754 double precision number which isn't the result of a rounded unsafe integer.",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "isSafeInteger(3)\r\n// => true\r\nisSafeInteger(Number.MIN_VALUE)\r\n// => false\r\nisSafeInteger(Infinity)\r\n// => false\r\nisSafeInteger('3')\r\n// => false",
+      "since": "0.9.0",
+      "sourceFile": "src/core/type.ts"
+    },
+    {
+      "name": "isSet",
+      "category": "type",
+      "description": "Checks if value is classified as a Set object",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "isSet(new Set)\r\n// => true\r\nisSet(new WeakSet)\r\n// => false",
+      "since": "0.9.0",
+      "sourceFile": "src/core/type.ts"
+    },
+    {
+      "name": "isString",
+      "category": "type",
+      "description": "Checks if value is classified as a String primitive or object",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "isString('abc')\r\n// => true\r\nisString(1)\r\n// => false",
+      "since": "0.9.0",
+      "sourceFile": "src/core/type.ts"
+    },
+    {
+      "name": "isSymbol",
+      "category": "type",
+      "description": "Checks if value is classified as a Symbol primitive or object",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "isSymbol(Symbol.iterator)\r\n// => true\r\nisSymbol('abc')\r\n// => false",
+      "since": "0.9.0",
+      "sourceFile": "src/core/type.ts"
+    },
+    {
+      "name": "isTypedArray",
+      "category": "type",
+      "description": "Checks if value is classified as a typed array",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "isTypedArray(new Uint8Array)\r\n// => true\r\nisTypedArray([])\r\n// => false",
+      "since": "0.9.0",
+      "sourceFile": "src/core/type.ts"
+    },
+    {
+      "name": "isUndefined",
+      "category": "type",
+      "description": "Checks if value is undefined",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "isUndefined(void 0)\r\n// => true\r\nisUndefined(null)\r\n// => false",
+      "since": "0.9.0",
+      "sourceFile": "src/core/type.ts"
+    },
+    {
+      "name": "isWeakMap",
+      "category": "type",
+      "description": "Checks if value is classified as a WeakMap object",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "isWeakMap(new WeakMap)\r\n// => true\r\nisWeakMap(new Map)\r\n// => false",
+      "since": "0.9.0",
+      "sourceFile": "src/core/type.ts"
+    },
+    {
+      "name": "isWeakSet",
+      "category": "type",
+      "description": "Checks if value is classified as a WeakSet object",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "void",
+        "description": ""
+      },
+      "example": "isWeakSet(new WeakSet)\r\n// => true\r\nisWeakSet(new Set)\r\n// => false",
+      "since": "0.9.0",
+      "sourceFile": "src/core/type.ts"
+    },
+    {
+      "name": "identity",
+      "category": "utility",
+      "description": "Returns the first argument it receives",
+      "syntax": "",
+      "params": [
+        {
+          "name": "value",
+          "type": "T",
+          "description": "The value to return",
+          "optional": false
+        }
+      ],
+      "returns": {
+        "type": "T",
+        "description": "Returns value"
+      },
+      "example": "identity(42); // 42\r\nidentity('hello'); // 'hello'",
+      "since": "",
+      "sourceFile": "src/core/utility.ts"
+    },
+    {
+      "name": "constant",
+      "category": "utility",
+      "description": "Creates a function that returns value",
+      "syntax": "",
+      "params": [
+        {
+          "name": "value",
+          "type": "T",
+          "description": "The value to wrap in a function",
+          "optional": false
+        }
+      ],
+      "returns": {
+        "type": "() => T",
+        "description": "Returns the new constant function"
+      },
+      "example": "const getAnswer = constant(42);\r\ngetAnswer(); // 42",
+      "since": "",
+      "sourceFile": "src/core/utility.ts"
+    },
+    {
+      "name": "noop",
+      "category": "utility",
+      "description": "A method that returns undefined",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "undefined",
+        "description": "Returns undefined"
+      },
+      "example": "noop(); // undefined",
+      "since": "",
+      "sourceFile": "src/core/utility.ts"
+    },
+    {
+      "name": "property",
+      "category": "utility",
+      "description": "Creates a function that returns the value at path of a given object",
+      "syntax": "",
+      "params": [
+        {
+          "name": "path",
+          "type": "string | string[]",
+          "description": "The path of the property to get",
+          "optional": false
+        }
+      ],
+      "returns": {
+        "type": "(obj: Record<string, unknown>) => T | undefined",
+        "description": "Returns the new accessor function"
+      },
+      "example": "const getName = property('name');\r\ngetName({ name: 'John' }); // 'John'\r\nconst getDeep = property(['user', 'profile', 'name']);\r\ngetDeep({ user: { profile: { name: 'Jane' } } }); // 'Jane'",
+      "since": "",
+      "sourceFile": "src/core/utility.ts"
+    },
+    {
+      "name": "propertyOf",
+      "category": "utility",
+      "description": "The opposite of property; creates a function that returns the value at a given path of object",
+      "syntax": "",
+      "params": [
+        {
+          "name": "obj",
+          "type": "Record<string, unknown>",
+          "description": "The object to query",
+          "optional": false
+        }
+      ],
+      "returns": {
+        "type": "(path: string | string[]) => unknown",
+        "description": "Returns the new accessor function"
+      },
+      "example": "const object = { a: { b: 2 } };\r\nconst at = propertyOf(object);\r\nat('a.b'); // 2\r\nat(['a', 'b']); // 2",
+      "since": "",
+      "sourceFile": "src/core/utility.ts"
+    },
+    {
+      "name": "matches",
+      "category": "utility",
+      "description": "Creates a function that performs a partial deep comparison between a given object and source",
+      "syntax": "",
+      "params": [
+        {
+          "name": "source",
+          "type": "Partial<T>",
+          "description": "The object of property values to match",
+          "optional": false
+        }
+      ],
+      "returns": {
+        "type": "(obj: T) => boolean",
+        "description": "Returns the new spec function"
+      },
+      "example": "const isActive = matches({ active: true });\r\nisActive({ active: true, name: 'John' }); // true",
+      "since": "",
+      "sourceFile": "src/core/utility.ts"
+    },
+    {
+      "name": "matchesProperty",
+      "category": "utility",
+      "description": "Creates a function that performs a partial deep comparison between the value at path of a given object to srcValue",
+      "syntax": "",
+      "params": [
+        {
+          "name": "path",
+          "type": "string | string[]",
+          "description": "The path of the property to get",
+          "optional": false
+        },
+        {
+          "name": "srcValue",
+          "type": "unknown",
+          "description": "The value to match",
+          "optional": false
+        }
+      ],
+      "returns": {
+        "type": "(obj: T) => boolean",
+        "description": "Returns the new spec function"
+      },
+      "example": "const isJohn = matchesProperty('name', 'John');\r\nisJohn({ name: 'John', age: 25 }); // true",
+      "since": "",
+      "sourceFile": "src/core/utility.ts"
+    },
+    {
+      "name": "iteratee",
+      "category": "utility",
+      "description": "Creates a function that invokes the iteratee with the arguments it receives",
+      "syntax": "",
+      "params": [
+        {
+          "name": "func",
+          "type": "Function | Record<string, unknown> | string | [string, unknown] | null",
+          "description": "The iteratee to transform",
+          "optional": true
+        }
+      ],
+      "returns": {
+        "type": "(value: T) => R",
+        "description": "Returns the callback"
+      },
+      "example": "iteratee('name')({ name: 'John' }); // 'John'\r\niteratee(['age', 25])({ age: 25 }); // true",
+      "since": "",
+      "sourceFile": "src/core/utility.ts"
+    },
+    {
+      "name": "uniqueId",
+      "category": "utility",
+      "description": "Generates a unique ID",
+      "syntax": "",
+      "params": [
+        {
+          "name": "prefix",
+          "type": "string",
+          "description": "=''] - The value to prefix the ID with",
+          "optional": false
+        }
+      ],
+      "returns": {
+        "type": "string",
+        "description": "Returns the unique ID"
+      },
+      "example": "uniqueId(); // '8h3k2d'\r\nuniqueId('user_'); // 'user_8h3k2d'",
+      "since": "",
+      "sourceFile": "src/core/utility.ts"
+    },
+    {
+      "name": "times",
+      "category": "utility",
+      "description": "Invokes the iteratee n times, returning an array of the results",
+      "syntax": "",
+      "params": [
+        {
+          "name": "n",
+          "type": "number",
+          "description": "The number of times to invoke iteratee",
+          "optional": false
+        },
+        {
+          "name": "iteratee",
+          "type": "(index: number) => T",
+          "description": "The function invoked per iteration",
+          "optional": false
+        }
+      ],
+      "returns": {
+        "type": "T[]",
+        "description": "Returns the array of results"
+      },
+      "example": "times(3, i => i * 2); // [0, 2, 4]\r\ntimes(4, () => 'a'); // ['a', 'a', 'a', 'a']",
+      "since": "",
+      "sourceFile": "src/core/utility.ts"
+    },
+    {
+      "name": "range",
+      "category": "utility",
+      "description": "Creates an array of numbers progressing from start up to, but not including, end",
+      "syntax": "",
+      "params": [
+        {
+          "name": "start",
+          "type": "number",
+          "description": "The start of the range",
+          "optional": false
+        },
+        {
+          "name": "end",
+          "type": "number",
+          "description": "The end of the range",
+          "optional": true
+        },
+        {
+          "name": "step",
+          "type": "number",
+          "description": "=1] - The value to increment or decrement by",
+          "optional": false
+        }
+      ],
+      "returns": {
+        "type": "number[]",
+        "description": "Returns the range of numbers"
+      },
+      "example": "range(4); // [0, 1, 2, 3]\r\nrange(1, 5); // [1, 2, 3, 4]\r\nrange(0, 20, 5); // [0, 5, 10, 15]",
+      "since": "",
+      "sourceFile": "src/core/utility.ts"
+    },
+    {
+      "name": "rangeRight",
+      "category": "utility",
+      "description": "Like range except that it populates values in descending order",
+      "syntax": "",
+      "params": [
+        {
+          "name": "start",
+          "type": "number",
+          "description": "The start of the range",
+          "optional": false
+        },
+        {
+          "name": "end",
+          "type": "number",
+          "description": "The end of the range",
+          "optional": true
+        },
+        {
+          "name": "step",
+          "type": "number",
+          "description": "=1] - The value to increment or decrement by",
+          "optional": false
+        }
+      ],
+      "returns": {
+        "type": "number[]",
+        "description": "Returns the range of numbers"
+      },
+      "example": "rangeRight(4); // [3, 2, 1, 0]\r\nrangeRight(1, 5); // [4, 3, 2, 1]",
+      "since": "",
+      "sourceFile": "src/core/utility.ts"
+    },
+    {
+      "name": "stubArray",
+      "category": "utility",
+      "description": "Stub function that returns an empty array",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "any[]",
+        "description": "Returns a new empty array"
+      },
+      "example": "stubArray(); // []",
+      "since": "",
+      "sourceFile": "src/core/utility.ts"
+    },
+    {
+      "name": "stubFalse",
+      "category": "utility",
+      "description": "Stub function that returns false",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "false",
+        "description": "Returns false"
+      },
+      "example": "stubFalse(); // false",
+      "since": "",
+      "sourceFile": "src/core/utility.ts"
+    },
+    {
+      "name": "stubObject",
+      "category": "utility",
+      "description": "Stub function that returns an empty object",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "object",
+        "description": "Returns a new empty object"
+      },
+      "example": "stubObject(); // {}",
+      "since": "",
+      "sourceFile": "src/core/utility.ts"
+    },
+    {
+      "name": "stubString",
+      "category": "utility",
+      "description": "Stub function that returns an empty string",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "string",
+        "description": "Returns an empty string"
+      },
+      "example": "stubString(); // ''",
+      "since": "",
+      "sourceFile": "src/core/utility.ts"
+    },
+    {
+      "name": "stubTrue",
+      "category": "utility",
+      "description": "Stub function that returns true",
+      "syntax": "",
+      "params": [],
+      "returns": {
+        "type": "true",
+        "description": "Returns true"
+      },
+      "example": "stubTrue(); // true",
+      "since": "",
+      "sourceFile": "src/core/utility.ts"
+    },
+    {
+      "name": "extractFromString",
+      "category": "utils",
+      "description": "Extract value from string using regex",
+      "syntax": "",
+      "params": [
+        {
+          "name": "str",
+          "type": "string",
+          "description": "Input string to extract from",
+          "optional": false
+        },
+        {
+          "name": "regex",
+          "type": "RegExp",
+          "description": "Regular expression with capture groups",
+          "optional": false
+        },
+        {
+          "name": "type",
+          "type": "T",
+          "description": "Expected return type ('string' | 'number' | 'boolean' | 'array' | 'date')",
+          "optional": false
+        }
+      ],
+      "returns": {
+        "type": "ExtractedValue",
+        "description": "Extracted and converted value based on type"
+      },
+      "example": "extractFromString('Price: $25.99', /\\$(\\d+\\.\\d+)/, 'number'); // 25.99\r\nextractFromString('Active: true', /Active: (\\w+)/, 'boolean'); // true\r\nextractFromString('Date: 2023-12-25', /Date: (.+)/, 'date'); // Date object",
+      "since": "0.9.8",
+      "sourceFile": "src/utils/extractFromString.ts"
+    },
+    {
+      "name": "getCountry",
+      "category": "utils",
+      "description": "Find country by various criteria",
+      "syntax": "",
+      "params": [
+        {
+          "name": "searchParams",
+          "type": "Object",
+          "description": "Search criteria",
+          "optional": false
+        },
+        {
+          "name": "searchParams",
+          "type": "string",
+          "description": ".cc] - Country code (ISO 3166-1 alpha-2)",
+          "optional": false
+        },
+        {
+          "name": "searchParams",
+          "type": "string",
+          "description": ".cn] - Country name (common or official)",
+          "optional": false
+        },
+        {
+          "name": "searchParams",
+          "type": "string",
+          "description": ".cf] - Country flag emoji",
+          "optional": false
+        },
+        {
+          "name": "countries",
+          "type": "Country[]",
+          "description": "Array of countries to search in",
+          "optional": false
+        }
+      ],
+      "returns": {
+        "type": "Partial<Country>",
+        "description": "Found country or empty object if not found"
+      },
+      "example": "const country = getCountry({ cc: 'US' }, countries);\r\nconst country2 = getCountry({ cn: 'France' }, countries);",
+      "since": "0.9.8",
+      "sourceFile": "src/utils/getCountry.ts"
+    },
+    {
+      "name": "hash",
+      "category": "utils",
+      "description": "Simple hash function (lightweight alternative to object-hash)",
+      "syntax": "",
+      "params": [
+        {
+          "name": "obj",
+          "type": "unknown",
+          "description": "Object or value to hash",
+          "optional": false
+        }
+      ],
+      "returns": {
+        "type": "string",
+        "description": "Simple hash string in base 36"
+      },
+      "example": "hash('hello'); // \"1k4xd\"\r\nhash({ a: 1, b: 2 }); // \"1x3k2d\"",
+      "since": "0.9.8",
+      "sourceFile": "src/utils/hash.ts"
+    }
+  ],
+  "constants": [
+    {
+      "name": "REGEX",
+      "category": "constants",
+      "description": "Common regular expressions",
+      "type": "const",
+      "value": "{\r\n  /** Match HTML tags @since 0.8.0 */\r\n  htmlTag: /.*?>([^<]*)/,\r\n\r\n  /** Match content in brackets @since 0.8.0 */\r\n  inBrackets: /\\[[^\\[\\]]*\\]/,\r\n\r\n  /** Match content in strings @since 0.8.0 */\r\n  inStrings: /.*?\"([^\"]*)/,\r\n\r\n  /** Match HTML tags or arrays @since 0.8.0 */\r\n  tagRegex: /<([a-z][a-z0-9]*)[^>]*>([^<]*)<\\/\\1>|(\\[(.*?)\\])/i,\r\n\r\n  /** Match opening parentheses @since 0.8.0 */\r\n  openParentheses: /^(.*?)\\(/,\r\n\r\n  /** Match all non-whitespace sequences @since 0.8.0 */\r\n  allSpaces: /\\S+/g,\r\n\r\n  /** Match datetime strings @since 0.8.0 */\r\n  datetime: /^((?:(\\d{4}-\\d{2}-\\d{2})T(\\d{2}:\\d{2}:\\d{2}(?:\\.\\d+)?))(Z|[\\+-]\\d{2}:\\d{2})?)$/,\r\n\r\n  /** Match email addresses @since 0.8.0 */\r\n  email: /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/,\r\n\r\n  /** Match URLs @since 0.8.0 */\r\n  url: /^https?:\\/\\/.+/,\r\n\r\n  /** Match numbers @since 0.9.0 */\r\n  number: /^-?\\d+(\\.\\d+)?$/\r\n} as const",
+      "since": "0.8.0",
+      "sourceFile": "src/constants/index.ts"
+    },
+    {
+      "name": "DATE_FORMATS",
+      "category": "constants",
+      "description": "Common regular expressions",
+      "type": "const",
+      "value": "{\r\n  DATE: \"DD/MM/YYYY\",\r\n  TIME: \"HH:mm\",\r\n  DATE_TIME: \"DD/MM/YYYY,HH:mm:ss\"\r\n} as const",
+      "since": "0.8.0",
+      "sourceFile": "src/constants/index.ts"
+    },
+    {
+      "name": "COUNTRY_DATE_FORMATS",
+      "category": "constants",
+      "description": "Common regular expressions",
+      "type": "const",
+      "value": "{\r\n  AD: \"DD/MM/YYYY\", AT: \"DD.MM.YYYY\", BE: \"DD/MM/YYYY\", BG: \"DD.MM.YYYY\",\r\n  CH: \"DD.MM.YYYY\", CY: \"DD/MM/YYYY\", CZ: \"DD.MM.YYYY\", DE: \"DD.MM.YYYY\",\r\n  DK: \"DD.MM.YYYY\", EE: \"DD.MM.YYYY\", ES: \"DD/MM/YYYY\", FI: \"DD.MM.YYYY\",\r\n  FR: \"DD/MM/YYYY\", GB: \"DD/MM/YYYY\", GR: \"DD/MM/YYYY\", HR: \"DD.MM.YYYY\",\r\n  HU: \"YYYY.MM.DD.\", IE: \"DD/MM/YYYY\", IS: \"DD.MM.YYYY\", IT: \"DD/MM/YYYY\",\r\n  LI: \"DD.MM.YYYY\", LT: \"YYYY.MM.DD\", LU: \"DD/MM/YYYY\", LV: \"DD.MM.YYYY\",\r\n  MC: \"DD/MM/YYYY\", MT: \"DD/MM/YYYY\", NL: \"DD-MM-YYYY\", NO: \"DD.MM.YYYY\",\r\n  PL: \"DD.MM.YYYY\", PT: \"DD/MM/YYYY\", RO: \"DD.MM.YYYY\", SE: \"YYYY-MM-DD\",\r\n  SI: \"DD.MM.YYYY\", SK: \"DD.MM.YYYY\", SM: \"DD/MM/YYYY\", TR: \"DD.MM.YYYY\",\r\n  US: \"MM/DD/YYYY\", CA: \"MM/DD/YYYY\", JP: \"YYYY年MM月DD日\", CN: \"YYYY年MM月DD日\", KR: \"YYYY-MM-DD\"\r\n} as const",
+      "since": "0.8.0",
+      "sourceFile": "src/constants/index.ts"
+    },
+    {
+      "name": "RESPONSE_CODES",
+      "category": "constants",
+      "description": "Common regular expressions",
+      "type": "const",
+      "value": "{\r\n  NOT_INIT: 0,\r\n  IS_INIT: 1,\r\n  NOT_FOUND_INIT: 2,\r\n  NOT_FOUND: 9\r\n} as const",
+      "since": "0.8.0",
+      "sourceFile": "src/constants/index.ts"
+    },
+    {
+      "name": "STATUS_COLORS",
+      "category": "constants",
+      "description": "Common regular expressions",
+      "type": "const",
+      "value": "{\r\n  ACTIVE: \"green\",\r\n  INACTIVE: \"grey\",\r\n  PENDING: \"orange\",\r\n  ERROR: \"red\",\r\n  WARNING: \"yellow\",\r\n  INFO: \"blue\"\r\n} as const",
+      "since": "0.8.0",
+      "sourceFile": "src/constants/index.ts"
+    }
+  ],
+  "types": [
+    {
+      "name": "SortOptions",
+      "category": "array",
+      "description": "Lightweight array utility functions",
+      "definition": "interface SortOptions<T> {\r\n  arr: T[];\r\n  prop: keyof T;\r\n  ascending?: boolean;\r\n}\r\n\r\n",
+      "properties": [
+        {
+          "name": "arr",
+          "type": "T[]",
+          "optional": false,
+          "description": ""
+        },
+        {
+          "name": "prop",
+          "type": "keyof T",
+          "optional": false,
+          "description": ""
+        },
+        {
+          "name": "ascending",
+          "type": "boolean",
+          "optional": true,
+          "description": ""
+        }
+      ],
+      "since": "0.8.0",
+      "sourceFile": "src/core/array.ts"
+    },
+    {
+      "name": "o",
+      "category": "array",
+      "description": "Object with string keys and any values.",
+      "definition": "interface o {\r\n    [ key: string ]: any;\r\n}\r\n\r\n",
+      "properties": [
+        {
+          "name": "key",
+          "type": "string ]: any",
+          "optional": false,
+          "description": ""
+        }
+      ],
+      "since": "",
+      "sourceFile": "src/core/array.ts"
+    },
+    {
+      "name": "SelectionObject",
+      "category": "array",
+      "description": "",
+      "definition": "interface SelectionObject {\r\n    selection: string[];\r\n    property: string;\r\n}\r\n\r\n",
+      "properties": [
+        {
+          "name": "selection",
+          "type": "string[]",
+          "optional": false,
+          "description": ""
+        },
+        {
+          "name": "property",
+          "type": "string",
+          "optional": false,
+          "description": ""
+        }
+      ],
+      "since": "",
+      "sourceFile": "src/core/array.ts"
+    },
+    {
+      "name": "i_func_filterData",
+      "category": "array",
+      "description": "Filter data based on search term and selections",
+      "definition": "interface i_func_filterData {\r\n    sW: string;\r\n    tbRS: number[];\r\n    selections: SelectionObject[];\r\n    field_search?: string;\r\n    ddeb?: string;\r\n    regex?: RegExp;\r\n}\r\n\r\n",
+      "properties": [
+        {
+          "name": "sW",
+          "type": "string",
+          "optional": false,
+          "description": ""
+        },
+        {
+          "name": "tbRS",
+          "type": "number[]",
+          "optional": false,
+          "description": ""
+        },
+        {
+          "name": "selections",
+          "type": "SelectionObject[]",
+          "optional": false,
+          "description": ""
+        },
+        {
+          "name": "field_search",
+          "type": "string",
+          "optional": true,
+          "description": ""
+        },
+        {
+          "name": "ddeb",
+          "type": "string",
+          "optional": true,
+          "description": ""
+        },
+        {
+          "name": "regex",
+          "type": "RegExp",
+          "optional": true,
+          "description": ""
+        }
+      ],
+      "since": "",
+      "sourceFile": "src/core/array.ts"
+    },
+    {
+      "name": "TimeUnit",
+      "category": "date",
+      "description": "Lightweight date utility functions",
+      "definition": "type TimeUnit = \"hour\" | \"minute\" | \"second\" | \"millisecond\" | \"day\" | \"month\" | \"year\";\r\n",
+      "since": "0.8.0",
+      "sourceFile": "src/core/date.ts"
+    },
+    {
+      "name": "NumberOptions",
+      "category": "number",
+      "description": "Lightweight number utility functions",
+      "definition": "interface NumberOptions {\r\n  deep?: boolean;\r\n}\r\n\r\n",
+      "properties": [
+        {
+          "name": "deep",
+          "type": "boolean",
+          "optional": true,
+          "description": ""
+        }
+      ],
+      "since": "0.8.0",
+      "sourceFile": "src/core/number.ts"
+    },
+    {
+      "name": "FlatOptions",
+      "category": "object",
+      "description": "Lightweight object utility functions",
+      "definition": "interface FlatOptions {\r\n  props?: string[];\r\n}\r\n\r\n",
+      "properties": [
+        {
+          "name": "props",
+          "type": "string[]",
+          "optional": true,
+          "description": ""
+        }
+      ],
+      "since": "0.8.0",
+      "sourceFile": "src/core/object.ts"
+    },
+    {
+      "name": "RequestOptions",
+      "category": "utils",
+      "description": "HTTP request options (lightweight, axios-free)",
+      "definition": "interface RequestOptions {\r\n  method?: 'GET' | 'POST' | 'PUT' | 'DELETE';\r\n  headers?: Record<string, string>;\r\n  body?: any;\r\n}\r\n\r\n",
+      "properties": [
+        {
+          "name": "method",
+          "type": "'GET' | 'POST' | 'PUT' | 'DELETE'",
+          "optional": true,
+          "description": ""
+        },
+        {
+          "name": "headers",
+          "type": "Record<string, string>",
+          "optional": true,
+          "description": ""
+        },
+        {
+          "name": "body",
+          "type": "any",
+          "optional": true,
+          "description": ""
+        }
+      ],
+      "since": "0.9.8",
+      "sourceFile": "src/utils/api.ts"
+    },
+    {
+      "name": "Country",
+      "category": "utils",
+      "description": "Country interface",
+      "definition": "interface Country {\r\n  name?: {\r\n    common: string;\r\n    official: string;\r\n  };\r\n  cca2?: string;\r\n  altNames?: string;\r\n  flag?: string;\r\n}\r\n\r\n",
+      "properties": [
+        {
+          "name": "name",
+          "type": "{\r\n    common: string",
+          "optional": true,
+          "description": ""
+        },
+        {
+          "name": "official",
+          "type": "string",
+          "optional": false,
+          "description": ""
+        },
+        {
+          "name": "cca2",
+          "type": "string",
+          "optional": true,
+          "description": ""
+        },
+        {
+          "name": "altNames",
+          "type": "string",
+          "optional": true,
+          "description": ""
+        },
+        {
+          "name": "flag",
+          "type": "string",
+          "optional": true,
+          "description": ""
+        }
+      ],
+      "since": "0.9.8",
+      "sourceFile": "src/utils/getCountry.ts"
+    }
+  ],
+  "packageInfo": {
+    "name": "generic-functions.mlai",
+    "version": "0.9.7",
+    "description": "A comprehensive, lightweight utility library",
+    "author": {
+      "name": "Mathieu-ai",
+      "email": "mathieu.lievre.pro@outlook.com",
+      "url": "https://github.com/Mathieu-ai"
+    },
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/Mathieu-ai/generic-functions.git"
+    },
+    "license": "MIT",
+    "homepage": "https://github.com/Mathieu-ai/generic-functions#readme",
+    "keywords": [
+      "generic-functions",
+      "utilities",
+      "helpers",
+      "lightweight",
+      "tree-shakable",
+      "typescript"
+    ]
+  }
+}

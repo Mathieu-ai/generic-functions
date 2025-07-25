@@ -4,7 +4,7 @@
         "type": "git",
         "url": "https://github.com/Mathieu-ai/generic-functions.git"
     },
-    "version": "0.9.7",
+    "version": "0.9.8",
     "description": "A comprehensive, lightweight utility library",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
@@ -90,9 +90,9 @@
         "prepack": "npm run prepare-dist",
         "test": "echo \"No tests specified\" && exit 0",
         "docs:extract": "node scripts/extract-docs.cjs",
-        "docs:serve": "cd docs && python -m http.server 8080 || python3 -m http.server 8080",
-        "docs:build": "npm run docs:extract",
-        "docs": "npm run docs:build && npm run docs:serve"
+        "docs:dev": "npm run dev --prefix docs",
+        "docs:build": "npm run build --prefix docs",
+        "docs:serve": "npm run start --prefix docs"
     },
     "files": [
         "dist"
@@ -120,10 +120,22 @@
         "registry": "https://registry.npmjs.org/"
     },
     "optionalDependencies": {},
+    "dependencies": {
+        "react": "19.1.0",
+        "react-dom": "19.1.0",
+        "next": "15.4.4"
+    },
     "devDependencies": {
-        "@types/node": ">=17.0.21",
-        "typescript": ">=4.5.2",
         "rimraf": "^5.0.0",
-        "esbuild": "^0.19.0"
+        "esbuild": "^0.19.0",
+        "typescript": "^5",
+        "@types/node": "^20",
+        "@types/react": "^19",
+        "@types/react-dom": "^19",
+        "@tailwindcss/postcss": "^4",
+        "tailwindcss": "^4",
+        "eslint": "^9",
+        "eslint-config-next": "15.4.4",
+        "@eslint/eslintrc": "^3"
     }
 }
