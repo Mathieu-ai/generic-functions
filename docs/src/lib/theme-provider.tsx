@@ -14,7 +14,7 @@ interface ThemeContextType {
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
-export function ThemeProvider({ children }: { children: React.ReactNode }) {
+export function ThemeProvider ({ children }: { children: React.ReactNode }) {
   const [theme, setThemeState] = useState<Theme>('light');
   const [isTransitioning, setIsTransitioning] = useState(false);
 
@@ -23,7 +23,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     const saved = localStorage.getItem(STORAGE_KEYS.THEME) as Theme | null;
     const systemPreference = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
     const initialTheme = saved || systemPreference;
-    
+
     setThemeState(initialTheme);
     applyTheme(initialTheme, false); // No transition on initial load
 
@@ -47,12 +47,12 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
       setIsTransitioning(true);
       document.documentElement.classList.add('theme-transitioning');
     }
-    
+
     // Use requestAnimationFrame to ensure DOM updates are batched
     requestAnimationFrame(() => {
       document.documentElement.setAttribute('data-theme', newTheme);
       document.documentElement.classList.toggle('dark', newTheme === 'dark');
-      
+
       if (enableTransition) {
         // Re-enable transitions after theme change
         setTimeout(() => {
@@ -82,7 +82,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   );
 }
 
-export function useTheme() {
+export function useTheme () {
   const context = useContext(ThemeContext);
   if (context === undefined) {
     throw new Error(ERROR_MESSAGES.THEME_REQUIRED);

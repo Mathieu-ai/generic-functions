@@ -14,25 +14,25 @@ export interface SortOptions<T> {
  * Object with string keys and any values.
  */
 export interface o {
-    [ key: string ]: any;
+  [key: string]: any;
 }
 
 /** Selection object for filtering */
 export interface SelectionObject {
-    selection: string[];
-    property: string;
+  selection: string[];
+  property: string;
 }
 
 /**
  * Filter data based on search term and selections
  */
 export interface i_func_filterData {
-    sW: string;
-    tbRS: number[];
-    selections: SelectionObject[];
-    field_search?: string;
-    ddeb?: string;
-    regex?: RegExp;
+  sW: string;
+  tbRS: number[];
+  selections: SelectionObject[];
+  field_search?: string;
+  ddeb?: string;
+  regex?: RegExp;
 }
 
 /**
@@ -1224,71 +1224,71 @@ export function lastIndexOf<T> (array: T[], value: T, fromIndex: number = array.
  * // [{ field_search: 'John Doe', state: [{ state: 'active' }], ddeb: '2023-01-15' }]
  */
 export function filterData<T extends o> (
-    arr: T[],
-    param: i_func_filterData,
+  arr: T[],
+  param: i_func_filterData,
 ): T[] {
-    const {
-        sW,
-        tbRS,
-        field_search='field_search',
-        ddeb='ddeb',
-        regex='[A-Za-zÀ-ÖØ-öø-ÿ0-9]+',
-        selections=[],
-    }=param;
+  const {
+    sW,
+    tbRS,
+    field_search = 'field_search',
+    ddeb = 'ddeb',
+    regex = '[A-Za-zÀ-ÖØ-öø-ÿ0-9]+',
+    selections = [],
+  } = param;
 
-    const tbExp=sW.match( new RegExp( regex, 'gi' ))||[];
-    
-    return arr.filter(( item: T ) => {
-        // Check word search
-        for( let i=0; i<tbExp.length; i++ ) {
-            const searchedWord=purify( tbExp[ i ].toUpperCase());
-            if( !new RegExp( searchedWord, 'gi' ).test( item[ field_search ])) {
-                return false;
-            }
+  const tbExp = sW.match(new RegExp(regex, 'gi')) || [];
+
+  return arr.filter((item: T) => {
+    // Check word search
+    for (let i = 0; i < tbExp.length; i++) {
+      const searchedWord = purify(tbExp[i].toUpperCase());
+      if (!new RegExp(searchedWord, 'gi').test(item[field_search])) {
+        return false;
+      }
+    }
+
+    // Check selections
+    function checkSelections (selectedItems: string[], itemProperty: string) {
+      if (!item[itemProperty] || !Array.isArray(item[itemProperty])) {
+        return false;
+      }
+
+      for (const selected of selectedItems) {
+        const itemArray = item[itemProperty];
+        let hasMatch = false;
+
+        for (let j = 0; j < itemArray.length; j++) {
+          const itemState = itemArray[j];
+          if (itemState && itemState.state && itemState.state.toString().includes(selected)) {
+            hasMatch = true;
+            break;
+          }
         }
 
-        // Check selections
-        function checkSelections ( selectedItems: string[], itemProperty: string ) {
-            if (!item[itemProperty] || !Array.isArray(item[itemProperty])) {
-                return false;
-            }
-            
-            for( const selected of selectedItems ) {
-                const itemArray = item[itemProperty];
-                let hasMatch = false;
-                
-                for( let j=0; j<itemArray.length; j++ ) {
-                    const itemState = itemArray[j];
-                    if( itemState && itemState.state && itemState.state.toString().includes(selected)) {
-                        hasMatch = true;
-                        break;
-                    }
-                }
-                
-                if (!hasMatch) {
-                    return false;
-                }
-            }
-            return true;
+        if (!hasMatch) {
+          return false;
         }
+      }
+      return true;
+    }
 
-        for( const { selection, property } of selections ) {
-            if( !checkSelections( selection, property )) {
-                return false;
-            }
-        }
+    for (const { selection, property } of selections) {
+      if (!checkSelections(selection, property)) {
+        return false;
+      }
+    }
 
-        // Check date range
-        if( tbRS.length === 2 && item[ddeb]) {
-            const itemDate = new Date(item[ddeb]);
-            const startDate = new Date(tbRS[0], 0, 1); // January 1st of start year
-            const endDate = new Date(tbRS[1], 11, 31); // December 31st of end year
-            
-            if (itemDate < startDate || itemDate > endDate) {
-                return false;
-            }
-        }
-        
-        return true;
-    } );
+    // Check date range
+    if (tbRS.length === 2 && item[ddeb]) {
+      const itemDate = new Date(item[ddeb]);
+      const startDate = new Date(tbRS[0], 0, 1); // January 1st of start year
+      const endDate = new Date(tbRS[1], 11, 31); // December 31st of end year
+
+      if (itemDate < startDate || itemDate > endDate) {
+        return false;
+      }
+    }
+
+    return true;
+  });
 }

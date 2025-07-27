@@ -9,16 +9,16 @@ import { ChevronDown, ChevronRight } from './icons';
 
 interface SidebarProps {
   readonly activeTab: 'functions' | 'constants' | 'types';
-  readonly filteredItems: ReadonlyArray<{ 
-    readonly name: string; 
-    readonly description: string; 
-    readonly category?: string; 
-    readonly [key: string]: unknown; 
+  readonly filteredItems: ReadonlyArray<{
+    readonly name: string;
+    readonly description: string;
+    readonly category?: string;
+    readonly [key: string]: unknown;
   }>;
   readonly onItemClick?: (id: string, itemIndex?: number) => void;
 }
 
-export function Sidebar({ activeTab, filteredItems, onItemClick }: SidebarProps): ReactElement {
+export function Sidebar ({ activeTab, filteredItems, onItemClick }: SidebarProps): ReactElement {
   const { sidebarState, toggleCategory } = useSidebar();
 
   // Use filtered items and ensure they have category property
@@ -26,15 +26,15 @@ export function Sidebar({ activeTab, filteredItems, onItemClick }: SidebarProps)
     ...item,
     category: item.category || 'other' // Fallback category if not present
   }));
-  
+
   const groupedItems = groupByCategory(itemsWithCategory);
 
   const handleItemClick = (itemName: string) => {
     const id = generateId(activeTab.slice(0, -1), itemName); // Remove 's' from tab name
-    
+
     // Find item's index in the full list
     const itemIndex = filteredItems.findIndex(item => item.name === itemName);
-    
+
     // Pass both id and index to parent component
     onItemClick?.(id, itemIndex);
   };

@@ -59,11 +59,11 @@ export interface TypeTooltipProps {
 
 export interface SidebarProps {
   readonly activeTab: 'functions' | 'constants' | 'types';
-  readonly filteredItems: ReadonlyArray<{ 
-    readonly name: string; 
-    readonly description: string; 
-    readonly category?: string; 
-    readonly [key: string]: unknown; 
+  readonly filteredItems: ReadonlyArray<{
+    readonly name: string;
+    readonly description: string;
+    readonly category?: string;
+    readonly [key: string]: unknown;
   }>;
   readonly onItemClick?: (id: string) => void;
 }
