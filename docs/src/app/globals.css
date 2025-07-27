@@ -59,26 +59,50 @@ body {
 }
 
 /* Enhanced Typography */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-weight: 600;
   line-height: 1.25;
   letter-spacing: -0.025em;
   margin: 0;
 }
 
-h1 { font-size: 2.5rem; }
-h2 { font-size: 2rem; }
-h3 { font-size: 1.75rem; }
-h4 { font-size: 1.5rem; }
-h5 { font-size: 1.25rem; }
-h6 { font-size: 1.125rem; }
+h1 {
+  font-size: 2.5rem;
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+h3 {
+  font-size: 1.75rem;
+}
+
+h4 {
+  font-size: 1.5rem;
+}
+
+h5 {
+  font-size: 1.25rem;
+}
+
+h6 {
+  font-size: 1.125rem;
+}
 
 p {
   line-height: 1.7;
   margin: 0;
 }
 
-code, pre, .font-mono {
+code,
+pre,
+.font-mono {
   font-family: var(--font-geist-mono), 'Monaco', 'Consolas', 'Liberation Mono', 'Courier New', monospace;
   font-weight: 400;
   line-height: 1.5;
@@ -269,6 +293,7 @@ body.modal-open {
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }
@@ -279,6 +304,7 @@ body.modal-open {
     opacity: 0;
     transform: translate(-50%, -48%) scale(0.96);
   }
+
   to {
     opacity: 1;
     transform: translate(-50%, -50%) scale(1);
@@ -305,6 +331,7 @@ body.modal-open {
     opacity: 0;
     transform: translateY(20px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -489,7 +516,7 @@ body.modal-open {
     padding: 0.375rem;
     font-size: 0.75rem;
   }
-  
+
   .tabs-enhanced .tab svg {
     width: 0.875rem;
     height: 0.875rem;
@@ -597,6 +624,7 @@ body.modal-open {
     transform: translateX(100%);
     opacity: 0;
   }
+
   to {
     transform: translateX(0);
     opacity: 1;
@@ -608,6 +636,7 @@ body.modal-open {
     transform: translateX(0);
     opacity: 1;
   }
+
   to {
     transform: translateX(100%);
     opacity: 0;
@@ -632,16 +661,16 @@ body.modal-open {
   .card-body {
     padding: 1.5rem;
   }
-  
+
   .tabs-enhanced .tab {
     padding: 0.5rem 0.75rem;
     font-size: 0.875rem;
   }
-  
+
   .search-container input {
     padding: 0.625rem 2.5rem 0.625rem 2.5rem;
   }
-  
+
   .table-lg {
     font-size: 0.875rem;
   }
@@ -657,6 +686,7 @@ body.modal-open {
     opacity: 0;
     transform: translateY(10px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -704,11 +734,11 @@ body.modal-open {
 }
 
 /* Enhanced spacing utilities */
-.space-y-8 > * + * {
+.space-y-8>*+* {
   margin-top: 2rem;
 }
 
-.space-y-10 > * + * {
+.space-y-10>*+* {
   margin-top: 2.5rem;
 }
 
@@ -719,7 +749,7 @@ body.modal-open {
 
 /* Link relationships visualization */
 .relationship-line {
-  stroke-dasharray: 5,5;
+  stroke-dasharray: 5, 5;
   animation: dash 1s linear infinite;
 }
 
@@ -921,8 +951,13 @@ body.modal-open {
 }
 
 @keyframes loading {
-  0% { background-position: 200% 0; }
-  100% { background-position: -200% 0; }
+  0% {
+    background-position: 200% 0;
+  }
+
+  100% {
+    background-position: -200% 0;
+  }
 }
 
 /* Focus states for accessibility */
@@ -938,7 +973,7 @@ body.modal-open {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
-  
+
   html {
     scroll-behavior: auto;
   }
@@ -946,21 +981,31 @@ body.modal-open {
 
 /* Enhanced mobile responsive */
 @media (max-width: 640px) {
-  html { font-size: 14px; }
-  
+  html {
+    font-size: 14px;
+  }
+
   .modern-card-body,
   .modern-card-header {
     padding: var(--spacing-md);
   }
-  
+
   .modern-grid {
     grid-template-columns: 1fr;
     gap: var(--spacing-md);
   }
-  
-  h1 { font-size: 2rem; }
-  h2 { font-size: 1.75rem; }
-  h3 { font-size: 1.5rem; }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 1.75rem;
+  }
+
+  h3 {
+    font-size: 1.5rem;
+  }
 }
 
 @media (min-width: 641px) and (max-width: 1024px) {
