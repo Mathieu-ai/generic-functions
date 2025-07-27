@@ -21,7 +21,7 @@ interface TabSearchState {
   readonly types: string;
 }
 
-export default function HomePage() {
+export default function HomePage () {
   const [activeTab, setActiveTab] = useState<'functions' | 'constants' | 'types'>('functions');
   const [searchTerms, setSearchTerms] = useState<TabSearchState>({
     functions: '',
@@ -33,7 +33,7 @@ export default function HomePage() {
   const [showTypeModal, setShowTypeModal] = useState(false);
   const [isItemLoading, setIsItemLoading] = useState(false);
   const [_selectedItemId, setSelectedItemId] = useState<string | null>(null);
-  
+
   // Load the generated documentation data
   const docs = docsData as DocsData;
 
@@ -64,7 +64,7 @@ export default function HomePage() {
           ...prev,
           [activeTab]: prev[activeTab] + (
             activeTab === 'functions' ? 20 :
-            activeTab === 'constants' ? 10 : 5
+              activeTab === 'constants' ? 10 : 5
           )
         }));
       }
@@ -94,13 +94,13 @@ export default function HomePage() {
     } else {
       // Fallback to scrolling to type if found
       setActiveTab('types');
-      
+
       // Clear search to ensure the type is visible
       setSearchTerms(prev => ({
         ...prev,
         types: ''
       }));
-      
+
       // After the tab is switched and search is cleared
       setTimeout(() => {
         setSidebarOpen(false);
@@ -117,7 +117,7 @@ export default function HomePage() {
     // Start loading state
     setSelectedItemId(id);
     setIsItemLoading(true);
-    
+
     try {
       // Close sidebar first
       setSidebarOpen(false);
@@ -126,7 +126,7 @@ export default function HomePage() {
       if (itemIndex !== undefined && itemIndex >= visibleItems[activeTab]) {
         const batchSize = activeTab === 'functions' ? 20 : activeTab === 'constants' ? 10 : 5;
         const requiredBatches = Math.ceil((itemIndex + 1) / batchSize);
-        
+
         setVisibleItems(prev => ({
           ...prev,
           [activeTab]: requiredBatches * batchSize
@@ -198,19 +198,19 @@ export default function HomePage() {
     const messages = {
       functions: {
         title: currentSearchTerm ? 'No functions found' : 'No functions available',
-        subtitle: currentSearchTerm 
+        subtitle: currentSearchTerm
           ? `No functions match "${currentSearchTerm}". Try adjusting your search.`
           : 'Start exploring by browsing the available categories.'
       },
       constants: {
         title: currentSearchTerm ? 'No constants found' : 'No constants available',
-        subtitle: currentSearchTerm 
+        subtitle: currentSearchTerm
           ? `No constants match "${currentSearchTerm}". Try adjusting your search.`
           : 'Constants will appear here when available.'
       },
       types: {
         title: currentSearchTerm ? 'No types found' : 'No types available',
-        subtitle: currentSearchTerm 
+        subtitle: currentSearchTerm
           ? `No types match "${currentSearchTerm}". Try adjusting your search.`
           : 'TypeScript definitions will appear here when available.'
       }
@@ -245,78 +245,78 @@ export default function HomePage() {
   return (
     <div className="min-h-screen bg-base-100 transition-all duration-300">
       {/* Modern Header */}
-          <div className="sticky top-0 z-30 w-full">
-            <header className="w-full bg-base-100/80 backdrop-blur-md border-b border-base-300/50">
-              <div className="container mx-auto px-4">
-                <div className="flex items-center justify-between h-16">
-                  {/* Left side - Logo and mobile menu */}
-                  <div className="flex items-center gap-4">
-                    <button
-                      onClick={toggleSidebar}
-                      className="modern-btn modern-btn-ghost lg:hidden"
-                      aria-label="Toggle sidebar"
-                    >
-                      <Menu className="h-5 w-5" />
-                    </button>
-                    <div className="flex items-center gap-3">
-                      <div className="w-8 h-8 rounded-lg flex items-center justify-center overflow-hidden">
-                        <Image src="/gf.png" alt="Generic Functions Logo" width={32} height={32} className="object-cover" />
-                      </div>
-                      <div>
-                        <h1 className="text-xl font-bold text-base-content">Generic Functions</h1>
-                        <p className="text-xs text-base-content/60 hidden sm:block">
-                          v{docs.packageInfo?.version} • {getTabCount('functions')} functions, {getTabCount('constants')} constants, {getTabCount('types')} types
-                        </p>
-                      </div>
-                    </div>
+      <div className="sticky top-0 z-30 w-full">
+        <header className="w-full bg-base-100/80 backdrop-blur-md border-b border-base-300/50">
+          <div className="container mx-auto px-4">
+            <div className="flex items-center justify-between h-16">
+              {/* Left side - Logo and mobile menu */}
+              <div className="flex items-center gap-4">
+                <button
+                  onClick={toggleSidebar}
+                  className="modern-btn modern-btn-ghost lg:hidden"
+                  aria-label="Toggle sidebar"
+                >
+                  <Menu className="h-5 w-5" />
+                </button>
+                <div className="flex items-center gap-3">
+                  <div className="w-8 h-8 rounded-lg flex items-center justify-center overflow-hidden">
+                    <Image src="/gf.png" alt="Generic Functions Logo" width={32} height={32} className="object-cover" />
                   </div>
-
-                  {/* Center - Search (desktop) */}
-                  <div className="hidden md:flex flex-1 max-w-md mx-8">
-                    <SearchBar
-                      value={currentSearchTerm}
-                      onSearch={handleSearch}
-                      placeholder={`Search ${activeTab}...`}
-                      className="w-full"
-                    />
+                  <div>
+                    <h1 className="text-xl font-bold text-base-content">Generic Functions</h1>
+                    <p className="text-xs text-base-content/60 hidden sm:block">
+                      v{docs.packageInfo?.version} • {getTabCount('functions')} functions, {getTabCount('constants')} constants, {getTabCount('types')} types
+                    </p>
                   </div>
-
-                  {/* Right side - Controls */}
-                  <div className="flex items-center gap-2">
-                    <ThemeToggle />
-                  </div>
-                </div>
-
-                {/* Mobile search */}
-                <div className="md:hidden pb-3">
-                  <SearchBar
-                    value={currentSearchTerm}
-                    onSearch={handleSearch}
-                    placeholder={`Search ${activeTab}...`}
-                    className="w-full"
-                  />
                 </div>
               </div>
-            </header>
 
-            {/* Enhanced Tab Navigation - Now part of the sticky header */}
-            <div className="w-full bg-base-100/95 backdrop-blur-md border-b border-base-300/50">
-              <div className="container mx-auto px-4">
-                <div className="tabs-enhanced">
-                  {(['functions', 'constants', 'types'] as const).map((tab) => (
-                    <button
-                      key={tab}
-                      onClick={() => handleTabChange(tab)}
-                      className={`tab ${activeTab === tab ? 'tab-active' : ''}`}
-                    >
-                      {getTabIcon(tab)}
-                      <span className="capitalize">{tab}</span>
-                    </button>
-                  ))}
-                </div>
+              {/* Center - Search (desktop) */}
+              <div className="hidden md:flex flex-1 max-w-md mx-8">
+                <SearchBar
+                  value={currentSearchTerm}
+                  onSearch={handleSearch}
+                  placeholder={`Search ${activeTab}...`}
+                  className="w-full"
+                />
+              </div>
+
+              {/* Right side - Controls */}
+              <div className="flex items-center gap-2">
+                <ThemeToggle />
               </div>
             </div>
+
+            {/* Mobile search */}
+            <div className="md:hidden pb-3">
+              <SearchBar
+                value={currentSearchTerm}
+                onSearch={handleSearch}
+                placeholder={`Search ${activeTab}...`}
+                className="w-full"
+              />
+            </div>
           </div>
+        </header>
+
+        {/* Enhanced Tab Navigation - Now part of the sticky header */}
+        <div className="w-full bg-base-100/95 backdrop-blur-md border-b border-base-300/50">
+          <div className="container mx-auto px-4">
+            <div className="tabs-enhanced">
+              {(['functions', 'constants', 'types'] as const).map((tab) => (
+                <button
+                  key={tab}
+                  onClick={() => handleTabChange(tab)}
+                  className={`tab ${activeTab === tab ? 'tab-active' : ''}`}
+                >
+                  {getTabIcon(tab)}
+                  <span className="capitalize">{tab}</span>
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
 
       <div className="flex min-h-[calc(100vh-4rem)]">
         {/* Modern Sidebar */}
@@ -327,7 +327,7 @@ export default function HomePage() {
           ${sidebarOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}
           modern-scrollbar overflow-y-auto
         `}>
-          <Sidebar 
+          <Sidebar
             activeTab={activeTab}
             filteredItems={filteredItems}
             onItemClick={handleItemSelect}
@@ -336,7 +336,7 @@ export default function HomePage() {
 
         {/* Overlay for mobile */}
         {sidebarOpen && (
-          <div 
+          <div
             className="fixed inset-0 bg-black/20 backdrop-blur-sm z-20 lg:hidden"
             onClick={toggleSidebar}
           />
@@ -403,9 +403,9 @@ export default function HomePage() {
             </div>
             <div className="flex items-center gap-6 text-sm text-base-content/60">
               {docs.packageInfo?.repository && (
-                <a 
-                  href={docs.packageInfo.repository.url.replace('git+', '')} 
-                  target="_blank" 
+                <a
+                  href={docs.packageInfo.repository.url.replace('git+', '')}
+                  target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-primary transition-colors"
                 >
