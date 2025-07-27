@@ -7,7 +7,7 @@ import type { DocFunction, DocType } from '@/lib/docs-parser';
 import { copyToClipboard, generateId } from '@/lib/utils';
 
 import { CodeBlock } from './CodeBlock';
-import { ArrowRight, Code, Copy, ExternalLink, Hash, Info, Type } from './icons';
+import { ArrowRight, Code, Copy, Hash } from './icons';
 import { TypeModal } from './TypeModal';
 
 interface FunctionCardProps {
@@ -16,8 +16,7 @@ interface FunctionCardProps {
   readonly types?: readonly DocType[];
 }
 
-export function FunctionCard({ func, onTypeClick, types = [] }: FunctionCardProps) {
-  const [expanded, setExpanded] = useState(false);
+export function FunctionCard ({ func, onTypeClick, types = [] }: FunctionCardProps) {
   const [selectedType, setSelectedType] = useState<DocType | null>(null);
   const [showTypeModal, setShowTypeModal] = useState(false);
   const id = generateId('function', func.name);
@@ -37,25 +36,25 @@ export function FunctionCard({ func, onTypeClick, types = [] }: FunctionCardProp
   // Extract linked types from parameters and return type
   const getLinkedTypes = () => {
     const types = new Set<string>();
-    
+
     // Helper function to extract base type name from generic types
     const extractBaseTypeName = (typeString: string): string | null => {
       // Remove generic type parameters like <T>, <K, V>, etc.
       const baseType = typeString.replace(REGEX_PATTERNS.GENERIC_TYPE, '');
-      
+
       // Check if it's a custom type (starts with capital letter)
       if (baseType.match(REGEX_PATTERNS.CUSTOM_TYPE)) {
         return baseType;
       }
-      
+
       // Check for interface types like i_func_filterData
       if (baseType.match(REGEX_PATTERNS.INTERFACE_TYPE)) {
         return baseType;
       }
-      
+
       return null;
     };
-    
+
     // Check parameters for custom types
     func.params?.forEach(param => {
       if (param.type) {
@@ -93,11 +92,11 @@ export function FunctionCard({ func, onTypeClick, types = [] }: FunctionCardProp
       }
       return null;
     };
-    
+
     const baseTypeName = extractBaseTypeName(type);
     const isCustomType = baseTypeName && linkedTypes.includes(baseTypeName);
     const typeDefinition = baseTypeName ? types.find(t => t.name === baseTypeName) : null;
-    
+
     if (isCustomType && typeDefinition) {
       return (
         <button
@@ -130,32 +129,23 @@ export function FunctionCard({ func, onTypeClick, types = [] }: FunctionCardProp
         </button>
       );
     }
-    
+
     return <code className="text-accent font-mono text-sm">{type}</code>;
   };
 
   return (
     <div id={id} className="modern-card">
-      <div className="modern-card-header">
-        <div className="flex items-start justify-between">
-          <div className="flex-1">
-            <div className="flex items-center gap-3 mb-3">
-              <Hash className="h-5 w-5 text-primary" />
-              <h3 className="text-2xl font-bold text-primary">{func.name}</h3>
-              <span className={`badge badge-sm ${getCategoryGradient(func.category)} text-white font-medium`}>
-                {func.category}
-              </span>
-            </div>
-            <p className="text-base-content/80 text-lg leading-relaxed">{func.description}</p>
-            
-            {func.since && (
-              <div className="flex items-center gap-2 mt-3">
-                <span className="text-xs text-base-content/50">Since v{func.since}</span>
-              </div>
-            )}
+      <div className="modern-card-header space-y-4">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div className="flex flex-wrap items-center gap-3">
+            <Hash className="h-5 w-5 text-primary flex-shrink-0" />
+            <h3 className="text-xl sm:text-2xl font-bold text-primary break-all sm:break-normal">{func.name}</h3>
+            <span className={`badge badge-sm ${getCategoryGradient(func.category)} text-white font-medium shrink-0`}>
+              {func.category}
+            </span>
           </div>
-          
-          <div className="flex gap-2 ml-6">
+
+          <div className="flex gap-2 shrink-0">
             <button
               onClick={handleCopySignature}
               className="modern-btn modern-btn-ghost tooltip tooltip-left"
@@ -163,30 +153,33 @@ export function FunctionCard({ func, onTypeClick, types = [] }: FunctionCardProp
             >
               <Copy className="h-4 w-4" />
             </button>
-            <button
-              onClick={() => setExpanded(!expanded)}
-              className="modern-btn modern-btn-ghost tooltip tooltip-left"
-              data-tip={expanded ? "Collapse" : "Expand"}
-            >
-              <Info className="h-4 w-4" />
-            </button>
           </div>
         </div>
+
+        <p className="text-base-content/80 text-lg leading-relaxed">{func.description}</p>
+
+        {func.since && (
+          <div className="text-xs text-base-content/50">
+            Since v{func.since}
+          </div>
+        )}
       </div>
 
-      <div className="modern-card-body">
+      <div className="modern-card-body flex flex-col gap-6">
         {/* Function Signature */}
-        <div className="mb-6">
+        <div className="flex-1">
           <div className="flex items-center gap-3 mb-3">
             <Code className="h-5 w-5 text-secondary" />
             <h4 className="font-semibold text-lg text-secondary">Signature</h4>
           </div>
-          <CodeBlock code={func.syntax} language="typescript" showCopy={false} />
+          <div className="h-full">
+            <CodeBlock code={func.syntax} language="typescript" showCopy={false} />
+          </div>
         </div>
 
         {/* Parameters */}
         {func.params && func.params.length > 0 && (
-          <div className="mb-6">
+          <div className="flex-1">
             <h4 className="font-semibold text-lg text-accent mb-3 flex items-center gap-2">
               <ArrowRight className="h-5 w-5" />
               Parameters
@@ -214,7 +207,7 @@ export function FunctionCard({ func, onTypeClick, types = [] }: FunctionCardProp
 
         {/* Returns */}
         {func.returns && (
-          <div className="mb-6">
+          <div className="flex-1">
             <h4 className="font-semibold text-lg text-success mb-3 flex items-center gap-2">
               <ArrowRight className="h-5 w-5 rotate-180" />
               Returns
@@ -231,7 +224,7 @@ export function FunctionCard({ func, onTypeClick, types = [] }: FunctionCardProp
 
         {/* Example */}
         {func.example && func.example.trim() && (
-          <div className="mb-6">
+          <div className="flex-1">
             <div className="flex items-center justify-between mb-3">
               <h4 className="font-semibold text-lg text-warning flex items-center gap-2">
                 <Code className="h-5 w-5" />
@@ -239,80 +232,33 @@ export function FunctionCard({ func, onTypeClick, types = [] }: FunctionCardProp
               </h4>
               <button
                 onClick={handleCopyExample}
-                className="modern-btn modern-btn-ghost modern-btn-sm"
+                className="flex items-center gap-2 text-sm text-base-content/70 hover:text-base-content transition-colors"
               >
                 <Copy className="h-4 w-4" />
                 Copy
               </button>
             </div>
-            <CodeBlock 
-              code={func.example} 
-              language="javascript" 
-              showCopy={false}
-              title={`${func.name} Example`}
-              collapsible={true}
-              defaultCollapsed={func.example.split('\n').length > 6}
-              previewLines={4}
-            />
-          </div>
-        )}
+            <div className="h-full">
+              <CodeBlock
+                code={func.example}
+                language="javascript"
+                showCopy={false}
+                title={`${func.name} Example`}
+                collapsible={true}
+                defaultCollapsed={func.example.split('\n').length > 6}
+                previewLines={4}
+              />
+            </div>
 
-        {/* Expanded Details */}
-        {expanded && (
-          <div className="border-t border-base-300/50 pt-6">
-            {/* Linked Types */}
-            {linkedTypes.length > 0 && (
-              <div className="mb-4">
-                <h5 className="font-medium text-base-content/80 mb-3 flex items-center gap-2">
-                  <Type className="h-4 w-4" />
-                  Related Types ({linkedTypes.length})
-                </h5>
-                <div className="flex flex-wrap gap-2">
-                  {linkedTypes.map((typeName) => {
-                    const typeDefinition = types.find(t => t.name === typeName);
-                    return (
-                      <button 
-                        key={typeName}
-                        onClick={() => {
-                          if (typeDefinition) {
-                            // Show modal directly
-                            setSelectedType(typeDefinition);
-                            setShowTypeModal(true);
-                          } else if (onTypeClick) {
-                            // Fallback to navigation
-                            onTypeClick(typeName);
-                          }
-                        }}
-                        className={`type-badge hover:scale-105 transition-all cursor-pointer relative group ${
-                          typeDefinition ? 'ring-2 ring-primary/20' : 'opacity-75'
-                        }`}
-                        title={typeDefinition 
-                          ? `Click to view ${typeName} definition` 
-                          : `Navigate to ${typeName} in types tab`
-                        }
-                      >
-                        {typeName}
-                        {typeDefinition && (
-                          <span className="absolute -top-1 -right-1 w-2 h-2 bg-primary rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
-                        )}
-                      </button>
-                    );
-                  })}
-                </div>
-                <p className="text-xs text-base-content/50 mt-2">
-                  Click on types to view their definitions in a modal
-                </p>
-              </div>
-            )}
-
-            {/* Source file */}
+            {/* Source File */}
             {func.sourceFile && (
-              <div className="flex items-center gap-3 text-sm text-base-content/60">
-                <ExternalLink className="h-4 w-4" />
-                <span>Source: {func.sourceFile}</span>
+              <div className="text-sm text-base-content/60">
+                <span className="block sm:inline">Source: </span>
+                <span className="font-mono text-base-content/70 break-all sm:break-normal">{func.sourceFile}</span>
               </div>
             )}
           </div>
+
         )}
       </div>
 

@@ -1,12 +1,13 @@
 {
   "name": "docs",
-  "version": "0.1.0",
+  "version": "0.1.5",
   "private": true,
   "scripts": {
     "dev": "npm run generate:docs && next dev",
     "build": "npm run generate:docs && next build",
     "start": "next start",
     "lint": "next lint",
+    "lint:fix": "next lint --fix",
     "generate:docs": "tsx --tsconfig ./tsconfig.scripts.json scripts/generate-docs-data.ts"
   },
   "dependencies": {

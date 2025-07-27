@@ -5,14 +5,14 @@ import type { DocConstant } from '@/lib/docs-parser';
 import { copyToClipboard, generateId } from '@/lib/utils';
 
 import { CodeBlock } from './CodeBlock';
-import { Copy, Database, ExternalLink, Eye, Hash } from './icons';
+import { Copy, Database, Eye, Hash } from './icons';
 
 interface ConstantCardProps {
   readonly constant: DocConstant;
   readonly onTypeClick?: (typeName: string) => void;
 }
 
-export function ConstantCard({ constant, onTypeClick: _onTypeClick }: ConstantCardProps) {
+export function ConstantCard ({ constant, onTypeClick: _onTypeClick }: ConstantCardProps) {
   const id = generateId('constant', constant.name);
 
   const handleCopyValue = () => {
@@ -38,26 +38,26 @@ export function ConstantCard({ constant, onTypeClick: _onTypeClick }: ConstantCa
 
   return (
     <div id={id} className="modern-card">
-      <div className="modern-card-header">
-        <div className="flex items-start justify-between">
-          <div className="flex-1">
-            <div className="flex items-center gap-3 mb-3">
-              <Hash className="h-5 w-5 text-primary" />
-              <h3 className="text-2xl font-bold text-primary">{constant.name}</h3>
-              <span className={`badge badge-sm ${getCategoryGradient(constant.category)} text-white font-medium`}>
+      <div className="modern-card-header space-y-4">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div className="flex-1 min-w-0">
+            <div className="flex flex-wrap items-center gap-3 mb-3">
+              <Hash className="h-5 w-5 text-primary flex-shrink-0" />
+              <h3 className="text-xl sm:text-2xl font-bold text-primary break-all sm:break-normal">{constant.name}</h3>
+              <span className={`badge badge-sm ${getCategoryGradient(constant.category)} text-white font-medium shrink-0`}>
                 {constant.category}
               </span>
             </div>
-            <p className="text-base-content/80 text-lg leading-relaxed">{constant.description}</p>
-            
+            <p className="text-base-content/80 text-base sm:text-lg leading-relaxed break-words">{constant.description}</p>
+
             {constant.since && (
               <div className="flex items-center gap-2 mt-3">
                 <span className="text-xs text-base-content/50">Since v{constant.since}</span>
               </div>
             )}
           </div>
-          
-          <div className="flex gap-2 ml-6">
+
+          <div className="flex gap-2 shrink-0">
             <button
               onClick={handleCopyName}
               className="modern-btn modern-btn-ghost tooltip tooltip-left"
@@ -83,22 +83,24 @@ export function ConstantCard({ constant, onTypeClick: _onTypeClick }: ConstantCa
 
         {/* Value */}
         <div className="mb-6">
-          <div className="flex items-center justify-between mb-3">
-            <div className="flex items-center gap-3">
-              <Eye className="h-5 w-5 text-accent" />
-              <h4 className="font-semibold text-lg text-accent">Value</h4>
+          <div className="flex flex-wrap items-center justify-between mb-3 gap-4">
+            <div className="flex items-center gap-3 min-w-0">
+              <Eye className="h-5 w-5 text-accent flex-shrink-0" />
+              <h4 className="font-semibold text-lg text-accent truncate">Value</h4>
             </div>
-            <button
-              onClick={handleCopyValue}
-              className="modern-btn modern-btn-ghost modern-btn-sm"
-            >
-              <Copy className="h-4 w-4" />
-              Copy
-            </button>
+            <div className="flex-shrink-0">
+              <button
+                onClick={handleCopyValue}
+                className="modern-btn modern-btn-ghost modern-btn-sm"
+              >
+                <Copy className="h-4 w-4" />
+                <span className="hidden sm:inline ml-2">Copy</span>
+              </button>
+            </div>
           </div>
-          <CodeBlock 
-            code={getFormattedValue()} 
-            language="javascript" 
+          <CodeBlock
+            code={getFormattedValue()}
+            language="javascript"
             showCopy={false}
             title={`${constant.name} Definition`}
             collapsible={true}
@@ -154,9 +156,9 @@ export function ConstantCard({ constant, onTypeClick: _onTypeClick }: ConstantCa
 
         {/* Source file */}
         {constant.sourceFile && (
-          <div className="flex items-center gap-3 text-sm text-base-content/60">
-            <ExternalLink className="h-4 w-4" />
-            <span>Source: {constant.sourceFile}</span>
+          <div className="text-sm text-base-content/60">
+            <span className="block sm:inline">Source: </span>
+            <span className="font-mono text-base-content/70 break-all sm:break-normal">{constant.sourceFile}</span>
           </div>
         )}
       </div>

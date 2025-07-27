@@ -439,23 +439,61 @@ body.modal-open {
 }
 
 /* Enhanced tabs */
+.tabs-enhanced {
+  display: flex;
+  width: 100%;
+  overflow-x: hidden;
+  padding: 0.25rem 0;
+  background: inherit;
+}
+
 .tabs-enhanced .tab {
-  border-radius: 0.75rem;
   font-weight: 500;
   transition: all 0.2s ease;
-  padding: 0.75rem 1rem;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  flex: 1;
+  min-width: 0;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 0;
+  position: relative;
 }
 
 .tabs-enhanced .tab:hover {
   background: hsl(var(--bc) / 0.1);
-  transform: translateY(-1px);
 }
 
 .tabs-enhanced .tab-active {
-  background: hsl(var(--p));
-  color: hsl(var(--pc));
-  box-shadow: 0 4px 14px 0 hsl(var(--p) / 0.3);
+  color: hsl(var(--p));
   font-weight: 600;
+}
+
+.tabs-enhanced .tab-active::after {
+  content: "";
+  position: absolute;
+  bottom: -0.25rem;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: hsl(var(--p));
+  border-radius: 2px;
+}
+
+@media (max-width: 640px) {
+  .tabs-enhanced .tab {
+    padding: 0.375rem;
+    font-size: 0.75rem;
+  }
+  
+  .tabs-enhanced .tab svg {
+    width: 0.875rem;
+    height: 0.875rem;
+  }
 }
 
 /* Enhanced search bar */

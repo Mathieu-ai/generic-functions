@@ -83,7 +83,7 @@ class DocsParser {
   /**
    * Parse all documentation from source files
    */
-  async parseAll(): Promise<DocsData> {
+  async parseAll (): Promise<DocsData> {
     const [functions, constants, types, packageInfo] = await Promise.all([
       this.parseFunctions(),
       this.parseConstants(),
@@ -102,11 +102,11 @@ class DocsParser {
   /**
    * Parse package.json for project information
    */
-  private async parsePackageInfo(): Promise<PackageInfo> {
+  private async parsePackageInfo (): Promise<PackageInfo> {
     try {
       const content = await fs.promises.readFile(this.packageJsonPath, 'utf8');
       const pkg = JSON.parse(content);
-      
+
       return {
         name: pkg.name || '',
         version: pkg.version || '',
@@ -135,11 +135,11 @@ class DocsParser {
   /**
    * Parse functions from TypeScript source files
    */
-  private async parseFunctions(): Promise<DocFunction[]> {
+  private async parseFunctions (): Promise<DocFunction[]> {
     const functions: DocFunction[] = [];
     const coreFiles = await this.getFilesInDirectory(path.join(this.srcPath, 'core'));
     const utilFiles = await this.getFilesInDirectory(path.join(this.srcPath, 'utils'));
-    
+
     const allFiles = [...coreFiles, ...utilFiles];
 
     for (const file of allFiles) {
@@ -156,10 +156,10 @@ class DocsParser {
   /**
    * Parse constants from TypeScript source files
    */
-  private async parseConstants(): Promise<DocConstant[]> {
+  private async parseConstants (): Promise<DocConstant[]> {
     const constants: DocConstant[] = [];
     const constantsFile = path.join(this.srcPath, 'constants', 'index.ts');
-    
+
     try {
       const content = await fs.promises.readFile(constantsFile, 'utf8');
       const fileConstants = this.extractConstants(content, constantsFile);
@@ -174,11 +174,11 @@ class DocsParser {
   /**
    * Parse types/interfaces from TypeScript source files
    */
-  private async parseTypes(): Promise<DocType[]> {
+  private async parseTypes (): Promise<DocType[]> {
     const types: DocType[] = [];
     const coreFiles = await this.getFilesInDirectory(path.join(this.srcPath, 'core'));
     const utilFiles = await this.getFilesInDirectory(path.join(this.srcPath, 'utils'));
-    
+
     const allFiles = [...coreFiles, ...utilFiles];
 
     for (const file of allFiles) {
@@ -195,48 +195,50 @@ class DocsParser {
   /**
    * Extract functions with JSDoc comments from file content
    */
-  private extractFunctions(content: string, filePath: string): DocFunction[] {
+  private extractFunctions (content: string, filePath: string): DocFunction[] {
     const functions: DocFunction[] = [];
     const category = this.getCategoryFromPath(filePath);
-    
+
     // Split content into lines for better processing
     const lines = content.split('\n');
-    
+
     for (let i = 0; i < lines.length; i++) {
       const line = lines[i].trim();
-      
+
       // Look for export function declarations
       if (line.startsWith('export function ')) {
         const functionMatch = line.match(/export\s+function\s+(\w+)/);
         if (functionMatch) {
           const functionName = functionMatch[1];
-          
+
           // Look backwards to find the associated JSDoc comment
           const jsdocLines: string[] = [];
           let j = i - 1;
-          
+
           // Skip any whitespace lines above the function
           while (j >= 0 && lines[j].trim() === '') {
             j--;
           }
-          
+
           // Check if the line above is the end of a JSDoc comment
           if (j >= 0 && lines[j].trim() === '*/') {
             const jsdocEnd = j;
-            
+
             // Find the start of the JSDoc comment
             while (j >= 0 && !lines[j].trim().startsWith('/**')) {
               j--;
             }
-            
+
             if (j >= 0 && lines[j].trim().startsWith('/**')) {
               // Extract the JSDoc comment
               for (let k = j; k <= jsdocEnd; k++) {
                 jsdocLines.push(lines[k]);
               }
-              
+
               const jsdocComment = jsdocLines.join('\n');
-              const docFunction = this.parseJSDocFunction(jsdocComment, functionName, category, filePath);
+              // Find the function definition from this point forward
+              const functionDefinition = lines.slice(i).join('\n');
+              const docFunction = this.parseJSDocFunction(jsdocComment, functionDefinition, functionName, category, filePath);
               if (docFunction) {
                 functions.push(docFunction);
               }
@@ -252,25 +254,25 @@ class DocsParser {
   /**
    * Extract constants from file content
    */
-  private extractConstants(content: string, filePath: string): DocConstant[] {
+  private extractConstants (content: string, filePath: string): DocConstant[] {
     const constants: DocConstant[] = [];
     const category = 'constants';
-    
+
     // Improved regex to match const exports with JSDoc, handling multi-line objects
     const constRegex = /\/\*\*[\s\S]*?\*\/\s*export\s+const\s+(\w+)\s*=\s*([\s\S]*?)(?=\n\/\*\*|\nexport|\n\n|$)/g;
-    
+
     let match;
     while ((match = constRegex.exec(content)) !== null) {
       const constName = match[1];
       let constValue = match[2].trim();
-      
+
       // Clean up the value - remove trailing semicolons and extra whitespace
       constValue = constValue.replace(/;\s*$/, '').trim();
-      
+
       // Find the JSDoc comment for this constant
       const jsdocPattern = new RegExp(`\\/\\*\\*[\\s\\S]*?\\*\\/\\s*export\\s+const\\s+${constName}`, 'g');
       const jsdocMatch = content.match(jsdocPattern);
-      
+
       if (jsdocMatch) {
         const jsdocContent = jsdocMatch[0];
         const docConstant = this.parseJSDocConstant(jsdocContent, constName, constValue, category, filePath);
@@ -286,19 +288,19 @@ class DocsParser {
   /**
    * Extract types/interfaces from file content
    */
-  private extractTypes(content: string, filePath: string): DocType[] {
+  private extractTypes (content: string, filePath: string): DocType[] {
     const types: DocType[] = [];
     const category = this.getCategoryFromPath(filePath);
-    
+
     // Regex to match interfaces and type aliases with JSDoc
     const typeRegex = /\/\*\*[\s\S]*?\*\/\s*export\s+(interface|type)\s+(\w+)[\s\S]*?(?=\/\*\*|export|$)/g;
-    
+
     let match;
     while ((match = typeRegex.exec(content)) !== null) {
       const jsdocAndType = match[0];
       const typeKind = match[1]; // 'interface' or 'type'
       const typeName = match[2];
-      
+
       const docType = this.parseJSDocType(jsdocAndType, typeName, typeKind, category, filePath);
       if (docType) {
         types.push(docType);
@@ -311,12 +313,10 @@ class DocsParser {
   /**
    * Parse JSDoc comment for a function
    */
-  private parseJSDocFunction(content: string, name: string, category: string, filePath: string): DocFunction | null {
-    const jsdocMatch = content.match(/\/\*\*([\s\S]*?)\*\//);
-    if (!jsdocMatch) return null;
+  private parseJSDocFunction (jsdocContent: string, functionContent: string, name: string, category: string, filePath: string): DocFunction | null {
+    // The jsdocContent already contains the full JSDoc comment, no need to search for it
+    const jsdoc = jsdocContent.replace(/\/\*\*|\*\//g, '');
 
-    const jsdoc = jsdocMatch[1];
-    
     // Extract description (first non-tag line)
     const descriptionMatch = jsdoc.match(/\*\s*([^@\n][^\n]*)/);
     const description = descriptionMatch ? descriptionMatch[1].trim() : '';
@@ -326,10 +326,10 @@ class DocsParser {
     const params = paramMatches.map(paramStr => {
       const match = paramStr.match(/\*\s*@param\s+\{([^}]+)\}\s+(\[?(\w+)\]?)\s*-?\s*(.*)/);
       if (!match) return null;
-      
+
       const [, type, fullParam, paramName, desc] = match;
       const optional = fullParam.startsWith('[') && fullParam.endsWith(']');
-      
+
       return {
         name: paramName,
         type: type.trim(),
@@ -363,8 +363,20 @@ class DocsParser {
     const since = sinceMatch ? sinceMatch[1] : '';
 
     // Extract function signature
-    const funcMatch = content.match(/export\s+function\s+\w+[^{]*(?:\{|;)/);
-    const syntax = funcMatch ? funcMatch[0].replace(/export\s+function\s+/, '').replace(/\s*\{|\s*;$/, '') : '';
+    let syntax = '';
+
+    // Find the function declaration in the function content
+    const matches = functionContent.match(new RegExp(
+      `export\\s+function\\s+${name}[\\s\\S]*?(?={)`, 'm'
+    ));
+
+    if (matches) {
+      // Get the full declaration
+      syntax = matches[0]
+        .replace(/export\s+function\s+/, '')  // Remove export function
+        .replace(/\s+/g, ' ')  // Normalize spaces
+        .trim();
+    }
 
     return {
       name,
@@ -382,12 +394,12 @@ class DocsParser {
   /**
    * Parse JSDoc comment for a constant
    */
-  private parseJSDocConstant(content: string, name: string, value: string, category: string, filePath: string): DocConstant | null {
+  private parseJSDocConstant (content: string, name: string, value: string, category: string, filePath: string): DocConstant | null {
     const jsdocMatch = content.match(/\/\*\*([\s\S]*?)\*\//);
     if (!jsdocMatch) return null;
 
     const jsdoc = jsdocMatch[1];
-    
+
     // Extract description
     const descriptionMatch = jsdoc.match(/\*\s*([^@\n][^\n]*)/);
     const description = descriptionMatch ? descriptionMatch[1].trim() : '';
@@ -410,12 +422,12 @@ class DocsParser {
   /**
    * Parse JSDoc comment for a type/interface
    */
-  private parseJSDocType(content: string, name: string, kind: string, category: string, filePath: string): DocType | null {
+  private parseJSDocType (content: string, name: string, kind: string, category: string, filePath: string): DocType | null {
     const jsdocMatch = content.match(/\/\*\*([\s\S]*?)\*\//);
     if (!jsdocMatch) return null;
 
     const jsdoc = jsdocMatch[1];
-    
+
     // Extract description
     const descriptionMatch = jsdoc.match(/\*\s*([^@\n][^\n]*)/);
     const description = descriptionMatch ? descriptionMatch[1].trim() : '';
@@ -440,7 +452,7 @@ class DocsParser {
       properties = propMatches.map(propStr => {
         const match = propStr.match(/(\w+)(\?)?\s*:\s*([^;]+);/);
         if (!match) return null;
-        
+
         const [, propName, optional, propType] = match;
         return {
           name: propName,
@@ -465,22 +477,22 @@ class DocsParser {
   /**
    * Get category from file path
    */
-  private getCategoryFromPath(filePath: string): string {
+  private getCategoryFromPath (filePath: string): string {
     const basename = path.basename(filePath, '.ts');
     const normalizedPath = filePath.replace(/\\/g, '/');
     if (normalizedPath.includes('/core/')) {
       return basename;
     }
-    if (normalizedPath.includes('/utils/')) {
-      return 'utils';
-    }
+    // if (normalizedPath.includes('/utils/')) {
+    //   return 'utils';
+    // }
     return 'other';
   }
 
   /**
    * Get relative source path for display
    */
-  private getRelativeSourcePath(filePath: string): string {
+  private getRelativeSourcePath (filePath: string): string {
     const projectRoot = path.dirname(this.packageJsonPath);
     return path.relative(projectRoot, filePath).replace(/\\/g, '/');
   }
@@ -488,15 +500,15 @@ class DocsParser {
   /**
    * Get all files in a directory recursively
    */
-  private async getFilesInDirectory(dir: string): Promise<string[]> {
+  private async getFilesInDirectory (dir: string): Promise<string[]> {
     const files: string[] = [];
-    
+
     try {
       const entries = await fs.promises.readdir(dir, { withFileTypes: true });
-      
+
       for (const entry of entries) {
         const fullPath = path.join(dir, entry.name);
-        
+
         if (entry.isDirectory()) {
           const subFiles = await this.getFilesInDirectory(fullPath);
           files.push(...subFiles);
@@ -507,7 +519,7 @@ class DocsParser {
     } catch (error) {
       console.error(`Error reading directory ${dir}:`, error);
     }
-    
+
     return files;
   }
 }

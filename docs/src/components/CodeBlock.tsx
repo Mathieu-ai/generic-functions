@@ -132,9 +132,9 @@ export function CodeBlock({
           )}
         </div>
       )}
-      <div className="modern-code-content">
+      <div className="modern-code-content overflow-x-auto">
         <pre 
-          className="modern-scrollbar" 
+          className="modern-scrollbar min-w-full" 
           style={{ maxHeight }}
         >
           <code
