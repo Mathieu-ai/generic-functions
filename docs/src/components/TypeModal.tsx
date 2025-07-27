@@ -17,7 +17,7 @@ interface TypeModalProps {
   readonly onNavigateToType?: (typeName: string) => void;
 }
 
-export function TypeModal({ isOpen, onClose, type }: TypeModalProps) {
+export function TypeModal ({ isOpen, onClose, type }: TypeModalProps) {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -28,16 +28,16 @@ export function TypeModal({ isOpen, onClose, type }: TypeModalProps) {
     if (isOpen) {
       // Prevent body scrolling when modal is open
       document.body.classList.add('modal-open');
-      
+
       // Add keyboard event listener for escape key
       const handleEscape = (e: KeyboardEvent) => {
         if (e.key === 'Escape') {
           onClose();
         }
       };
-      
+
       document.addEventListener('keydown', handleEscape);
-      
+
       return () => {
         document.removeEventListener('keydown', handleEscape);
       };
@@ -90,13 +90,13 @@ export function TypeModal({ isOpen, onClose, type }: TypeModalProps) {
   const modalContent = (
     <div
       className="modal-fixed flex items-center justify-center p-4"
-      style={{ 
+      style={{
         backgroundColor: 'rgba(0, 0, 0, 0.5)',
         backdropFilter: 'blur(2px)'
       }}
       onClick={handleBackdropClick}
     >
-      <div 
+      <div
         className="bg-base-100 rounded-2xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-hidden border border-base-300 transform transition-all duration-200 ease-out"
         style={{
           animation: 'fadeIn 200ms ease-out'
@@ -225,6 +225,6 @@ export function TypeModal({ isOpen, onClose, type }: TypeModalProps) {
   if (typeof window === 'undefined') {
     return null;
   }
-  
+
   return createPortal(modalContent, document.body);
 }

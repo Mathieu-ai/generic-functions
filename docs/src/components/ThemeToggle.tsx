@@ -4,7 +4,7 @@ import { useTheme } from '@/lib/theme-provider';
 
 import { Moon, Sun } from './icons';
 
-export function ThemeToggle() {
+export function ThemeToggle () {
   const { theme, toggleTheme } = useTheme();
 
   return (

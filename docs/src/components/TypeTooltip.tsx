@@ -14,7 +14,7 @@ interface TypeTooltipProps {
   readonly onTypeClick?: (type: DocType) => void;
 }
 
-export function TypeTooltip({ typeName, children, types = [], onTypeClick }: TypeTooltipProps) {
+export function TypeTooltip ({ typeName, children, types = [], onTypeClick }: TypeTooltipProps) {
   const [isVisible, setIsVisible] = useState(false);
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const tooltipRef = useRef<HTMLDivElement>(null);
@@ -26,7 +26,7 @@ export function TypeTooltip({ typeName, children, types = [], onTypeClick }: Typ
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (tooltipRef.current && !tooltipRef.current.contains(event.target as Node) &&
-          triggerRef.current && !triggerRef.current.contains(event.target as Node)) {
+        triggerRef.current && !triggerRef.current.contains(event.target as Node)) {
         setIsVisible(false);
       }
     };
@@ -107,7 +107,7 @@ export function TypeTooltip({ typeName, children, types = [], onTypeClick }: Typ
       >
         {children}
       </span>
-      
+
       {isVisible && (
         <div
           ref={tooltipRef}
@@ -136,9 +136,9 @@ export function TypeTooltip({ typeName, children, types = [], onTypeClick }: Typ
               )}
             </div>
             <div className="modern-card-body">
-              <CodeBlock 
-                code={typeDefinition.definition} 
-                language="typescript" 
+              <CodeBlock
+                code={typeDefinition.definition}
+                language="typescript"
                 showCopy={false}
                 maxHeight="200px"
                 collapsible={typeDefinition.definition.split('\n').length > 8}

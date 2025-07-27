@@ -6,8 +6,8 @@ import toast from './toast';
  * @param text - The text to copy to clipboard
  * @param message - Success message to display (optional)
  */
-export async function copyToClipboard(
-  text: string, 
+export async function copyToClipboard (
+  text: string,
   message: string = SUCCESS_MESSAGES.COPIED
 ): Promise<void> {
   try {
@@ -25,7 +25,7 @@ export async function copyToClipboard(
  * @param name - Name to convert to ID
  * @returns Generated ID string
  */
-export function generateId(prefix: string, name: string): string {
+export function generateId (prefix: string, name: string): string {
   return `${prefix}-${name.toLowerCase().replace(REGEX_PATTERNS.ID_CLEANUP, '-')}`;
 }
 
@@ -33,7 +33,7 @@ export function generateId(prefix: string, name: string): string {
  * Scroll to element by ID with smooth animation
  * @param id - Element ID to scroll to
  */
-export function scrollToElement(id: string): void {
+export function scrollToElement (id: string): void {
   const element = document.getElementById(id);
   if (element) {
     element.scrollIntoView({
@@ -48,7 +48,7 @@ export function scrollToElement(id: string): void {
  * @param category - Category string to format
  * @returns Formatted category name
  */
-export function formatCategoryName(category: string): string {
+export function formatCategoryName (category: string): string {
   return category
     .split('-')
     .map(word => word.charAt(0).toUpperCase() + word.slice(1))
@@ -60,7 +60,7 @@ export function formatCategoryName(category: string): string {
  * @param items - Array of items with name property
  * @returns Sorted array
  */
-export function sortByName<T extends { readonly name: string }>(items: readonly T[]): T[] {
+export function sortByName<T extends { readonly name: string }> (items: readonly T[]): T[] {
   return [...items].sort((a, b) => a.name.localeCompare(b.name));
 }
 
@@ -69,7 +69,7 @@ export function sortByName<T extends { readonly name: string }>(items: readonly 
  * @param items - Array of items with category and name properties
  * @returns Object with categories as keys and item arrays as values
  */
-export function groupByCategory<T extends { readonly category: string; readonly name: string }>(
+export function groupByCategory<T extends { readonly category: string; readonly name: string }> (
   items: readonly T[]
 ): Record<string, T[]> {
   return items.reduce((groups, item) => {
@@ -88,12 +88,12 @@ export function groupByCategory<T extends { readonly category: string; readonly 
  * @param searchTerm - Search term to filter by
  * @returns Filtered array
  */
-export function filterBySearch<T extends { readonly name: string; readonly description: string }>(
+export function filterBySearch<T extends { readonly name: string; readonly description: string }> (
   items: readonly T[],
   searchTerm: string
 ): T[] {
   if (!searchTerm.trim()) return [...items];
-  
+
   const term = searchTerm.toLowerCase();
   return items.filter(item =>
     item.name.toLowerCase().includes(term) ||
@@ -107,12 +107,12 @@ export function filterBySearch<T extends { readonly name: string; readonly descr
  * @param wait - Wait time in milliseconds
  * @returns Debounced function
  */
-export function debounce<T extends unknown[]>(
+export function debounce<T extends unknown[]> (
   func: (...args: T) => void,
   wait: number
 ): (...args: T) => void {
   let timeout: NodeJS.Timeout;
-  
+
   return (...args: T) => {
     clearTimeout(timeout);
     timeout = setTimeout(() => func(...args), wait);
@@ -124,7 +124,7 @@ export function debounce<T extends unknown[]>(
  * @param string - String to validate
  * @returns True if valid URL, false otherwise
  */
-export function isValidUrl(string: string): boolean {
+export function isValidUrl (string: string): boolean {
   try {
     new URL(string);
     return true;
@@ -138,7 +138,7 @@ export function isValidUrl(string: string): boolean {
  * @param url - URL to extract domain from
  * @returns Domain string or original URL if extraction fails
  */
-export function extractDomain(url: string): string {
+export function extractDomain (url: string): string {
   try {
     const parsed = new URL(url);
     return parsed.hostname;

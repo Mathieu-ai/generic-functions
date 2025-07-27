@@ -5,7 +5,7 @@
 // Tab types
 export const TAB_TYPES = {
   FUNCTIONS: 'functions',
-  CONSTANTS: 'constants', 
+  CONSTANTS: 'constants',
   TYPES: 'types',
 } as const;
 

@@ -7,6 +7,12 @@
     "outDir": "./dist-scripts",
     "allowImportingTsExtensions": false
   },
-  "include": ["scripts/**/*.ts"],
-  "exclude": ["node_modules", "src/**/*", ".next/**/*"]
+  "include": [
+    "scripts/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "src/**/*",
+    ".next/**/*"
+  ]
 }

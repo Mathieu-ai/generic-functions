@@ -17,18 +17,18 @@ export class ErrorBoundary extends Component<Props, State> {
     hasError: false
   };
 
-  public static getDerivedStateFromError(error: Error): State {
+  public static getDerivedStateFromError (error: Error): State {
     return {
       hasError: true,
       error
     };
   }
 
-  public componentDidCatch(error: Error, errorInfo: ErrorInfo) {
+  public componentDidCatch (error: Error, errorInfo: ErrorInfo) {
     console.error('Uncaught error:', error, errorInfo);
   }
 
-  public render() {
+  public render () {
     if (this.state.hasError) {
       return this.props.fallback ?? (
         <div className="flex min-h-[400px] w-full items-center justify-center rounded-lg bg-base-200 p-4">

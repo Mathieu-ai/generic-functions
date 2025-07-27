@@ -11,7 +11,7 @@ interface ToastOptions {
 class SimpleToast {
   private container: HTMLElement | null = null;
 
-  private createContainer() {
+  private createContainer () {
     if (!this.container) {
       this.container = document.createElement('div');
       this.container.style.position = 'fixed';
@@ -26,12 +26,12 @@ class SimpleToast {
     return this.container;
   }
 
-  private showToast(message: string, type: 'success' | 'error' = 'success', options: ToastOptions = {}) {
+  private showToast (message: string, type: 'success' | 'error' = 'success', options: ToastOptions = {}) {
     const container = this.createContainer();
-    
+
     const toast = document.createElement('div');
     toast.textContent = message;
-    
+
     // Base styles
     Object.assign(toast.style, {
       padding: '12px 16px',
@@ -62,12 +62,12 @@ class SimpleToast {
     setTimeout(() => {
       toast.style.transform = 'translateX(100%)';
       toast.style.opacity = '0';
-      
+
       setTimeout(() => {
         if (container.contains(toast)) {
           container.removeChild(toast);
         }
-        
+
         // Remove container if empty
         if (container.children.length === 0) {
           document.body.removeChild(container);
@@ -77,11 +77,11 @@ class SimpleToast {
     }, duration);
   }
 
-  success(message: string, options?: ToastOptions) {
+  success (message: string, options?: ToastOptions) {
     this.showToast(message, 'success', options);
   }
 
-  error(message: string, options?: ToastOptions) {
+  error (message: string, options?: ToastOptions) {
     this.showToast(message, 'error', options);
   }
 }

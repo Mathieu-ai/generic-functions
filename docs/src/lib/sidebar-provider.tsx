@@ -16,7 +16,7 @@ interface SidebarContextType {
 
 const SidebarContext = createContext<SidebarContextType | undefined>(undefined);
 
-export function SidebarProvider({ children }: { children: React.ReactNode }) {
+export function SidebarProvider ({ children }: { children: React.ReactNode }) {
   const [sidebarState, setSidebarState] = useState<SidebarState>({});
 
   useEffect(() => {
@@ -59,7 +59,7 @@ export function SidebarProvider({ children }: { children: React.ReactNode }) {
   );
 }
 
-export function useSidebar() {
+export function useSidebar () {
   const context = useContext(SidebarContext);
   if (context === undefined) {
     throw new Error(ERROR_MESSAGES.SIDEBAR_REQUIRED);

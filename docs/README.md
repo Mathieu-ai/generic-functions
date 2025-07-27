@@ -4,7 +4,7 @@ This is the documentation website for the Generic Functions TypeScript utility l
 
 ## 🌐 Live Site
 
-The documentation is automatically deployed to GitHub Pages: **https://mathieu-ai.github.io/generic-functions/**
+The documentation is automatically deployed to GitHub Pages: **<https://mathieu-ai.github.io/generic-functions/>**
 
 ## 🚀 Deployment
 

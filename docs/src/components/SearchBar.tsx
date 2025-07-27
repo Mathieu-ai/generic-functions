@@ -13,7 +13,7 @@ interface SearchBarProps {
   readonly value?: string;
 }
 
-export function SearchBar({ onSearch, placeholder = DEFAULT_VALUES.SEARCH_PLACEHOLDER, className = '', value: externalValue }: SearchBarProps) {
+export function SearchBar ({ onSearch, placeholder = DEFAULT_VALUES.SEARCH_PLACEHOLDER, className = '', value: externalValue }: SearchBarProps) {
   const [searchTerm, setSearchTerm] = useState(externalValue || '');
 
   // Sync with external value when it changes

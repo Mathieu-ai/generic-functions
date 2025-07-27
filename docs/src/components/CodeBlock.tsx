@@ -18,10 +18,10 @@ interface CodeBlockProps {
   readonly previewLines?: number;
 }
 
-export function CodeBlock({ 
-  code, 
-  language = DEFAULT_VALUES.CODE_LANGUAGE, 
-  showCopy = true, 
+export function CodeBlock ({
+  code,
+  language = DEFAULT_VALUES.CODE_LANGUAGE,
+  showCopy = true,
   title,
   maxHeight = DEFAULT_VALUES.MAX_HEIGHT,
   collapsible = false,
@@ -34,7 +34,7 @@ export function CodeBlock({
 
   // Calculate if code should be collapsible based on line count
   const shouldBeCollapsible = collapsible && code.split('\n').length > previewLines;
-  
+
   // Get preview code for collapsed state
   const getDisplayCode = () => {
     if (shouldBeCollapsible && isCollapsed) {
@@ -52,7 +52,7 @@ export function CodeBlock({
         try {
           // Dynamically import Prism to avoid SSR issues
           const Prism = (await import('prismjs')).default;
-          
+
           // Import required language modules
           // @ts-expect-error - Prism component imports don't have type definitions
           await import('prismjs/components/prism-javascript');
@@ -62,7 +62,7 @@ export function CodeBlock({
           await import('prismjs/components/prism-json');
           // @ts-expect-error - Prism component imports don't have type definitions
           await import('prismjs/components/prism-bash');
-          
+
           // Double-check that the ref is still valid before setting innerHTML
           if (codeRef.current) {
             codeRef.current.innerHTML = Prism.highlight(
@@ -133,8 +133,8 @@ export function CodeBlock({
         </div>
       )}
       <div className="modern-code-content overflow-x-auto">
-        <pre 
-          className="modern-scrollbar min-w-full" 
+        <pre
+          className="modern-scrollbar min-w-full"
           style={{ maxHeight }}
         >
           <code
