@@ -55,31 +55,28 @@ src/
 
 ## 🎯 Usage Examples
 
-### Tree-shakable imports (Recommended)
+### Import Usage (Tree-shakable with tsup)
 
-Import only what you need for optimal bundle size:
+Import functions directly from the main package - tsup automatically handles tree-shaking:
 
 ```typescript
-// String utilities
-import { trim, capitalize, purify, camelCase } from 'generic-functions.mlai/core/string';
-
-// Array utilities  
-import { sort, getUnique, chunk, flatten } from 'generic-functions.mlai/core/array';
-
-// Date utilities
-import { formatDate, now, addTime, isBetween } from 'generic-functions.mlai/core/date';
-
-// Object utilities
-import { get, set, merge, pick, omit } from 'generic-functions.mlai/core/object';
-
-// Math utilities
-import { sum, mean, clamp, random } from 'generic-functions.mlai/core/math';
-
-// Type checking
-import { isString, isArray, isObject, isFunction } from 'generic-functions.mlai/core/type';
-
-// Function utilities
-import { debounce, throttle, memoize, curry } from 'generic-functions.mlai/core/function';
+// All utilities are available from the main package
+import { 
+  // String utilities
+  trim, capitalize, purify, camelCase,
+  // Array utilities  
+  sort, getUnique, chunk, flatten,
+  // Date utilities
+  formatDate, now, addTime, isBetween,
+  // Object utilities
+  get, set, merge, pick, omit,
+  // Math utilities
+  sum, mean, clamp, random,
+  // Type checking
+  isString, isArray, isObject, isFunction,
+  // Function utilities
+  debounce, throttle, memoize, curry
+} from 'generic-functions.mlai';
 
 // Usage examples
 console.log(trim('  hello world  ')); // 'hello world'
@@ -89,25 +86,10 @@ console.log(sum([1, 2, 3, 4])); // 10
 console.log(get({ a: { b: { c: 42 } } }, 'a.b.c')); // 42
 ```
 
-### Category imports
+### Alternative import patterns
 
 ```typescript
-// Import entire categories
-import * as stringUtils from 'generic-functions.mlai/core/string';
-import * as arrayUtils from 'generic-functions.mlai/core/array';
-import * as objectUtils from 'generic-functions.mlai/core/object';
-import * as mathUtils from 'generic-functions.mlai/core/math';
-import * as dateUtils from 'generic-functions.mlai/core/date';
-
-console.log(stringUtils.purify('Héllo')); // 'Hello'
-console.log(arrayUtils.chunk([1, 2, 3, 4], 2)); // [[1, 2], [3, 4]]
-console.log(mathUtils.mean([1, 2, 3, 4, 5])); // 3
-```
-
-### All-in-one import
-
-```typescript
-// Load all core functions
+// Import everything (not recommended for production)
 import * as gf from 'generic-functions.mlai';
 
 console.log(gf.trim('  hello world  ')); // 'hello world'
@@ -117,7 +99,13 @@ console.log(gf.debounce(() => console.log('debounced!'), 300));
 
 ## 📋 API Reference
 
-### String Utilities (`core/string`)
+All functions are available as named imports from the main package:
+
+```typescript
+import { functionName } from 'generic-functions.mlai';
+```
+
+### String Utilities
 
 | Function | Description | Example |
 |----------|-------------|---------|
@@ -127,7 +115,7 @@ console.log(gf.debounce(() => console.log('debounced!'), 300));
 | `kebabCase(str)` | Converts to kebab-case | `kebabCase('Hello World')` → `'hello-world'` |
 | `trim(str, chars?)` | Trims whitespace or specified chars | `trim('  hello  ')` → `'hello'` |
 
-### Array Utilities (`core/array`)
+### Array Utilities
 
 | Function | Description | Example |
 |----------|-------------|---------|
@@ -136,7 +124,7 @@ console.log(gf.debounce(() => console.log('debounced!'), 300));
 | `uniq(array)` | Removes duplicates | `uniq([1, 2, 2, 3])` → `[1, 2, 3]` |
 | `difference(array, values)` | Array difference | `difference([1,2,3], [2,3])` → `[1]` |
 
-### Object Utilities (`core/object`)
+### Object Utilities
 
 | Function | Description | Example |
 |----------|-------------|---------|
@@ -145,7 +133,7 @@ console.log(gf.debounce(() => console.log('debounced!'), 300));
 | `merge(target, ...sources)` | Deep merge objects | `merge({a:1}, {b:2})` → `{a:1,b:2}` |
 | `pick(obj, ...keys)` | Pick specified properties | `pick({a:1,b:2}, 'a')` → `{a:1}` |
 
-### Math Utilities (`core/math`)
+### Math Utilities
 
 | Function | Description | Example |
 |----------|-------------|---------|
@@ -154,7 +142,7 @@ console.log(gf.debounce(() => console.log('debounced!'), 300));
 | `clamp(num, min, max)` | Clamps number to range | `clamp(10, 0, 5)` → `5` |
 | `random(min?, max?)` | Random number in range | `random(1, 10)` → `7.23...` |
 
-### Date Utilities (`core/date`)
+### Date Utilities
 
 | Function | Description | Example |
 |----------|-------------|---------|
@@ -162,7 +150,7 @@ console.log(gf.debounce(() => console.log('debounced!'), 300));
 | `addTime(date, amount, unit)` | Add time to date | `addTime(date, 5, 'day')` |
 | `isBetween(date, start, end)` | Check if date in range | `isBetween(date, start, end)` |
 
-### Function Utilities (`core/function`)
+### Function Utilities
 
 | Function | Description | Example |
 |----------|-------------|---------|
@@ -223,20 +211,20 @@ npm run prepare-dist
 
 ## 🚀 Migration from v0.x
 
-The new version removes heavy dependencies for better performance and tree-shaking:
+The new version uses tsup for optimal bundling and tree-shaking. All imports should now come from the main package:
 
-**Before:**
+**Before (v0.x with subpaths):**
 
 ```typescript
-import { api, now } from 'generic-functions.mlai';
+import { api, now } from 'generic-functions.mlai/core/date';
+import { trim } from 'generic-functions.mlai/core/string';
 ```
 
-**After:**
+**After (v0.9+ with tsup):**
 
 ```typescript
-// Use native fetch or your preferred HTTP client instead of built-in api
-import { api } from 'generic-functions.mlai/utils'; // If you need heavier utilities
-import { now } from 'generic-functions.mlai/core/date';
+// Import everything from the main package - tsup handles tree-shaking automatically
+import { now, trim, api } from 'generic-functions.mlai';
 ```
 
 ## 🤝 Contributing
