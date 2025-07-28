@@ -5514,11 +5514,11 @@
       "name": "o",
       "category": "array",
       "description": "Object with string keys and any values.",
-      "definition": "interface o {\r\n    [ key: string ]: any;\r\n}\r\n\r\n",
+      "definition": "interface o {\r\n  [key: string]: any;\r\n}\r\n\r\n",
       "properties": [
         {
           "name": "key",
-          "type": "string ]: any",
+          "type": "string]: any",
           "optional": false,
           "description": ""
         }
@@ -5530,7 +5530,7 @@
       "name": "SelectionObject",
       "category": "array",
       "description": "",
-      "definition": "interface SelectionObject {\r\n    selection: string[];\r\n    property: string;\r\n}\r\n\r\n",
+      "definition": "interface SelectionObject {\r\n  selection: string[];\r\n  property: string;\r\n}\r\n\r\n",
       "properties": [
         {
           "name": "selection",
@@ -5552,7 +5552,7 @@
       "name": "i_func_filterData",
       "category": "array",
       "description": "Filter data based on search term and selections",
-      "definition": "interface i_func_filterData {\r\n    sW: string;\r\n    tbRS: number[];\r\n    selections: SelectionObject[];\r\n    field_search?: string;\r\n    ddeb?: string;\r\n    regex?: RegExp;\r\n}\r\n\r\n",
+      "definition": "interface i_func_filterData {\r\n  sW: string;\r\n  tbRS: number[];\r\n  selections: SelectionObject[];\r\n  field_search?: string;\r\n  ddeb?: string;\r\n  regex?: RegExp;\r\n}\r\n\r\n",
       "properties": [
         {
           "name": "sW",
@@ -5705,7 +5705,7 @@
   ],
   "packageInfo": {
     "name": "generic-functions.mlai",
-    "version": "0.9.12",
+    "version": "0.9.17",
     "description": "A comprehensive, lightweight utility library",
     "author": {
       "name": "Mathieu-ai",

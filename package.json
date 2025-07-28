@@ -4,84 +4,22 @@
         "type": "git",
         "url": "https://github.com/Mathieu-ai/generic-functions.git"
     },
-    "version": "0.9.16",
+    "version": "0.9.17",
     "description": "A comprehensive, lightweight utility library",
-    "main": "dist/index.js",
+    "type": "module",
+    "main": "dist/index.cjs",
+    "module": "dist/index.mjs",
     "types": "dist/index.d.ts",
     "exports": {
         ".": {
-            "import": "./dist/index.js",
-            "require": "./dist/index.js",
-            "types": "./dist/index.d.ts"
-        },
-        "./core": {
-            "import": "./dist/core/index.js",
-            "require": "./dist/core/index.js",
-            "types": "./dist/core/index.d.ts"
-        },
-        "./core/string": {
-            "import": "./dist/core/string.js",
-            "require": "./dist/core/string.js",
-            "types": "./dist/core/string.d.ts"
-        },
-        "./core/array": {
-            "import": "./dist/core/array.js",
-            "require": "./dist/core/array.js",
-            "types": "./dist/core/array.d.ts"
-        },
-        "./core/object": {
-            "import": "./dist/core/object.js",
-            "require": "./dist/core/object.js",
-            "types": "./dist/core/object.d.ts"
-        },
-        "./core/number": {
-            "import": "./dist/core/number.js",
-            "require": "./dist/core/number.js",
-            "types": "./dist/core/number.d.ts"
-        },
-        "./core/date": {
-            "import": "./dist/core/date.js",
-            "require": "./dist/core/date.js",
-            "types": "./dist/core/date.d.ts"
-        },
-        "./core/math": {
-            "import": "./dist/core/math.js",
-            "require": "./dist/core/math.js",
-            "types": "./dist/core/math.d.ts"
-        },
-        "./core/type": {
-            "import": "./dist/core/type.js",
-            "require": "./dist/core/type.js",
-            "types": "./dist/core/type.d.ts"
-        },
-        "./core/utility": {
-            "import": "./dist/core/utility.js",
-            "require": "./dist/core/utility.js",
-            "types": "./dist/core/utility.d.ts"
-        },
-        "./core/function": {
-            "import": "./dist/core/function.js",
-            "require": "./dist/core/function.js",
-            "types": "./dist/core/function.d.ts"
-        },
-        "./core/collection": {
-            "import": "./dist/core/collection.js",
-            "require": "./dist/core/collection.js",
-            "types": "./dist/core/collection.d.ts"
-        },
-        "./utils": {
-            "import": "./dist/utils/index.js",
-            "require": "./dist/utils/index.js",
-            "types": "./dist/utils/index.d.ts"
-        },
-        "./constants": {
-            "import": "./dist/constants/index.js",
-            "require": "./dist/constants/index.js",
-            "types": "./dist/constants/index.d.ts"
+            "types": "./dist/index.d.ts",
+            "import": "./dist/index.mjs",
+            "require": "./dist/index.cjs"
         }
     },
     "scripts": {
-        "build": "tsc",
+        "build": "tsup",
+        "dev": "tsup --watch",
         "clean": "rimraf dist",
         "copy-files": "node scripts/build-helper.cjs copy-files",
         "prepare-dist": "npm run clean && npm run build && npm run copy-files",
@@ -119,23 +57,31 @@
         "access": "public",
         "registry": "https://registry.npmjs.org/"
     },
-    "optionalDependencies": {},
     "dependencies": {
+        "daisyui": "^4.12.12",
+        "lucide-react": "^0.460.0",
+        "next": "15.4.4",
+        "prismjs": "^1.30.0",
         "react": "19.1.0",
         "react-dom": "19.1.0",
-        "next": "15.4.4"
+        "react-hot-toast": "^2.5.2"
     },
     "devDependencies": {
-        "rimraf": "^5.0.0",
-        "esbuild": "^0.19.0",
-        "typescript": "^5",
         "@types/node": "^20",
+        "@types/prismjs": "^1.26.5",
         "@types/react": "^19",
         "@types/react-dom": "^19",
-        "@tailwindcss/postcss": "^4",
-        "tailwindcss": "^4",
+        "autoprefixer": "^10.4.20",
         "eslint": "^9",
         "eslint-config-next": "15.4.4",
-        "@eslint/eslintrc": "^3"
+        "postcss": "^8.4.49",
+        "tailwindcss": "^3.4.16",
+        "tsx": "^4.20.3",
+        "typescript": "^5",
+        "@eslint/eslintrc": "^3",
+        "@tailwindcss/postcss": "^4",
+        "esbuild": "^0.19.0",
+        "rimraf": "^5.0.0",
+        "tsup": "^8.5.0"
     }
 }

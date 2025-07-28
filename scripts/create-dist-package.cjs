@@ -13,7 +13,7 @@ const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf8'));
 function createDistPackage() {
     // SECTION - Distribution Package Configuration
     // NOTE - Create a clean package.json for distribution with only necessary fields
-    
+
     // Fix exports to remove dist/ prefix since we're publishing from dist folder
     const fixedExports = {};
     if (packageJson.exports) {
@@ -33,13 +33,15 @@ function createDistPackage() {
             }
         }
     }
-    
+
     const distPackage = {
         name: packageJson.name,
         version: packageJson.version,
         description: packageJson.description,
-        main: 'index.js',
-        types: 'index.d.ts',
+        type: "module",
+        main: packageJson.main ? packageJson.main.replace('dist/', '') : 'index.cjs',
+        module: packageJson.module ? packageJson.module.replace('dist/', '') : 'index.mjs',
+        types: packageJson.types ? packageJson.types.replace('dist/', '') : 'index.d.ts',
         exports: fixedExports,
         files: [
             "*",
